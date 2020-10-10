@@ -141,3 +141,11 @@ def huitoutiao(pid, w, h):
     # 3. 点击今日签到
     # 签到成功
     input.tap(pid, w / 2, 2.3 * h / HEIGHT)  # <= modify
+
+
+def zhongqing(pid, w, h):
+    # 1. 点击任务代签到
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击签到领现金
+    # 签到成功
+    input.tap(pid, w / 2, 4.9 * h / HEIGHT)
