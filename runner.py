@@ -1,3 +1,5 @@
+#!/usr/bin/env python3
+
 import argparse
 from datetime import datetime
 import signal
@@ -270,11 +272,21 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # 拼多多
+            print('拼多多 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.pinduoduo(pid, w, h)
+            # 2. 关闭程序
+            phone.stop_app(pid, packages['pinduoduo'])
 
         while datetime.now().hour.__eq__(15):
             schedule_apps(pid, w, h)
 
             # 淘宝
+            print('淘宝 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.taobao(pid)
+            # 2. 关闭程序
+            phone.stop_app(pid, packages['taobao'])
 
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)

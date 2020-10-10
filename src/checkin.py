@@ -42,7 +42,7 @@ def jingdong(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 3.7 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 1.0 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
 def fanqie(pid, w, h, gap=15):
@@ -51,7 +51,7 @@ def fanqie(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 2.6 * w / WIDTH, 3.7 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 2.6 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
 def fanchang(pid, w, h, gap=15):
@@ -60,7 +60,7 @@ def fanchang(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 4.2 * w / WIDTH, 3.7 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 4.2 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
 def weishi(pid):
@@ -77,7 +77,7 @@ def shuqi(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 1.0 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
 
 
 def yingke(pid, w, h, gap=15):
@@ -86,7 +86,7 @@ def yingke(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 2.6 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 2.6 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
 
 
 def kugou(pid, w, h, gap=15):
@@ -95,7 +95,7 @@ def kugou(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 4.2 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 4.2 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
 
 
 def huitoutiao(pid):
@@ -112,7 +112,24 @@ def zhongqing(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 8.3 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 1.0 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
+
+
+def pinduoduo(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, 2.6 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
+
+
+def taobao(pid):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
 
 
 def shuabao(pid):
