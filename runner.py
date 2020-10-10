@@ -61,6 +61,17 @@ def cycle(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['huoshan'])
 
+        hour = datetime.now().hour
+        while run_apps.__contains__('weishi') and datetime.now().hour.__eq__(hour):
+            # [x] 看微视视频
+            print('看微视视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.weishi(pid)
+            # 2. 看微视视频
+            app.watch_weishi_video(pid, w, h, hour)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['weishi'])
+
 
 def run(pid):
     # 需要保持手机处于亮屏状态
@@ -171,6 +182,18 @@ def run(pid):
             app.listen_fanchang_sound(pid, w, h, 300)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
+
+        while datetime.now().hour.__eq__(8):
+            schedule_apps(pid, w, h)
+
+            # [ ] 看微视视频
+            print('看微视视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.weishi(pid)
+            # 2. 看微视视频
+            app.watch_weishi_video(pid, w, h, 8)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['weishi'])
 
 
 def main(args):

@@ -60,4 +60,11 @@ def listen_fanchang_sound(pid, w, h, sec=300):
     time.sleep(sec)
     # 3. 领取奖励
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)  # <= modify
-    return None
+
+
+def watch_weishi_video(pid, w, h, hour=8):
+    """
+    看微视视频
+    """
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
