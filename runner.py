@@ -184,6 +184,9 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
 
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
         while datetime.now().hour.__eq__(7):
             schedule_apps(pid, w, h)
 
@@ -256,6 +259,9 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['huitoutiao'])
 
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
         while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
 
@@ -299,6 +305,18 @@ def run(pid):
             app.watch_shuabao_video(pid, w, h, hour=16)
             # 3. 关闭程序
             phone.stop_app(pid, packages['shuabao'])
+
+        while datetime.now().hour.__eq__(18):
+            schedule_apps(pid, w, h)
+
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
+        while datetime.now().hour.__eq__(23):
+            schedule_apps(pid, w, h)
+
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
 
 
 def main(args):
