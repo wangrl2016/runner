@@ -21,10 +21,9 @@ def run(pid):
     phone.go_home(pid)
 
     while True:
-        if datetime.now().hour.__eq__(0):
-            print(datetime.now())
         while datetime.now().hour.__eq__(0):
             # 所有程序的签到工作
+            print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
                 # 1. 打开程序
                 if tap_start(a):
@@ -36,13 +35,18 @@ def run(pid):
                 # 3. 关闭程序
                 phone.stop_app(pid, packages[a])
 
-        if datetime.now().hour.__eq__(1):
-            print(datetime.now())
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
-        if datetime.now().hour.__eq__(2):
-            print(datetime.now())
+            # [ ] 阅读头条文章
+            print('阅读头条文章 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.toutiao(pid)
+            # 2. 阅读头条文章
+            app.read_toutiao_articles(pid, w, h, 30)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['toutiao'])
+
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
@@ -55,9 +59,7 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['kuaishou'])
 
-        if datetime.now().hour.__eq__(16):
-            print(datetime.now())
-        while datetime.now().hour.__eq__(16):
+        while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
             # [x] 看抖音视频
@@ -65,9 +67,21 @@ def run(pid):
             # 1. 打开程序
             checkin.douyin(pid)
             # 2. 看抖音视频
-            app.watch_douyin_video(pid, w, h, 16)
+            app.watch_douyin_video(pid, w, h, 3)
             # 3. 关闭程序
             phone.stop_app(pid, packages['douyin'])
+
+        while datetime.now().hour.__eq__(4):
+            schedule_apps(pid, w, h)
+
+            # [x] 看火山视频
+            print('看火山视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.huoshan(pid)
+            # 2. 看火山视频
+            app.watch_huoshan_video(pid, w, h, 4)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['huoshan'])
 
 
 def main(args):
