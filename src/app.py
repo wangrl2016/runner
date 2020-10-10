@@ -1,7 +1,8 @@
 from datetime import datetime
 from random import randrange
-
-from src import phone
+import time
+from src import phone, input
+from src.info import HEIGHT, WIDTH
 
 
 def read_toutiao_articles(pid, w, h, num=30):
@@ -46,4 +47,17 @@ def read_fanqie_novel(pid, w, h, hour=6):
     """
     阅读番茄小说
     """
+    return None
+
+
+def listen_fanchang_sound(pid, w, h, sec=300):
+    """
+    听番畅音频
+    """
+    # 1. 点击收听按钮
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 2. 收听番畅音频
+    time.sleep(sec)
+    # 3. 领取奖励
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)  # <= modify
     return None

@@ -40,7 +40,7 @@ activities = {
     apps[3]: 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
     apps[4]: '#com.jd.jdlite/.MainFrameActivity',
     apps[5]: '#com.dragon.read/.pages.main.MainFragmentActivity',
-    apps[6]: 'com.xs.fm/com.dragon.read.pages.main.MainFragmentActivity',
+    apps[6]: '#com.xs.fm/com.dragon.read.pages.main.MainFragmentActivity',
     apps[7]: 'com.tencent.weishi/com.tencent.oscar.module.splash.SplashActivity',
     apps[8]: '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     apps[9]: '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',

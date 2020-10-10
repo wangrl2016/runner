@@ -159,7 +159,19 @@ def run(pid):
             app.read_fanqie_novel(pid, w, h, 6)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
-        
+
+        while datetime.now().hour.__eq__(7):
+            schedule_apps(pid, w, h)
+
+            # [ ] 听番畅音频
+            print('听番畅音频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.fanchang(pid, w, h)
+            # 2. 听番畅音频300s
+            app.listen_fanchang_sound(pid, w, h, 300)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['fanchang'])
+
 
 def main(args):
     # 获取设备号
