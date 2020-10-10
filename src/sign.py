@@ -13,6 +13,7 @@ def toutiao(pid, w, h):
     input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
     # 3. 看15s视频
     time.sleep(15)
+    # 4. 点击关闭
 
 
 def kuaishou(pid, w, h):
@@ -57,3 +58,16 @@ def jingdong(pid, w, h):
     # 2. 点击立即签到
     # 签到成功
     input.tap(pid, w / 2, 5.8 * h / HEIGHT)  # <= modify
+
+
+def fanqie(pid, w, h):
+    # 1. 点击福利签到
+    # 签到成功
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击看视频再领金币
+    input.tap(pid, w / 2, 10.1 * h / HEIGHT)
+    # 3. 播放视频30s
+    time.sleep(30)
+    # 4. 点击关闭
+    # 无法回退关闭
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
