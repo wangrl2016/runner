@@ -131,3 +131,13 @@ def kugou(pid, w, h):
     # 2. 点击签到
     # 签到成功
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 11.1 * h / HEIGHT)  # <= modify
+
+
+def huitoutiao(pid, w, h):
+    # 1. 假装想要退出关闭可能的悬浮窗
+    phone.go_back(pid)
+    # 2. 点击下方右侧任务中心
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 3. 点击今日签到
+    # 签到成功
+    input.tap(pid, w / 2, 2.3 * h / HEIGHT)  # <= modify
