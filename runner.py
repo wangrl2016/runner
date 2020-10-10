@@ -98,7 +98,7 @@ def run(pid):
     phone.go_home(pid)
 
     while True:
-        while datetime.now().hour.__eq__(0):
+        while datetime.now().hour.__eq__(0) or datetime.now().hour.__eq__(1):
             # 所有程序的签到工作
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
@@ -109,6 +109,7 @@ def run(pid):
                     getattr(checkin, a)(pid)
                 # 2. 签到
                 getattr(sign, a)(pid, w, h)
+
                 # 3. 关闭程序
                 phone.stop_app(pid, packages[a])
 

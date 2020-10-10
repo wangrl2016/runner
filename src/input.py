@@ -11,37 +11,37 @@ The commands and default sources are:
 """
 
 
-def text(p_id, txt):
+def text(pid, txt):
     """
     输入文字
-    :param p_id: 手机标识符
+    :param pid: 手机标识符
     :param txt: 想要输入的文本
     """
-    subprocess.run(['adb', '-s', p_id, 'shell', 'input', 'text', txt])
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'text', txt])
     time.sleep(3)
 
 
-def keyevent(p_id, code, gap=3):
+def keyevent(pid, code, gap=3):
     """
     按键事件
     """
-    subprocess.run(['adb', '-s', p_id, 'shell', 'input', 'keyevent', code])
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', code])
     time.sleep(gap)
 
 
-def tap(p_id, w, h, gap=5):
+def tap(pid, w, h, gap=5):
     """
     以像素点点击屏幕坐标为(px, py)的位置
     """
-    subprocess.run(['adb', '-s', p_id, 'shell', 'input', 'tap', str(int(w)), str(int(h))])
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'tap', str(int(w)), str(int(h))])
     time.sleep(gap)
 
 
-def swipe(p_id, w1, h1, w2, h2, internal=200, gap=3):
+def swipe(pid, w1, h1, w2, h2, internal=200, gap=3):
     """
     滑动事件
     """
-    subprocess.run(['adb', '-s', p_id, 'shell', 'input', 'swipe',
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'swipe',
                     str(int(w1)), str(int(h1)),
                     str(int(w2)), str(int(h2)), str(internal)])
     time.sleep(gap)
