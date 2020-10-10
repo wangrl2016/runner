@@ -85,3 +85,23 @@ def fanchang(pid, w, h):
     # 无法回退关闭
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
+
+# noinspection PyUnusedLocal
+def weishi(pid, w, h):
+    # 没有签到窗口
+    return None
+
+
+def shuqi(pid, w, h):
+    # 1. 滑动关闭可能的悬浮窗
+    phone.swipe_down_to_up(pid, w, h)
+    # 2. 点击福利
+    # 签到成功
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 3. 点击看视频奖励立即翻倍
+    input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <= modify
+    # 4. 播放30s
+    time.sleep(30)
+    # 5. 点击关闭
+    # 无法回退关闭
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
