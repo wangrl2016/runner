@@ -40,3 +40,10 @@ def jingdong_video_coin(pid, w, h, hour=5):
     京东看视频赚金币
     """
     return None
+
+
+def read_fanqie_novel(pid, w, h, hour=6):
+    """
+    阅读番茄小说
+    """
+    return None

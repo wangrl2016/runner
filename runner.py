@@ -148,6 +148,18 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['jingdong'])
 
+        while datetime.now().hour.__eq__(6):
+            schedule_apps(pid, w, h)
+
+            # [ ] 阅读番茄小说
+            print('阅读番茄小说 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.fanqie(pid, w, h)
+            # 2. 阅读番茄小说
+            app.read_fanqie_novel(pid, w, h, 6)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['fanqie'])
+        
 
 def main(args):
     # 获取设备号

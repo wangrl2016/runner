@@ -55,5 +55,5 @@ activities = {
 numbers = ['15391503757', '17343162426', '15334195745']
 
 # 高配置和低配置手机
-high_serials = []
-low_serials = ['1fc4da61']
+high_serials = ['1fc4da61']
+low_serials = []
