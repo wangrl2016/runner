@@ -34,3 +34,9 @@ def watch_huoshan_video(pid, w, h, hour=4):
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
+
+def jingdong_video_coin(pid, w, h, hour=5):
+    """
+    京东看视频赚金币
+    """
+    return None

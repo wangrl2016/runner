@@ -1,7 +1,7 @@
 # 屏幕的实际尺寸
 # 通过实际测量手机获得
-WIDTH = 0.0
-HEIGHT = 0.0
+WIDTH = 6.8
+HEIGHT = 14.8
 
 phones = {
     'vivo-u3x': ['720x1544']
@@ -55,5 +55,5 @@ activities = {
 numbers = ['15391503757', '17343162426', '15334195745']
 
 # 高配置和低配置手机
-high_serials = ['1fc4da61']
-low_serials = []
+high_serials = []
+low_serials = ['1fc4da61']

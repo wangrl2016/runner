@@ -9,6 +9,59 @@ from src.info import packages, apps, high_serials
 from src.utils import tap_start, schedule_apps
 
 
+def cycle(pid):
+    # 需要保持手机处于亮屏状态
+    # 不能有密码
+    # 手机初始化工作
+    # 获取手机的大小
+    (w, h) = phone.get_size(pid)
+    # 滑动手机打开屏幕
+    phone.swipe_down_to_up(pid, w, h)
+    # 回到手机主界面
+    phone.go_home(pid)
+
+    # 检测有哪些程序可以在手机上运行
+    phone_packages = phone.list_packages(pid)
+    run_apps = []
+    for p in packages:
+        if phone_packages.__contains__(packages[p]):
+            run_apps.append(p)
+
+    while True:
+        hour = datetime.now().hour
+        while run_apps.__contains__('kuaishou') and datetime.now().hour.__eq__(hour):
+            # [x] 看快手视频
+            print('看快手视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.kuaishou(pid)
+            # 2. 看快手视频
+            app.watch_kuaishou_video(pid, w, h, hour)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kuaishou'])
+
+        hour = datetime.now().hour
+        while run_apps.__contains__('douyin') and datetime.now().hour.__eq__(hour):
+            # [x] 看抖音视频
+            print('看抖音视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.douyin(pid)
+            # 2. 看抖音视频
+            app.watch_douyin_video(pid, w, h, hour)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['douyin'])
+
+        hour = datetime.now().hour
+        while run_apps.__contains__('huoshan') and datetime.now().hour.__eq__(hour):
+            # [x] 看火山视频
+            print('看火山视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.huoshan(pid)
+            # 2. 看火山视频
+            app.watch_huoshan_video(pid, w, h, hour)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['huoshan'])
+
+
 def run(pid):
     # 需要保持手机处于亮屏状态
     # 不能有密码
@@ -83,6 +136,18 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['huoshan'])
 
+        while datetime.now().hour.__eq__(5):
+            schedule_apps(pid, w, h)
+
+            # [ ] 看视频赚金币
+            print('看视频赚金币 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.jingdong(pid, w, h)
+            # 2. 看视频赚金币
+            app.jingdong_video_coin(pid, w, h, 5)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['jingdong'])
+
 
 def main(args):
     # 获取设备号
@@ -106,7 +171,10 @@ def main(args):
             t.start()
         else:
             # 跑低配置的手机
-            return None
+            t = threading.Thread(target=cycle, args=(pid,), daemon=True)
+            threads.append(t)
+            pts[pid] = t.ident
+            t.start()
 
     # noinspection PyUnusedLocal
     def signal_handler(sig, frame):
