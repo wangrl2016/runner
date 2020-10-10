@@ -157,3 +157,11 @@ def pinduoduo(pid, w, h):
     # 2. 点击签到领现金
     # 签到成功
     input.tap(pid, w / 2, 3.0 * h / HEIGHT)
+
+
+def taobao(pid, w, h):
+    # 1. 假装想要退出关闭可能的悬浮窗
+    phone.go_back(pid)
+    # 2. 点击签到拿红包
+    # 签到成功
+    input.tap(pid, 0.7 * w / WIDTH, 2.5 * h / HEIGHT)  # <= modify
