@@ -4,36 +4,36 @@ from src import phone, input
 from src.info import activities, WIDTH, HEIGHT
 
 
-def toutiao(pid):
+def toutiao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def kuaishou(pid):
+def kuaishou(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def douyin(pid):
+def douyin(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def huoshan(pid):
+def huoshan(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def jingdong(pid, w, h, gap=15):
@@ -63,12 +63,12 @@ def fanchang(pid, w, h, gap=15):
     input.tap(pid, 4.2 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
-def weishi(pid):
+def weishi(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def shuqi(pid, w, h, gap=15):
@@ -98,12 +98,12 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, 4.2 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
 
 
-def huitoutiao(pid):
+def huitoutiao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def zhongqing(pid, w, h, gap=15):
@@ -124,17 +124,17 @@ def pinduoduo(pid, w, h, gap=15):
     input.tap(pid, 2.6 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
 
 
-def taobao(pid):
+def taobao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def shuabao(pid):
+def shuabao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
