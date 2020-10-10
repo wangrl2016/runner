@@ -12,7 +12,9 @@ phones = {
 apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'jingdong', 'fanqie', 'fanchang', 'weishi',
         'shuqi', 'yingke', 'kugou', 'huitoutiao',
-        'zhongqing', 'pinduoduo', 'taobao', 'shuabao']
+        'zhongqing', 'pinduoduo', 'taobao', 'shuabao',
+        'qutoutiao',
+        ]
 
 # 程序对应的包名
 packages = {
@@ -31,7 +33,8 @@ packages = {
     apps[12]: 'cn.youth.news',
     apps[13]: 'com.xunmeng.pinduoduo',
     apps[14]: 'com.taobao.litetao',
-    apps[15]: 'com.jm.video'
+    apps[15]: 'com.jm.video',
+    apps[16]: 'com.jifen.qukan',
 }
 
 activities = {
@@ -50,7 +53,8 @@ activities = {
     apps[12]: '#cn.youth.news/.ui.splash.SplashAdActivity',
     apps[13]: '#com.xunmeng.pinduoduo/.ui.activity.HomeActivity',
     apps[14]: 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
-    apps[15]: 'com.jm.video/.ui.main.MainActivity'
+    apps[15]: 'com.jm.video/.ui.main.MainActivity',
+    apps[16]: 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
 }
 
 numbers = ['15391503757', '17343162426', '15334195745']

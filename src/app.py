@@ -142,3 +142,14 @@ def watch_shuabao_video(pid, w, h, hour):
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+# ~~~~~~~~~~趣头条~~~~~~~~~~
+def watch_qutoutiao_svideo(pid, w, h, hour):
+    """
+    看趣头条小视频
+    """
+    # 　1. 点击中间下方小视频
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))

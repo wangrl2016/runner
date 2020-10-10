@@ -307,6 +307,17 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['shuabao'])
 
+        while datetime.now().hour.__eq__(17):
+            schedule_apps(pid, w, h)
+
+            # [x] 看趣头条小视频
+            print('看趣头条小视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.qutoutiao(pid)
+            # 2. 看趣头条小视频
+            app.watch_qutoutiao_svideo(pid, w, h, hour=17)
+            # 3. 关闭程序
+
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
