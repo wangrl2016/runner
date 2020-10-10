@@ -179,7 +179,7 @@ def run(pid):
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
             # 2. 听番畅音频300s
-            app.listen_fanchang_sound(pid, w, h, 300)
+            app.listen_fanchang_sound(pid, w, h, sec=300)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
 
@@ -195,7 +195,7 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['weishi'])
 
-        while datetime.now().hour.__eq__(18):
+        while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
             # [ ] 阅读书旗小说
@@ -203,9 +203,21 @@ def run(pid):
             # 1. 打开程序
             checkin.shuqi(pid, w, h)
             # 2. 阅读书旗小说
-            app.read_shuqi_novel(pid, w, h, 300)
+            app.read_shuqi_novel(pid, w, h, sec=300)
             # 3. 退出程序
             phone.stop_app(pid, packages['shuqi'])
+
+        while datetime.now().hour.__eq__(18):
+            schedule_apps(pid, w, h)
+
+            # [ ] 看映客直播
+            print('看映客直播 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.yingke(pid, w, h)
+            # 2. 看映客直播
+            app.watch_yingke_live(pid, w, h, 300)
+            # 3. 退出程序
+            phone.stop_app(pid, packages['yingke'])
 
 
 def main(args):

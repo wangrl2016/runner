@@ -75,3 +75,10 @@ def read_shuqi_novel(pid, w, h, sec=300):
     阅读书旗小说
     """
     return None
+
+
+def watch_yingke_live(pid, w, h, sec=300):
+    """
+    看映客直播
+    """
+    return None
