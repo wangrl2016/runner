@@ -102,12 +102,12 @@ def run(pid):
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
-            # [ ] 阅读头条文章
+            # [ ] 阅读今日头条文章
             print('阅读头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
-            # 2. 阅读头条文章
-            app.read_toutiao_articles(pid, w, h, num=30)
+            # 2. 阅读今日头条文章
+            app.read_toutiao_article(pid, w, h, num=30)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
@@ -119,7 +119,7 @@ def run(pid):
             # 1. 打开程序
             checkin.kuaishou(pid)
             # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, 2)
+            app.watch_kuaishou_video(pid, w, h, hour=2)
             # 3. 关闭程序
             phone.stop_app(pid, packages['kuaishou'])
 
@@ -131,7 +131,7 @@ def run(pid):
             # 1. 打开程序
             checkin.douyin(pid)
             # 2. 看抖音视频
-            app.watch_douyin_video(pid, w, h, 3)
+            app.watch_douyin_video(pid, w, h, hour=3)
             # 3. 关闭程序
             phone.stop_app(pid, packages['douyin'])
 
@@ -143,7 +143,7 @@ def run(pid):
             # 1. 打开程序
             checkin.huoshan(pid)
             # 2. 看火山视频
-            app.watch_huoshan_video(pid, w, h, 4)
+            app.watch_huoshan_video(pid, w, h, hour=4)
             # 3. 关闭程序
             phone.stop_app(pid, packages['huoshan'])
 
@@ -155,7 +155,7 @@ def run(pid):
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 看视频赚金币
-            app.jingdong_video_coin(pid, w, h, 5)
+            app.jingdong_video_coin(pid, w, h, hour=5)
             # 3. 关闭程序
             phone.stop_app(pid, packages['jingdong'])
 
@@ -167,7 +167,7 @@ def run(pid):
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
             # 2. 阅读番茄小说
-            app.read_fanqie_novel(pid, w, h, 6)
+            app.read_fanqie_novel(pid, w, h, hour=6)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
 
@@ -191,7 +191,7 @@ def run(pid):
             # 1. 打开程序
             checkin.weishi(pid)
             # 2. 看微视视频
-            app.watch_weishi_video(pid, w, h, 8)
+            app.watch_weishi_video(pid, w, h, hour=8)
             # 3. 关闭程序
             phone.stop_app(pid, packages['weishi'])
 
@@ -234,14 +234,26 @@ def run(pid):
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
-            # [ ] 阅读惠头条
-            print('阅读惠头条 ' + datetime.now().__str__())
+            # [ ] 阅读惠头条文章
+            print('阅读惠头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.huitoutiao(pid)
-            # 2. 阅读惠头条
-            app.read_huitoutiao(pid, w, h, num=30)
+            # 2. 阅读惠头条文章
+            app.read_huitoutiao_article(pid, w, h, num=30)
             # 3. 关闭程序
             phone.stop_app(pid, packages['huitoutiao'])
+
+        while datetime.now().hour.__eq__(19):
+            schedule_apps(pid, w, h)
+
+            # [ ] 阅读中青看点文章
+            print('阅读中青看点文章 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.zhongqing(pid, w, h)
+            # 2. 阅读中青看点文章
+            app.read_zhongqing_article(pid, w, h, num=30)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['zhongqing'])
 
 
 def main(args):
