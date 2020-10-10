@@ -68,3 +68,10 @@ def watch_weishi_video(pid, w, h, hour=8):
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+def read_shuqi_novel(pid, w, h, sec=300):
+    """
+    阅读书旗小说
+    """
+    return None

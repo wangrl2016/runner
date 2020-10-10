@@ -186,7 +186,7 @@ def run(pid):
         while datetime.now().hour.__eq__(8):
             schedule_apps(pid, w, h)
 
-            # [ ] 看微视视频
+            # [x] 看微视视频
             print('看微视视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.weishi(pid)
@@ -194,6 +194,18 @@ def run(pid):
             app.watch_weishi_video(pid, w, h, 8)
             # 3. 关闭程序
             phone.stop_app(pid, packages['weishi'])
+
+        while datetime.now().hour.__eq__(18):
+            schedule_apps(pid, w, h)
+
+            # [ ] 阅读书旗小说
+            print('阅读书旗小说 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.shuqi(pid, w, h)
+            # 2. 阅读书旗小说
+            app.read_shuqi_novel(pid, w, h, 300)
+            # 3. 退出程序
+            phone.stop_app(pid, packages['shuqi'])
 
 
 def main(args):
