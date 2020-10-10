@@ -145,18 +145,18 @@ def huitoutiao(pid, w, h):
 
 def zhongqing(pid, w, h):
     # 1. 点击任务代签到
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     # 2. 点击签到领现金
     # 签到成功
-    input.tap(pid, w / 2, 4.9 * h / HEIGHT)
+    input.tap(pid, w / 2, 4.9 * h / HEIGHT)  # <= modify
 
 
 def pinduoduo(pid, w, h):
     # 1. 点击中间的现金签到
-    input.tap(pid, w / 2, 5.4 * h / HEIGHT)
+    input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
     # 2. 点击签到领现金
     # 签到成功
-    input.tap(pid, w / 2, 3.0 * h / HEIGHT)
+    input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
 
 
 def taobao(pid, w, h):
@@ -165,3 +165,20 @@ def taobao(pid, w, h):
     # 2. 点击签到拿红包
     # 签到成功
     input.tap(pid, 0.7 * w / WIDTH, 2.5 * h / HEIGHT)  # <= modify
+
+
+def shuabao(pid, w, h):
+    # 1. 点击下方福利
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 2. 假装想要退出关闭悬浮窗
+    phone.go_back(pid)
+    # 3. 点击立即签到
+    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 1.9 * h / HEIGHT)  # <= modify
+    # 4. 点击看视频签到
+    input.tap(pid, w * 3 / 4, 9.7 * h / HEIGHT)  # <= modify
+    # 5. 播放30s
+    time.sleep(30)
+    # 6. 点击关闭
+    # 无法回退关闭
+    # 签到成功
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
