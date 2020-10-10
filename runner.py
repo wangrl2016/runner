@@ -107,7 +107,7 @@ def run(pid):
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 阅读头条文章
-            app.read_toutiao_articles(pid, w, h, 30)
+            app.read_toutiao_articles(pid, w, h, num=30)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
@@ -230,6 +230,18 @@ def run(pid):
             app.listen_kugou_music(pid, w, h, sec=300)
             # 3. 关闭程序
             phone.stop_app(pid, packages['kugou'])
+
+        while datetime.now().hour.__eq__(12):
+            schedule_apps(pid, w, h)
+
+            # [ ] 阅读惠头条
+            print('阅读惠头条 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.huitoutiao(pid)
+            # 2. 阅读惠头条
+            app.read_huitoutiao(pid, w, h, num=30)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['huitoutiao'])
 
 
 def main(args):

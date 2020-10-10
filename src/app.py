@@ -89,3 +89,10 @@ def listen_kugou_music(pid, w, h, sec=300):
     听酷狗音乐
     """
     return None
+
+
+def read_huitoutiao(pid, w, h, num):
+    """
+    阅读惠头条
+    """
+    return None

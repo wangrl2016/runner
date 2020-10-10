@@ -96,3 +96,11 @@ def kugou(pid, w, h, gap=15):
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
     input.tap(pid, 4.2 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify
+
+
+def huitoutiao(pid):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()])
