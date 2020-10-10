@@ -82,3 +82,10 @@ def watch_yingke_live(pid, w, h, sec=300):
     看映客直播
     """
     return None
+
+
+def listen_kugou_music(pid, w, h, sec=300):
+    """
+    听酷狗音乐
+    """
+    return None

@@ -87,3 +87,12 @@ def yingke(pid, w, h, gap=15):
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
     input.tap(pid, 2.6 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify
+
+
+def kugou(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, 4.2 * w / WIDTH, 5.6 * h / HEIGHT, gap)  # <= modify

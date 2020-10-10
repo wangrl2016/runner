@@ -207,7 +207,7 @@ def run(pid):
             # 3. 退出程序
             phone.stop_app(pid, packages['shuqi'])
 
-        while datetime.now().hour.__eq__(18):
+        while datetime.now().hour.__eq__(10):
             schedule_apps(pid, w, h)
 
             # [ ] 看映客直播
@@ -215,9 +215,21 @@ def run(pid):
             # 1. 打开程序
             checkin.yingke(pid, w, h)
             # 2. 看映客直播
-            app.watch_yingke_live(pid, w, h, 300)
+            app.watch_yingke_live(pid, w, h, sec=300)
             # 3. 退出程序
             phone.stop_app(pid, packages['yingke'])
+
+        while datetime.now().hour.__eq__(11):
+            schedule_apps(pid, w, h)
+
+            # [ ] 听酷狗音乐
+            print('听酷狗音乐 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.kugou(pid, w, h)
+            # 2. 听酷狗音乐
+            app.listen_kugou_music(pid, w, h, sec=300)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kugou'])
 
 
 def main(args):
