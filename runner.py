@@ -72,6 +72,17 @@ def cycle(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['weishi'])
 
+        hour = datetime.now().hour
+        while run_apps.__contains__('shuabao') and datetime.now().hour.__eq__(hour):
+            # [x] 看刷宝视频
+            print('看刷宝视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.shuabao(pid)
+            # 2. 看刷宝视频
+            app.watch_shuabao_video(pid, w, h, hour)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['shuabao'])
+
 
 def run(pid):
     # 需要保持手机处于亮屏状态
@@ -243,7 +254,7 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['huitoutiao'])
 
-        while datetime.now().hour.__eq__(19):
+        while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
 
             # [ ] 阅读中青看点文章
@@ -254,6 +265,28 @@ def run(pid):
             app.read_zhongqing_article(pid, w, h, num=30)
             # 3. 关闭程序
             phone.stop_app(pid, packages['zhongqing'])
+
+        while datetime.now().hour.__eq__(14):
+            schedule_apps(pid, w, h)
+
+            # 拼多多
+
+        while datetime.now().hour.__eq__(15):
+            schedule_apps(pid, w, h)
+
+            # 淘宝
+
+        while datetime.now().hour.__eq__(16):
+            schedule_apps(pid, w, h)
+
+            # [x] 看刷宝视频
+            print('看刷宝视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.shuabao(pid)
+            # 2. 看刷宝视频
+            app.watch_shuabao_video(pid, w, h, hour=16)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['shuabao'])
 
 
 def main(args):

@@ -130,8 +130,15 @@ def read_zhongqing_article(pid, w, h, num):
     """
     return None
 
+
 # ~~~~~~~~~~拼多多~~~~~~~~~~
 
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
+def watch_shuabao_video(pid, w, h, hour):
+    """
+    看刷宝视频
+    """
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
