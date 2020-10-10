@@ -113,13 +113,21 @@ def yingke(pid, w, h):
     # 2. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
     # 3. 点击右下角打开红包
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 1.9) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 1.9) * h / HEIGHT)  # <= modify
     # TODO: 有时弹窗有时不弹签到窗口
     # 4. 点击立即签到
-    input.tap(pid, w / 2, 10.4 * h / HEIGHT)
+    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <= modify
     # 5. 播放30s广告
     time.sleep(30)
     # 6. 点击关闭
     # 无法回退关闭
     # 签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+
+
+def kugou(pid, w, h):
+    # 1. 点击右下角赚钱
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)  # <= modify
+    # 2. 点击签到
+    # 签到成功
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 11.1 * h / HEIGHT)  # <= modify
