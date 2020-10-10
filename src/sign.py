@@ -48,4 +48,12 @@ def huoshan(pid, w, h):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
     # 2. 点击右下方红包
     # 签到成功
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+
+
+def jingdong(pid, w, h):
+    # 1. 点击现金签到
+    input.tap(pid, w / 2, 6.8 * h / HEIGHT)  # <= modify
+    # 2. 点击立即签到
+    # 签到成功
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT)  # <= modify
