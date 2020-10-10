@@ -3,7 +3,7 @@
 WIDTH = 0.0
 HEIGHT = 0.0
 
-phone = {
+phones = {
     'vivo-u3x': ['720x1544']
 }
 

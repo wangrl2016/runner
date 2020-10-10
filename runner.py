@@ -1,14 +1,73 @@
 import argparse
+from datetime import datetime
 import signal
 import sys
 import threading
 
-from src import phone
+from src import phone, checkin, sign, app
 from src.info import packages, apps, high_serials
+from src.utils import tap_start, schedule_apps
 
 
 def run(pid):
-    print(pid)
+    # 需要保持手机处于亮屏状态
+    # 不能有密码
+    # 手机初始化工作
+    # 获取手机的大小
+    (w, h) = phone.get_size(pid)
+    # 滑动手机打开屏幕
+    phone.swipe_down_to_up(pid, w, h)
+    # 回到手机主界面
+    phone.go_home(pid)
+
+    while True:
+        if datetime.now().hour.__eq__(0):
+            print(datetime.now())
+        while datetime.now().hour.__eq__(0):
+            # 所有程序的签到工作
+            for a in apps:
+                # 1. 打开程序
+                if tap_start(a):
+                    getattr(checkin, a)(pid, w, h)
+                else:
+                    getattr(checkin, a)(pid)
+                # 2. 签到
+                getattr(sign, a)(pid, w, h)
+                # 3. 关闭程序
+                phone.stop_app(pid, packages[a])
+
+        if datetime.now().hour.__eq__(1):
+            print(datetime.now())
+        while datetime.now().hour.__eq__(1):
+            schedule_apps(pid, w, h)
+
+        if datetime.now().hour.__eq__(2):
+            print(datetime.now())
+        while datetime.now().hour.__eq__(2):
+            schedule_apps(pid, w, h)
+
+            # [x] 看快手视频
+            print('看快手视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.kuaishou(pid)
+            # 2. 看快手视频
+            app.watch_kuaishou_video(pid, w, h, 2)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kuaishou'])
+
+        if datetime.now().hour.__eq__(16):
+            print(datetime.now())
+        while datetime.now().hour.__eq__(16):
+            schedule_apps(pid, w, h)
+
+            # [x] 看抖音视频
+            print('看抖音视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.douyin(pid)
+            # 2. 看抖音视频
+            app.watch_douyin_video(pid, w, h, 16)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['douyin'])
 
 
 def main(args):
@@ -45,13 +104,13 @@ def main(args):
                     phone.stop_app(d, packages[a], 0.2)
         sys.exit(0)
 
-    # 等待所有线程退出
-    for t in threads:
-        t.join()
-
     # 处理中断情况
     signal.signal(signal.SIGINT, signal_handler)
     signal.pause()
+
+    # 等待所有线程退出
+    for t in threads:
+        t.join()
 
 
 if __name__ == '__main__':
