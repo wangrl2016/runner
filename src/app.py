@@ -70,14 +70,17 @@ def jingdong_video_coin(pid, w, h, hour=5):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
-
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
 def read_fanqie_novel(pid, w, h, hour=6):
     """
     阅读番茄小说
     """
-    return None
+    # 1. 点击主页任意一本书
+    input.tap(pid, w / 3, h / 2)
+    # 2. 向左滑动开始阅读
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_right_to_left(pid, w, h / 4)
 
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~

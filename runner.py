@@ -176,7 +176,7 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
-            # [ ] 阅读番茄小说
+            # [x] 阅读番茄小说
             print('阅读番茄小说 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
