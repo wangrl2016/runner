@@ -11,7 +11,16 @@ def read_toutiao_article(pid, w, h, num=30):
     """
     阅读今日头条文章
     """
-    return None
+    for i in range(0, num):
+        # 1. 获取文章目录
+        phone.swipe_down_to_up(pid, w, h)
+        # 2. 点击文章
+        input.tap(pid, w / 2, h * 3 / 4)
+        # 3. 滑动阅读
+        for j in range(0, 10):
+            phone.swipe_down_to_up(pid, w, h)
+        # 4. 返回上级目录
+        phone.go_back(pid)
 
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~
