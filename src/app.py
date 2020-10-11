@@ -80,7 +80,7 @@ def read_fanqie_novel(pid, w, h, hour=6):
     input.tap(pid, w / 3, h / 2)
     # 2. 向左滑动开始阅读
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_right_to_left(pid, w, h / 4)
+        phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
 
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
@@ -89,12 +89,28 @@ def listen_fanchang_sound(pid, w, h, sec=300):
     """
     听番畅音频
     """
-    # 1. 点击收听按钮
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-    # 2. 收听番畅音频
+    for i in range(0, 2):
+        # 1. 点击收听按钮
+        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, 15)  # <= modify
+        # 返回上级界面消除可能存在的悬浮窗
+        if i.__eq__(0):
+            # 2. 返回上级界面
+            phone.go_back(pid, 2)
+    # 3. 收听番畅音频
     time.sleep(sec)
-    # 3. 领取奖励
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)  # <= modify
+    # 4. 领取奖励
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.5 * h / HEIGHT)  # <= modify
+
+    # 分多次领取
+    for i in range(0, 2):
+        # 5. 点击领红包
+        input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
+        # 6. 点击看视频再领金币
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+        # 7. 播放30s
+        time.sleep(30)
+        # 8. 关闭广告
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT)
 
 
 # ~~~~~~~~~~微视~~~~~~~~~~

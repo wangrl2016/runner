@@ -191,12 +191,12 @@ def run(pid):
         while datetime.now().hour.__eq__(7):
             schedule_apps(pid, w, h)
 
-            # [ ] 听番畅音频
+            # [x] 听番畅音频
             print('听番畅音频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
-            # 2. 听番畅音频300s
-            app.listen_fanchang_sound(pid, w, h, sec=300)
+            # 2. 听番畅音频120s
+            app.listen_fanchang_sound(pid, w, h, sec=120)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
 
