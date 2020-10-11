@@ -25,6 +25,18 @@ def toutiao(pid, w, h):
     # 返回到任务页面
     phone.go_back(pid)
 
+    # [x] 吃饭补贴
+    # 早中晚夜宵4次
+    hour = datetime.now().hour
+    if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
+        # 1. 点击吃饭补贴
+        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)
+        # 2. 领取补贴
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)
+        # 3. 返回上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
     # 关闭头条
     phone.stop_app(pid, packages['toutiao'])
 
