@@ -92,7 +92,19 @@ def read_shuqi_novel(pid, w, h, sec=300):
     """
     阅读书旗小说
     """
-    return None
+    # 1. 点击今日必读
+    input.tap(pid, w / 2, h / 2)
+    # 2. 点击开始阅读
+    input.tap(pid, w * 2 / 3, (HEIGHT - 0.5) * h / HEIGHT)
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            # 防止点击广告
+            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour.__eq__(hour):
+            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
 
 
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~
