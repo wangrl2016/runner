@@ -10,7 +10,7 @@ def toutiao(pid, w, h):
     checkin.toutiao(pid)
 
     # [x] 开宝箱
-    # 每隔10分钟一次
+    # 每10分钟一次
     # 1. 点击任务
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击宝箱
@@ -70,13 +70,41 @@ def douyin(pid, w, h):
     # 是返回到任务页面
     phone.go_back(pid)
 
+    # [x] 限时任务赚金币
+    # 每20分钟完成一次广告
+    # 1. 点击去领取
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.4 * h / HEIGHT)
+    # 2. 播放30s
+    time.sleep(30)
+    # 3. 返回上级页面
+    # 是返回到任务页面
+    phone.go_back(pid)
+
     # 关闭抖音
     phone.stop_app(pid, packages['douyin'])
 
 
 # noinspection PyUnusedLocal
 def huoshan(pid, w, h):
-    return None
+    # 打开火山
+    checkin.huoshan(pid)
+
+    # [x] 开宝箱
+    # 每20分钟一次
+    # 1. 点击红包
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击开宝箱得金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+    # 3. 点击看视频金币翻倍按钮
+    input.tap(pid, w / 2, 9.4 * h / HEIGHT)
+    # 4. 播放30s
+    time.sleep(30)
+    # 5. 返回上级页面
+    # 是返回到任务页面
+    phone.go_back(pid)
+
+    # 关闭火山
+    phone.stop_app(pid, packages['huoshan'])
 
 
 # noinspection PyUnusedLocal
