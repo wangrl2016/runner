@@ -59,7 +59,16 @@ def jingdong_video_coin(pid, w, h, hour=5):
     """
     京东看视频赚金币
     """
-    return None
+    # 1. 点击赚钱按钮
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击看视频赚金币
+    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 9.7 * h / HEIGHT)  # <= modify
+    # 3. 任意点击视频进入
+    input.tap(pid, w / 3, h / 2)
+    # 4. 滑动屏幕观看
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
 
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~

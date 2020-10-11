@@ -164,7 +164,7 @@ def run(pid):
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
-            # [ ] 看视频赚金币
+            # [x] 看视频赚金币
             print('看视频赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
