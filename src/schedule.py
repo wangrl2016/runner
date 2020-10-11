@@ -37,6 +37,36 @@ def toutiao(pid, w, h):
         # 返回到任务页面
         phone.go_back(pid)
 
+    # [x] 睡觉赚钱
+    if hour.__eq__(20):
+        # 1. 点击睡觉赚钱
+        input.tap(pid, w / 3, 7.4 * h / HEIGHT)
+        # 2. 点击我要睡了
+        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        # 3. 返回到上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+    if hour.__eq__(3):
+        # 1. 点击睡觉赚钱
+        input.tap(pid, w / 3, 7.4 * h / HEIGHT)
+        # 2. 点击我睡醒了
+        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 10)
+        # 3. 收取金币
+        input.tap(pid, w / 2, 6.9 * h / HEIGHT)
+        # 3. 返回上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
+    # [x] 免费抽手机
+    if hour.__eq__(6):
+        # 1. 点击免费抽手机
+        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)
+        # 2. 点击抽奖
+        input.tap(pid, w / 2, 5.8 * h / HEIGHT, 10)
+        # 3. 返回上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
     # 关闭头条
     phone.stop_app(pid, packages['toutiao'])
 
