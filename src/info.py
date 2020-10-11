@@ -18,7 +18,7 @@ apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'jingdong', 'fanqie', 'fanchang', 'weishi',
         'shuqi', 'yingke', 'kugou', 'huitoutiao',
         'zhongqing', 'pinduoduo', 'taobao', 'shuabao',
-        'qutoutiao', 'baidu',
+        'qutoutiao', 'baidu', 'ximalaya',
         ]
 
 # 程序对应的包名
@@ -41,6 +41,7 @@ packages = {
     apps[15]: 'com.jm.video',
     apps[16]: 'com.jifen.qukan',
     apps[17]: 'com.baidu.searchbox.lite',
+    apps[18]: 'com.ximalaya.ting.lite',
 }
 
 activities = {
@@ -62,4 +63,5 @@ activities = {
     apps[15]: 'com.jm.video/.ui.main.MainActivity',
     apps[16]: 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     apps[17]: 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
+    apps[18]: 'com.ximalaya.ting.lite/com.ximalaya.ting.android.host.activity.MainActivity',
 }

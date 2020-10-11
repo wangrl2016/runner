@@ -94,3 +94,8 @@ def qutoutiao(pid, w, h):
 # noinspection PyUnusedLocal
 def baidu(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def ximalaya(pid, w, h):
+    return None

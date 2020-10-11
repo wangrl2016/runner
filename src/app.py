@@ -242,3 +242,16 @@ def watch_baidu_svideo(pid, w, h, hour):
     # 3. 滑动小视频
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+# ~~~~~~~~~~喜马拉雅~~~~~~~~~~
+def listen_ximalaya_sound(pid, w, h, sec=300):
+    """
+    收听喜马拉雅音频
+    """
+    # 1. 点击中间的播放按钮
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 收听
+    time.sleep(sec)
+    # 3. 点击气泡进行收集
+    input.tap(pid, 0.7 * w / WIDTH, 3.5 * h / HEIGHT)  # <= modify

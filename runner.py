@@ -334,6 +334,53 @@ def run(pid):
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h)
 
+        while datetime.now().hour.__eq__(20):
+            schedule_apps(pid, w, h)
+
+            # [x] 听喜马拉雅音频
+            # 1. 打开程序
+            checkin.ximalaya(pid)
+            # 2. 听喜马拉雅音频
+            app.listen_ximalaya_sound(pid, w, h, sec=300)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['ximalaya'])
+
+        while datetime.now().hour.__eq__(20):
+            schedule_apps(pid, w, h)
+
+            # [x] 看快手视频
+            print('看快手视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.kuaishou(pid)
+            # 2. 看快手视频
+            app.watch_kuaishou_video(pid, w, h, hour=20)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kuaishou'])
+
+        while datetime.now().hour.__eq__(21):
+            schedule_apps(pid, w, h)
+
+            # [x] 看抖音视频
+            print('看抖音视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.douyin(pid)
+            # 2. 看抖音视频
+            app.watch_douyin_video(pid, w, h, hour=21)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['douyin'])
+
+        while datetime.now().hour.__eq__(22):
+            schedule_apps(pid, w, h)
+
+            # [x] 看火山视频
+            print('看火山视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.huoshan(pid)
+            # 2. 看火山视频
+            app.watch_huoshan_video(pid, w, h, hour=4)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['huoshan'])
+
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
 
