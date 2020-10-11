@@ -113,7 +113,10 @@ def watch_yingke_live(pid, w, h, sec=300):
     """
     看映客直播
     """
-    return None
+    # 1. 点击任意直播间
+    input.tap(pid, w / 3, h / 3)
+    # 2. 看直播
+    time.sleep(sec)
 
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~

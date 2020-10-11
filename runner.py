@@ -215,7 +215,7 @@ def run(pid):
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
-            # [ ] 阅读书旗小说
+            # [x] 阅读书旗小说
             print('阅读书旗小说 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.shuqi(pid, w, h)
@@ -227,7 +227,7 @@ def run(pid):
         while datetime.now().hour.__eq__(10):
             schedule_apps(pid, w, h)
 
-            # [ ] 看映客直播
+            # [x] 看映客直播
             print('看映客直播 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.yingke(pid, w, h)
