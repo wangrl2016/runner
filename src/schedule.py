@@ -1,4 +1,5 @@
 import time
+from datetime import datetime
 
 from src import checkin, phone, input
 from src.info import packages, WIDTH, HEIGHT
@@ -195,7 +196,14 @@ def kugou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def huitoutiao(pid, w, h):
-    return None
+    # [x] 时段奖励
+    if datetime.now().hour % 2 == 0:
+        # 1.打开惠头条
+        checkin.huitoutiao(pid)
+        # 2. 点击领取
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
+        # . 关闭惠头条
+        phone.stop_app(pid, packages['huitoutiao'])
 
 
 # noinspection PyUnusedLocal
