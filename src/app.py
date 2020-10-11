@@ -33,6 +33,24 @@ def watch_kuaishou_video(pid, w, h, hour=2):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def kuaishou_reward_task(pid, w, h, num):
+    """
+    1000金币悬赏任务
+    """
+    # 1. 点击左上角菜单栏
+    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
+    # 2. 点击去赚钱
+    input.tap(pid, w / 2, 7.2 * h / HEIGHT)
+    for i in range(0, num):
+        # 3. 点击福利
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.6 * h / HEIGHT)
+        # 播放30s
+        time.sleep(30)
+        # 返回上级页面
+        # 返回到去赚钱页面
+        phone.go_back(pid)
+
+
 # ~~~~~~~~~~抖音极速版~~~~~~~~~~
 
 def watch_douyin_video(pid, w, h, hour=3):

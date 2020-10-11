@@ -137,6 +137,14 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['kuaishou'])
 
+            # [x] 1000金币悬赏任务
+            # 1. 打开程序
+            checkin.kuaishou(pid)
+            # 2. 悬赏任务做10次
+            app.kuaishou_reward_task(pid, w, h, num=10)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kuaishou'])
+
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
