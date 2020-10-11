@@ -114,12 +114,48 @@ def jingdong(pid, w, h):
 
 # noinspection PyUnusedLocal
 def fanqie(pid, w, h):
-    return None
+    # 打开番茄
+    checkin.fanqie(pid, w, h)
+
+    # [x] 开宝箱
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击开宝箱得金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)
+    # 3. 点击看视频在领金币
+    input.tap(pid, w / 2, 8.7 * h / HEIGHT)
+    # 4. 播放30s
+    time.sleep(30)
+    # 5. 返回上级页面
+    # 无法通过回退返回
+    # 返回到福利页面
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+
+    # 关闭番茄
+    phone.stop_app(pid, packages['fanqie'])
 
 
 # noinspection PyUnusedLocal
 def fanchang(pid, w, h):
-    return None
+    # 打开番茄畅听
+    checkin.fanchang(pid, w, h)
+
+    # [x] 开宝箱
+    # 1. 点击下方的福利
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击开宝箱得金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+    # 3. 点击看视频再领金币
+    input.tap(pid, w / 2, 9.9 * h / HEIGHT)
+    # 4. 播放30s
+    time.sleep(30)
+    # 5. 返回上级页面
+    # 无法通过回退返回
+    # 返回到福利页面
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+
+    # 关闭番茄畅听
+    phone.stop_app(pid, packages['fanchang'])
 
 
 # noinspection PyUnusedLocal
