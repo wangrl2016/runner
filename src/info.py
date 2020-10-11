@@ -13,7 +13,7 @@ apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'jingdong', 'fanqie', 'fanchang', 'weishi',
         'shuqi', 'yingke', 'kugou', 'huitoutiao',
         'zhongqing', 'pinduoduo', 'taobao', 'shuabao',
-        'qutoutiao',
+        'qutoutiao', 'baidu',
         ]
 
 # 程序对应的包名
@@ -35,6 +35,7 @@ packages = {
     apps[14]: 'com.taobao.litetao',
     apps[15]: 'com.jm.video',
     apps[16]: 'com.jifen.qukan',
+    apps[17]: 'com.baidu.searchbox.lite',
 }
 
 activities = {
@@ -55,6 +56,7 @@ activities = {
     apps[14]: 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     apps[15]: 'com.jm.video/.ui.main.MainActivity',
     apps[16]: 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
+    apps[17]: 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
 }
 
 numbers = ['15391503757', '17343162426', '15334195745']

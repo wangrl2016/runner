@@ -317,9 +317,19 @@ def run(pid):
             # 2. 看趣头条小视频
             app.watch_qutoutiao_svideo(pid, w, h, hour=17)
             # 3. 关闭程序
+            phone.stop_app(pid, packages['qutoutiao'])
 
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
+
+            # [x] 看百度小视频
+            print('看百度小视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.baidu(pid)
+            # 2. 看百度小视频
+            app.watch_baidu_svideo(pid, w, h, hour=18)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['baidu'])
 
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h)

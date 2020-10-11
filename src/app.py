@@ -153,3 +153,17 @@ def watch_qutoutiao_svideo(pid, w, h, hour):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+# ~~~~~~~~~~百度极速版~~~~~~~~~~
+def watch_baidu_svideo(pid, w, h, hour):
+    """
+    看百度小视频
+    """
+    # 1. 点击banner栏目中小视频
+    input.tap(pid, 3.3 * w / WIDTH, 3.8 * h / HEIGHT)  # <= modify
+    # 2. 点击任意小视频
+    input.tap(pid, w / 3, h / 3)
+    # 3. 滑动小视频
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
