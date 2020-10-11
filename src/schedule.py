@@ -170,7 +170,22 @@ def shuqi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yingke(pid, w, h):
-    return None
+    # 打开映客
+    checkin.yingke(pid, w, h)
+
+    # [x] 开宝箱领金币
+    # 1. 点击下方的横幅
+    input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
+    # 2. 点击开宝箱领金币
+    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)
+    # 3. 播放视频60s
+    time.sleep(60)
+    # 4. 返回上级页面
+    # 返回到福利页面
+    phone.go_back(pid)
+
+    # 关闭映客
+    phone.stop_app(pid, packages['yingke'])
 
 
 # noinspection PyUnusedLocal
