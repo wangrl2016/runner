@@ -251,7 +251,7 @@ def run(pid):
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
-            # [ ] 阅读惠头条文章
+            # [x] 阅读惠头条文章
             print('阅读惠头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.huitoutiao(pid)
