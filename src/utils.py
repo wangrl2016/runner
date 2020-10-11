@@ -1,14 +1,14 @@
 from datetime import datetime
 
 from src import schedule
-from src.info import packages, apps
+from src.info import apps, activities
 
 
 def tap_start(a):
     """
     程序需要点击桌面图标启动
     """
-    return packages[a].__contains__('#')
+    return activities[a].find('#').__eq__(0)
 
 
 def schedule_apps(p_id, w, h):

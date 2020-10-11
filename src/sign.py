@@ -19,7 +19,7 @@ def toutiao(pid, w, h):
 def kuaishou(pid, w, h):
     # 1. 播放视频一小会
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 10):
+    for i in range(0, 5):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
     # 2. 点击左上角的菜单栏
     input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
@@ -33,8 +33,8 @@ def kuaishou(pid, w, h):
 def douyin(pid, w, h):
     # 1. 播放视频一小会
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 10):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+    for i in range(0, 5):
+        phone.swipe_down_to_up(pid, w, h / 2, randrange(9, 16))
     # 2. 点击下方的福袋
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 3. 点击立即签到
@@ -45,7 +45,7 @@ def douyin(pid, w, h):
 def huoshan(pid, w, h):
     # 1. 播放视频一小会
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 10):
+    for i in range(0, 5):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
     # 2. 点击右下方红包
     # 签到成功

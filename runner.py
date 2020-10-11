@@ -7,7 +7,7 @@ import sys
 import threading
 
 from src import phone, checkin, sign, app
-from src.info import packages, apps, high_serials
+from src.info import packages, apps, high_serials, activities
 from src.utils import tap_start, schedule_apps
 
 
@@ -99,7 +99,7 @@ def run(pid):
 
     while True:
         while datetime.now().hour.__eq__(0):
-            # 所有程序的签到工作
+            # [x] 所有程序的签到工作
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
                 # 1. 打开程序
@@ -107,7 +107,7 @@ def run(pid):
                     getattr(checkin, a)(pid, w, h)
                 else:
                     getattr(checkin, a)(pid)
-                # 2. [x] 所有程序签到工作
+                # 2. 所有程序签到工作
                 getattr(sign, a)(pid, w, h)
 
                 # 3. 关闭程序
@@ -138,6 +138,7 @@ def run(pid):
             phone.stop_app(pid, packages['kuaishou'])
 
             # [x] 1000金币悬赏任务
+            print('快手1000金币悬赏任务 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kuaishou(pid)
             # 2. 悬赏任务做10次
@@ -224,6 +225,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看视频赚金币
+            print('书旗看视频赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.shuqi(pid, w, h)
             # 2. 看视频赚金币
@@ -256,6 +258,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 刷创意视频
+            print('酷狗刷创意视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kugou(pid, w, h)
             # 2. 刷创意视频
@@ -362,6 +365,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 听喜马拉雅音频
+            print('听喜马拉雅音频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.ximalaya(pid)
             # 2. 听喜马拉雅音频
