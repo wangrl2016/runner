@@ -43,7 +43,7 @@ def kuaishou(pid, w, h):
     # 3. 点击开宝箱得金币
     input.tap(pid, 5.7 * w / WIDTH, 11.5 * h / HEIGHT)  # <= modify
     # 4. 返回到上级页面
-    # 是返回到播放视频的界面
+    # 是返回到播放视频的页面
     # 而不是去赚钱页面
     phone.go_back(pid)
 
@@ -66,7 +66,7 @@ def douyin(pid, w, h):
     input.tap(pid, w / 2, 8.4 * h / HEIGHT)
     # 4. 播放30s
     time.sleep(30)
-    # 5. 返回上级界面
+    # 5. 返回上级页面
     # 是返回到任务页面
     phone.go_back(pid)
 

@@ -13,7 +13,7 @@ def go_home(pid, gap=1):
 
 def go_back(pid, times=1, gap=3):
     """
-    回退到上级界面
+    回退到上级页面
     """
     for i in range(0, times):
         subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_BACK'])

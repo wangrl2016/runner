@@ -92,9 +92,9 @@ def listen_fanchang_sound(pid, w, h, sec=300):
     for i in range(0, 2):
         # 1. 点击收听按钮
         input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, 15)  # <= modify
-        # 返回上级界面消除可能存在的悬浮窗
+        # 返回上级页面消除可能存在的悬浮窗
         if i.__eq__(0):
-            # 2. 返回上级界面
+            # 2. 返回上级页面
             phone.go_back(pid, 2)
     # 3. 收听番畅音频
     time.sleep(sec)
@@ -180,12 +180,31 @@ def listen_kugou_music(pid, w, h, sec=300):
     """
     听酷狗音乐
     """
-    # 1. 点击中间下方进入播放界面
+    # 1. 点击中间下方进入播放页面
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击播放
     input.tap(pid, w / 2, (HEIGHT - 1.5) * h / HEIGHT)  # <= modify
     # 3. 播放
     time.sleep(sec)
+
+
+def kugou_creative_video(pid, w, h, num):
+    """
+    刷酷狗视频
+    """
+    # 1. 点击赚钱
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 点击去赚钱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回上级页面
+        # 无法通过回退返回
+        # 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 5. 再次回退消除奖励页面
+        phone.go_back(pid)
 
 
 # ~~~~~~~~~~惠头条~~~~~~~~~~

@@ -19,7 +19,7 @@ def cycle(pid):
     (w, h) = phone.get_size(pid)
     # 滑动手机打开屏幕
     phone.swipe_down_to_up(pid, w, h)
-    # 回到手机主界面
+    # 回到手机主页面
     phone.go_home(pid)
 
     # 检测有哪些程序可以在手机上运行
@@ -94,7 +94,7 @@ def run(pid):
     (w, h) = phone.get_size(pid)
     # 滑动手机打开屏幕
     phone.swipe_down_to_up(pid, w, h)
-    # 回到手机主界面
+    # 回到手机主页面
     phone.go_home(pid)
 
     while True:
@@ -246,6 +246,14 @@ def run(pid):
 
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
+
+            # [x] 刷创意视频
+            # 1. 打开程序
+            checkin.kugou(pid, w, h)
+            # 2. 刷创意视频
+            app.kugou_creative_video(pid, w, h, num=20)
+            # 3. 关闭程序
+            phone.stop_app(pid, w, h)
 
             # [x] 听酷狗音乐
             print('听酷狗音乐 ' + datetime.now().__str__())
