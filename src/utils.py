@@ -8,7 +8,7 @@ def tap_start(a):
     """
     程序需要点击桌面图标启动
     """
-    return activities[a].find('#').__eq__(0)
+    return activities[a].__contains__('#')
 
 
 def schedule_apps(p_id, w, h):

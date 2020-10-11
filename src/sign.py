@@ -182,3 +182,18 @@ def shuabao(pid, w, h):
     # 无法回退关闭
     # 签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+
+
+# noinspection PyUnusedLocal
+def qutoutiao(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def baidu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def ximalaya(pid, w, h):
+    return None

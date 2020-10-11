@@ -447,9 +447,9 @@ def main(args):
     def signal_handler(sig, frame):
         # 结束前关闭所有程序
         for d in devices:
-            activities = phone.get_top_activities(d)
+            ats = phone.get_top_activities(d)
             for a in apps:
-                if activities.__contains__(packages[a]):
+                if ats.__contains__(packages[a]):
                     phone.stop_app(d, packages[a], 0.2)
         sys.exit(0)
 
