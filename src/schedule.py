@@ -218,7 +218,16 @@ def pinduoduo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
-    return None
+    # 天天赚特币
+    if datetime.now().hour % 4 == 0:
+        # 1. 打开淘宝
+        checkin.toutiao(pid)
+        # 2. 点击天天赚特币
+        input.tap(pid, w / 2, 2.4 * h / HEIGHT, 10)
+        # 3. 收取特币
+        input.tap(pid, 4.3 * w / WIDTH, 6.9 * h / HEIGHT)
+        # 4. 关闭淘宝
+        phone.stop_app(pid, packages['taobao'])
 
 
 # noinspection PyUnusedLocal
