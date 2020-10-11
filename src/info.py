@@ -5,8 +5,13 @@ WIDTH = 6.8
 HEIGHT = 14.6
 
 phones = {
-    'vivo-u3x': ['720x1544']
+    'vivo-u3x': ['720x1544'],
 }
+
+numbers = ['15391503757', '17343162426', '15334195745', ]
+
+# 低配置手机前面用##表示
+high_serials = ['1fc4da61', '##ce7f96a00307', '##8aa89ae87d94', ]
 
 # 程序名
 apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
@@ -58,9 +63,3 @@ activities = {
     apps[16]: 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     apps[17]: 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
 }
-
-numbers = ['15391503757', '17343162426', '15334195745']
-
-# 高配置和低配置手机
-high_serials = ['1fc4da61']
-low_serials = []

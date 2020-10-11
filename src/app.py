@@ -125,7 +125,12 @@ def listen_kugou_music(pid, w, h, sec=300):
     """
     听酷狗音乐
     """
-    return None
+    # 1. 点击中间下方进入播放界面
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击播放
+    input.tap(pid, w / 2, (HEIGHT - 1.5) * h / HEIGHT)  # <= modify
+    # 3. 播放
+    time.sleep(sec)
 
 
 # ~~~~~~~~~~惠头条~~~~~~~~~~

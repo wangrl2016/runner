@@ -239,7 +239,7 @@ def run(pid):
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
-            # [ ] 听酷狗音乐
+            # [x] 听酷狗音乐
             print('听酷狗音乐 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kugou(pid, w, h)
