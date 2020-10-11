@@ -79,13 +79,27 @@ def kuaishou(pid, w, h):
     # [x] 开宝箱
     # 时间跨度依次递增
     # 每天有次数限制
-    # 1. 点击左上角菜单栏
+    # 点击左上角菜单栏
     input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
-    # 2. 点击去赚钱
+    # 点击去赚钱
     input.tap(pid, w / 2, 7.2 * h / HEIGHT)
-    # 3. 点击开宝箱得金币
+
+    # [x] 看直播领金币
+    if datetime.now().hour.__eq__(22):
+        # 1. 滑动页面打开看直播领金币
+        phone.swipe_down_to_up(pid, w, h, 3, 100)
+        for i in range(0, 10):
+            # 2. 点击看直播
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.7 * h / HEIGHT)
+            # 3. 观看16s
+            time.sleep(16)
+            # 4 返回上级页面
+            # 返回到去挣钱页面
+            phone.go_back(pid)
+
+    # 1. 点击开宝箱得金币
     input.tap(pid, 5.7 * w / WIDTH, 11.5 * h / HEIGHT)  # <= modify
-    # 4. 返回到上级页面
+    # 2. 返回到上级页面
     # 是返回到播放视频的页面
     # 而不是去赚钱页面
     phone.go_back(pid)
