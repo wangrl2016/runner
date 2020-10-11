@@ -237,7 +237,18 @@ def shuabao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
-    return None
+    # [x] 开宝箱
+    if datetime.now().hour % 2 == 0:
+        # 1. 打开趣头条
+        checkin.qutoutiao(pid)
+        # 2. 点击任务
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+        # 3. 点击宝箱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
+        # 4. 播放广告30s
+        time.sleep(30)
+        # 5. 关闭趣头条
+        phone.stop_app(pid, packages['qutoutiao'])
 
 
 # noinspection PyUnusedLocal
