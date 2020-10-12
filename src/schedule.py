@@ -192,6 +192,22 @@ def huoshan(pid, w, h):
     # 是返回到任务页面
     phone.go_back(pid)
 
+    # [x] 睡觉得金币
+    if datetime.now().hour.__eq__(20) or datetime.now().__eq__(3):
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, 8.6 * h / HEIGHT)
+        if datetime.now().hour.__eq__(20):
+            # 2. 点击我要睡了
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
+        else:
+            for i in range(0, 2):
+                # 点击我睡醒了
+                # 然后收取金币
+                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        # 3. 返回到上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
     # 关闭火山
     phone.stop_app(pid, packages['huoshan'])
 
