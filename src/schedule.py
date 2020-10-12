@@ -130,12 +130,30 @@ def douyin(pid, w, h):
     # [x] 限时任务赚金币
     # 每20分钟完成一次广告
     # 1. 点击去领取
-    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.4 * h / HEIGHT)  # <= modify
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 11.5 * h / HEIGHT)  # <= modify
     # 2. 播放30s
     time.sleep(30)
     # 3. 返回上级页面
     # 是返回到任务页面
     phone.go_back(pid)
+
+    # [x] 睡觉赚金币
+    if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(6):
+        # 1. 下滑到最下面
+        phone.swipe_down_to_up(pid, w, h)
+        # 2. 点击睡觉赚金币
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
+        if datetime.now().hour.__eq__(20):
+            # 3. 点击我要睡了
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
+        else:
+            for i in range(0, 2):
+                # 点击我睡醒了
+                # 然后收取金币
+                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        # 4. 返回到上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
 
     # 关闭抖音
     phone.stop_app(pid, packages['douyin'])
