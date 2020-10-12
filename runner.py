@@ -204,6 +204,9 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
             # [x] 阅读番茄小说
             print('阅读番茄小说 ' + datetime.now().__str__())
             # 1. 打开程序
@@ -212,9 +215,6 @@ def run(pid):
             app.read_fanqie_novel(pid, w, h, hour=6)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
-
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
 
         while datetime.now().hour.__eq__(7):
             schedule_apps(pid, w, h)
@@ -297,6 +297,9 @@ def run(pid):
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
             # [x] 阅读惠头条文章
             print('阅读惠头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
@@ -305,9 +308,6 @@ def run(pid):
             app.read_huitoutiao_article(pid, w, h, num=30)
             # 3. 关闭程序
             phone.stop_app(pid, packages['huitoutiao'])
-
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
 
         while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
@@ -368,7 +368,11 @@ def run(pid):
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
+
             # [x] 看百度小视频
+            # 十分钟左右
             print('看百度小视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.baidu(pid)
@@ -376,9 +380,6 @@ def run(pid):
             app.watch_baidu_svideo(pid, w, h, hour=18)
             # 3. 关闭程序
             phone.stop_app(pid, packages['baidu'])
-
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
 
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
