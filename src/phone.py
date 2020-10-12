@@ -1,3 +1,4 @@
+import os
 import subprocess
 import time
 from datetime import datetime
@@ -95,14 +96,15 @@ def get_page_photo(pid, output, gap=1):
     """
     获取手机的页面
     """
-    filename = '/sdcard/' + datetime.now().date().__str__() + '_' + datetime.now().time().__str__() + '.png'
-    subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', filename])
+    filename = datetime.now().date().__str__() + '_' + datetime.now().time().__str__() + '.png'
+    path = os.path.join('/sdcard', filename)
+    subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', path])
     time.sleep(gap)
-    p = subprocess.run(['adb', '-s', pid, 'pull', filename, output],
+    p = subprocess.run(['adb', '-s', pid, 'pull', path, output],
                        check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
     time.sleep(gap)
-    subprocess.run(['adb', '-s', pid, 'shell', 'rm', filename])
+    subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     time.sleep(gap)
     return filename
 

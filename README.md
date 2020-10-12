@@ -1,6 +1,8 @@
 # runner
 自动程序系统
 
+### 运行程序
+
 1. 今日头条极速版
 
 - [x] 签到
@@ -110,3 +112,18 @@
 19. 喜马拉雅极速版
 
 - [x] 听喜马拉雅音频
+
+### 技术问题
+
+1. 安装tessexract
+
+```
+// 依赖可能存在问题
+pip uninstall pyOpenSSL
+pip install pyOpenSSL
+// 安装识别软件
+sudo apt install libleptonica-dev tesseract-ocr libtesseract-dev
+pip install pytesseract
+// 安装中文识别字库
+sudo mv chi_sim.traineddata /usr/share/tesseract-ocr/4.00/tessdata/
+```

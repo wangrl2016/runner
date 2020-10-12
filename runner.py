@@ -6,6 +6,8 @@ from datetime import datetime
 import signal
 import sys
 import threading
+# import pytesseract
+# from PIL import Image
 
 from src import phone, checkin, sign, app, utils
 from src.info import packages, apps, high_serials
@@ -103,7 +105,9 @@ def run(pid):
                     if line.__contains__('ro.vivo.market.name'):
                         print(line)
 
-    print(phone.get_page_photo(pid, output=out_dir))
+    # 识别文字
+    # phone_name = phone.get_page_photo(pid, output=out_dir)
+    # txt = pytesseract.image_to_string(Image.open(os.path.join(out_dir, phone_name)), lang='chi_sim')
 
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
