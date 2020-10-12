@@ -278,9 +278,18 @@ def yingke(pid, w, h):
     # 打开映客
     checkin.yingke(pid, w, h)
 
-    # [ ] 看福利视频
+    # [x] 看福利视频
     if 0 < datetime.now().hour < 11:
-        return None
+        # 1. 点击下面的横幅
+        input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
+        # 2. 点击领金币
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 点击关闭返回上级页面
+        # 无法通过返回关闭
+        # 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
     # [x] 开宝箱领金币
     # 宝箱会消失
