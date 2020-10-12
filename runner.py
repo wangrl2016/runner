@@ -264,7 +264,7 @@ def run(pid):
             # 2. 刷创意视频
             app.kugou_creative_video(pid, w, h, num=20)
             # 3. 关闭程序
-            phone.stop_app(pid, w, h)
+            phone.stop_app(pid, packages['kugou'])
 
             # [x] 听酷狗音乐
             print('听酷狗音乐 ' + datetime.now().__str__())
@@ -361,7 +361,7 @@ def run(pid):
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h)
 
-        while datetime.now().hour.__eq__(20):
+        while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
             # [x] 听喜马拉雅音频
