@@ -132,6 +132,15 @@ def run(pid):
                 # 3. 关闭程序
                 phone.stop_app(pid, packages[a])
 
+            # [x] 看快手视频
+            print('看快手视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.kuaishou(pid)
+            # 2. 看快手视频
+            app.watch_kuaishou_video(pid, w, h, hour=0)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['kuaishou'])
+
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
