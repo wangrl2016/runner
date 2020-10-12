@@ -87,15 +87,15 @@ def kuaishou(pid, w, h):
     # [x] 看直播领金币
     if datetime.now().hour.__eq__(22):
         # 1. 滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w, h, 3, 100)
+        phone.swipe_down_to_up(pid, w, h, 3, internal=50)
         for i in range(0, 10):
             # 2. 点击看直播
-            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.7 * h / HEIGHT)  # <= modify
-            # 3. 观看16s
-            time.sleep(16)
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.4 * h / HEIGHT)  # <= modify
+            # 3. 观看20s
+            time.sleep(20)
             # 4 返回上级页面
             # 返回到去挣钱页面
-            phone.go_back(pid)
+            phone.go_back(pid, gap=3)
 
     # 1. 点击开宝箱得金币
     input.tap(pid, 5.7 * w / WIDTH, 11.5 * h / HEIGHT)  # <= modify

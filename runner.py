@@ -200,8 +200,28 @@ def run(pid):
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
+            # [x] 逛商品赚金币
+            print('京东逛商品赚金币 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.jingdong(pid, w, h)
+            # 2. 逛商品赚金币
+            # 50次
+            app.jingdong_good(pid, w, h, sec=1000)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['jingdong'])
+
+            # [x] 逛活动赚金币
+            print('京东逛活动赚金币 ')
+            # 1. 打开程序
+            checkin.jingdong(pid, w, h)
+            # 2. 逛活动赚金币
+            # 10次
+            app.jingdong_activity(pid, w, h, sec=200)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['jingdong'])
+
             # [x] 看视频赚金币
-            print('看视频赚金币 ' + datetime.now().__str__())
+            print('京东看视频赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 看视频赚金币

@@ -88,6 +88,42 @@ def huoshan_money_tree(pid, w, h):
 
 # ~~~~~~~~~~京东极速版~~~~~~~~~~
 
+def jingdong_good(pid, w, h, sec):
+    """
+    逛商品赚金币
+    """
+    # 1. 点击赚钱
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击逛商品赚金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.2 * h / HEIGHT)
+    count = 0
+    while count < sec:
+        # 3. 逛15s
+        for i in range(0, 3):
+            phone.swipe_down_to_up(pid, w, h, 5)
+        # 4. 点击下一个商品
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
+        count += 20
+
+
+def jingdong_activity(pid, w, h, sec):
+    """
+    逛活动赚金币
+    """
+    # 1. 点击赚钱
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击逛活动赚金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.5 * h / HEIGHT)
+    count = 0
+    while count < sec:
+        # 3. 逛15s
+        for i in range(0, 3):
+            phone.swipe_down_to_up(pid, w, h, 5)
+        # 4. 点击下一个商品
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
+        count += 20
+
+
 def jingdong_video_coin(pid, w, h, hour=5):
     """
     京东看视频赚金币
@@ -95,7 +131,7 @@ def jingdong_video_coin(pid, w, h, hour=5):
     # 1. 点击赚钱按钮
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击看视频赚金币
-    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 9.7 * h / HEIGHT)  # <= modify
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <= modify
     # 3. 任意点击视频进入
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
