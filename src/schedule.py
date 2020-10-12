@@ -138,7 +138,7 @@ def douyin(pid, w, h):
     phone.go_back(pid)
 
     # [x] 睡觉赚金币
-    if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(6):
+    if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(3):
         # 1. 下滑到最下面
         phone.swipe_down_to_up(pid, w, h)
         # 2. 点击睡觉赚金币
@@ -152,6 +152,20 @@ def douyin(pid, w, h):
                 # 然后收取金币
                 input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
         # 4. 返回到上级页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
+    # [x] 吃饭补贴
+    # 早中晚夜宵4次
+    hour = datetime.now().hour
+    if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
+        # 1. 下滑任务页面到最下面
+        phone.swipe_down_to_up(pid, w, h)
+        # 2. 点击吃饭补贴
+        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
+        # 3. 领取补贴
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
+        # 4. 返回上级页面
         # 返回到任务页面
         phone.go_back(pid)
 
