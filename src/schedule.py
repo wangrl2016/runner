@@ -351,7 +351,20 @@ def taobao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def shuabao(pid, w, h):
-    return None
+    # [x] 看福利视频
+    if datetime.now().hour > 13:
+        # 1. 打开刷宝
+        checkin.shuqi(pid, w, h)
+        # 2. 点击福利
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 点击关闭按钮
+        # 返回的页面未知
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+
+        # 2. 关闭刷宝
+        phone.stop_app(pid, packages['shuabao'])
 
 
 # noinspection PyUnusedLocal
