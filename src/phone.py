@@ -70,7 +70,7 @@ def screenshot(pid, gap=1):
     :return:截取图片文件名称
     """
     filename = '/sdcard/' + datetime.now().__str__() + '.png'
-    subprocess.run(['adb', '-s', pid, 'shell', 'screencap', filename])
+    subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', filename])
     time.sleep(gap)
     return filename
 
@@ -87,8 +87,24 @@ def remove_screenshot(pid, filename, gap=1):
     """
     删除手机上的截图
     """
-    subprocess.run(['adb', '-s', pid, 'rm', filename])
+    subprocess.run(['adb', '-s', pid, 'shell', 'rm', filename])
     time.sleep(gap)
+
+
+def get_page_photo(pid, output, gap=1):
+    """
+    获取手机的页面
+    """
+    filename = '/sdcard/' + datetime.now().date().__str__() + '_' + datetime.now().time().__str__() + '.png'
+    subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', filename])
+    time.sleep(gap)
+    p = subprocess.run(['adb', '-s', pid, 'pull', filename, output],
+                       check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    time.sleep(gap)
+    subprocess.run(['adb', '-s', pid, 'shell', 'rm', filename])
+    time.sleep(gap)
+    return filename
 
 
 def stop_app(pid, package, gap=1):

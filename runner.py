@@ -1,14 +1,17 @@
 #!/usr/bin/env python3
 
 import argparse
+import os
 from datetime import datetime
 import signal
 import sys
 import threading
 
-from src import phone, checkin, sign, app
-from src.info import packages, apps, high_serials, activities, product_brands
+from src import phone, checkin, sign, app, utils
+from src.info import packages, apps, high_serials
 from src.utils import tap_start, schedule_apps
+
+MAX_PHOTOS_STORE = 50
 
 
 def cycle(pid):
@@ -99,6 +102,8 @@ def run(pid):
                 for line in properties:
                     if line.__contains__('ro.vivo.market.name'):
                         print(line)
+
+    print(phone.get_page_photo(pid, output=out_dir))
 
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
@@ -475,4 +480,13 @@ def main(args):
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
     parser.add_argument('-s', '--serial', help='phone serial number')
+    out_dir = 'out'
+    if not os.path.exists(out_dir):
+        os.makedirs(out_dir)
+
+    photos = utils.get_photos(out_dir)
+    if len(photos).__gt__(MAX_PHOTOS_STORE):
+        for photo in photos:
+            os.remove(photo)
+
     main(parser.parse_args())
