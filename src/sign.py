@@ -196,4 +196,10 @@ def baidu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def ximalaya(pid, w, h):
-    return None
+    # 1. 点击福利进行签到
+    # 签到成功
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 看视频再领100金币
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+    # 3. 播放30s
+    time.sleep(30)

@@ -345,6 +345,19 @@ def watch_qutoutiao_svideo(pid, w, h, hour):
 
 
 # ~~~~~~~~~~百度极速版~~~~~~~~~~
+
+def baidu_haokan_video(pid, w, h, num):
+    # 1. 点击好看视频
+    input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 刷新页面
+        phone.swipe_up_to_down(pid, w, h)
+        # 3. 点击播放
+        input.tap(pid, w / 2, h / 3)
+        # ４. 播放40s
+        time.sleep(40)
+
+
 def watch_baidu_svideo(pid, w, h, hour):
     """
     看百度小视频

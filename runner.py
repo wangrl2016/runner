@@ -419,6 +419,15 @@ def run(pid):
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h)
 
+            # [x] 好看视频
+            print('百度好看视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.baidu(pid)
+            # 2. 看好看视频
+            app.baidu_haokan_video(pid, w, h, num=10)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['baidu'])
+
             # [x] 看百度小视频
             # 十分钟左右
             print('看百度小视频 ' + datetime.now().__str__())
