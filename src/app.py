@@ -71,6 +71,21 @@ def watch_huoshan_video(pid, w, h, hour=4):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def huoshan_money_tree(pid, w, h):
+    """
+    摇钱树
+    """
+    # 1. 点击红包
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击摇钱树
+    input.tap(pid, w / 3, 5.0 * h / HEIGHT)
+    # 3. 摇钱
+    input.tap(pid, w / 2, h / 2)
+    # 返回到上级页面
+    # 是任务页面
+    phone.go_back(pid)
+
+
 # ~~~~~~~~~~京东极速版~~~~~~~~~~
 
 def jingdong_video_coin(pid, w, h, hour=5):

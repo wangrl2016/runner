@@ -180,6 +180,14 @@ def run(pid):
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 
+            # [x] 摇钱树
+            print('火山摇钱树 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.huoshan(pid)
+            app.huoshan_money_tree(pid, w, h)
+            # 2. 退出程序
+            phone.stop_app(pid, packages['huoshan'])
+
             # [x] 看火山视频
             print('看火山视频 ' + datetime.now().__str__())
             # 1. 打开程序
