@@ -13,12 +13,12 @@ def toutiao(pid, w, h):
     # [x] 开宝箱
     # 每10分钟一次
     # 1. 点击任务
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     # 2. 点击宝箱
     # 开宝箱得金币
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
     # 3. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)
+    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
     # 4. 播放15s
     time.sleep(15)
     # 5. 退出播放页面
@@ -30,9 +30,9 @@ def toutiao(pid, w, h):
     hour = datetime.now().hour
     if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
         # 1. 点击吃饭补贴
-        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)
+        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
         # 2. 领取补贴
-        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
         # 3. 返回上级页面
         # 返回到任务页面
         phone.go_back(pid)
@@ -40,17 +40,17 @@ def toutiao(pid, w, h):
     # [x] 睡觉赚钱
     if hour.__eq__(20):
         # 1. 点击睡觉赚钱
-        input.tap(pid, w / 3, 7.4 * h / HEIGHT)
+        input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <= modify
         # 2. 点击我要睡了
-        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
         # 3. 返回到上级页面
         # 返回到任务页面
         phone.go_back(pid)
     if hour.__eq__(3):
         # 1. 点击睡觉赚钱
-        input.tap(pid, w / 3, 7.4 * h / HEIGHT)
+        input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <= modify
         # 2. 点击我睡醒了
-        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 10)
+        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 10)  # <= modify
         # 3. 收取金币
         input.tap(pid, w / 2, 6.9 * h / HEIGHT)
         # 3. 返回上级页面
@@ -60,9 +60,9 @@ def toutiao(pid, w, h):
     # [x] 免费抽手机
     if hour.__eq__(6):
         # 1. 点击免费抽手机
-        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)
+        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)  # <= modify
         # 2. 点击抽奖
-        input.tap(pid, w / 2, 5.8 * h / HEIGHT, 10)
+        input.tap(pid, w / 2, 5.8 * h / HEIGHT, 10)  # <= modify
         # 3. 返回上级页面
         # 返回到任务页面
         phone.go_back(pid)
@@ -90,7 +90,7 @@ def kuaishou(pid, w, h):
         phone.swipe_down_to_up(pid, w, h, 3, 100)
         for i in range(0, 10):
             # 2. 点击看直播
-            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.7 * h / HEIGHT)
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.7 * h / HEIGHT)  # <= modify
             # 3. 观看16s
             time.sleep(16)
             # 4 返回上级页面
@@ -120,7 +120,7 @@ def douyin(pid, w, h):
     # 2. 点击开宝箱得金币
     input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
     # 3. 点击看广告视频再赚金币
-    input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+    input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
     # 4. 播放30s
     time.sleep(30)
     # 5. 返回上级页面
@@ -130,7 +130,7 @@ def douyin(pid, w, h):
     # [x] 限时任务赚金币
     # 每20分钟完成一次广告
     # 1. 点击去领取
-    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.4 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.4 * h / HEIGHT)  # <= modify
     # 2. 播放30s
     time.sleep(30)
     # 3. 返回上级页面
@@ -149,11 +149,11 @@ def huoshan(pid, w, h):
     # [x] 开宝箱
     # 每20分钟一次
     # 1. 点击红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     # 2. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
     # 3. 点击看视频金币翻倍按钮
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)
+    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
     # 4. 播放30s
     time.sleep(30)
     # 5. 返回上级页面
@@ -178,7 +178,7 @@ def fanqie(pid, w, h):
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)  # <= modify
     # 3. 点击看视频在领金币
     input.tap(pid, w / 2, 8.7 * h / HEIGHT)
     # 4. 播放30s
@@ -186,7 +186,7 @@ def fanqie(pid, w, h):
     # 5. 返回上级页面
     # 无法通过回退返回
     # 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
     # 关闭番茄
     phone.stop_app(pid, packages['fanqie'])
@@ -199,17 +199,17 @@ def fanchang(pid, w, h):
 
     # [x] 开宝箱
     # 1. 点击下方的福利
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     # 2. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
     # 3. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.9 * h / HEIGHT)
+    input.tap(pid, w / 2, 9.9 * h / HEIGHT)  # <= modify
     # 4. 播放30s
     time.sleep(30)
     # 5. 返回上级页面
     # 无法通过回退返回
     # 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
     # 关闭番茄畅听
     phone.stop_app(pid, packages['fanchang'])
@@ -230,16 +230,22 @@ def yingke(pid, w, h):
     # 打开映客
     checkin.yingke(pid, w, h)
 
+    # [ ] 看福利视频
+    if 0 < datetime.now().hour < 11:
+        return None
+
     # [x] 开宝箱领金币
-    # 1. 点击下方的横幅
-    input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
-    # 2. 点击开宝箱领金币
-    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)
-    # 3. 播放视频60s
-    time.sleep(60)
-    # 4. 返回上级页面
-    # 返回到福利页面
-    phone.go_back(pid)
+    # 宝箱会消失
+    if datetime.now().hour.__ge__(11):
+        # 1. 点击下方的横幅
+        input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
+        # 2. 点击开宝箱领金币
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)
+        # 3. 播放视频60s
+        time.sleep(60)
+        # 4. 返回上级页面
+        # 返回到福利页面
+        phone.go_back(pid)
 
     # 关闭映客
     phone.stop_app(pid, packages['yingke'])
@@ -258,7 +264,7 @@ def huitoutiao(pid, w, h):
         checkin.huitoutiao(pid)
         # 2. 点击领取
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
-        # . 关闭惠头条
+        # 3. 关闭惠头条
         phone.stop_app(pid, packages['huitoutiao'])
 
 

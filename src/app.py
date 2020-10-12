@@ -167,7 +167,7 @@ def shuqi_video_coin(pid, w, h, num):
     看视频赚金币
     """
     # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, 10.4 * h / HEIGHT)
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 看num次视频
     for i in range(0, num):
         # 2. 点击快速得百万金币
