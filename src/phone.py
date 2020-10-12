@@ -188,3 +188,16 @@ def reboot(devices):
     for pid in devices:
         subprocess.run(['adb', '-s', pid, 'reboot'])
         time.sleep(120)
+
+
+def get_device_properties(pid):
+    """
+    获取手机的属性
+    """
+    properties = []
+    p = subprocess.run(['adb', '-s', pid, 'shell', 'getprop'], check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    for line in p.stdout.split('\n'):
+        line.strip('\n')
+        properties.append(line)
+    return properties

@@ -65,3 +65,5 @@ activities = {
     apps[17]: 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     apps[18]: 'com.ximalaya.ting.lite/com.ximalaya.ting.android.host.activity.MainActivity',
 }
+
+product_brands = ['vivo', ]

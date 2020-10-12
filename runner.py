@@ -7,7 +7,7 @@ import sys
 import threading
 
 from src import phone, checkin, sign, app
-from src.info import packages, apps, high_serials, activities
+from src.info import packages, apps, high_serials, activities, product_brands
 from src.utils import tap_start, schedule_apps
 
 
@@ -90,6 +90,16 @@ def run(pid):
     # 需要保持手机处于亮屏状态
     # 不能有密码
     # 手机初始化工作
+
+    # 获取手机的属性
+    properties = phone.get_device_properties(pid)
+    for p in properties:
+        if p.__contains__('ro.product.brand'):
+            if p.__contains__('vivo'):
+                for line in properties:
+                    if line.__contains__('ro.vivo.market.name'):
+                        print(line)
+
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
     # 滑动手机打开屏幕
