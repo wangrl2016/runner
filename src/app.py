@@ -141,6 +141,10 @@ def jingdong_video_coin(pid, w, h, hour=5):
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
+def fanqie_video_coin(pid, w, h, num=10):
+    return None
+
+
 def read_fanqie_novel(pid, w, h, hour=6):
     """
     阅读番茄小说
@@ -153,6 +157,10 @@ def read_fanqie_novel(pid, w, h, hour=6):
 
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
+
+def fanchang_video_coin(pid, w, h, num):
+    return None
+
 
 def listen_fanchang_sound(pid, w, h, sec=300):
     """
