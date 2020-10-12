@@ -31,10 +31,10 @@ def kuaishou(pid, w, h):
 
 
 def douyin(pid, w, h):
-    # 1. 播放视频一小会
+    # 1. 点击屏幕两次
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
-        phone.swipe_down_to_up(pid, w, h / 2, randrange(9, 16))
+    for i in range(0, 2):
+        input.tap(pid, w / 2, 10.5 * h / HEIGHT)  # <= modify
     # 2. 点击下方的福袋
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 3. 点击立即签到
@@ -144,7 +144,7 @@ def huitoutiao(pid, w, h):
 
 
 def zhongqing(pid, w, h):
-    # 1. 点击任务代签到
+    # 1. 点击任务待签到
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     # 2. 点击签到领现金
     # 签到成功
