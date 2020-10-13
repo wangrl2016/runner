@@ -272,7 +272,8 @@ def run(pid):
             # 2. 看视频赚海量金币
             # 10次
             # 每次30s
-            app.fanchang_video_coin(pid, w, h, num=10)
+            # 如果全部做完会打乱顺序
+            app.fanchang_video_coin(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
 

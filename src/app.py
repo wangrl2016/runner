@@ -159,7 +159,17 @@ def read_fanqie_novel(pid, w, h, hour=6):
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
 def fanchang_video_coin(pid, w, h, num):
-    return None
+    # 1. 点击福利按钮
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 点击看视频赚海量金币
+        input.tap(pid, w / 2, 9.0 * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 点击关闭返回上级页面
+        # 无法同归回退返回
+        # 返回福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
 def listen_fanchang_sound(pid, w, h, sec=300):
