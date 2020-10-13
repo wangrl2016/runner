@@ -255,7 +255,7 @@ def run(pid):
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h)
 
-            # [ ] 看视频赚海量金币
+            # [x] 看视频赚海量金币
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
             # 2. 看视频赚海量金币

@@ -4,7 +4,7 @@ from src import phone, input
 from src.info import activities, WIDTH, HEIGHT
 
 
-def toutiao(pid, gap=15):
+def toutiao(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

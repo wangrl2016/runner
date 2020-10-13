@@ -370,8 +370,8 @@ def baidu_haokan_video(pid, w, h, num):
         phone.swipe_up_to_down(pid, w, h)
         # 3. 点击播放
         input.tap(pid, w / 2, h / 3)
-        # ４. 播放40s
-        time.sleep(40)
+        # ４. 播放35s
+        time.sleep(35)
 
 
 def watch_baidu_svideo(pid, w, h, hour):
