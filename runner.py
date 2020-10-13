@@ -142,23 +142,26 @@ def run(pid):
             phone.stop_app(pid, packages['kuaishou'])
 
         while datetime.now().hour.__eq__(1):
+            # 花费35分钟
             schedule_apps(pid, w, h)
 
             # [x] 阅读今日头条文章
+            # 花费5分钟
             print('阅读头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 阅读今日头条文章
-            app.read_toutiao_article(pid, w, h, num=15)
+            app.read_toutiao_article(pid, w, h, num=10)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
             # [x] 看视频
+            # 花费20分钟
             print('看今日头条视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 看视频
-            app.toutiao_video(pid, w, h, num=15)
+            app.toutiao_video(pid, w, h, num=20)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
