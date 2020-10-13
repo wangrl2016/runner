@@ -38,7 +38,7 @@ def toutiao(pid, w, h):
     def sleep_money(is_sleep):
         # 1. 点击睡觉赚钱
         input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <= modify
-        # 2. 点击我要睡了
+        # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
         # 3. 返回到上级页面
@@ -135,8 +135,10 @@ def kuaishou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def douyin(pid, w, h):
-    # 打开抖音
-    checkin.douyin(pid)
+    # 福利页面
+    def benefit_page():
+        # 进入福利页面
+        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
     # [x] 限时任务赚金币
     # 每20分钟完成一次广告任务
@@ -152,8 +154,7 @@ def douyin(pid, w, h):
     # [x] 开宝箱得金币
     # 每20分钟一次
     def open_treasure():
-        # 1. 点击中间的福袋按钮
-        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+
         # 2. 点击开宝箱得金币
         input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
         # 3. 点击看广告视频再赚金币
@@ -164,6 +165,34 @@ def douyin(pid, w, h):
         # 是返回到任务页面
         phone.go_back(pid)
 
+    # [x] 睡觉赚钱
+    # 20:00-2:00为睡觉时间
+    def sleep_money(is_sleep):
+        # 1. 下滑到最下面
+        phone.swipe_down_to_up(pid, w, h, internal=100)
+        # 2. 点击睡觉赚金币
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
+        # 3. 点击我要睡了/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
+        # 4. 返回到回到福利页面
+        phone.go_back(pid)
+        # 5. 滑到最上面
+        phone.swipe_up_to_down(pid, w, h, internal=100)
+
+    def meal_allowance():
+        # 1. 下滑任务页面到最下面
+        phone.swipe_down_to_up(pid, w, h, internal=100)
+        # 2. 点击吃饭补贴
+        input.tap(pid, w * 2 / 3, 10.6 * h / HEIGHT)  # <= modify
+        # 3. 领取补贴
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
+        # 4. 返回到福利页面
+        phone.go_back(pid)
+
+    checkin.douyin(pid)
+    benefit_page()
+
     if datetime.now().minute.__le__(SCHEDULE_TIME):
         # 开宝箱得金币
         open_treasure()
@@ -172,36 +201,16 @@ def douyin(pid, w, h):
         limit_duty()
 
         # [x] 睡觉赚金币
-        if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(3):
-            # 1. 下滑到最下面
-            phone.swipe_down_to_up(pid, w, h, internal=100)
-            # 2. 点击睡觉赚金币
-            input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
-            if datetime.now().hour.__eq__(20):
-                # 3. 点击我要睡了
-                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
-            else:
-                for i in range(0, 2):
-                    # 点击我睡醒了
-                    # 然后收取金币
-                    input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
-            # 4. 返回到上级页面
-            # 返回到任务页面
-            phone.go_back(pid)
+        if datetime.now().hour.__eq__(20):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(3):
+            sleep_money(True)
 
         # [x] 吃饭补贴
         # 早中晚夜宵4次
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
-            # 1. 下滑任务页面到最下面
-            phone.swipe_down_to_up(pid, w, h, internal=100)
-            # 2. 点击吃饭补贴
-            input.tap(pid, w * 2 / 3, 10.6 * h / HEIGHT)  # <= modify
-            # 3. 领取补贴
-            input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
-            # 4. 返回上级页面
-            # 返回到任务页面
-            phone.go_back(pid)
+            meal_allowance()
     else:
         # 开宝箱得金币
         open_treasure()
@@ -219,7 +228,7 @@ def huoshan(pid, w, h):
     checkin.huoshan(pid)
 
     def open_treasure():
-        # [x] 开宝箱
+        # 开宝箱
         # 每20分钟一次
         # 1. 点击红包
         input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
@@ -233,24 +242,25 @@ def huoshan(pid, w, h):
         # 是返回到任务页面
         phone.go_back(pid)
 
+    # [x] 睡觉赚金币
+    def sleep_money(is_sleep):
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
+        # 2. 点击我要睡了/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
+        # 3. 返回到回到福利页面
+        phone.go_back(pid)
+
     if datetime.now().minute.__le__(SCHEDULE_TIME):
+        # [x] 开宝箱
         open_treasure()
 
-        # [x] 睡觉得金币
-        if datetime.now().hour.__eq__(20) or datetime.now().__eq__(3):
-            # 1. 点击睡觉赚金币
-            input.tap(pid, w / 2, 8.6 * h / HEIGHT)
-            if datetime.now().hour.__eq__(20):
-                # 2. 点击我要睡了
-                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
-            else:
-                for i in range(0, 2):
-                    # 点击我睡醒了
-                    # 然后收取金币
-                    input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
-            # 3. 返回到上级页面
-            # 返回到任务页面
-            phone.go_back(pid)
+        # [x] 睡觉赚金币
+        if datetime.now().hour.__eq__(20):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(3):
+            sleep_money(True)
     else:
         open_treasure()
 
@@ -291,7 +301,8 @@ def fanqie(pid, w, h):
 # noinspection PyUnusedLocal
 def fanchang(pid, w, h):
     # [x] 开宝箱
-    # 每20分钟开一次
+    # 每20分钟开一次？
+    # 一个小时一次
     def open_treasure():
         # 1. 点击下方的福利
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify

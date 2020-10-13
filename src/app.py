@@ -160,7 +160,7 @@ def fanqie_video_coin(pid, w, h, num=10):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 2. 点击看视频赚海量金币
-        input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)
+        input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
         # 3. 播放30s
         time.sleep(30)
         # 4. 点击关闭返回上级页面

@@ -19,7 +19,7 @@ def toutiao(pid, w, h):
 def kuaishou(pid, w, h):
     # 1. 播放视频一小会
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
+    for i in range(0, 3):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
     # 2. 点击左上角的菜单栏
     input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
@@ -45,7 +45,7 @@ def douyin(pid, w, h):
 def huoshan(pid, w, h):
     # 1. 播放视频一小会
     # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
+    for i in range(0, 3):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
     # 2. 点击右下方红包
     # 签到成功
@@ -111,7 +111,7 @@ def yingke(pid, w, h):
     # 1. 滑动关闭青少年模式
     phone.swipe_down_to_up(pid, w, h)
     # 2. 假装想要退出关闭可能的悬浮窗
-    phone.go_back(pid)
+    phone.go_back(pid, 3)
     # 3. 点击右下角打开红包
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 1.9) * h / HEIGHT)  # <= modify
     # TODO: 有时弹窗有时不弹签到窗口
