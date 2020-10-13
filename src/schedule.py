@@ -140,7 +140,7 @@ def douyin(pid, w, h):
     # [x] 睡觉赚金币
     if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(3):
         # 1. 下滑到最下面
-        phone.swipe_down_to_up(pid, w, h)
+        phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击睡觉赚金币
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
         if datetime.now().hour.__eq__(20):
@@ -160,9 +160,9 @@ def douyin(pid, w, h):
     hour = datetime.now().hour
     if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
         # 1. 下滑任务页面到最下面
-        phone.swipe_down_to_up(pid, w, h)
+        phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击吃饭补贴
-        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
+        input.tap(pid, w * 2 / 3, 10.6 * h / HEIGHT)  # <= modify
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
         # 4. 返回上级页面
