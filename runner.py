@@ -250,7 +250,7 @@ def run(pid):
             # 2. 看视频赚海量金币
             # 10次
             # 每次30s
-            app.fanqie_video_coin(pid, w, h, num=10)
+            app.fanqie_video_coin(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
 
@@ -537,6 +537,7 @@ def main(args):
             ats = phone.get_top_activities(d)
             for a in apps:
                 if ats.__contains__(packages[a]):
+                    print('关闭运行的程序 ' + packages[a])
                     phone.stop_app(d, packages[a], 0.2)
         sys.exit(0)
 

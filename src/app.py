@@ -142,7 +142,17 @@ def jingdong_video_coin(pid, w, h, hour=5):
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
 def fanqie_video_coin(pid, w, h, num=10):
-    return None
+    # 1. 点击中间福利按钮
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 点击看视频赚海量金币
+        input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 点击关闭返回上级页面
+        # 无法同归回退返回
+        # 返回福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
 def read_fanqie_novel(pid, w, h, hour=6):
