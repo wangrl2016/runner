@@ -7,7 +7,7 @@ from src.info import HEIGHT, WIDTH
 
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
-def read_toutiao_article(pid, w, h, num=30):
+def read_toutiao_article(pid, w, h, num):
     """
     阅读今日头条文章
     """
@@ -23,9 +23,24 @@ def read_toutiao_article(pid, w, h, num=30):
         phone.go_back(pid)
 
 
+def toutiao_video(pid, w, h, num):
+    """
+    看头条视频
+    """
+    # 1. 点击下方视频按钮
+    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 1. 向下刷新视频
+        phone.swipe_up_to_down(pid, w, h)
+        # 2. 点击播放
+        input.tap(pid, w / 2, h / 3)
+        # 3. 播放60s
+        time.sleep(60)
+
+
 # ~~~~~~~~~~快手极速版~~~~~~~~~~
 
-def watch_kuaishou_video(pid, w, h, hour=2):
+def watch_kuaishou_video(pid, w, h, hour):
     """
     看快手视频
     """

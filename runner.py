@@ -149,7 +149,16 @@ def run(pid):
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 阅读今日头条文章
-            app.read_toutiao_article(pid, w, h, num=30)
+            app.read_toutiao_article(pid, w, h, num=15)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['toutiao'])
+
+            # [x] 看视频
+            print('看今日头条视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.toutiao(pid)
+            # 2. 看视频
+            app.toutiao_video(pid, w, h, num=15)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
