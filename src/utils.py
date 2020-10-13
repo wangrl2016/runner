@@ -26,16 +26,14 @@ def schedule_apps(pid, w, h):
             getattr(schedule, a)(pid, w, h)
 
         # 1. 打开程序
-        if minute < SCHEDULE_TIME:
-            checkin.kuaishou(pid)
+        checkin.kuaishou(pid)
 
         # 2. 不停地从下往上翻页
         while datetime.now().minute < SCHEDULE_TIME:
             phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
         # 3. 关闭程序
-        if minute < SCHEDULE_TIME:
-            phone.stop_app(pid, packages['kuaishou'])
+        phone.stop_app(pid, packages['kuaishou'])
 
     print('第2次做程序的定时任务 ' + datetime.now().__str__())
     for a in apps:

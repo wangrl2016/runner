@@ -188,41 +188,44 @@ def douyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def huoshan(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
     # 打开火山
     checkin.huoshan(pid)
 
-    # [x] 开宝箱
-    # 每20分钟一次
-    # 1. 点击红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-    # 2. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
-    # 3. 点击看视频金币翻倍按钮
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
-    # 4. 播放30s
-    time.sleep(30)
-    # 5. 返回上级页面
-    # 是返回到任务页面
-    phone.go_back(pid)
-
-    # [x] 睡觉得金币
-    if datetime.now().hour.__eq__(20) or datetime.now().__eq__(3):
-        # 1. 点击睡觉赚金币
-        input.tap(pid, w / 2, 8.6 * h / HEIGHT)
-        if datetime.now().hour.__eq__(20):
-            # 2. 点击我要睡了
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
-        else:
-            for i in range(0, 2):
-                # 点击我睡醒了
-                # 然后收取金币
-                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
-        # 3. 返回到上级页面
-        # 返回到任务页面
+    def open_treasure():
+        # [x] 开宝箱
+        # 每20分钟一次
+        # 1. 点击红包
+        input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+        # 2. 点击开宝箱得金币
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
+        # 3. 点击看视频金币翻倍按钮
+        input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
+        # 4. 播放30s
+        time.sleep(30)
+        # 5. 返回上级页面
+        # 是返回到任务页面
         phone.go_back(pid)
+
+    if datetime.now().minute.__le__(SCHEDULE_TIME):
+        open_treasure()
+
+        # [x] 睡觉得金币
+        if datetime.now().hour.__eq__(20) or datetime.now().__eq__(3):
+            # 1. 点击睡觉赚金币
+            input.tap(pid, w / 2, 8.6 * h / HEIGHT)
+            if datetime.now().hour.__eq__(20):
+                # 2. 点击我要睡了
+                input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)  # <= modify
+            else:
+                for i in range(0, 2):
+                    # 点击我睡醒了
+                    # 然后收取金币
+                    input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+            # 3. 返回到上级页面
+            # 返回到任务页面
+            phone.go_back(pid)
+    else:
+        open_treasure()
 
     # 关闭火山
     phone.stop_app(pid, packages['huoshan'])
@@ -323,8 +326,8 @@ def yingke(pid, w, h):
         input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
         # 2. 点击开宝箱领金币
         input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)
-        # 3. 播放视频60s
-        time.sleep(60)
+        # 3. 播放视频30s
+        time.sleep(30)
         # 4. 返回上级页面
         # 返回到福利页面
         phone.go_back(pid)
