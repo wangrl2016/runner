@@ -100,9 +100,9 @@ def get_page_photo(pid, output, gap=1):
     path = os.path.join('/sdcard', filename)
     subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', path])
     time.sleep(gap)
-    p = subprocess.run(['adb', '-s', pid, 'pull', path, output],
-                       check=True, stdout=subprocess.PIPE,
-                       stderr=subprocess.STDOUT, universal_newlines=True)
+    subprocess.run(['adb', '-s', pid, 'pull', path, output],
+                   check=True, stdout=subprocess.PIPE,
+                   stderr=subprocess.STDOUT, universal_newlines=True)
     time.sleep(gap)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     time.sleep(gap)

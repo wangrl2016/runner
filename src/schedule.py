@@ -2,10 +2,13 @@ import time
 from datetime import datetime
 
 from src import checkin, phone, input
-from src.info import packages, WIDTH, HEIGHT
+from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
 
 
 def toutiao(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # 打开头条
     checkin.toutiao(pid)
 
@@ -72,6 +75,9 @@ def toutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaishou(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # 打开快手
     checkin.kuaishou(pid)
 
@@ -109,6 +115,9 @@ def kuaishou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def douyin(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # 打开抖音
     checkin.douyin(pid)
 
@@ -174,6 +183,9 @@ def douyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def huoshan(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # 打开火山
     checkin.huoshan(pid)
 
@@ -213,7 +225,8 @@ def huoshan(pid, w, h):
 
 # noinspection PyUnusedLocal
 def jingdong(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
@@ -242,6 +255,8 @@ def fanqie(pid, w, h):
 
 # noinspection PyUnusedLocal
 def fanchang(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
     # 打开番茄畅听
     checkin.fanchang(pid, w, h)
 
@@ -265,16 +280,21 @@ def fanchang(pid, w, h):
 
 # noinspection PyUnusedLocal
 def weishi(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
 def shuqi(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
 def yingke(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # 打开映客
     checkin.yingke(pid, w, h)
 
@@ -310,6 +330,9 @@ def yingke(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kugou(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # [x] 刷创意视频
     # 定时任务
     if datetime.now().hour.__gt__(3):
@@ -336,6 +359,9 @@ def kugou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def huitoutiao(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
+
     # [x] 时段奖励
     if datetime.now().hour % 2 == 0:
         # 1.打开惠头条
@@ -348,16 +374,20 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhongqing(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
 def pinduoduo(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
     # 天天赚特币
     if datetime.now().hour % 4 == 0:
         # 1. 打开淘宝
@@ -372,6 +402,8 @@ def taobao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def shuabao(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
     # [x] 看福利视频
     if datetime.now().hour > 13:
         # 1. 打开刷宝
@@ -390,6 +422,8 @@ def shuabao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
     # [x] 开宝箱
     if datetime.now().hour % 2 == 0:
         # 1. 打开趣头条
@@ -406,9 +440,11 @@ def qutoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def baidu(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None
 
 
 # noinspection PyUnusedLocal
 def ximalaya(pid, w, h):
-    return None
+    if datetime.now().minute > SCHEDULE_TIME:
+        return None

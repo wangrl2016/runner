@@ -68,5 +68,8 @@ activities = {
 
 product_brands = ['vivo', ]
 
+# 程序的定时任务为30分钟
+SCHEDULE_TIME = 30
+
 watch_huoshan_minutes = 0
 watch_kuaishou_minutes = 0
