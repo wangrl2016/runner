@@ -186,12 +186,16 @@ def shuabao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
-    return None
+    # 1. 点击任务
+    # 签到成功
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
 def baidu(pid, w, h):
-    return None
+    # 2. 点击任务
+    # 签到成功
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal

@@ -227,9 +227,8 @@ def huoshan(pid, w, h):
     # 打开火山
     checkin.huoshan(pid)
 
+    # 开宝箱
     def open_treasure():
-        # 开宝箱
-        # 每20分钟一次
         # 1. 点击红包
         input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
         # 2. 点击开宝箱得金币
@@ -238,11 +237,19 @@ def huoshan(pid, w, h):
         input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
         # 4. 播放30s
         time.sleep(30)
-        # 5. 返回上级页面
-        # 是返回到任务页面
+        # 5. 返回到福利页面
         phone.go_back(pid)
 
-    # [x] 睡觉赚金币
+    # 看视频赚海量金币
+    def video_money():
+        # 1. 点击看视频赚海量金币
+        input.tap(pid, w / 2, 7.5 * h / HEIGHT)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 返回到福利页面
+        phone.go_back(pid)
+
+    # 睡觉赚金币
     def sleep_money(is_sleep):
         # 1. 点击睡觉赚金币
         input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
@@ -255,6 +262,10 @@ def huoshan(pid, w, h):
     if datetime.now().minute.__le__(SCHEDULE_TIME):
         # [x] 开宝箱
         open_treasure()
+
+        # [x] 看视频赚海量金币
+        if datetime.now().hour.__gt__(3):
+            video_money()
 
         # [x] 睡觉赚金币
         if datetime.now().hour.__eq__(20):
