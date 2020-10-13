@@ -310,7 +310,28 @@ def yingke(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kugou(pid, w, h):
-    return None
+    # [x] 刷创意视频
+    # 定时任务
+    if datetime.now().hour.__gt__(3):
+        # 进入程序
+        checkin.kugou(pid, w, h)
+
+        # 1. 点击赚钱
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)
+        # 2. 点击去赚钱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+        # 3. 播放35s
+        # 包含等待弹出关闭界面
+        time.sleep(35)
+        # 4. 返回上级页面
+        # 无法通过回退返回
+        # 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 5. 再次回退消除奖励页面
+        phone.go_back(pid)
+
+        # 关闭程序
+        phone.stop_app(pid, packages['kugou'])
 
 
 # noinspection PyUnusedLocal

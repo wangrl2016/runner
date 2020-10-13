@@ -343,15 +343,6 @@ def run(pid):
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
-            # [x] 刷创意视频
-            print('酷狗刷创意视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kugou(pid, w, h)
-            # 2. 刷创意视频
-            app.kugou_creative_video(pid, w, h, num=20)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kugou'])
-
             # [x] 听酷狗音乐
             print('听酷狗音乐 ' + datetime.now().__str__())
             # 1. 打开程序

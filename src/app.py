@@ -300,25 +300,6 @@ def listen_kugou_music(pid, w, h, sec=300):
     time.sleep(sec)
 
 
-def kugou_creative_video(pid, w, h, num):
-    """
-    刷酷狗视频
-    """
-    # 1. 点击赚钱
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)
-    for i in range(0, num):
-        # 2. 点击去赚钱
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 返回上级页面
-        # 无法通过回退返回
-        # 返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-        # 5. 再次回退消除奖励页面
-        phone.go_back(pid)
-
-
 # ~~~~~~~~~~惠头条~~~~~~~~~~
 
 def read_huitoutiao_article(pid, w, h, num):
