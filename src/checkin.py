@@ -8,6 +8,8 @@ def toutiao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
+    # 头条进入首页是空等时间
+    # 所以设定启动程序的时间要短
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 

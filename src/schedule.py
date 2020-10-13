@@ -6,26 +6,31 @@ from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
 
 
 def toutiao(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
     # 打开头条
     checkin.toutiao(pid)
 
     # [x] 开宝箱
     # 每10分钟一次
-    # 1. 点击任务
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-    # 2. 点击宝箱
-    # 开宝箱得金币
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
-    # 3. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
-    # 4. 播放15s
-    time.sleep(15)
-    # 5. 退出播放页面
-    # 返回到任务页面
-    phone.go_back(pid)
+    def open_treasure():
+        # 1. 点击任务
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+        # 2. 点击宝箱
+        # 开宝箱得金币
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
+        # 3. 点击看视频再领金币
+        input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
+        # 4. 播放15s
+        time.sleep(15)
+        # 5. 退出播放页面
+        # 返回到任务页面
+        phone.go_back(pid)
+
+    if datetime.now().minute.__ge__(SCHEDULE_TIME):
+        open_treasure()
+        return
+
+    # [x] 开宝箱
+    open_treasure()
 
     # [x] 吃饭补贴
     # 早中晚夜宵4次
