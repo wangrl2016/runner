@@ -9,7 +9,7 @@ import threading
 # import pytesseract
 # from PIL import Image
 
-from src import phone, checkin, sign, app, utils
+from src import phone, checkin, sign, app, utils, info
 from src.info import packages, apps, high_serials
 from src.utils import tap_start, schedule_apps
 
@@ -207,6 +207,7 @@ def run(pid):
             phone.stop_app(pid, packages['huoshan'])
 
             # [x] 看火山视频
+            start = datetime.now()
             print('看火山视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.huoshan(pid)
@@ -214,6 +215,7 @@ def run(pid):
             app.watch_huoshan_video(pid, w, h, hour=4)
             # 3. 关闭程序
             phone.stop_app(pid, packages['huoshan'])
+            info.watch_huoshan_minutes += (datetime.now() - start).seconds / 60
 
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)

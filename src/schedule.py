@@ -5,7 +5,6 @@ from src import checkin, phone, input
 from src.info import packages, WIDTH, HEIGHT
 
 
-# noinspection PyUnusedLocal
 def toutiao(pid, w, h):
     # 打开头条
     checkin.toutiao(pid)
@@ -223,6 +222,7 @@ def fanqie(pid, w, h):
     checkin.fanqie(pid, w, h)
 
     # [x] 开宝箱
+    # 每20分钟一次开宝箱任务
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击开宝箱得金币

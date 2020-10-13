@@ -67,3 +67,6 @@ activities = {
 }
 
 product_brands = ['vivo', ]
+
+watch_huoshan_minutes = 0
+watch_kuaishou_minutes = 0
