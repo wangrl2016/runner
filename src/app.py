@@ -59,10 +59,9 @@ def kuaishou_reward_task(pid, w, h, num):
     for i in range(0, num):
         # 3. 点击福利
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.6 * h / HEIGHT)
-        # 播放30s
+        # 4播放30s
         time.sleep(30)
-        # 返回上级页面
-        # 返回到去赚钱页面
+        # 5. 返回到福利页面
         phone.go_back(pid)
 
 

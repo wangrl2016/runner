@@ -181,8 +181,10 @@ def run(pid):
             print('快手1000金币悬赏任务 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kuaishou(pid)
-            # 2. 悬赏任务做10次
-            app.kuaishou_reward_task(pid, w, h, num=10)
+            # 2. 悬赏任务做9次
+            # 不然完成后会放置最下面
+            # 打乱原本的顺序
+            app.kuaishou_reward_task(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['kuaishou'])
 

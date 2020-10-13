@@ -86,9 +86,6 @@ def toutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaishou(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
     def benefit_page():
         # 点击左上角菜单栏
         input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
@@ -112,27 +109,28 @@ def kuaishou(pid, w, h):
         phone.swipe_down_to_up(pid, w, h, 3, internal=50)
         for i in range(0, 10):
             # 2. 点击看直播
-            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.4 * h / HEIGHT)  # <= modify
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <= modify
             # 3. 观看20s
             time.sleep(20)
-            # 4 返回上级页面
-            # 返回到去挣钱页面
-            phone.go_back(pid, gap=3)
+            # 4 返回到福利页面
+            phone.go_back(pid, gap=5)
         # 6. 福利页面恢复原样
         phone.swipe_up_to_down(pid, w, h, 3, internal=50)
 
-    # 打开快手
-    checkin.kuaishou(pid)
-    benefit_page()
+    # 每两小时做一次定时任务
+    # 同时只做半个小时
+    if datetime.now().minute.__le__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
+        # 打开快手
+        checkin.kuaishou(pid)
+        benefit_page()
 
-    if (datetime.now().hour % 2).__eq__(0):
         open_treasure()
 
-    if datetime.now().hour.__eq__(22):
-        watch_live()
+        if datetime.now().hour.__eq__(22):
+            watch_live()
 
-    # 关闭快手
-    phone.stop_app(pid, packages['kuaishou'])
+        # 关闭快手
+        phone.stop_app(pid, packages['kuaishou'])
 
 
 # noinspection PyUnusedLocal
