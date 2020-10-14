@@ -46,37 +46,18 @@ def tail_work(pid, w, h, hour):
         while datetime.now().hour.__eq__(hour):
             # [x] 看快手视频
             app.full_watch_kuaishou_video(pid, w, h, hour)
-
     elif hour.__lt__(8):
         while datetime.now().hour.__eq__(hour):
             # [x] 看抖音视频
-            print('看抖音视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.douyin(pid)
-            # 2. 看抖音视频
-            app.watch_douyin_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['douyin'])
+            app.full_watch_douyin_video(pid, w, h, hour)
     elif hour.__lt__(12):
         while datetime.now().hour.__eq__(hour):
             # [x] 看火山视频
-            print('看火山视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.huoshan(pid)
-            # 2. 看火山视频
-            app.watch_huoshan_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['huoshan'])
+            app.full_watch_huoshan_video(pid, w, h, hour)
     elif hour.__lt__(16):
         while datetime.now().hour.__eq__(hour):
             # [x] 看微视视频
-            print('看微视视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.weishi(pid)
-            # 2. 看微视视频
-            app.watch_weishi_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['weishi'])
+            app.full_watch_weishi_video(pid, w, h, hour)
     elif hour.__lt__(20):
         while datetime.now().hour.__eq__(hour):
             # [x] 看快手视频

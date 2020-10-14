@@ -139,8 +139,7 @@ def douyin(pid, w, h):
         # 进入福利页面
         input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
-    # [x] 限时任务赚金币
-    # 每20分钟完成一次广告任务
+    # 限时任务赚金币
     def limit_duty():
         # 1. 点击去领取
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 11.0 * h / HEIGHT)  # <= modify
@@ -150,18 +149,15 @@ def douyin(pid, w, h):
         # 是返回到任务页面
         phone.go_back(pid)
 
-    # [x] 开宝箱得金币
-    # 每20分钟一次
+    # 开宝箱得金币
     def open_treasure():
-
         # 2. 点击开宝箱得金币
         input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
         # 3. 点击看广告视频再赚金币
         input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
         # 4. 播放30s
         time.sleep(30)
-        # 5. 返回上级页面
-        # 是返回到任务页面
+        # 5. 返回福利页面
         phone.go_back(pid)
 
     # [x] 睡觉赚钱
@@ -173,7 +169,7 @@ def douyin(pid, w, h):
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
         # 4. 返回到回到福利页面
         phone.go_back(pid)
         # 5. 滑到最上面
@@ -193,10 +189,12 @@ def douyin(pid, w, h):
     benefit_page()
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # 开宝箱得金币
+        # [x] 开宝箱得金币
+        # 每20分钟一次
         open_treasure()
 
-        # 限时任务赚金币
+        # [x] 限时任务赚金币
+        # 每20分钟一次
         limit_duty()
 
         # [x] 睡觉赚金币
@@ -369,39 +367,40 @@ def yingke(pid, w, h):
 
     def benefit_page():
         # 1. 点击下面的横幅
-        input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)
+        input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
 
     # 看福利视频
     def benefit_video():
         # 1. 点击领金币
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <= modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
     # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)  # <= modify
         # 2. 播放视频30s
         time.sleep(30)
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # [x] 看福利视频
-    # 可以看10次
-    # [x] 开宝箱
-    # 次数未知
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # 进入福利页面
         checkin.yingke(pid, w, h)
         benefit_page()
 
+        # [x] 看福利视频
+        # 可以看10次
         if datetime.now().hour.__lt__(11):
             benefit_video()
+        # [x] 开宝箱
+        # 次数未知
         if datetime.now().hour.__ge__(11):
             open_treasure()
+
         # 关闭映客
         phone.stop_app(pid, packages['yingke'])
 

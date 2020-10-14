@@ -38,46 +38,22 @@ def cycle(pid):
         hour = datetime.now().hour
         while run_apps.__contains__('kuaishou') and datetime.now().hour.__eq__(hour):
             # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
+            app.full_watch_kuaishou_video(pid, w, h, hour)
 
         hour = datetime.now().hour
         while run_apps.__contains__('douyin') and datetime.now().hour.__eq__(hour):
             # [x] 看抖音视频
-            print('看抖音视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.douyin(pid)
-            # 2. 看抖音视频
-            app.watch_douyin_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['douyin'])
+            app.full_watch_kuaishou_video(pid, w, h, hour)
 
         hour = datetime.now().hour
         while run_apps.__contains__('huoshan') and datetime.now().hour.__eq__(hour):
             # [x] 看火山视频
-            print('看火山视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.huoshan(pid)
-            # 2. 看火山视频
-            app.watch_huoshan_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['huoshan'])
+            app.full_watch_huoshan_video(pid, w, h, hour)
 
         hour = datetime.now().hour
         while run_apps.__contains__('weishi') and datetime.now().hour.__eq__(hour):
             # [x] 看微视视频
-            print('看微视视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.weishi(pid)
-            # 2. 看微视视频
-            app.watch_weishi_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['weishi'])
+            app.full_watch_weishi_video(pid, w, h, hour)
 
         hour = datetime.now().hour
         while run_apps.__contains__('shuabao') and datetime.now().hour.__eq__(hour):
@@ -132,15 +108,6 @@ def run(pid):
                 # 3. 关闭程序
                 phone.stop_app(pid, packages[a])
 
-            # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour=0)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
-
             utils.tail_work(pid, w, h, hour=0)
 
         while datetime.now().hour.__eq__(1):
@@ -191,13 +158,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看抖音视频
-            print('看抖音视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.douyin(pid)
-            # 2. 看抖音视频
-            app.watch_douyin_video(pid, w, h, hour=3)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['douyin'])
+            app.full_watch_douyin_video(pid, w, h, hour=3)
 
             utils.tail_work(pid, w, h, hour=3)
 
@@ -214,13 +175,7 @@ def run(pid):
 
             # [x] 看火山视频
             start = datetime.now()
-            print('看火山视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.huoshan(pid)
-            # 2. 看火山视频
-            app.watch_huoshan_video(pid, w, h, hour=4)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['huoshan'])
+            app.full_watch_huoshan_video(pid, w, h, hour=4)
             info.watch_huoshan_minutes += (datetime.now() - start).seconds / 60
 
             utils.tail_work(pid, w, h, hour=4)
@@ -315,13 +270,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看微视视频
-            print('看微视视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.weishi(pid)
-            # 2. 看微视视频
-            app.watch_weishi_video(pid, w, h, hour=8)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['weishi'])
+            app.full_watch_weishi_video(pid, w, h, hour=8)
 
             utils.tail_work(pid, w, h, hour=8)
 
@@ -449,13 +398,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看趣头条小视频
-            print('看趣头条小视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.qutoutiao(pid)
-            # 2. 看趣头条小视频
-            app.watch_qutoutiao_svideo(pid, w, h, hour=17)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['qutoutiao'])
+            app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)
 
             utils.tail_work(pid, w, h, hour=17)
 

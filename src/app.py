@@ -87,6 +87,17 @@ def watch_douyin_video(pid, w, h, hour=3):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def full_watch_douyin_video(pid, w, h, hour):
+    # [x] 看抖音视频
+    print('看抖音视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.douyin(pid)
+    # 2. 看抖音视频
+    watch_douyin_video(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, packages['douyin'])
+
+
 # ~~~~~~~~~~火山极速版~~~~~~~~~~
 
 def watch_huoshan_video(pid, w, h, hour=4):
@@ -95,6 +106,16 @@ def watch_huoshan_video(pid, w, h, hour=4):
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+def full_watch_huoshan_video(pid, w, h, hour):
+    print('看火山视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.huoshan(pid)
+    # 2. 看火山视频
+    watch_huoshan_video(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, packages['huoshan'])
 
 
 def huoshan_money_tree(pid, w, h):
@@ -244,6 +265,16 @@ def watch_weishi_video(pid, w, h, hour=8):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def full_watch_weishi_video(pid, w, h, hour):
+    print('看微视视频 ' + datetime.now().__str__())
+    # 1. 进入微视
+    checkin.weishi(pid)
+    # 2. 看视频
+    watch_weishi_video(pid, w, h, hour)
+    # 3. 退出程序
+    phone.stop_app(pid, 'weishi')
+
+
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
 
 def read_shuqi_novel(pid, w, h, sec=300):
@@ -321,7 +352,7 @@ def read_huitoutiao_article(pid, w, h, num):
         # 2. 点击文章
         input.tap(pid, w / 2, h * 3 / 4)
         # 3. 滑动阅读
-        for j in range(0, 10):
+        for j in range(0, 5):
             phone.swipe_down_to_up(pid, w, h)
         # 4. 返回上级目录
         phone.go_back(pid)
@@ -339,7 +370,7 @@ def read_zhongqing_article(pid, w, h, num):
         # 2. 点击文章
         input.tap(pid, w / 2, h * 3 / 4)
         # 3. 滑动阅读
-        for j in range(0, 10):
+        for j in range(0, 5):
             phone.swipe_down_to_up(pid, w, h)
         # 4. 返回上级目录
         phone.go_back(pid)
@@ -369,11 +400,21 @@ def watch_qutoutiao_svideo(pid, w, h, hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def full_watch_qutoutiao_svideo(pid, w, h, hour):
+    print('看趣头条小视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.qutoutiao(pid)
+    # 2. 看趣头条小视频
+    watch_qutoutiao_svideo(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, packages['qutoutiao'])
+
+
 # ~~~~~~~~~~百度极速版~~~~~~~~~~
 
 def baidu_haokan_video(pid, w, h, num):
     # 1. 点击好看视频
-    input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
     for i in range(0, num):
         # 2. 刷新页面
         phone.swipe_up_to_down(pid, w, h)
