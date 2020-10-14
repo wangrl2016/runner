@@ -468,14 +468,38 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhongqing(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
+    def time_reward():
+        # 1. 点击领取
+        # 2. 再领取
+        for i in range(0, 2):
+            input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
+        # 4. 再领取播放广告30s
+        time.sleep(30)
+        # 5. 返回上级页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+
+    if datetime.now().hour.__lt__(SCHEDULE_TIME):
+        checkin.zhongqing(pid, w, h)
+        time_reward()
+        phone.stop_app(pid, 'packages')
 
 
 # noinspection PyUnusedLocal
 def pinduoduo(pid, w, h):
     if datetime.now().minute > SCHEDULE_TIME:
         return None
+
+    def timed_envelope():
+        # 1. 点击现金签到
+        input.tap(pid, w / 2, 5.4 * h / HEIGHT)
+        # 2. 点击定时红包
+        input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if (datetime.now().hour % 5).__eq__(0):
+            checkin.pinduoduo(pid, w, h)
+            timed_envelope()
+            phone.stop_app(pid, 'pinduoduo')
 
 
 # noinspection PyUnusedLocal
