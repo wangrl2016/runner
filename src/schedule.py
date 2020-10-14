@@ -29,8 +29,7 @@ def toutiao(pid, w, h):
         input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
         # 2. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
-        # 3. 返回上级页面
-        # 返回到福利页面
+        # 3. 返回到福利页面
         phone.go_back(pid)
 
     # [x] 睡觉赚钱
@@ -51,11 +50,10 @@ def toutiao(pid, w, h):
         input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)  # <= modify
         # 2. 点击抽奖
         input.tap(pid, w / 2, 5.8 * h / HEIGHT, 10)  # <= modify
-        # 3. 返回上级页面
-        # 返回到任务页面
+        # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # 打开头条进入福利页面
+    # 打开头条
     checkin.toutiao(pid)
     benefit_page()
 
@@ -69,9 +67,10 @@ def toutiao(pid, w, h):
             meal_allowance()
 
         # [x] 睡觉赚钱
+        # 20:00-2:00
         if hour.__eq__(20):
             sleep_money(False)
-        elif hour.__eq__(3):
+        elif hour.__eq__(6):
             sleep_money(True)
 
         # [x] 免费抽手机
@@ -175,6 +174,7 @@ def douyin(pid, w, h):
         # 5. 滑到最上面
         phone.swipe_up_to_down(pid, w, h, internal=100)
 
+    # 吃饭补贴
     def meal_allowance():
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
@@ -184,6 +184,15 @@ def douyin(pid, w, h):
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
         # 4. 返回到福利页面
         phone.go_back(pid)
+
+    # 游戏抽奖
+    def game_lottery():
+        # 1. 点击游戏中心
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 5.5 * h / HEIGHT)
+        # 2. 点击抽奖
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.2) * h / HEIGHT)
+        # 3. 点击开始抽奖
+        input.tap(pid, w / 2, 10.8 * h / HEIGHT)
 
     checkin.douyin(pid)
     benefit_page()
@@ -200,7 +209,7 @@ def douyin(pid, w, h):
         # [x] 睡觉赚金币
         if datetime.now().hour.__eq__(20):
             sleep_money(False)
-        elif datetime.now().hour.__eq__(3):
+        elif datetime.now().hour.__eq__(6):
             sleep_money(True)
 
         # [x] 吃饭补贴
@@ -208,6 +217,10 @@ def douyin(pid, w, h):
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
             meal_allowance()
+
+        # [x] 抽奖两次
+        if hour.__eq__(14) or hour.__eq__(15):
+            game_lottery()
     else:
         # 开宝箱得金币
         open_treasure()
@@ -301,6 +314,17 @@ def fanqie(pid, w, h):
         # 4. 返回到福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
+    # 分享好书给好友
+    def book_share():
+        # 1. 点击分享好书给好友
+        input.tap(pid, w / 2, 10.1 * h / HEIGHT)
+        # 2. 点击任意一本书
+        input.tap(pid, w / 2, h / 3)
+        # 3. 点击分享
+        input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 0.9 * h / HEIGHT)
+        # 4. 点击微信
+        input.tap(pid, 1.0 * w / WIDTH, 9.5 * h / HEIGHT)
+
     # 打开番茄
     checkin.fanqie(pid, w, h)
     benefit_page()
@@ -308,6 +332,10 @@ def fanqie(pid, w, h):
     # [x] 开宝箱
     # 每20分钟一次开宝箱任务
     open_treasure()
+
+    if datetime.now().hour.__eq__(22) and datetime.now().minute.__lt__(SCHEDULE_TIME):
+        # [x] 分享好书给好友
+        book_share()
 
     # 关闭番茄
     phone.stop_app(pid, packages['fanqie'])

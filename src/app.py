@@ -34,8 +34,8 @@ def toutiao_video(pid, w, h, num):
         phone.swipe_up_to_down(pid, w, h)
         # 2. 点击播放
         input.tap(pid, w / 2, h / 3)
-        # 3. 播放60s
-        time.sleep(60)
+        # 3. 播放30s
+        time.sleep(30)
 
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~

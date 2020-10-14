@@ -102,6 +102,8 @@ def run(pid):
     # 回到手机主页面
     phone.go_home(pid)
 
+    # 代码测试位置
+
     while True:
         while datetime.now().hour.__eq__(0):
             # [x] 所有程序的签到工作
@@ -135,12 +137,11 @@ def run(pid):
             phone.stop_app(pid, packages['toutiao'])
 
             # [x] 看视频
-            # 花费20分钟
             print('看今日头条视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 看视频
-            app.toutiao_video(pid, w, h, num=20)
+            app.toutiao_video(pid, w, h, num=10)
             # 3. 关闭程序
             phone.stop_app(pid, packages['toutiao'])
 
