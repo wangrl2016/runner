@@ -120,7 +120,6 @@ def yingke(pid, w, h):
     # 5. 播放30s广告
     time.sleep(30)
     # 6. 点击关闭
-    # 无法回退关闭
     # 签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
