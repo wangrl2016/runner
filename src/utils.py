@@ -45,13 +45,8 @@ def tail_work(pid, w, h, hour):
     if hour.__lt__(4):
         while datetime.now().hour.__ne__(hour):
             # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
+            app.full_watch_kuaishou_video(pid, w, h, hour)
+
     elif hour.__lt__(8):
         while datetime.now().hour.__ne__(hour):
             # [x] 看抖音视频
@@ -85,23 +80,11 @@ def tail_work(pid, w, h, hour):
     elif hour.__lt__(20):
         while datetime.now().hour.__ne__(hour):
             # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
+            app.full_watch_kuaishou_video(pid, w, h, hour)
     elif hour.__lt__(24):
         while datetime.now().hour.__ne__(hour):
             # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
+            app.full_watch_kuaishou_video(pid, w, h, hour)
 
 
 def get_photos(path):

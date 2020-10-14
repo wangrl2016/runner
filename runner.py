@@ -172,14 +172,7 @@ def run(pid):
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
-            # [x] 看快手视频
-            print('看快手视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.kuaishou(pid)
-            # 2. 看快手视频
-            app.watch_kuaishou_video(pid, w, h, hour=2)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kuaishou'])
+            app.full_watch_kuaishou_video(pid, w, h, hour=2)
 
             # [x] 1000金币悬赏任务
             print('快手1000金币悬赏任务 ' + datetime.now().__str__())
@@ -387,7 +380,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
+            phone.sleep_to_weak(pid, w, h, gap=300)
 
             # [x] 阅读惠头条文章
             print('阅读惠头条文章 ' + datetime.now().__str__())

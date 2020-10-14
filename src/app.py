@@ -1,8 +1,8 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input
-from src.info import HEIGHT, WIDTH
+from src import phone, input, checkin
+from src.info import HEIGHT, WIDTH, packages
 
 
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
@@ -40,12 +40,24 @@ def toutiao_video(pid, w, h, num):
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~
 
+# 只是看视频的过程
 def watch_kuaishou_video(pid, w, h, hour):
     """
     看快手视频
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+# 从打开到关闭看快手视频的完整过程
+def full_watch_kuaishou_video(pid, w, h, hour):
+    print('看快手视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.kuaishou(pid)
+    # 2. 看快手视频
+    watch_kuaishou_video(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, packages['kuaishou'])
 
 
 def kuaishou_reward_task(pid, w, h, num):
