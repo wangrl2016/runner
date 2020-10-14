@@ -446,6 +446,7 @@ def huitoutiao(pid, w, h):
 
     def time_reward():
         # 1. 点击领取
+        # 有时候没有广告视频
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
 
     def full_time_reward():
@@ -470,13 +471,8 @@ def zhongqing(pid, w, h):
     # 时段奖励
     def time_reward():
         # 1. 点击领取
-        # 2. 再领取
-        for i in range(0, 2):
-            input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
-        # 4. 再领取播放广告30s
-        time.sleep(30)
-        # 5. 返回上级页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 有时候没有广告视频
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
 
     if datetime.now().hour.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
@@ -521,21 +517,28 @@ def taobao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def shuabao(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-    # [x] 看福利视频
-    if datetime.now().hour > 13:
+    def benefit_page():
+        # 1. 点击福利
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
+        # 2. 回退关闭悬浮窗？
+        phone.go_back(pid)
+
+    # 看福利视频
+    def benefit_video():
+        # 1. 点击去观看
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 点击关闭
+        input.tap(pid, (WIDTH - 0.7) * w, 1.2 * h / HEIGHT)
+
+    if datetime.now().minute < SCHEDULE_TIME and datetime.now().hour.__gt__(13):
         # 1. 打开刷宝
         checkin.shuabao(pid)
-        # 2. 点击福利
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 点击关闭按钮
-        # 返回的页面未知
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-
-        # 2. 关闭刷宝
+        benefit_page()
+        # [x] 看福利视频
+        benefit_video()
+        # 3. 关闭刷宝
         phone.stop_app(pid, packages['shuabao'])
 
 
@@ -552,11 +555,12 @@ def qutoutiao(pid, w, h):
     # 开宝箱
     def open_treasure():
         # 1. 点击宝箱
+        # 宝箱位置会变动？
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
         # 2. 播放广告30s
         time.sleep(30)
 
-    if datetime.now().hour % 2 == 0:
+    def full_open_treasure():
         # 打开趣头条
         checkin.qutoutiao(pid)
         benefit_page()
@@ -565,11 +569,53 @@ def qutoutiao(pid, w, h):
         # 关闭趣头条
         phone.stop_app(pid, packages['qutoutiao'])
 
+    def sleep_money(is_sleep):
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, 2.0 * h / HEIGHT)
+        # 2. 点击我要睡了/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
+        # 3. 返回到回到福利页面
+        phone.go_back(pid)
+
+    # [x] 开宝箱
+    # 每个小时一次
+    # 1, 4, 7开上半时段
+    # 2, 5, 8开下半时段
+    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
+        full_open_treasure()
+    elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
+        full_open_treasure()
+
+    # [x] 睡觉赚金币
+    # 20:00-08:00为睡觉时间
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.qutoutiao(pid)
+        benefit_page()
+        if datetime.now().hour.__eq__(20):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(9):
+            sleep_money(True)
+        phone.stop_app(pid, packages['qutoutiao'])
+
 
 # noinspection PyUnusedLocal
 def baidu(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
+    def benefit_page():
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+    def open_treasure():
+        # 1. 打开宝箱
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 10.1 * h / HEIGHT)  # <= modify
+
+    # [x] 开宝箱
+    # 金银铜三种宝箱
+    # 金宝箱需要3个小时
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 4).__eq__(0):
+        checkin.baidu(pid)
+        benefit_page()
+        open_treasure()
+        phone.stop_app(pid, packages['baidu'])
 
 
 # noinspection PyUnusedLocal

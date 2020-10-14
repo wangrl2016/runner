@@ -467,4 +467,3 @@ def watch_douhuo_video(pid, w, h, sec=300):
     start = datetime.now()
     while (datetime.now() - start).seconds < sec:
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
-

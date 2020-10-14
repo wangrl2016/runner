@@ -409,10 +409,10 @@ def run(pid):
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
+            phone.sleep_to_weak(pid, w, h, gap=300)
 
             # [x] 好看视频
+            # 花费8分钟
             print('百度好看视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.baidu(pid)
