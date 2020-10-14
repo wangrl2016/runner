@@ -460,3 +460,11 @@ def listen_ximalaya_sound(pid, w, h, sec=300):
     time.sleep(sec)
     # 3. 点击气泡进行收集
     input.tap(pid, 0.7 * w / WIDTH, 3.5 * h / HEIGHT)  # <= modify
+
+
+# ~~~~~~~~~~抖音火山版~~~~~~~~~~
+def watch_douhuo_video(pid, w, h, sec=300):
+    start = datetime.now()
+    while (datetime.now() - start).seconds < sec:
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+

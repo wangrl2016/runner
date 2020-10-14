@@ -162,6 +162,7 @@ def sleep_to_weak(pid, w, h, gap=300):
     """
     手机休息到唤醒
     """
+    print('手机休息时间 ' + datetime.now().__str__())
     power(pid)
     time.sleep(gap)
     power(pid)

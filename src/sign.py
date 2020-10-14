@@ -206,3 +206,7 @@ def ximalaya(pid, w, h):
     input.tap(pid, w / 2, 9.5 * h / HEIGHT)
     # 3. 播放30s
     time.sleep(30)
+
+
+def douhuo(pid, w, h):
+    return None

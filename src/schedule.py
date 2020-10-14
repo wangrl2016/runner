@@ -526,7 +526,7 @@ def shuabao(pid, w, h):
     # [x] 看福利视频
     if datetime.now().hour > 13:
         # 1. 打开刷宝
-        checkin.shuabao(pid, w, h)
+        checkin.shuabao(pid)
         # 2. 点击福利
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
         # 3. 播放30s
@@ -576,3 +576,8 @@ def baidu(pid, w, h):
 def ximalaya(pid, w, h):
     if datetime.now().minute > SCHEDULE_TIME:
         return None
+
+
+# noinspection PyUnusedLocal
+def douhuo(pid, w, h):
+    return None

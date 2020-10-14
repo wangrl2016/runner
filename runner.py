@@ -450,6 +450,14 @@ def run(pid):
         while datetime.now().hour.__eq__(20):
             schedule_apps(pid, w, h)
 
+            # [x] 看抖音火山视频
+            print('看抖音火山视频 ' + datetime.now().__str__())
+            # 1. 打开程序
+            checkin.douhuo(pid)
+            app.watch_douhuo_video(pid, w, h, sec=300)
+            # 3. 关闭程序
+            phone.stop_app(pid, packages['douhuo'])
+
             utils.tail_work(pid, w, h, hour=20)
 
         while datetime.now().hour.__eq__(21):
@@ -469,6 +477,10 @@ def run(pid):
             phone.sleep_to_weak(pid, w, h)
 
             utils.tail_work(pid, w, h, hour=23)
+
+            # 当天运行信息输出
+            print('huoshan ' + info.watch_huoshan_minutes.__str__())
+            info.watch_huoshan_minutes = 0
 
 
 def main(args):
