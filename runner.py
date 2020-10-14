@@ -8,6 +8,7 @@ import sys
 import threading
 # import pytesseract
 # from PIL import Image
+# from pytesseract import Output
 
 from src import phone, checkin, sign, app, utils, info
 from src.info import packages, apps, high_serials
@@ -81,9 +82,14 @@ def run(pid):
                     if line.__contains__('ro.vivo.market.name'):
                         print(line)
 
-    # 识别文字
-    # phone_name = phone.get_page_photo(pid, output=out_dir)
-    # txt = pytesseract.image_to_string(Image.open(os.path.join(out_dir, phone_name)), lang='chi_sim')
+    # 文字识别
+    # photo_name = phone.get_page_photo(pid, output=out_dir)
+    # text = pytesseract.image_to_string(Image.open(os.path.join(out_dir, photo_name)), lang='chi_sim')
+    # print(text)
+    # data = pytesseract.image_to_data(Image.open(os.path.join(out_dir, photo_name)),
+    #                                  output_type=Output.DICT, lang='chi_sim')
+    # for i in range(0, len(data['text'])):
+    #     print(data['text'][i], data['left'][i], data['top'][i], data['width'][i], data['height'][i])
 
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
