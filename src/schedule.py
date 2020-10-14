@@ -422,7 +422,8 @@ def yingke(pid, w, h):
 
         # [x] 看福利视频
         # 可以看10次
-        if datetime.now().hour.__lt__(11):
+        # 后续奖励金更多
+        if datetime.now().hour.__lt__(13):
             benefit_video()
         # [x] 开宝箱
         # 次数未知

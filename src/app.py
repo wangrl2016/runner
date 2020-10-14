@@ -326,6 +326,17 @@ def shuqi_video_coin(pid, w, h, num):
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
+def shuqi_invent_friend(pid, w, h):
+    # 1. 下滑到最下
+    phone.swipe_down_to_up(pid, w, h, internal=100)
+    # 2. 点击邀请书友
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+    # 3. 点击微信好友
+    input.tap(pid, 1.2 * w / WIDTH, (HEIGHT - 2.8) * h / HEIGHT)
+    # 4. 回退到福利页面
+    phone.go_back(pid)
+
+
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
 def watch_yingke_live(pid, w, h, sec=300):

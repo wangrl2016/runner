@@ -286,7 +286,9 @@ def run(pid):
             checkin.shuqi(pid, w, h)
             # 2. 看视频赚金币
             app.shuqi_video_coin(pid, w, h, num=10)
-            # 2. 退出程序
+            # 3. 邀请书友
+            app.shuqi_invent_friend(pid, w, h)
+            # 4. 退出程序
             phone.stop_app(pid, packages['shuqi'])
 
             # [x] 阅读书旗小说
