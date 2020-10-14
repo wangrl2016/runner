@@ -81,6 +81,10 @@ def run(pid):
                 for line in properties:
                     if line.__contains__('ro.vivo.market.name'):
                         print(line)
+            if p.__contains__('Xiaomi'):
+                for line in properties:
+                    if line.__contains__('ro.product.model'):
+                        print(line)
 
     # 文字识别
     # photo_name = phone.get_page_photo(pid, output=out_dir)
