@@ -72,4 +72,3 @@ product_brands = ['vivo', ]
 SCHEDULE_TIME = 30
 
 watch_huoshan_minutes = 0
-watch_kuaishou_minutes = 0

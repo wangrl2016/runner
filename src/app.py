@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin
+from src import phone, input, checkin, info
 from src.info import HEIGHT, WIDTH, packages
 
 
@@ -110,12 +110,14 @@ def watch_huoshan_video(pid, w, h, hour=4):
 
 def full_watch_huoshan_video(pid, w, h, hour):
     print('看火山视频 ' + datetime.now().__str__())
+    start = datetime.now()
     # 1. 打开程序
     checkin.huoshan(pid)
     # 2. 看火山视频
     watch_huoshan_video(pid, w, h, hour)
     # 3. 关闭程序
     phone.stop_app(pid, packages['huoshan'])
+    info.watch_huoshan_minutes += (datetime.now() - start).seconds / 60
 
 
 def huoshan_money_tree(pid, w, h):
@@ -184,6 +186,16 @@ def jingdong_video_coin(pid, w, h, hour=5):
     # 4. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
+def full_jingdong_video_coin(pid, w, h, hour):
+    print('京东看视频赚金币 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.jingdong(pid, w, h)
+    # 2. 看视频赚金币
+    jingdong_video_coin(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, packages['jingdong'])
 
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~

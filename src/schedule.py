@@ -467,6 +467,7 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhongqing(pid, w, h):
+    # 时段奖励
     def time_reward():
         # 1. 点击领取
         # 2. 再领取
@@ -479,8 +480,9 @@ def zhongqing(pid, w, h):
 
     if datetime.now().hour.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
+        # [x] 时段奖励
         time_reward()
-        phone.stop_app(pid, 'packages')
+        phone.stop_app(pid, packages['zhongqing'])
 
 
 # noinspection PyUnusedLocal
@@ -508,7 +510,7 @@ def taobao(pid, w, h):
     # 天天赚特币
     if datetime.now().hour % 4 == 0:
         # 1. 打开淘宝
-        checkin.toutiao(pid)
+        checkin.taobao(pid)
         # 2. 点击天天赚特币
         input.tap(pid, w / 2, 2.4 * h / HEIGHT, 10)
         # 3. 收取特币
@@ -524,7 +526,7 @@ def shuabao(pid, w, h):
     # [x] 看福利视频
     if datetime.now().hour > 13:
         # 1. 打开刷宝
-        checkin.shuqi(pid, w, h)
+        checkin.shuabao(pid, w, h)
         # 2. 点击福利
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
         # 3. 播放30s
@@ -553,14 +555,12 @@ def qutoutiao(pid, w, h):
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
         # 2. 播放广告30s
         time.sleep(30)
-        # 3. 关闭趣头条
-        phone.stop_app(pid, packages['qutoutiao'])
 
-    # [x] 开宝箱
     if datetime.now().hour % 2 == 0:
         # 打开趣头条
         checkin.qutoutiao(pid)
         benefit_page()
+        # [x] 开宝箱
         open_treasure()
         # 关闭趣头条
         phone.stop_app(pid, packages['qutoutiao'])

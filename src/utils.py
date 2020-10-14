@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from random import randrange
 
-from src import schedule, checkin, phone, app
+from src import schedule, checkin, phone, app, info
 from src.info import apps, activities, packages, SCHEDULE_TIME
 
 
@@ -19,21 +19,22 @@ def schedule_apps(pid, w, h):
     第1次半个小时，其余的时间用来看视频
     第2次做重要的任务
     """
-    minute = datetime.now().minute
-    if minute < SCHEDULE_TIME:
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         print('第1次做程序的定时任务 ' + datetime.now().__str__())
         for a in apps:
             getattr(schedule, a)(pid, w, h)
 
-        # 1. 打开程序
-        checkin.kuaishou(pid)
+        def watch_kuaishou_video():
+            print('看快手视频 ' + datetime.now().__str__())
+            # 进入快手
+            checkin.kuaishou(pid)
+            # 从下往上翻页
+            while datetime.now().minute < SCHEDULE_TIME:
+                phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+            # 退出快手
+            phone.stop_app(pid, packages['kuaishou'])
 
-        # 2. 不停地从下往上翻页
-        while datetime.now().minute < SCHEDULE_TIME:
-            phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
-
-        # 3. 关闭程序
-        phone.stop_app(pid, packages['kuaishou'])
+        watch_kuaishou_video()
 
     print('第2次做程序的定时任务 ' + datetime.now().__str__())
     for a in apps:

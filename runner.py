@@ -180,9 +180,7 @@ def run(pid):
             phone.stop_app(pid, packages['huoshan'])
 
             # [x] 看火山视频
-            start = datetime.now()
             app.full_watch_huoshan_video(pid, w, h, hour=4)
-            info.watch_huoshan_minutes += (datetime.now() - start).seconds / 60
 
             utils.tail_work(pid, w, h, hour=4)
 
@@ -200,7 +198,7 @@ def run(pid):
             phone.stop_app(pid, packages['jingdong'])
 
             # [x] 逛活动赚金币
-            print('京东逛活动赚金币 ')
+            print('京东逛活动赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 逛活动赚金币
@@ -210,13 +208,7 @@ def run(pid):
             phone.stop_app(pid, packages['jingdong'])
 
             # [x] 看视频赚金币
-            print('京东看视频赚金币 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.jingdong(pid, w, h)
-            # 2. 看视频赚金币
-            app.jingdong_video_coin(pid, w, h, hour=5)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['jingdong'])
+            app.full_jingdong_video_coin(pid, w, h, hour=5)
 
             utils.tail_work(pid, w, h, hour=5)
 
@@ -372,6 +364,9 @@ def run(pid):
             # 2. 关闭程序
             phone.stop_app(pid, packages['pinduoduo'])
 
+            # [x] 京东看视频赚金币
+            app.full_jingdong_video_coin(pid, w, h, hour=14)
+
             utils.tail_work(pid, w, h, hour=14)
 
         while datetime.now().hour.__eq__(15):
@@ -383,6 +378,9 @@ def run(pid):
             checkin.taobao(pid)
             # 2. 关闭程序
             phone.stop_app(pid, packages['taobao'])
+
+            # [x] 京东看视频赚金币
+            app.full_jingdong_video_coin(pid, w, h, hour=5)
 
             utils.tail_work(pid, w, h, hour=15)
 
