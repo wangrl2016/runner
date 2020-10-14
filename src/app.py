@@ -164,8 +164,6 @@ def fanqie_video_coin(pid, w, h, num=10):
         # 3. 播放30s
         time.sleep(30)
         # 4. 点击关闭返回上级页面
-        # 无法同归回退返回
-        # 返回福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
