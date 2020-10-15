@@ -113,14 +113,12 @@ def watch_huoshan_video(pid, w, h, hour=4):
 
 def full_watch_huoshan_video(pid, w, h, hour):
     print('看火山视频 ' + datetime.now().__str__())
-    start = datetime.now()
     # 1. 打开程序
     checkin.huoshan(pid)
     # 2. 看火山视频
     watch_huoshan_video(pid, w, h, hour)
     # 3. 关闭程序
     phone.stop_app(pid, packages['huoshan'])
-    info.watch_huoshan_minutes += (datetime.now() - start).seconds / 60
 
 
 def huoshan_money_tree(pid, w, h):

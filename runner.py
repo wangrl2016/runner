@@ -466,10 +466,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=23)
 
-            # 当天运行信息输出
-            print('huoshan ' + info.watch_huoshan_minutes.__str__())
-            info.watch_huoshan_minutes = 0
-
 
 def main(args):
     # 获取设备号
