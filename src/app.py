@@ -212,7 +212,7 @@ def fanqie_video_coin(pid, w, h, num=10):
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
-def read_fanqie_novel(pid, w, h, hour=6):
+def read_fanqie_novel(pid, w, h, hour):
     """
     阅读番茄小说
     """
@@ -233,9 +233,7 @@ def fanchang_video_coin(pid, w, h, num):
         input.tap(pid, w / 2, 9.0 * h / HEIGHT)
         # 3. 播放30s
         time.sleep(30)
-        # 4. 点击关闭返回上级页面
-        # 无法同归回退返回
-        # 返回福利页面
+        # 4. 点击返回到福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 

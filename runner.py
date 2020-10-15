@@ -224,11 +224,13 @@ def run(pid):
             phone.sleep_to_weak(pid, w, h)
 
             # [x] 看视频赚海量金币
+            print("番茄看视频赚海量金币 " + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
             # 2. 看视频赚海量金币
             # 10次
             # 每次30s
+            # 如果全部做完会打乱顺序
             app.fanqie_video_coin(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanqie'])
@@ -248,6 +250,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看视频赚海量金币
+            print("番畅看视频赚海量金币 " + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
             # 2. 看视频赚海量金币
@@ -387,7 +390,7 @@ def run(pid):
             phone.stop_app(pid, packages['taobao'])
 
             # [x] 京东看视频赚金币
-            app.full_jingdong_video_coin(pid, w, h, hour=5)
+            app.full_jingdong_video_coin(pid, w, h, hour=15)
 
             utils.tail_work(pid, w, h, hour=15)
 

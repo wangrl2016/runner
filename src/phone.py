@@ -137,7 +137,7 @@ def list_packages(pid, gap=1):
     return p.stdout
 
 
-def power(pid, gap=1):
+def power(pid, gap=5):
     """
     关闭或者点亮屏幕
     """
