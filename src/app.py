@@ -11,6 +11,7 @@ def read_toutiao_article(pid, w, h, num):
     """
     阅读今日头条文章
     """
+    print('阅读头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
         phone.swipe_down_to_up(pid, w, h)
@@ -27,6 +28,7 @@ def toutiao_video(pid, w, h, num):
     """
     看头条视频
     """
+    print('看今日头条视频 ' + datetime.now().__str__())
     # 1. 点击下方视频按钮
     input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
@@ -64,6 +66,7 @@ def kuaishou_reward_task(pid, w, h, num):
     """
     1000金币悬赏任务
     """
+    print('快手1000金币悬赏任务 ' + datetime.now().__str__())
     # 1. 点击左上角菜单栏
     input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
     # 2. 点击去赚钱
@@ -124,6 +127,7 @@ def huoshan_money_tree(pid, w, h):
     """
     摇钱树
     """
+    print('火山摇钱树 ' + datetime.now().__str__())
     # 1. 点击红包
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击摇钱树
@@ -141,6 +145,7 @@ def jingdong_good(pid, w, h, sec):
     """
     逛商品赚金币
     """
+    print('京东逛商品赚金币 ' + datetime.now().__str__())
     # 1. 点击赚钱
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击逛商品赚金币
@@ -159,6 +164,7 @@ def jingdong_activity(pid, w, h, sec):
     """
     逛活动赚金币
     """
+    print('京东逛活动赚金币 ' + datetime.now().__str__())
     # 1. 点击赚钱
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击逛活动赚金币
@@ -201,6 +207,7 @@ def full_jingdong_video_coin(pid, w, h, hour):
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
 def fanqie_video_coin(pid, w, h, num=10):
+    print("番茄看视频赚海量金币 " + datetime.now().__str__())
     # 1. 点击中间福利按钮
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
@@ -216,6 +223,7 @@ def read_fanqie_novel(pid, w, h, hour):
     """
     阅读番茄小说
     """
+    print('阅读番茄小说 ' + datetime.now().__str__())
     # 1. 点击主页任意一本书
     input.tap(pid, w / 3, h / 2)
     # 2. 向左滑动开始阅读
@@ -226,6 +234,7 @@ def read_fanqie_novel(pid, w, h, hour):
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
 def fanchang_video_coin(pid, w, h, num):
+    print("番畅看视频赚海量金币 " + datetime.now().__str__())
     # 1. 点击福利按钮
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
@@ -241,6 +250,7 @@ def listen_fanchang_sound(pid, w, h, sec=300):
     """
     听番畅音频
     """
+    print('听番畅音频 ' + datetime.now().__str__())
     for i in range(0, 2):
         # 1. 点击收听按钮
         input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, 15)  # <= modify
@@ -291,6 +301,7 @@ def read_shuqi_novel(pid, w, h, sec=300):
     """
     阅读书旗小说
     """
+    print('阅读书旗小说 ' + datetime.now().__str__())
     # 1. 点击今日必读
     input.tap(pid, w / 2, h / 2)
     # 2. 点击开始阅读
@@ -310,6 +321,7 @@ def shuqi_video_coin(pid, w, h, num):
     """
     看视频赚金币
     """
+    print('书旗看视频赚金币 ' + datetime.now().__str__())
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 看num次视频
@@ -341,6 +353,7 @@ def watch_yingke_live(pid, w, h, sec=300):
     """
     看映客直播
     """
+    print('看映客直播 ' + datetime.now().__str__())
     # 1. 点击任意直播间
     input.tap(pid, w / 3, h / 3)
     # 2. 看直播
@@ -353,6 +366,7 @@ def listen_kugou_music(pid, w, h, sec=300):
     """
     听酷狗音乐
     """
+    print('听酷狗音乐 ' + datetime.now().__str__())
     # 1. 点击中间下方进入播放页面
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击播放
@@ -367,6 +381,7 @@ def read_huitoutiao_article(pid, w, h, num):
     """
     阅读惠头条文章
     """
+    print('阅读惠头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
         phone.swipe_down_to_up(pid, w, h)
@@ -385,6 +400,7 @@ def read_zhongqing_article(pid, w, h, num):
     """
     阅读中青看点文章
     """
+    print('阅读中青看点文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
         phone.swipe_down_to_up(pid, w, h)
@@ -406,6 +422,7 @@ def watch_shuabao_video(pid, w, h, hour):
     """
     看刷宝视频
     """
+    print('看刷宝视频 ' + datetime.now().__str__())
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
@@ -463,6 +480,7 @@ def listen_ximalaya_sound(pid, w, h, sec=300):
     """
     收听喜马拉雅音频
     """
+    print('听喜马拉雅音频 ' + datetime.now().__str__())
     # 1. 点击中间的播放按钮
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 收听
@@ -473,6 +491,7 @@ def listen_ximalaya_sound(pid, w, h, sec=300):
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
 def watch_douhuo_video(pid, w, h, sec=300):
+    print('看抖音火山视频 ' + datetime.now().__str__())
     start = datetime.now()
     while (datetime.now() - start).seconds < sec:
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))

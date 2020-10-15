@@ -20,7 +20,7 @@ def schedule_apps(pid, w, h):
     第2次做重要的任务
     """
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        print('第1次做程序的定时任务 ' + datetime.now().__str__())
+        print('第1次定时任务 ' + datetime.now().__str__())
         for a in apps:
             getattr(schedule, a)(pid, w, h)
 
@@ -36,7 +36,7 @@ def schedule_apps(pid, w, h):
 
         watch_kuaishou_video()
 
-    print('第2次做程序的定时任务 ' + datetime.now().__str__())
+    print('第2次定时任务 ' + datetime.now().__str__())
     for a in apps:
         getattr(schedule, a)(pid, w, h)
 

@@ -128,7 +128,6 @@ def run(pid):
 
             # [x] 阅读今日头条文章
             # 花费5分钟
-            print('阅读头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 阅读今日头条文章
@@ -137,7 +136,6 @@ def run(pid):
             phone.stop_app(pid, packages['toutiao'])
 
             # [x] 看视频
-            print('看今日头条视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.toutiao(pid)
             # 2. 看视频
@@ -153,7 +151,6 @@ def run(pid):
             app.full_watch_kuaishou_video(pid, w, h, hour=2)
 
             # [x] 1000金币悬赏任务
-            print('快手1000金币悬赏任务 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kuaishou(pid)
             # 2. 悬赏任务做9次
@@ -177,7 +174,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 摇钱树
-            print('火山摇钱树 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.huoshan(pid)
             app.huoshan_money_tree(pid, w, h)
@@ -193,7 +189,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 逛商品赚金币
-            print('京东逛商品赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 逛商品赚金币
@@ -203,7 +198,6 @@ def run(pid):
             phone.stop_app(pid, packages['jingdong'])
 
             # [x] 逛活动赚金币
-            print('京东逛活动赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 逛活动赚金币
@@ -224,7 +218,6 @@ def run(pid):
             phone.sleep_to_weak(pid, w, h)
 
             # [x] 看视频赚海量金币
-            print("番茄看视频赚海量金币 " + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
             # 2. 看视频赚海量金币
@@ -236,7 +229,6 @@ def run(pid):
             phone.stop_app(pid, packages['fanqie'])
 
             # [x] 阅读番茄小说
-            print('阅读番茄小说 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
             # 2. 阅读番茄小说
@@ -250,7 +242,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看视频赚海量金币
-            print("番畅看视频赚海量金币 " + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
             # 2. 看视频赚海量金币
@@ -262,7 +253,6 @@ def run(pid):
             phone.stop_app(pid, packages['fanchang'])
 
             # [x] 听番畅音频
-            print('听番畅音频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
             # 2. 听番畅音频120s
@@ -284,7 +274,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看视频赚金币
-            print('书旗看视频赚金币 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.shuqi(pid, w, h)
             # 2. 看视频赚金币
@@ -295,7 +284,6 @@ def run(pid):
             phone.stop_app(pid, packages['shuqi'])
 
             # [x] 阅读书旗小说
-            print('阅读书旗小说 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.shuqi(pid, w, h)
             # 2. 阅读书旗小说
@@ -309,7 +297,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看映客直播
-            print('看映客直播 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.yingke(pid, w, h)
             # 2. 看映客直播
@@ -323,7 +310,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 听酷狗音乐
-            print('听酷狗音乐 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.kugou(pid, w, h)
             # 2. 听酷狗音乐
@@ -340,7 +326,6 @@ def run(pid):
             phone.sleep_to_weak(pid, w, h, gap=300)
 
             # [x] 阅读惠头条文章
-            print('阅读惠头条文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.huitoutiao(pid)
             # 2. 阅读惠头条文章
@@ -354,7 +339,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 阅读中青看点文章
-            print('阅读中青看点文章 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.zhongqing(pid, w, h)
             # 2. 阅读中青看点文章
@@ -368,7 +352,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # 拼多多
-            print('拼多多 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.pinduoduo(pid, w, h)
             # 2. 关闭程序
@@ -383,7 +366,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # 淘宝
-            print('淘宝 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.taobao(pid)
             # 2. 关闭程序
@@ -398,7 +380,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看刷宝视频
-            print('看刷宝视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.shuabao(pid)
             # 2. 看刷宝视频
@@ -423,7 +404,6 @@ def run(pid):
 
             # [x] 好看视频
             # 花费8分钟
-            print('百度好看视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.baidu(pid)
             # 2. 看好看视频
@@ -447,7 +427,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 听喜马拉雅音频
-            print('听喜马拉雅音频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.ximalaya(pid)
             # 2. 听喜马拉雅音频
@@ -461,7 +440,6 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # [x] 看抖音火山视频
-            print('看抖音火山视频 ' + datetime.now().__str__())
             # 1. 打开程序
             checkin.douhuo(pid)
             app.watch_douhuo_video(pid, w, h, sec=300)
