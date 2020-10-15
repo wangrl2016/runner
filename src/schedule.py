@@ -304,6 +304,7 @@ def fanqie(pid, w, h):
         # 1. 点击中间下方的福利
         input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
+    # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱得金币
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)  # <= modify
@@ -390,9 +391,7 @@ def shuqi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yingke(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
+    # 进入福利页面
     def benefit_page():
         # 1. 点击下面的横幅
         input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
@@ -415,7 +414,7 @@ def yingke(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(12):
         # 进入福利页面
         checkin.yingke(pid, w, h)
         benefit_page()
@@ -423,12 +422,10 @@ def yingke(pid, w, h):
         # [x] 看福利视频
         # 可以看10次
         # 后续奖励金更多
-        if datetime.now().hour.__lt__(13):
-            benefit_video()
+        benefit_video()
         # [x] 开宝箱
         # 次数未知
-        if datetime.now().hour.__ge__(11):
-            open_treasure()
+        open_treasure()
 
         # 关闭映客
         phone.stop_app(pid, packages['yingke'])
@@ -436,32 +433,30 @@ def yingke(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kugou(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
+    # 进入福利页面
     def benefit_page():
         # 1. 点击赚钱
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)  # <= modify
 
     # 刷创意视频
     def creative_video():
         # 1. 点击去赚钱
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
         # 2. 播放35s
         # 包含等待弹出关闭界面
         time.sleep(35)
         # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
         # 4. 再次回退消除奖励页面
         phone.go_back(pid)
 
-    # [x] 刷创意视频
-    # 定时任务
-    if datetime.now().hour.__gt__(3):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
         # 进入程序
         checkin.kugou(pid, w, h)
         benefit_page()
 
+        # [x] 刷创意视频
+        # 总共20次定时任务
         creative_video()
 
         # 关闭程序
@@ -548,7 +543,7 @@ def taobao(pid, w, h):
 def shuabao(pid, w, h):
     def benefit_page():
         # 1. 点击福利
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <= modify
+        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
         # 2. 回退关闭悬浮窗？
         phone.go_back(pid)
 
@@ -559,7 +554,7 @@ def shuabao(pid, w, h):
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击关闭
-        input.tap(pid, (WIDTH - 0.7) * w, 1.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
     if datetime.now().minute < SCHEDULE_TIME and datetime.now().hour.__gt__(13):
         # 1. 打开刷宝
