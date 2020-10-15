@@ -20,6 +20,7 @@ apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'shuqi', 'yingke', 'kugou', 'huitoutiao',
         'zhongqing', 'pinduoduo', 'taobao', 'shuabao',
         'qutoutiao', 'baidu', 'ximalaya', 'douhuo',
+        'kuge',
         ]
 
 # 程序对应的包名
@@ -44,6 +45,7 @@ packages = {
     apps[17]: 'com.baidu.searchbox.lite',
     apps[18]: 'com.ximalaya.ting.lite',
     apps[19]: 'com.ss.android.ugc.live',
+    apps[20]: 'com.kugou.android.child',
 }
 
 activities = {
@@ -67,6 +69,7 @@ activities = {
     apps[17]: 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     apps[18]: 'com.ximalaya.ting.lite/com.ximalaya.ting.android.host.activity.MainActivity',
     apps[19]: 'com.ss.android.ugc.live/.main.MainActivity',
+    apps[20]: 'com.kugou.android.child/com.kugou.android.app.MediaActivity',
 }
 
 product_brands = ['vivo', ]

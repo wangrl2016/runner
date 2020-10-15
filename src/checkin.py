@@ -172,3 +172,7 @@ def douhuo(pid, gap=15):
     # 2. 启动程序
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def kuge(pid, gap=15):
+    return None

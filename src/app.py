@@ -425,6 +425,15 @@ def watch_shuabao_video(pid, w, h, hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
 
 
+def shuabao_video(pid, w, h, num):
+    """
+    以次数来看刷宝视频
+    """
+    print('看刷宝视频 ' + datetime.now().__str__())
+    for i in range(0, num):
+        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+
+
 # ~~~~~~~~~~趣头条~~~~~~~~~~
 def watch_qutoutiao_svideo(pid, w, h, hour):
     """
@@ -491,5 +500,8 @@ def listen_ximalaya_sound(pid, w, h, sec=300):
 def watch_douhuo_video(pid, w, h, sec=300):
     print('看抖音火山视频 ' + datetime.now().__str__())
     start = datetime.now()
+    # 1. 点击进入视频播放界面
+    input.tap(pid, w / 3, h / 3)
+    # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h / 2, randrange(9, 16))

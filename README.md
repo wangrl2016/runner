@@ -163,3 +163,9 @@ pip install pytesseract
 // 安装中文识别字库
 sudo mv chi_sim.traineddata /usr/share/tesseract-ocr/4.00/tessdata/
 ```
+
+2. 安装tkinter图形界面
+
+```
+apt install python3-tk
+```

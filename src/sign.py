@@ -208,5 +208,11 @@ def ximalaya(pid, w, h):
     time.sleep(30)
 
 
+# noinspection PyUnusedLocal
 def douhuo(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def kuge(pid, w, h):
     return None

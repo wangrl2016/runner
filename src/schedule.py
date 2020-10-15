@@ -141,7 +141,7 @@ def douyin(pid, w, h):
     # 限时任务赚金币
     def limit_duty():
         # 1. 点击去领取
-        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 11.0 * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 9.5 * h / HEIGHT)  # <= modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 返回上级页面
@@ -165,10 +165,10 @@ def douyin(pid, w, h):
         # 1. 下滑到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击睡觉赚金币
-        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)  # <= modify
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)
         # 4. 返回到回到福利页面
         phone.go_back(pid)
         # 5. 滑到最上面
@@ -201,7 +201,6 @@ def douyin(pid, w, h):
         # [x] 开宝箱得金币
         # 每20分钟一次
         open_treasure()
-
         # [x] 限时任务赚金币
         # 每20分钟一次
         limit_duty()
@@ -224,7 +223,6 @@ def douyin(pid, w, h):
     else:
         # 开宝箱得金币
         open_treasure()
-
         # 限时任务赚金币
         limit_duty()
 
@@ -650,4 +648,9 @@ def ximalaya(pid, w, h):
 
 # noinspection PyUnusedLocal
 def douhuo(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def kuge(pid, w, h):
     return None

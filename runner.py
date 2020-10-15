@@ -2,17 +2,18 @@
 
 import argparse
 import os
-from datetime import datetime
 import signal
 import sys
 import threading
+from datetime import datetime
+
+from src import phone, checkin, sign, app, utils
+from src.info import packages, apps, high_serials
+from src.utils import tap_start, schedule_apps
+
 # import pytesseract
 # from PIL import Image
 # from pytesseract import Output
-
-from src import phone, checkin, sign, app, utils, info
-from src.info import packages, apps, high_serials
-from src.utils import tap_start, schedule_apps
 
 MAX_PHOTOS_STORE = 50
 
@@ -383,7 +384,7 @@ def run(pid):
             # 1. 打开程序
             checkin.shuabao(pid)
             # 2. 看刷宝视频
-            app.watch_shuabao_video(pid, w, h, hour=16)
+            app.shuabao_video(pid, w, h, num=10)
             # 3. 关闭程序
             phone.stop_app(pid, packages['shuabao'])
 
@@ -476,6 +477,9 @@ def main(args):
     else:
         devices = phone.get_devices()
     print(devices)
+
+    # 创建图像界面
+    #
 
     # 为每部设备创建单独的线程运行
     threads = []
