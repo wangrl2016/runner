@@ -510,9 +510,11 @@ def pinduoduo(pid, w, h):
 
     def timed_envelope():
         # 1. 点击现金签到
-        input.tap(pid, w / 2, 5.4 * h / HEIGHT)
+        input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
         # 2. 点击定时红包
-        input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)
+        input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)  # <= modify
+        # 3. 点击开
+        input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if (datetime.now().hour % 5).__eq__(0):

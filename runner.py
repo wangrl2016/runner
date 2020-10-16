@@ -346,10 +346,12 @@ def run(pid):
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
 
-            # 拼多多
+            # [x] 逛街得现金
             # 1. 打开程序
             checkin.pinduoduo(pid, w, h)
-            # 2. 关闭程序
+            # 2. 逛街得现金
+            app.pinduoduo_street_money(pid, w, h)
+            # 3. 关闭程序
             phone.stop_app(pid, packages['pinduoduo'])
 
             # [x] 京东看视频赚金币

@@ -412,6 +412,18 @@ def read_zhongqing_article(pid, w, h, num):
 
 
 # ~~~~~~~~~~拼多多~~~~~~~~~~
+def pinduoduo_street_money(pid, w, h):
+    """
+    拼多多逛街得现金
+    """
+    # 1. 点击现金签到
+    input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
+    # 2. 点击定时红包
+    input.tap(pid, 2.5 * w / WIDTH, 5.0 * h / HEIGHT, gap=8)  # <= modify
+    # 3. 浏览商品60s
+    for i in range(0, 20):
+        phone.swipe_down_to_up(pid, w, h, gap=3)
+
 
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
