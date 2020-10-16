@@ -215,4 +215,10 @@ def douhuo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuge(pid, w, h):
-    return None
+    # 1. 点击赚钱
+    input.tap(pid, 4.7 * w / WIDTH, 1.2 * h / HEIGHT)
+    # 点击签到
+    # 位置未知
+    # 签到成功
+    for i in range(0, 7):
+        input.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT)

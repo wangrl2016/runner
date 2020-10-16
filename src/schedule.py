@@ -600,6 +600,7 @@ def qutoutiao(pid, w, h):
         # 关闭趣头条
         phone.stop_app(pid, packages['qutoutiao'])
 
+    # 睡觉赚钱
     def sleep_money(is_sleep):
         # 1. 点击睡觉赚金币
         input.tap(pid, w / 2, 2.0 * h / HEIGHT)
@@ -608,6 +609,12 @@ def qutoutiao(pid, w, h):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
         # 3. 返回到回到福利页面
         phone.go_back(pid)
+
+    def full_sleep_money(is_sleep):
+        checkin.qutoutiao(pid)
+        benefit_page()
+        sleep_money(is_sleep)
+        phone.stop_app(pid, packages['qutoutiao'])
 
     # [x] 开宝箱
     # 每个小时一次
@@ -633,13 +640,10 @@ def qutoutiao(pid, w, h):
     # [x] 睡觉赚金币
     # 20:00-08:00为睡觉时间
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.qutoutiao(pid)
-        benefit_page()
         if datetime.now().hour.__eq__(20):
-            sleep_money(False)
+            full_sleep_money(False)
         elif datetime.now().hour.__eq__(9):
-            sleep_money(True)
-        phone.stop_app(pid, packages['qutoutiao'])
+            full_sleep_money(True)
 
 
 # noinspection PyUnusedLocal
