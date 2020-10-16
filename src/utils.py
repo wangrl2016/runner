@@ -24,17 +24,19 @@ def schedule_apps(pid, w, h):
         for a in apps:
             getattr(schedule, a)(pid, w, h)
 
-        def watch_kuaishou_video():
-            print('看快手视频 ' + datetime.now().__str__())
-            # 进入快手
-            checkin.kuaishou(pid)
-            # 从下往上翻页
-            while datetime.now().minute < SCHEDULE_TIME:
-                phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
-            # 退出快手
-            phone.stop_app(pid, packages['kuaishou'])
+    if (datetime.now().hour % 7).__eq__(0):
+        # 手机休息5分钟
+        phone.sleep_to_weak(pid, w, h, gap=300)
 
-        watch_kuaishou_video()
+    def watch_kuaishou_video():
+        print('看快手视频 ' + datetime.now().__str__())
+        checkin.kuaishou(pid)
+        # 从下往上翻页
+        while datetime.now().minute < SCHEDULE_TIME:
+            phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.stop_app(pid, packages['kuaishou'])
+
+    watch_kuaishou_video()
 
     print('第2次定时任务 ' + datetime.now().__str__())
     for a in apps:

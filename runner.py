@@ -250,9 +250,6 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
 
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
-
             # [x] 听番畅音频
             # 1. 打开程序
             checkin.fanchang(pid, w, h)
@@ -322,9 +319,6 @@ def run(pid):
 
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
-
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h, gap=300)
 
             # [x] 阅读惠头条文章
             # 1. 打开程序
@@ -401,8 +395,6 @@ def run(pid):
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
-            phone.sleep_to_weak(pid, w, h, gap=300)
-
             # [x] 好看视频
             # 花费8分钟
             # 1. 打开程序
@@ -461,9 +453,6 @@ def run(pid):
 
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
-
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
 
             utils.tail_work(pid, w, h, hour=23)
 

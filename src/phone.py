@@ -137,6 +137,42 @@ def list_packages(pid, gap=1):
     return p.stdout
 
 
+def display_on(pid):
+    """
+    屏幕是否处于唤醒状态
+    默认处于唤醒状态
+    """
+    p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'power'],
+                       check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    time.sleep(1)
+    for line in p.stdout.split('\n'):
+        if line.__contains__('Display Power'):
+            if line.__contains__('OFF'):
+                return False
+    return True
+
+
+def wakeup(pid, gap=3):
+    """
+    和KEYCODE_POWER表现一致
+    但是如果屏幕是唤醒状态该操作没有效果
+    """
+    print("唤醒屏幕 " + datetime.now().__str__())
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_WAKEUP'])
+    time.sleep(gap)
+
+
+def sleep(pid, gap=3):
+    """
+    和KEYCODE_POWER表现一致
+    但是如果屏幕是熄灭状态该操作没有效果
+    """
+    print("关闭屏幕 " + datetime.now().__str__())
+    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_SLEEP'])
+    time.sleep(gap)
+
+
 def power(pid, gap=3):
     """
     关闭或者点亮屏幕
@@ -162,11 +198,10 @@ def sleep_to_weak(pid, w, h, gap=300):
     """
     手机休息到唤醒
     """
-    print('手机休息时间 ' + datetime.now().__str__())
-    power(pid)
+    sleep(pid, 3)
     time.sleep(gap)
-    power(pid)
-    swipe_down_to_up(pid, w, h)
+    wakeup(pid, 3)
+    swipe_down_to_up(pid, w, h, internal=100)
 
 
 def get_size(pid):
