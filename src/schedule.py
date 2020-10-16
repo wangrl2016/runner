@@ -568,9 +568,6 @@ def shuabao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
     # 进入任务页面
     def benefit_page():
         # 2. 点击任务
@@ -581,8 +578,18 @@ def qutoutiao(pid, w, h):
         # 1. 点击宝箱
         # 宝箱位置会变动？
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
-        # 2. 播放广告30s
-        time.sleep(30)
+        # 2. 播放广告45s
+        time.sleep(45)
+        # 3. 回退到福利页面
+        phone.go_back(pid, times=2)
+
+    def video_coin():
+        # 1. 点击看广告视频拿金币
+        input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)
+        # 2. 播放45s
+        time.sleep(45)
+        # 3. 回退到福利页面
+        phone.go_back(pid, times=2)
 
     def full_open_treasure():
         # 打开趣头条
@@ -608,6 +615,18 @@ def qutoutiao(pid, w, h):
     # 2, 5, 8开下半时段
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
         full_open_treasure()
+
+        # [x] 看广告视频拿金币
+        # 每天可以看六次
+        if datetime.now().hour.__gt__(6):
+            # 进入趣头条
+            checkin.qutoutiao(pid)
+            benefit_page()
+            # [x] 看趣头条拿金币
+            video_coin()
+            # 退出趣头条
+            phone.stop_app(pid, packages['qutoutiao'])
+
     elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
         full_open_treasure()
 

@@ -380,7 +380,7 @@ def run(pid):
             # 1. 打开程序
             checkin.shuabao(pid)
             # 2. 看刷宝视频
-            app.shuabao_video(pid, w, h, num=10)
+            app.shuabao_video(pid, w, h, num=50)
             # 3. 关闭程序
             phone.stop_app(pid, packages['shuabao'])
 
