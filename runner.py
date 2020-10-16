@@ -215,9 +215,6 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
-            # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h)
-
             # [x] 看视频赚海量金币
             # 1. 打开程序
             checkin.fanqie(pid, w, h)
@@ -252,6 +249,9 @@ def run(pid):
             app.fanchang_video_coin(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
+
+            # 手机休息5分钟
+            phone.sleep_to_weak(pid, w, h)
 
             # [x] 听番畅音频
             # 1. 打开程序
