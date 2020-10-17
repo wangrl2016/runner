@@ -246,35 +246,6 @@ def fanchang_video_coin(pid, w, h, num):
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
-def listen_fanchang_sound(pid, w, h, sec=300):
-    """
-    听番畅音频
-    """
-    print('听番畅音频 ' + datetime.now().__str__())
-    for i in range(0, 2):
-        # 1. 点击收听按钮
-        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, 15)  # <= modify
-        # 返回上级页面消除可能存在的悬浮窗
-        if i.__eq__(0):
-            # 2. 返回上级页面
-            phone.go_back(pid, 2)
-    # 3. 收听番畅音频
-    time.sleep(sec)
-    # 4. 领取奖励
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.5 * h / HEIGHT)  # <= modify
-
-    # 分多次领取
-    for i in range(0, 2):
-        # 5. 点击领红包
-        input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
-        # 6. 点击看视频再领金币
-        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-        # 7. 播放30s
-        time.sleep(30)
-        # 8. 关闭广告
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT)
-
-
 # ~~~~~~~~~~微视~~~~~~~~~~
 
 def watch_weishi_video(pid, w, h, hour=8):
@@ -506,17 +477,6 @@ def watch_baidu_svideo(pid, w, h, hour):
 
 
 # ~~~~~~~~~~喜马拉雅~~~~~~~~~~
-def listen_ximalaya_sound(pid, w, h, sec=300):
-    """
-    收听喜马拉雅音频
-    """
-    print('听喜马拉雅音频 ' + datetime.now().__str__())
-    # 1. 点击中间的播放按钮
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 收听
-    time.sleep(sec)
-    # 3. 点击气泡进行收集
-    input.tap(pid, 0.7 * w / WIDTH, 3.5 * h / HEIGHT)  # <= modify
 
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~

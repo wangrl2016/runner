@@ -250,14 +250,6 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['fanchang'])
 
-            # [x] 听番畅音频
-            # 1. 打开程序
-            checkin.fanchang(pid, w, h)
-            # 2. 听番畅音频120s
-            app.listen_fanchang_sound(pid, w, h, sec=120)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['fanchang'])
-
             utils.tail_work(pid, w, h, hour=7)
 
         while datetime.now().hour.__eq__(8):
@@ -421,14 +413,6 @@ def run(pid):
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
-            # [x] 听喜马拉雅音频
-            # 1. 打开程序
-            checkin.ximalaya(pid)
-            # 2. 听喜马拉雅音频
-            app.listen_ximalaya_sound(pid, w, h, sec=300)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['ximalaya'])
-
             utils.tail_work(pid, w, h, hour=19)
 
         while datetime.now().hour.__eq__(20):
@@ -437,7 +421,7 @@ def run(pid):
             # [x] 看抖音火山视频
             # 1. 打开程序
             checkin.douhuo(pid)
-            app.watch_douhuo_video(pid, w, h, sec=300)
+            app.watch_douhuo_video(pid, w, h, sec=1200)
             # 3. 关闭程序
             phone.stop_app(pid, packages['douhuo'])
 

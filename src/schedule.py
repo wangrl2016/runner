@@ -750,7 +750,6 @@ def qutoutiao(pid, w, h):
             full_sleep_money(True)
 
 
-# noinspection PyUnusedLocal
 def baidu(pid, w, h):
     def benefit_page():
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
@@ -771,8 +770,37 @@ def baidu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def ximalaya(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
+    def listen_sound():
+        # 1. 点击收听
+        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+        # 2. 点击收金币
+        # 在收金币界面
+        input.tap(pid, 3.8 * w / WIDTH, 1.0 * h / HEIGHT)
+
+    def collect_coin():
+        # 1. 点击取金币
+        input.tap(pid, 0.7 * w / WIDTH, 3.5 * h / HEIGHT)
+        # 2. 看视频超级翻倍
+        input.tap(pid, w / 2, 8.9 * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回到播放收金币页面
+        # 第1次退出广告页面
+        # 第2次退出翻倍成功页面
+        phone.go_back(pid, times=2)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(12):
+            checkin.ximalaya(pid)
+            # [x] 收听喜马拉雅
+            listen_sound()
+            phone.go_home(pid)
+        elif datetime.now().hour.__gt__(12) and datetime.now().hour.__lt__(16):
+            checkin.ximalaya(pid)
+            collect_coin()
+            if datetime.now().hour.__eq__(15):
+                # 关闭喜马拉雅
+                phone.stop_app(pid, 'ximalaya')
 
 
 # noinspection PyUnusedLocal
