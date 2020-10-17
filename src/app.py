@@ -239,7 +239,7 @@ def fanchang_video_coin(pid, w, h, num):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 2. 点击看视频赚海量金币
-        input.tap(pid, w / 2, 9.0 * h / HEIGHT)
+        input.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=8)
         # 3. 播放30s
         time.sleep(30)
         # 4. 点击返回到福利页面
