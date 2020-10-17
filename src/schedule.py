@@ -433,7 +433,47 @@ def fanchang(pid, w, h):
         checkin.fanchang(pid, w, h)
         benefit_page()
         fanchang_open_treasure(pid, w, h)
-        phone.stop_app(pid, packages['fanchang'])
+        # 收听番唱音频时不能退出程序
+        if datetime.now().hour.__gt__(7) and datetime.now().hour.__lt__(12):
+            phone.go_home(pid)
+        else:
+            phone.stop_app(pid, packages['fanchang'])
+
+    # 收听音频
+    def listen_sound():
+        # 1. 点击中间下方的播放界面
+        input.tap(pid, w / 2, (HEIGHT - 0.6) * h / HEIGHT)
+
+    def collect_listen_coin():
+        # 1. 点击中间下方的播放界面
+        listen_sound()
+        # 2. 点击立即领取
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)
+        for i in range(0, 9):
+            # 3. 点击领红包
+            input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
+            # 4. 点击看视频再领金币
+            input.tap(pid, w / 2, 8.3 * h / HEIGHT)
+            # 5. 播放30s
+            time.sleep(30)
+            # 返回到领取界面
+            phone.go_back(pid)
+
+    # [x] 听番茄音频
+    # 08:00-09:00-10:00-11:00-12:00
+    if datetime.now().hour.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(8):
+            checkin.fanqie(pid, w, h)
+            # [x] 收听番唱音频
+            listen_sound()
+            # 回退到程序主页
+            phone.go_back(pid)
+            # 后台播放
+            phone.go_home(pid)
+        elif datetime.now().hour.__eq__(14):
+            checkin.fanqie(pid, w, h)
+            collect_listen_coin()
+            phone.stop_app(pid, packages['fanchang'])
 
     # [x] 开宝箱
     # 每个小时一次
@@ -599,10 +639,8 @@ def pinduoduo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
     # 天天赚特币
-    if datetime.now().hour % 4 == 0:
+    if datetime.now().hour % 4 == 0 and datetime.now().minute.__lt__(SCHEDULE_TIME):
         # 1. 打开淘宝
         checkin.taobao(pid)
         # 2. 点击天天赚特币
