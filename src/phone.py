@@ -201,6 +201,9 @@ def sleep_to_weak(pid, w, h, gap=300):
     sleep(pid, 3)
     time.sleep(gap)
     wakeup(pid, 3)
+    if not display_on(pid):
+        print("尝试再次唤醒手机 " + datetime.now().hour.__str__())
+        wakeup(pid, 3)
     swipe_down_to_up(pid, w, h, internal=100)
 
 

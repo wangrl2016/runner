@@ -36,7 +36,9 @@ def schedule_apps(pid, w, h):
             phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
         phone.stop_app(pid, packages['kuaishou'])
 
-    watch_kuaishou_video()
+    # [x] 看快手视频
+    if datetime.now().minute < SCHEDULE_TIME:
+        watch_kuaishou_video()
 
     print('第2次定时任务 ' + datetime.now().__str__())
     for a in apps:
