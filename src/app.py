@@ -129,14 +129,13 @@ def huoshan_money_tree(pid, w, h):
     摇钱树
     """
     print('火山摇钱树 ' + datetime.now().__str__())
-    # 1. 点击红包
+    # 1. 点击右下方红包
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击摇钱树
     input.tap(pid, w / 3, 5.0 * h / HEIGHT)
     # 3. 摇钱
     input.tap(pid, w / 2, h / 2)
-    # 返回到上级页面
-    # 是任务页面
+    # 返回到任务页面
     phone.go_back(pid)
 
 
@@ -355,10 +354,19 @@ def watch_yingke_live(pid, w, h, sec=300):
     看映客直播
     """
     print('看映客直播 ' + datetime.now().__str__())
-    # 1. 点击任意直播间
+    # 1. 回退消除可能的悬浮窗
+    phone.go_back(pid)
+    # 2. 点击任意直播间
     input.tap(pid, w / 3, h / 3)
-    # 2. 看直播
+    # 3. 看直播
     time.sleep(sec)
+    for i in range(0, 3):
+        # 4. 分享直播间3次
+        input.tap(pid, 1.3 * w / WIDTH, 7.0 * h / HEIGHT)  # <== modify
+        # 5. 选择微信
+        input.tap(pid, 0.9 * w / WIDTH, (HEIGHT - 2.9) * h / HEIGHT)
+        # 6. 返回到直播界面
+        phone.go_back(pid)
 
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~

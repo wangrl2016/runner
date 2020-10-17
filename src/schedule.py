@@ -288,10 +288,6 @@ def huoshan(pid, w, h):
         # 1. 点击红包
         input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
 
-    # 打开火山
-    checkin.huoshan(pid)
-    benefit_page()
-
     # 看视频赚海量金币
     def video_money():
         # 1. 点击看视频赚海量金币
@@ -311,9 +307,28 @@ def huoshan(pid, w, h):
         # 3. 返回到回到福利页面
         phone.go_back(pid)
 
-    # [x] 开宝箱
-    # 每20分钟一次
+    # 晒收入
+    def show_income():
+        # 1. 点击晒收入
+        input.tap(pid, w / 2, (HEIGHT - 3.3) * h / HEIGHT)
+        # 2. 点击微信
+        input.tap(pid, w / 2, 8.3 * h / HEIGHT)
+        for i in range(0, 3):
+            # 3. 点击去粘贴
+            # 进入微信页面
+            input.tap(pid, w / 2, 9.2 * h / HEIGHT, 8)
+            # 4. 返回到火山微信悬浮窗
+            phone.go_back(pid)
+        # 5. 返回到福利页面
+        phone.go_back(pid)
+
+    # 打开火山
+    checkin.huoshan(pid)
+    benefit_page()
+
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        # [x] 开宝箱
+        # 每20分钟一次
         huoshan_open_treasure(pid, w, h)
 
         # [x] 看视频赚海量金币
@@ -325,6 +340,9 @@ def huoshan(pid, w, h):
         # 20点睡觉3点起床收金币
         if datetime.now().hour.__eq__(20):
             sleep_money(False)
+
+            # [x] 晒收入
+            show_income()
         elif datetime.now().hour.__eq__(3):
             sleep_money(True)
     else:
