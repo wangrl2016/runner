@@ -68,16 +68,19 @@ def kuaishou_reward_task(pid, w, h, num):
     """
     print('快手1000金币悬赏任务 ' + datetime.now().__str__())
     # 1. 点击左上角菜单栏
-    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
-    # 2. 点击去赚钱
-    input.tap(pid, w / 2, 7.2 * h / HEIGHT)
+    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <== modify
+    # 2. 向上滑动显示福利按钮
+    phone.swipe_down_to_up(pid, w, h, internal=100)
     for i in range(0, num):
-        # 3. 点击福利
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.6 * h / HEIGHT)
-        # 4播放30s
+        # 3. 点击福利按钮
+        # 位置不定
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.6 * h / HEIGHT)  # <== modify
+        # 4. 播放30s
         time.sleep(30)
         # 5. 返回到福利页面
         phone.go_back(pid)
+    # 3. 恢复福利页面
+    phone.swipe_up_to_down(pid, w, h, internal=100)
 
 
 # ~~~~~~~~~~抖音极速版~~~~~~~~~~

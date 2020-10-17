@@ -134,24 +134,23 @@ def kuaishou(pid, w, h):
     # 每天有次数限制
     def open_treasure():
         # 1. 点击开宝箱得金币
-        input.tap(pid, 5.7 * w / WIDTH, 11.5 * h / HEIGHT)  # <= modify
-        # 2. 返回到上级页面
-        # 是返回到播放视频的页面
-        # 而不是去赚钱页面
+        input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 3.1) * h / HEIGHT)  # <= modify
+        # 2. 返回到播放视频的页面
         phone.go_back(pid)
 
     # [x] 看直播领金币
     def watch_live():
-        # 1. 滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w, h, 3, internal=50)
+        # 1. 向上滑动页面打开看直播领金币
+        phone.swipe_down_to_up(pid, w, h, 3, internal=100)
         for i in range(0, 10):
-            # 2. 点击看直播
+            # 2. 点击看直播按钮
+            # 位置不定
             input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <= modify
             # 3. 观看20s
             time.sleep(20)
             # 4 返回到福利页面
             phone.go_back(pid, gap=5)
-        # 6. 福利页面恢复原样
+        # 5. 福利页面恢复原样
         phone.swipe_up_to_down(pid, w, h, 3, internal=50)
 
     # 每隔一个小时开一次宝箱
@@ -160,10 +159,10 @@ def kuaishou(pid, w, h):
         checkin.kuaishou(pid)
         benefit_page()
 
-        open_treasure()
-
         if datetime.now().hour.__eq__(22):
             watch_live()
+
+        open_treasure()
 
         # 关闭快手
         phone.stop_app(pid, packages['kuaishou'])
