@@ -618,7 +618,7 @@ def shuabao(pid, w, h):
     def benefit_page():
         # 1. 点击福利
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-        # 2. 回退关闭悬浮窗？
+        # 2. 回退关闭悬浮窗
         phone.go_back(pid)
 
     # 看福利视频
@@ -657,14 +657,16 @@ def qutoutiao(pid, w, h):
         # 2. 点击任务
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
+    # 看广告视频拿金币
     def video_coin():
         # 1. 点击看广告视频拿金币
         input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)
         # 2. 播放45s
         time.sleep(45)
         # 3. 回退到福利页面
-        phone.go_back(pid, times=2)
+        phone.go_back(pid)
 
+    # 开宝箱
     def full_open_treasure():
         # 打开趣头条
         checkin.qutoutiao(pid)
@@ -676,13 +678,22 @@ def qutoutiao(pid, w, h):
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
-        # 1. 点击睡觉赚金币
+        # 1. 下滑到最底下
+        phone.swipe_down_to_up(pid, w, h, internal=100)
+        # 2. 点击睡觉赚金币
         input.tap(pid, w / 2, 2.0 * h / HEIGHT)
-        # 2. 点击我要睡了/我睡醒了
+        # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
-        # 3. 返回到回到福利页面
+        # 4. 返回到回到福利页面
         phone.go_back(pid)
+
+        # [x] 摇钱树领金币
+        if datetime.now().hour.__eq__(15):
+            money_tree()
+
+        # 5. 福利页面恢复原样
+        phone.swipe_up_to_down(pid, w, h, internal=100)
 
     def full_sleep_money(is_sleep):
         checkin.qutoutiao(pid)
@@ -690,12 +701,26 @@ def qutoutiao(pid, w, h):
         sleep_money(is_sleep)
         phone.stop_app(pid, packages['qutoutiao'])
 
+    def money_tree():
+        # 1. 点击摇钱树领金币
+        input.tap(pid, w / 2, 4.0 * h / HEIGHT)
+        # 2. 摇5次
+        for i in range(0, 5):
+            # 领金币
+            input.tap(pid, w / 2, 10.6 * h / HEIGHT)
+            # 播放45s
+            time.sleep(45)
+            # 回退到摇钱树页面
+            phone.go_back(pid)
+
     # [x] 开宝箱
     # 每个小时一次
     # 1, 4, 7开上半时段
     # 2, 5, 8开下半时段
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        full_open_treasure()
+        checkin.qutoutiao(pid)
+        benefit_page()
+        qutoutiao_open_treasure(pid, w, h)
 
         # [x] 看广告视频拿金币
         # 每天可以看六次
@@ -705,8 +730,9 @@ def qutoutiao(pid, w, h):
             benefit_page()
             # [x] 看趣头条拿金币
             video_coin()
-            # 退出趣头条
-            phone.stop_app(pid, packages['qutoutiao'])
+
+        # 退出趣头条
+        phone.stop_app(pid, packages['qutoutiao'])
 
     elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
         full_open_treasure()
@@ -717,6 +743,10 @@ def qutoutiao(pid, w, h):
         if datetime.now().hour.__eq__(20):
             full_sleep_money(False)
         elif datetime.now().hour.__eq__(9):
+            full_sleep_money(True)
+        elif datetime.now().hour.__eq__(12):
+            full_sleep_money(False)
+        elif datetime.now().hour.__eq__(15):
             full_sleep_money(True)
 
 

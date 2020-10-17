@@ -225,9 +225,6 @@ def qutoutiao(pid, w, h):
     time.sleep(50)
     # 4. 回退到福利页面
     phone.go_back(pid)
-    # 5. 顺便开宝箱
-    # 回退到福利页面
-    schedule.qutoutiao_open_treasure(pid, w, h)
 
 
 # noinspection PyUnusedLocal
