@@ -499,6 +499,9 @@ def shuqi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yingke(pid, w, h):
+    if pid.__eq__('ce7f96a00307') and datetime.now().hour.__lt__(10):
+        return None
+
     # 进入福利页面
     def benefit_page():
         # 1. 点击下面的横幅
@@ -690,6 +693,9 @@ def qutoutiao_open_treasure(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
+    if pid.__eq__('ce7f96a00307') and datetime.now().hour.__lt__(10):
+        return None
+
     # 进入任务页面
     def benefit_page():
         # 2. 点击任务
