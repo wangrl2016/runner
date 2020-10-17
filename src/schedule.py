@@ -563,8 +563,14 @@ def zhongqing(pid, w, h):
     # 时段奖励
     def time_reward():
         # 1. 点击领取
-        # 有时候没有广告视频
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
+        for i in range(0, 2):
+            # 等待8s悬浮窗消失
+            # 点击看视频奖励
+            input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 返回程序主页
+        phone.go_back(pid)
 
     if datetime.now().hour.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
@@ -575,9 +581,7 @@ def zhongqing(pid, w, h):
 
 # noinspection PyUnusedLocal
 def pinduoduo(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
+    # 定时红包
     def timed_envelope():
         # 1. 点击现金签到
         input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
