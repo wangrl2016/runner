@@ -354,8 +354,7 @@ def huoshan(pid, w, h):
 
 # noinspection PyUnusedLocal
 def jingdong(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
+    return None
 
 
 # 番茄开宝箱
@@ -387,6 +386,10 @@ def fanqie(pid, w, h):
         # 4. 点击微信
         input.tap(pid, 1.0 * w / WIDTH, 9.5 * h / HEIGHT)
 
+    # 可能存在重复加入
+    def add_bookshelf():
+        return None
+
     # 打开番茄
     checkin.fanqie(pid, w, h)
     benefit_page()
@@ -395,9 +398,12 @@ def fanqie(pid, w, h):
     # 每20分钟一次开宝箱任务
     fanqie_open_treasure(pid, w, h)
 
-    if datetime.now().hour.__eq__(22) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # [x] 分享好书给好友
-        book_share()
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(21):
+            add_bookshelf()
+        elif datetime.now().hour.__eq__(22):
+            # [x] 分享好书给好友
+            book_share()
 
     # 关闭番茄
     phone.stop_app(pid, packages['fanqie'])
