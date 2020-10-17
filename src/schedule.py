@@ -181,14 +181,13 @@ def douyin(pid, w, h):
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 9.5 * h / HEIGHT)  # <= modify
         # 2. 播放30s
         time.sleep(30)
-        # 3. 返回上级页面
-        # 是返回到任务页面
+        # 3. 返回福利页面
         phone.go_back(pid)
 
     # 开宝箱得金币
     def open_treasure():
         # 2. 点击开宝箱得金币
-        input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
         # 3. 点击看广告视频再赚金币
         input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
         # 4. 播放30s
@@ -196,13 +195,12 @@ def douyin(pid, w, h):
         # 5. 返回福利页面
         phone.go_back(pid)
 
-    # [x] 睡觉赚钱
-    # 20:00-2:00为睡觉时间
+    # 睡觉赚钱
     def sleep_money(is_sleep):
         # 1. 下滑到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击睡觉赚金币
-        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.5 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 2, 5.5 * h / HEIGHT)  # <== modify
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)
@@ -216,20 +214,24 @@ def douyin(pid, w, h):
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击吃饭补贴
-        input.tap(pid, w * 2 / 3, 10.6 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 2, 10.6 * h / HEIGHT)  # <== modify
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
         # 4. 返回到福利页面
         phone.go_back(pid)
+        # 5. 滑到最上面
+        phone.swipe_up_to_down(pid, w, h, internal=100)
 
     # 游戏抽奖
     def game_lottery():
         # 1. 点击游戏中心
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 5.5 * h / HEIGHT)
-        # 2. 点击抽奖
+        # 2. 点击右下角抽奖
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.2) * h / HEIGHT)
         # 3. 点击开始抽奖
-        input.tap(pid, w / 2, 10.8 * h / HEIGHT)
+        input.tap(pid, w / 2, 10.8 * h / HEIGHT, 8)
+        # 4. 返回到福利页面
+        phone.go_back(pid, 2)
 
     checkin.douyin(pid)
     benefit_page()
@@ -243,6 +245,7 @@ def douyin(pid, w, h):
         limit_duty()
 
         # [x] 睡觉赚金币
+        # 20:00-2:00为睡觉时间
         if datetime.now().hour.__eq__(20):
             sleep_money(False)
         elif datetime.now().hour.__eq__(6):
