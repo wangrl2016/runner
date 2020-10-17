@@ -18,7 +18,7 @@ def read_toutiao_article(pid, w, h, num):
         # 2. 点击文章
         input.tap(pid, w / 2, h * 3 / 4)
         # 3. 滑动阅读
-        for j in range(0, 10):
+        for j in range(0, 15):
             phone.swipe_down_to_up(pid, w, h)
         # 4. 返回上级目录
         phone.go_back(pid)
@@ -36,8 +36,8 @@ def toutiao_video(pid, w, h, num):
         phone.swipe_up_to_down(pid, w, h)
         # 2. 点击播放
         input.tap(pid, w / 2, h / 3)
-        # 3. 播放30s
-        time.sleep(30)
+        # 3. 播放120s
+        time.sleep(120)
 
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~

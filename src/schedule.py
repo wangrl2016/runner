@@ -10,8 +10,7 @@ def toutiao(pid, w, h):
     def benefit_page():
         input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
 
-    # [x] 开宝箱
-    # 每10分钟一次
+    # 开宝箱
     def open_treasure():
         # 1. 点击宝箱
         input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
@@ -22,8 +21,7 @@ def toutiao(pid, w, h):
         # 4. 返回到任务页面
         phone.go_back(pid)
 
-    # [x] 吃饭补贴
-    # 早中晚夜宵4次
+    # 吃饭补贴
     def meal_allowance():
         # 1. 点击吃饭补贴
         input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
@@ -32,7 +30,7 @@ def toutiao(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # [x] 睡觉赚钱
+    # 睡觉赚钱
     # 20:00-2:00为睡觉时间
     def sleep_money(is_sleep):
         # 1. 点击睡觉赚钱
@@ -53,15 +51,50 @@ def toutiao(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
+    # 种菜赚金币
+    def grow_vegetables(is_first):
+        # 1. 点击种菜赚金币
+        input.tap(pid, w / 2, (HEIGHT - 1.1) * h / HEIGHT)  # <== modify
+        # 2. 弹出离线产量悬浮窗
+        # 第2次解决签到礼包悬浮窗
+        # 点击看视频获取
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
+        # 3. 播放15s
+        time.sleep(15)
+        # 5. 如果是第1次会返回到签到礼包页面
+        phone.go_back(pid)
+        if is_first:
+            # 6. 点击领取奖励
+            input.tap(pid, w / 3, (HEIGHT - 3.5) * h / HEIGHT)
+            # 7. 点击确定
+            input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+            # 8. 关闭签到礼包
+            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 2.8 * h / HEIGHT)
+        # 9. 点击浇水
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT)
+        # 10. 领取奖励
+        # 点击宝箱
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.7 * h / HEIGHT)
+        # 11. 点击看视频再领金币
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+        # 12. 播放15s
+        phone.go_back(pid)
+        # 13. 点击确定
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+        # 14. 返回到福利页面
+        phone.go_back(pid)
+
     # 打开头条
     checkin.toutiao(pid)
     benefit_page()
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # [x] 开宝箱
+        # 每10分钟一次
         open_treasure()
 
         # [x] 吃饭补贴
+        # 早中晚夜宵4次
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
             meal_allowance()
@@ -76,6 +109,11 @@ def toutiao(pid, w, h):
         # [x] 免费抽手机
         if hour.__eq__(6):
             free_phone()
+            grow_vegetables(True)
+
+        if hour.__gt__(6) and hour.__le__(11):
+            # [x] 种菜赚金币
+            grow_vegetables(False)
     else:
         open_treasure()
 
