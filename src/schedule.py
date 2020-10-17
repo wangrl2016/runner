@@ -467,16 +467,16 @@ def yingke(pid, w, h):
     # 看福利视频
     def benefit_video():
         # 1. 点击领金币
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <== modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
 
     # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 12.2 * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <= modify
         # 2. 播放视频30s
         time.sleep(30)
         # 3. 返回到福利页面

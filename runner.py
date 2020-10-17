@@ -298,7 +298,7 @@ def run(pid):
             # 1. 打开程序
             checkin.yingke(pid, w, h)
             # 2. 看映客直播
-            app.watch_yingke_live(pid, w, h, sec=600)
+            app.watch_yingke_live(pid, w, h, sec=900)
             # 3. 退出程序
             phone.stop_app(pid, packages['yingke'])
 
