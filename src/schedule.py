@@ -141,16 +141,19 @@ def kuaishou(pid, w, h):
     # [x] 看直播领金币
     def watch_live():
         # 1. 向上滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w, h, 3, internal=100)
+        phone.swipe_down_to_up(pid, w, h, gap=3, internal=100)
+        # 2. 点击看直播按钮
+        # 位置不定
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <== modify
         for i in range(0, 10):
-            # 2. 点击看直播按钮
-            # 位置不定
-            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <= modify
             # 3. 观看20s
             time.sleep(20)
-            # 4 返回到福利页面
-            phone.go_back(pid, gap=5)
-        # 5. 福利页面恢复原样
+            # 4. 上滑出现下一个
+            # 快速滑动
+            phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
+        # 5. 返回到福利页面
+        phone.go_back(pid, gap=8)
+        # 6. 福利页面恢复原样
         phone.swipe_up_to_down(pid, w, h, 3, internal=50)
 
     # 每隔一个小时开一次宝箱
@@ -471,8 +474,21 @@ def fanchang(pid, w, h):
             # 后台播放
             phone.go_home(pid)
         elif datetime.now().hour.__eq__(9):
-            # TODO: 需要解锁广告
-            return None
+            # 解锁广告
+            # 1. 进入番畅音频
+            checkin.fanchang(pid, w, h)
+            listen_sound()
+            # 2. 点击看小视频免费听
+            input.tap(pid, 4.7 * w / WIDTH, 0.9 * h / HEIGHT)
+            # 3. 播放45s
+            time.sleep(45)
+            # 4. 点击关闭
+            # 播放页面
+            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+            # 5. 回退到主页
+            phone.go_back(pid)
+            # ６．后台播放
+            phone.go_home(pid)
         elif datetime.now().hour.__eq__(12):
             checkin.fanchang(pid, w, h)
             collect_listen_coin()
@@ -542,6 +558,17 @@ def yingke(pid, w, h):
         phone.stop_app(pid, packages['yingke'])
 
 
+def kugou_background_music(pid, w, h):
+    # 1. 点击下方图标进入播放页面
+    input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
+    # 2. 点击播放
+    input.tap(pid, w / 2, (HEIGHT - 1.4) * h / HEIGHT)
+    # 3. 回到主页
+    phone.go_back(pid)
+    # 4. 后台播放
+    phone.go_home(pid)
+
+
 # noinspection PyUnusedLocal
 def kugou(pid, w, h):
     # 进入福利页面
@@ -572,6 +599,11 @@ def kugou(pid, w, h):
 
         # 关闭程序
         phone.stop_app(pid, packages['kugou'])
+
+        # [x] 播放酷狗音乐
+        if datetime.now().hour.__eq__(18):
+            checkin.kugou(pid, w, h)
+            kugou_background_music(pid, w, h)
 
 
 # noinspection PyUnusedLocal
@@ -630,7 +662,6 @@ def pinduoduo(pid, w, h):
         input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)  # <= modify
         # 3. 点击开
         input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
-        # 4. TODO: 三选一
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if (datetime.now().hour % 5).__eq__(0):
@@ -853,10 +884,14 @@ def douhuo(pid, w, h):
 # noinspection PyUnusedLocal
 def kuge(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        # [x] 收听酷狗儿歌
         if datetime.now().hour.__eq__(16):
-            # TODO: checkin.kuge(pid, w, h)
-            # 收听酷狗儿歌
-            return None
+            # 1. 进入酷狗儿歌
+            checkin.kuge(pid, w, h)
+            # 2. 播放
+            input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+            # 3. 回到后台
+            phone.go_home(pid)
         elif datetime.now().hour.__eq__(17):
-            # 关闭酷狗儿歌
-            return None
+            # 1. 关闭酷狗儿歌
+            phone.stop_app(pid, packages['kuge'])
