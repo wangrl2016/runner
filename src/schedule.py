@@ -204,7 +204,7 @@ def douyin(pid, w, h):
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)
-        # 4. 返回到回到福利页面
+        # 4. 返回到福利页面
         phone.go_back(pid)
         # 5. 滑到最上面
         phone.swipe_up_to_down(pid, w, h, internal=100)
@@ -237,19 +237,19 @@ def douyin(pid, w, h):
     benefit_page()
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # [x] 开宝箱得金币
-        # 每20分钟一次
-        open_treasure()
-        # [x] 限时任务赚金币
-        # 每20分钟一次
-        limit_duty()
-
         # [x] 睡觉赚金币
         # 20:00-2:00为睡觉时间
         if datetime.now().hour.__eq__(20):
             sleep_money(False)
         elif datetime.now().hour.__eq__(6):
             sleep_money(True)
+
+        # [x] 开宝箱得金币
+        # 每20分钟一次
+        open_treasure()
+        # [x] 限时任务赚金币
+        # 每20分钟一次
+        limit_duty()
 
         # [x] 吃饭补贴
         # 早中晚夜宵4次
@@ -459,19 +459,22 @@ def fanchang(pid, w, h):
             # 返回到领取界面
             phone.go_back(pid)
 
-    # [x] 听番茄音频
+    # [x] 听番畅音频
     # 08:00-09:00-10:00-11:00-12:00
-    if datetime.now().hour.__lt__(SCHEDULE_TIME):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if datetime.now().hour.__eq__(8):
-            checkin.fanqie(pid, w, h)
+            checkin.fanchang(pid, w, h)
             # [x] 收听番唱音频
             listen_sound()
             # 回退到程序主页
             phone.go_back(pid)
             # 后台播放
             phone.go_home(pid)
-        elif datetime.now().hour.__eq__(14):
-            checkin.fanqie(pid, w, h)
+        elif datetime.now().hour.__eq__(9):
+            # TODO: 需要解锁广告
+            return None
+        elif datetime.now().hour.__eq__(12):
+            checkin.fanchang(pid, w, h)
             collect_listen_coin()
             phone.stop_app(pid, packages['fanchang'])
 
@@ -499,9 +502,6 @@ def shuqi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yingke(pid, w, h):
-    if pid.__eq__('ce7f96a00307') and datetime.now().hour.__lt__(10):
-        return None
-
     # 进入福利页面
     def benefit_page():
         # 1. 点击下面的横幅
@@ -576,9 +576,6 @@ def kugou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def huitoutiao(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
-
     def time_reward():
         # 1. 点击领取
         # 有时候没有广告视频
@@ -613,9 +610,10 @@ def zhongqing(pid, w, h):
         # 2. 播放30s
         time.sleep(30)
         # 3. 返回程序主页
-        phone.go_back(pid)
+        # 必须关闭才有奖励
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
-    if datetime.now().hour.__lt__(SCHEDULE_TIME):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
         # [x] 时段奖励
         time_reward()
@@ -632,6 +630,7 @@ def pinduoduo(pid, w, h):
         input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)  # <= modify
         # 3. 点击开
         input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
+        # 4. TODO: 三选一
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if (datetime.now().hour % 5).__eq__(0):
@@ -688,14 +687,13 @@ def qutoutiao_open_treasure(pid, w, h):
     # 2. 播放广告50s
     time.sleep(50)
     # 3. 回退到福利页面
-    phone.go_back(pid)
+    # 第1次退出广告界面
+    # 第2次退出金币提示界面
+    phone.go_back(pid, times=2)
 
 
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
-    if pid.__eq__('ce7f96a00307') and datetime.now().hour.__lt__(10):
-        return None
-
     # 进入任务页面
     def benefit_page():
         # 2. 点击任务
@@ -704,7 +702,7 @@ def qutoutiao(pid, w, h):
     # 看广告视频拿金币
     def video_coin():
         # 1. 点击看广告视频拿金币
-        input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)
+        input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)  # <=== modify
         # 2. 播放45s
         time.sleep(45)
         # 3. 回退到福利页面
@@ -725,7 +723,7 @@ def qutoutiao(pid, w, h):
         # 1. 下滑到最底下
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击睡觉赚金币
-        input.tap(pid, w / 2, 2.0 * h / HEIGHT)
+        input.tap(pid, w / 2, 4.2 * h / HEIGHT)  # <=== modify
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
@@ -747,7 +745,7 @@ def qutoutiao(pid, w, h):
 
     def money_tree():
         # 1. 点击摇钱树领金币
-        input.tap(pid, w / 2, 4.0 * h / HEIGHT)
+        input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <=== modify
         # 2. 摇5次
         for i in range(0, 5):
             # 领金币
@@ -854,4 +852,11 @@ def douhuo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuge(pid, w, h):
-    return None
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(16):
+            # TODO: checkin.kuge(pid, w, h)
+            # 收听酷狗儿歌
+            return None
+        elif datetime.now().hour.__eq__(17):
+            # 关闭酷狗儿歌
+            return None

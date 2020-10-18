@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin, info
+from src import phone, input, checkin
 from src.info import HEIGHT, WIDTH, packages
 
 
@@ -254,6 +254,8 @@ def watch_weishi_video(pid, w, h, hour=8):
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+    # 1. 收集现金
+    input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
 
 
 def full_watch_weishi_video(pid, w, h, hour):
