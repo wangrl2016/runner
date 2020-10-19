@@ -606,7 +606,6 @@ def kugou(pid, w, h):
             kugou_background_music(pid, w, h)
 
 
-# noinspection PyUnusedLocal
 def huitoutiao(pid, w, h):
     def time_reward():
         # 1. 点击领取
@@ -630,7 +629,6 @@ def huitoutiao(pid, w, h):
         full_time_reward()
 
 
-# noinspection PyUnusedLocal
 def zhongqing(pid, w, h):
     # 时段奖励
     def time_reward():
@@ -652,7 +650,6 @@ def zhongqing(pid, w, h):
         phone.stop_app(pid, packages['zhongqing'])
 
 
-# noinspection PyUnusedLocal
 def pinduoduo(pid, w, h):
     # 定时红包
     def timed_envelope():
@@ -670,7 +667,6 @@ def pinduoduo(pid, w, h):
             phone.stop_app(pid, 'pinduoduo')
 
 
-# noinspection PyUnusedLocal
 def taobao(pid, w, h):
     # 天天赚特币
     if datetime.now().hour % 4 == 0 and datetime.now().minute.__lt__(SCHEDULE_TIME):
@@ -684,7 +680,6 @@ def taobao(pid, w, h):
         phone.stop_app(pid, packages['taobao'])
 
 
-# noinspection PyUnusedLocal
 def shuabao(pid, w, h):
     def benefit_page():
         # 1. 点击福利
@@ -723,7 +718,6 @@ def qutoutiao_open_treasure(pid, w, h):
     phone.go_back(pid, times=2)
 
 
-# noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
     # 进入任务页面
     def benefit_page():
@@ -841,7 +835,6 @@ def baidu(pid, w, h):
         phone.stop_app(pid, packages['baidu'])
 
 
-# noinspection PyUnusedLocal
 def ximalaya(pid, w, h):
     def listen_sound():
         # 1. 点击收听
@@ -881,7 +874,6 @@ def douhuo(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def kuge(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # [x] 收听酷狗儿歌
