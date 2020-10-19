@@ -47,7 +47,7 @@ def jingdong(pid, w, h, gap=15):
     input.tap(pid, 1.0 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
-def fanqie(pid, w, h, gap=15):
+def fanqie(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
@@ -56,7 +56,7 @@ def fanqie(pid, w, h, gap=15):
     input.tap(pid, 2.6 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
 
 
-def fanchang(pid, w, h, gap=15):
+def fanchang(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出

@@ -221,6 +221,17 @@ def get_size(pid):
             return int(s.split('x')[0]), int(s.split('x')[1])
 
 
+def get_dpi(pid):
+    """
+    获取屏幕密度
+    """
+    p = subprocess.run(['adb', '-s', pid, 'shell', 'wm', 'density'], check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    time.sleep(2)
+    dpi_str = p.stdout.strip('\n')
+    return int(dpi_str.split(' ')[-1])
+
+
 def get_devices():
     """
     获取连接上电脑的设备
