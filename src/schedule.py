@@ -460,7 +460,7 @@ def fanchang(pid, w, h):
             # 5. 播放30s
             time.sleep(30)
             # 返回到领取界面
-            phone.go_back(pid)
+            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
     # [x] 听番畅音频
     # 08:00-09:00-10:00-11:00-12:00
