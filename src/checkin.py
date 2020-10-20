@@ -117,7 +117,7 @@ def zhongqing(pid, w, h, gap=15):
     input.tap(pid, 1.0 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
 
 
-def pinduoduo(pid, w, h, gap=15):
+def pinduoduo(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
