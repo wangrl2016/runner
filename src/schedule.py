@@ -659,6 +659,9 @@ def pinduoduo(pid, w, h):
         input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)  # <= modify
         # 3. 点击开
         input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
+        # 4. 点击限时福利
+        # 提示获取签到金成功
+        input.tap(pid, 5.5 * w / WIDTH, 6.0 * h / HEIGHT)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if (datetime.now().hour % 5).__eq__(0):
