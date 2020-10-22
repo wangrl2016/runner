@@ -132,11 +132,12 @@ def shuqi(pid, w, h):
 
 def yingke(pid, w, h):
     # 1. 假装退出可能出现的悬浮窗问题
-    phone.go_back(pid)
+    # 2. 可能出现两次
+    phone.go_back(pid, times=2)
     # 2. 点击右下角打开红包
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 1.9) * h / HEIGHT)  # <= modify
     # 3. 点击立即签到
-    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
     # 4. 播放30s广告
     time.sleep(30)
     # 5. 点击关闭
