@@ -26,8 +26,9 @@ def read_toutiao_article(pid, w, h, num):
         # 2. 点击文章
         input.tap(pid, w / 2, h * 3 / 4)
         # 3. 滑动阅读
-        for j in range(0, 15):
-            phone.swipe_down_to_up(pid, w, h)
+        for j in range(0, 10):
+            # 只需要快速滑动到底部阅读20s
+            phone.swipe_down_to_up(pid, w, h / 2, gap=3, internal=50)
         # 4. 返回上级目录
         phone.go_back(pid)
 

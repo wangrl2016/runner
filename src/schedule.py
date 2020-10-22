@@ -10,9 +10,9 @@ def toutiao_open_treasure(pid, w, h, gap=15):
     今日头条开宝箱
     """
     # 1. 点击宝箱
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <== modify
     # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <== modify
     # 3. 默认播放15s
     time.sleep(gap)
     # 4. 返回到任务页面
@@ -23,64 +23,85 @@ def toutiao(pid, w, h):
     # 吃饭补贴
     def meal_allowance():
         # 1. 点击吃饭补贴
-        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <= modify
+        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <== modify
         # 2. 领取补贴
-        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=3)  # <= modify
         # 3. 返回到福利页面
         phone.go_back(pid)
 
     # 睡觉赚钱
-    # 20:00-2:00为睡觉时间
     def sleep_money(is_sleep):
         # 1. 点击睡觉赚钱
-        input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <== modify
         # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
-        # 3. 返回到上级页面
-        # 返回到福利页面
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
+        # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # [x] 免费抽手机
+    # 免费抽手机
     def free_phone():
         # 1. 点击免费抽手机
-        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)  # <= modify
+        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)  # <== modify
         # 2. 点击抽奖
-        input.tap(pid, w / 2, 5.8 * h / HEIGHT, 10)  # <= modify
+        input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=10)  # <= modify
         # 3. 返回到福利页面
         phone.go_back(pid)
 
     # 种菜赚金币
     def grow_vegetables(is_first):
         # 1. 点击种菜赚金币
-        input.tap(pid, w / 2, (HEIGHT - 1.1) * h / HEIGHT)  # <== modify
-        # 2. 弹出离线产量悬浮窗
-        # 第2次解决签到礼包悬浮窗
-        # 点击看视频获取
-        input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 2, (HEIGHT - 2.2) * h / HEIGHT)  # <== modify
+        # 弹出离线产量悬浮窗
+        # 2. 点击看视频获取
+        input.tap(pid, w / 2, 8.3 * h / HEIGHT)  # <== modify
         # 3. 播放15s
         time.sleep(15)
-        # 5. 如果是第1次会返回到签到礼包页面
+        # 4. 如果是第1次会返回到签到礼包页面
         phone.go_back(pid)
         if is_first:
-            # 6. 点击领取奖励
+            # 5. 点击左下角领取奖励
             input.tap(pid, w / 3, (HEIGHT - 3.5) * h / HEIGHT)
-            # 7. 点击确定
+            # 6. 点击确定
             input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-            # 8. 关闭签到礼包
+            # 7. 关闭签到礼包页面
             input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 2.8 * h / HEIGHT)
-        # 9. 点击浇水
+        # 8. 点击浇水
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT)
-        # 10. 领取奖励
-        # 点击宝箱
+        # 领取奖励
+        # 9. 点击左上角宝箱
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.7 * h / HEIGHT)
-        # 11. 点击看视频再领金币
+        # 10. 点击看视频再领金币
         input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-        # 12. 播放15s
+        # 11. 播放20s
+        time.sleep(20)
+        # 12. 返回退出获取金币悬浮窗
         phone.go_back(pid)
-        # 13. 点击确定
+        # 13. 点击中间确定
         input.tap(pid, w / 2, 8.4 * h / HEIGHT)
         # 14. 返回到福利页面
+        phone.go_back(pid)
+
+    # 模拟开店
+    def open_shop(is_first):
+        # 1. 点击模拟开店栏目
+        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        # 2. 点击看视频可额外获得营业额
+        input.tap(pid, w / 2, 8.3 * h / HEIGHT)
+        # 3. 播放20s
+        time.sleep(20)
+        # 4. 回退返回到游戏页面
+        phone.go_back(pid)
+        if is_first:
+            # 5. 点击左下角领取奖励
+            input.tap(pid, w / 3, (HEIGHT - 3.5) * h / HEIGHT)
+            # 6. 点击确定
+            input.tap(pid, w / 2, 8.4 * h / HEIGHT)
+            # 7. 关闭签到礼包页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 2.8 * h / HEIGHT)
+        # 5. 点击宝箱获取金币
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.0) * h / HEIGHT)
+        # 6. 返回福利页面
         phone.go_back(pid)
 
     # 打开头条
@@ -95,20 +116,27 @@ def toutiao(pid, w, h):
             meal_allowance()
 
         # [x] 睡觉赚钱
-        # 20:00-2:00
+        # 20:00-2:00为睡觉时间
         if hour.__eq__(20):
             sleep_money(False)
-        elif hour.__eq__(6):
+        elif hour.__eq__(8):
             sleep_money(True)
 
-        # [x] 免费抽手机
         if hour.__eq__(6):
+            # [x] 免费抽手机
             free_phone()
+            # [x] 种菜赚金币
+            # 5次
             grow_vegetables(True)
+            # [x] 模拟开店赚钱
+            # 5次
+            open_shop(True)
 
+        # 7, 8, 9, 10
         if hour.__gt__(6) and hour.__le__(11):
             # [x] 种菜赚金币
             grow_vegetables(False)
+            open_shop(False)
 
     # [x] 开宝箱
     # 每10分钟一次
