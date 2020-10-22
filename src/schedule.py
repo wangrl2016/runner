@@ -1,26 +1,25 @@
 import time
 from datetime import datetime
 
-from src import checkin, phone, input
+from src import checkin, phone, input, app
 from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
 
 
+def toutiao_open_treasure(pid, w, h, gap=15):
+    """
+    今日头条开宝箱
+    """
+    # 1. 点击宝箱
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
+    # 2. 点击看视频再领金币
+    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
+    # 3. 默认播放15s
+    time.sleep(gap)
+    # 4. 返回到任务页面
+    phone.go_back(pid)
+
+
 def toutiao(pid, w, h):
-    # 进入福利页面
-    def benefit_page():
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-
-    # 开宝箱
-    def open_treasure():
-        # 1. 点击宝箱
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <= modify
-        # 2. 点击看视频再领金币
-        input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
-        # 3. 播放15s
-        time.sleep(15)
-        # 4. 返回到任务页面
-        phone.go_back(pid)
-
     # 吃饭补贴
     def meal_allowance():
         # 1. 点击吃饭补贴
@@ -86,13 +85,9 @@ def toutiao(pid, w, h):
 
     # 打开头条
     checkin.toutiao(pid)
-    benefit_page()
+    app.toutiao_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # [x] 开宝箱
-        # 每10分钟一次
-        open_treasure()
-
         # [x] 吃饭补贴
         # 早中晚夜宵4次
         hour = datetime.now().hour
@@ -114,8 +109,10 @@ def toutiao(pid, w, h):
         if hour.__gt__(6) and hour.__le__(11):
             # [x] 种菜赚金币
             grow_vegetables(False)
-    else:
-        open_treasure()
+
+    # [x] 开宝箱
+    # 每10分钟一次
+    toutiao_open_treasure(pid, w, h)
 
     # 关闭头条
     phone.stop_app(pid, packages['toutiao'])
@@ -123,12 +120,6 @@ def toutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaishou(pid, w, h):
-    def benefit_page():
-        # 点击左上角菜单栏
-        input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
-        # 点击去赚钱
-        input.tap(pid, w / 2, 7.2 * h / HEIGHT)
-
     # [x] 开宝箱
     # 时间跨度依次递增
     # 每天有次数限制
@@ -157,15 +148,16 @@ def kuaishou(pid, w, h):
         phone.swipe_up_to_down(pid, w, h, 3, internal=50)
 
     # 每隔一个小时开一次宝箱
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # 打开快手
         checkin.kuaishou(pid)
-        benefit_page()
+        app.kuaishou_benefit_page(pid, w, h)
 
         if datetime.now().hour.__eq__(22):
             watch_live()
 
-        open_treasure()
+        if (datetime.now().hour % 2).__eq__(0):
+            open_treasure()
 
         # 关闭快手
         phone.stop_app(pid, packages['kuaishou'])
@@ -496,8 +488,8 @@ def fanchang(pid, w, h):
 
     # [x] 开宝箱
     # 每个小时一次
-    # 1, 4, 7开上半时段
-    # 2, 5, 8开下半时段
+    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
         full_open_treasure()
     elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):

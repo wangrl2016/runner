@@ -7,6 +7,14 @@ from src.info import HEIGHT, WIDTH, packages
 
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
+def toutiao_benefit_page(pid, w, h, gap=3):
+    """
+    进入今日头条福利页面
+    """
+    # 1. 点击福利
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
+
+
 def read_toutiao_article(pid, w, h, num):
     """
     阅读今日头条文章
@@ -42,7 +50,17 @@ def toutiao_video(pid, w, h, num):
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~
 
-# 只是看视频的过程
+def kuaishou_benefit_page(pid, w, h, gap=3):
+    """
+    进入快手福利页面
+    """
+    # 1. 点击左上角菜单栏
+    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT, gap)  # <= modify
+    # 2. 点击去赚钱
+    input.tap(pid, w / 2, 7.2 * h / HEIGHT, gap)  # <=== modify
+
+
+# 只包含看视频的过程
 def watch_kuaishou_video(pid, w, h, hour):
     """
     看快手视频
@@ -67,20 +85,14 @@ def kuaishou_reward_task(pid, w, h, num):
     1000金币悬赏任务
     """
     print('快手1000金币悬赏任务 ' + datetime.now().__str__())
-    # 1. 点击左上角菜单栏
-    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT)  # <== modify
-    # 2. 向上滑动显示福利按钮
-    phone.swipe_down_to_up(pid, w, h, internal=100)
     for i in range(0, num):
         # 3. 点击福利按钮
         # 位置不定
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.6 * h / HEIGHT)  # <== modify
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.2 * h / HEIGHT)  # <== modify
         # 4. 播放30s
         time.sleep(30)
         # 5. 返回到福利页面
         phone.go_back(pid)
-    # 3. 恢复福利页面
-    phone.swipe_up_to_down(pid, w, h, internal=100)
 
 
 # ~~~~~~~~~~抖音极速版~~~~~~~~~~
@@ -149,7 +161,7 @@ def jingdong_good(pid, w, h, sec):
     # 1. 点击赚钱
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击逛商品赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.2 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.2 * h / HEIGHT)  # <== modify
     count = 0
     while count < sec:
         # 3. 逛15s
@@ -168,7 +180,7 @@ def jingdong_activity(pid, w, h, sec):
     # 1. 点击赚钱
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击逛活动赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.5 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.5 * h / HEIGHT)  # <== modify
     count = 0
     while count < sec:
         # 3. 逛15s
@@ -186,7 +198,7 @@ def jingdong_video_coin(pid, w, h, hour=5):
     # 1. 点击赚钱按钮
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     # 2. 点击看视频赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <= modify
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <== modify
     # 3. 任意点击视频进入
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
@@ -297,16 +309,14 @@ def shuqi_video_coin(pid, w, h, num):
     print('书旗看视频赚金币 ' + datetime.now().__str__())
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 看num次视频
+    # 看视频
     for i in range(0, num):
         # 2. 点击快速得百万金币
-        input.tap(pid, w / 2, 10.4 * h / HEIGHT)
+        input.tap(pid, w / 2, 10.4 * h / HEIGHT, gap=8)  # <== modify
         # 3. 播放30s
         time.sleep(30)
-        # 4. 返回上级页面
-        # 无法通过回退返回
-        # 返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 4. 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.8 * h / HEIGHT)  # <==== modify
 
 
 def shuqi_invent_friend(pid, w, h):

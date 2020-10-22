@@ -149,17 +149,19 @@ def run(pid):
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
-            app.full_watch_kuaishou_video(pid, w, h, hour=2)
-
             # [x] 1000金币悬赏任务
             # 1. 打开程序
             checkin.kuaishou(pid)
+            # 重要任务稍微延长时间
+            app.kuaishou_benefit_page(pid, w, h, gap=5)
             # 2. 悬赏任务做9次
             # 不然完成后会放置最下面
             # 打乱原本的顺序
             app.kuaishou_reward_task(pid, w, h, num=9)
             # 3. 关闭程序
             phone.stop_app(pid, packages['kuaishou'])
+
+            app.full_watch_kuaishou_video(pid, w, h, hour=2)
 
             utils.tail_work(pid, w, h, hour=2)
 

@@ -1,15 +1,14 @@
 import time
-from random import randrange
 
-from src import input, phone, schedule
+from src import input, phone, schedule, app
 from src.info import WIDTH, HEIGHT
 
 
 def toutiao(pid, w, h):
-    # 1. 点击右下方任务
+    # 1. 点击右下方福利
     # 显示签到界面
-    # 签到成功
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # [x] 签到成功
+    app.toutiao_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
     input.tap(pid, w / 2, 9.0 * h / HEIGHT)  # <== modify
     # 3. 看15s视频
@@ -17,12 +16,13 @@ def toutiao(pid, w, h):
     # 4. 点击关闭
     phone.go_back(pid)
 
+    # [x] 开宝箱
+    schedule.toutiao_open_treasure(pid, w, h)
+
 
 def kuaishou(pid, w, h):
-    # 1. 播放视频一小会
-    # 向上滑动解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 3):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+    # 1. 假装后退解决弹出青少年模式悬浮窗的问题
+    phone.go_back(pid)
     # 2. 点击左上角的菜单栏
     input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
     # 3. 点击去赚钱显示福利页面
@@ -52,10 +52,8 @@ def douyin(pid, w, h):
 
 
 def huoshan(pid, w, h):
-    # 1. 播放视频一小会
-    # 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 3):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+    # 1. 假装想要退出解决弹出青少年模式悬浮窗的问题
+    phone.go_back(pid)
     # 2. 点击右下方红包宝箱
     # 显示签到成功
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
@@ -117,7 +115,8 @@ def weishi(pid, w, h):
 
 
 def shuqi(pid, w, h):
-    # 1. 假装想要退出解决广告悬浮窗问题
+    # TODO: 需要解决后退弹出提示框的问题
+    # 不后退有时会有悬浮窗
     phone.go_back(pid)
     # 2. 点击中间下方福利
     # 显示签到成功
