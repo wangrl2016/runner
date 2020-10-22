@@ -163,10 +163,10 @@ def kuaishou(pid, w, h):
         phone.swipe_down_to_up(pid, w, h, gap=3, internal=100)
         # 2. 点击看直播按钮
         # 位置不定
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <== modify
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <=== modify
         for i in range(0, 10):
-            # 3. 观看20s
-            time.sleep(20)
+            # 3. 观看30s
+            time.sleep(30)
             # 4. 上滑出现下一个
             phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
         # 5. 返回到福利页面
@@ -180,7 +180,7 @@ def kuaishou(pid, w, h):
         checkin.kuaishou(pid)
         app.kuaishou_benefit_page(pid, w, h)
 
-        # [x] 看直播
+        # [x] 看直播领金币
         # 21:00-24:00
         if datetime.now().hour.__eq__(22):
             watch_live()
@@ -279,12 +279,12 @@ def douyin(pid, w, h):
         if hour.__eq__(14) or hour.__eq__(15):
             game_lottery()
 
-    # [x] 限时任务赚金币
-    # 每20分钟一次
-    limit_duty()
     # [x] 开宝箱得金币
     # 每20分钟一次
     open_treasure()
+    # [x] 限时任务赚金币
+    # 每20分钟一次
+    limit_duty()
 
     # 关闭抖音
     phone.stop_app(pid, packages['douyin'])

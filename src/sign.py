@@ -50,6 +50,8 @@ def douyin(pid, w, h):
     # 6. 退出播放页面
     phone.go_back(pid)
 
+    # [x] TODO: 开宝箱
+
 
 def huoshan(pid, w, h):
     # 1. 假装想要退出解决弹出青少年模式悬浮窗的问题
@@ -65,6 +67,8 @@ def huoshan(pid, w, h):
     phone.go_back(pid)
     # 6. 顺便开宝箱
     # 完成之后返回到福利页面
+
+    # [x] 开宝箱
     schedule.huoshan_open_treasure(pid, w, h)
 
 
@@ -90,6 +94,8 @@ def fanqie(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
     # 5. 顺便开宝箱
     # 完成之后返回到福利页面
+
+    # [x] 开宝箱
     schedule.fanqie_open_treasure(pid, w, h)
 
 
@@ -105,6 +111,8 @@ def fanchang(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
     # 5. 顺便开宝箱
     # 完成之后返回到福利页面
+
+    # [x] 开宝箱
     schedule.fanchang_open_treasure(pid, w, h)
 
 
