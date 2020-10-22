@@ -123,6 +123,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=0)
 
+        # 今日头条
         while datetime.now().hour.__eq__(1):
             # 花费35分钟
             schedule_apps(pid, w, h)
@@ -146,6 +147,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=1)
 
+        # 快手
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
@@ -165,6 +167,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=2)
 
+        # 抖音
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
@@ -173,6 +176,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=3)
 
+        # 火山小视频
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 
@@ -188,6 +192,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=4)
 
+        # 京东
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
@@ -214,6 +219,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=5)
 
+        # 番茄免费小说
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
@@ -238,6 +244,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=6)
 
+        # 番茄畅听
         while datetime.now().hour.__eq__(7):
             schedule_apps(pid, w, h)
 
@@ -254,6 +261,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=7)
 
+        # 微视
         while datetime.now().hour.__eq__(8):
             schedule_apps(pid, w, h)
 
@@ -262,6 +270,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=8)
 
+        # 书旗小说
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
@@ -285,6 +294,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=9)
 
+        # 映客直播
         while datetime.now().hour.__eq__(10):
             schedule_apps(pid, w, h)
 
@@ -298,6 +308,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=10)
 
+        # 酷狗
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
@@ -311,6 +322,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=11)
 
+        # 惠头条
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
@@ -324,6 +336,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=12)
 
+        # 中青看点
         while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
 
@@ -337,6 +350,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=13)
 
+        # 拼多多
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
 
@@ -353,6 +367,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=14)
 
+        # 淘宝
         while datetime.now().hour.__eq__(15):
             schedule_apps(pid, w, h)
 
@@ -367,6 +382,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=15)
 
+        # 刷宝
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)
 
@@ -380,6 +396,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=16)
 
+        # 趣头条
         while datetime.now().hour.__eq__(17):
             schedule_apps(pid, w, h)
 
@@ -388,6 +405,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=17)
 
+        # 百度极速版
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
@@ -412,11 +430,13 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=18)
 
+        # 喜马拉雅
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
             utils.tail_work(pid, w, h, hour=19)
 
+        # 抖音火山
         while datetime.now().hour.__eq__(20):
             schedule_apps(pid, w, h)
 
@@ -429,16 +449,19 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=20)
 
+        # 酷狗儿歌
         while datetime.now().hour.__eq__(21):
             schedule_apps(pid, w, h)
 
             utils.tail_work(pid, w, h, hour=21)
 
+        # 蚂蚁看点
         while datetime.now().hour.__eq__(22):
             schedule_apps(pid, w, h)
 
             utils.tail_work(pid, w, h, hour=22)
 
+        # 点点新闻
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
 

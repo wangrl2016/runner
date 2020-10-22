@@ -500,3 +500,7 @@ def watch_douhuo_video(pid, w, h, sec=300):
     # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
         phone.swipe_down_to_up(pid, w, h / 2, randrange(9, 16))
+
+# ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
+
+# ~~~~~~~~~~点点新闻~~~~~~~~~~

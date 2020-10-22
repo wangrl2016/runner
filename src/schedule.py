@@ -120,12 +120,12 @@ def toutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaishou(pid, w, h):
-    # [x] 开宝箱
+    # 开宝箱
     # 时间跨度依次递增
     # 每天有次数限制
     def open_treasure():
         # 1. 点击开宝箱得金币
-        input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 3.1) * h / HEIGHT)  # <= modify
+        input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 3.1) * h / HEIGHT)  # <== modify
         # 2. 返回到播放视频的页面
         phone.go_back(pid)
 
@@ -140,24 +140,25 @@ def kuaishou(pid, w, h):
             # 3. 观看20s
             time.sleep(20)
             # 4. 上滑出现下一个
-            # 快速滑动
             phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
         # 5. 返回到福利页面
         phone.go_back(pid, gap=8)
         # 6. 福利页面恢复原样
-        phone.swipe_up_to_down(pid, w, h, 3, internal=50)
+        phone.swipe_up_to_down(pid, w, h, 3, internal=100)
 
     # 每隔一个小时开一次宝箱
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
         # 打开快手
         checkin.kuaishou(pid)
         app.kuaishou_benefit_page(pid, w, h)
 
+        # [x] 看直播
+        # 21:00-24:00
         if datetime.now().hour.__eq__(22):
             watch_live()
 
-        if (datetime.now().hour % 2).__eq__(0):
-            open_treasure()
+        # [x] 开宝箱
+        open_treasure()
 
         # 关闭快手
         phone.stop_app(pid, packages['kuaishou'])
@@ -181,14 +182,15 @@ def douyin(pid, w, h):
 
     # 开宝箱得金币
     def open_treasure():
-        # 2. 点击开宝箱得金币
+        # 1. 点击开宝箱得金币
         input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
-        # 3. 点击看广告视频再赚金币
+        # 2. 点击看广告视频再赚金币
         input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
-        # 4. 播放30s
+        # 3. 播放30s
         time.sleep(30)
-        # 5. 返回福利页面
-        phone.go_back(pid)
+        # 4. 返回福利页面
+        # 存在超过30s的广告需要返回两次
+        phone.go_back(pid, times=2)
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
@@ -236,15 +238,8 @@ def douyin(pid, w, h):
         # 20:00-2:00为睡觉时间
         if datetime.now().hour.__eq__(20):
             sleep_money(False)
-        elif datetime.now().hour.__eq__(6):
+        elif datetime.now().hour.__eq__(5):
             sleep_money(True)
-
-        # [x] 开宝箱得金币
-        # 每20分钟一次
-        open_treasure()
-        # [x] 限时任务赚金币
-        # 每20分钟一次
-        limit_duty()
 
         # [x] 吃饭补贴
         # 早中晚夜宵4次
@@ -255,11 +250,13 @@ def douyin(pid, w, h):
         # [x] 抽奖两次
         if hour.__eq__(14) or hour.__eq__(15):
             game_lottery()
-    else:
-        # 开宝箱得金币
-        open_treasure()
-        # 限时任务赚金币
-        limit_duty()
+
+    # [x] 限时任务赚金币
+    # 每20分钟一次
+    limit_duty()
+    # [x] 开宝箱得金币
+    # 每20分钟一次
+    open_treasure()
 
     # 关闭抖音
     phone.stop_app(pid, packages['douyin'])
@@ -663,14 +660,14 @@ def pinduoduo(pid, w, h):
 
 
 def taobao(pid, w, h):
-    # 天天赚特币
-    if datetime.now().hour % 4 == 0 and datetime.now().minute.__lt__(SCHEDULE_TIME):
+    # [x] 天天赚特币
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 4).__eq__(0):
         # 1. 打开淘宝
         checkin.taobao(pid)
         # 2. 点击天天赚特币
-        input.tap(pid, w / 2, 2.4 * h / HEIGHT, 10)
+        input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=10)  # <= modify
         # 3. 收取特币
-        input.tap(pid, 4.3 * w / WIDTH, 6.9 * h / HEIGHT)
+        input.tap(pid, 4.3 * w / WIDTH, 6.9 * h / HEIGHT)  # <= modify
         # 4. 关闭淘宝
         phone.stop_app(pid, packages['taobao'])
 
@@ -685,7 +682,7 @@ def shuabao(pid, w, h):
     # 看福利视频
     def benefit_video():
         # 1. 点击去观看
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <== modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击关闭
@@ -727,6 +724,10 @@ def qutoutiao(pid, w, h):
         time.sleep(45)
         # 3. 回退到福利页面
         phone.go_back(pid)
+
+    # 时段奖励
+    def time_reward():
+        return None
 
     # 开宝箱
     def full_open_treasure():
@@ -882,3 +883,13 @@ def kuge(pid, w, h):
         elif datetime.now().hour.__eq__(17):
             # 1. 关闭酷狗儿歌
             phone.stop_app(pid, packages['kuge'])
+
+
+# noinspection PyUnusedLocal
+def makan(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def diandian(pid, w, h):
+    return None

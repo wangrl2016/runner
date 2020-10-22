@@ -274,3 +274,13 @@ def kuge(pid, w, h):
         input.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=2)
     # 2. 回退到福利页面
     phone.go_back(pid)
+
+
+# noinspection PyUnusedLocal
+def makan(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def diandian(pid, w, h):
+    return None

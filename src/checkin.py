@@ -3,6 +3,12 @@ import inspect
 from src import phone, input
 from src.info import activities, WIDTH, HEIGHT
 
+# 对于无法通过Activity进行启动的图标需要定位
+# 不同手机位置不同
+# 设置成为4x6的图标布局模式
+ROWS = [1.4, 3.4, 5.4, 7.4, 9.4, 11.4]
+COLUMNS = [1.0, 2.6, 4.2, 5.8]
+
 
 def toutiao(pid, gap=10):
     # 1. 回到手机主界面
@@ -44,7 +50,7 @@ def jingdong(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
 def fanqie(pid, w, h, gap=10):
@@ -53,7 +59,7 @@ def fanqie(pid, w, h, gap=10):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 2.6 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
 def fanchang(pid, w, h, gap=10):
@@ -62,7 +68,7 @@ def fanchang(pid, w, h, gap=10):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 4.2 * w / WIDTH, 3.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
 def weishi(pid, gap=15):
@@ -79,7 +85,7 @@ def shuqi(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
 def yingke(pid, w, h, gap=15):
@@ -88,7 +94,7 @@ def yingke(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 2.6 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
 def kugou(pid, w, h, gap=15):
@@ -97,7 +103,7 @@ def kugou(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 4.2 * w / WIDTH, 5.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
 def huitoutiao(pid, gap=15):
@@ -114,7 +120,7 @@ def zhongqing(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
 def pinduoduo(pid, w, h, gap=10):
@@ -123,7 +129,7 @@ def pinduoduo(pid, w, h, gap=10):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 2.6 * w / WIDTH, 7.4 * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
 def taobao(pid, gap=15):
@@ -180,5 +186,21 @@ def kuge(pid, w, h, gap=15):
     # 模仿启动输出
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, 1.0 * w / WIDTH, (HEIGHT - 3.5) * h / HEIGHT, gap)  # <= modify
-    return None
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
+
+
+def makan(pid, w, h, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid, gap)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
+
+
+def diandian(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid, gap)
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
