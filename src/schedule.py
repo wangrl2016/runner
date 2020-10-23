@@ -570,45 +570,46 @@ def shuqi(pid, w, h):
 
 
 def yingke(pid, w, h):
-    # 进入福利页面
-    def benefit_page():
-        # 1. 点击下面的横幅
-        input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
-
     # 看福利视频
     def benefit_video():
         # 1. 点击领金币
         input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <== modify
-        # 2. 播放30s
-        time.sleep(30)
-        # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
+        # 2. 播放45s
+        # 播放时间不同
+        time.sleep(45)
+        # 3. 返回到福利页面
+        # 有时无法返回
+        # 直接退出有奖励
+        phone.go_back(pid, gap=1)
 
     # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=8)  # <= modify
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <= modify
         # 2. 播放视频45s
+        # 播放时间不同
         time.sleep(45)
         # 3. 返回到福利页面
-        phone.go_back(pid)
+        # 有时无法返回
+        # 直接退出有奖励
+        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # 无法解决小米手机振动问题
+        # 小米手机无法解决振动问题
         if datetime.now().hour.__gt__(9) and datetime.now().hour.__le__(20):
-            # 进入福利页面
             checkin.yingke(pid, w, h)
-            benefit_page()
-
+            app.baidu_benefit_page(pid, w, h)
             # [x] 看福利视频
             # 可以看10次
             # 后续奖励金更多
             benefit_video()
-            # [x] 开宝箱
-            # 次数未知
-            open_treasure()
+            phone.stop_app(pid, packages['yingke'])
 
-            # 关闭映客
+            checkin.yingke(pid, w, h, gap=10)
+            app.baidu_benefit_page(pid, w, h)
+            # [x] 开宝箱
+            # 10次
+            open_treasure()
             phone.stop_app(pid, packages['yingke'])
 
 

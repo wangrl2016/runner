@@ -338,6 +338,11 @@ def shuqi_video_coin(pid, w, h, num):
 
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
+def yingke_benefit_page(pid, w, h):
+    # 1. 点击下面的横幅
+    input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
+
+
 def watch_yingke_live(pid, w, h, sec):
     """
     看映客直播
@@ -349,13 +354,40 @@ def watch_yingke_live(pid, w, h, sec):
     input.tap(pid, w / 3, h / 3)
     # 3. 看直播
     time.sleep(sec)
-    for i in range(0, 3):
-        # 4. 分享直播间3次
-        input.tap(pid, 1.3 * w / WIDTH, 7.1 * h / HEIGHT)  # <== modify
-        # 5. 选择微信
-        input.tap(pid, 0.9 * w / WIDTH, (HEIGHT - 2.8) * h / HEIGHT)
-        # 6. 返回到直播界面
+
+    def chat_with_anchor(times):
+        print('和主播聊天 ' + datetime.now().__str__())
+        for i in range(0, times):
+            # 1. 换一个主播
+            phone.swipe_down_to_up(pid, w, h)
+            # 2. 点击聊天文字
+            # [x] 和主播聊天
+            input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)
+
+    # 4. 和主播聊天
+    chat_with_anchor(times=3)
+
+
+def share_yingke(pid, w, h, times):
+    """
+    分享映客直播间
+    """
+    print('分享映客直播间 ' + datetime.now().__str__())
+    # 1. 进入福利页面
+    yingke_benefit_page(pid, w, h)
+    # 2. 滑动到最下面
+    phone.swipe_down_to_up(pid, w, h / 2, internal=100)
+
+    for i in range(0, times):
+        # 3. 点击分享映客极速版
+        input.tap(pid, w / 2, (HEIGHT - 3.5) * h / HEIGHT)
+        # 4. 点击分享到微信
+        input.tap(pid, 1.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)
+        # 5. 返回到福利页面
         phone.go_back(pid)
+
+    # 6. 滑动到最上面
+    phone.swipe_up_to_down(pid, w, h / 2, internal=100)
 
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~

@@ -295,6 +295,13 @@ def run(pid):
         while datetime.now().hour.__eq__(10):
             schedule_apps(pid, w, h)
 
+            checkin.yingke(pid, w, h)
+            # [x] 分享映客极速版
+            # 分享3次
+            # 也可以在直播间分享
+            app.share_yingke(pid, w, h, times=3)
+            phone.stop_app(pid, packages['yingke'])
+
             # [x] 看映客直播
             # 1. 打开程序
             checkin.yingke(pid, w, h)
@@ -481,7 +488,6 @@ def main(args):
     print(devices)
 
     # 创建图像界面
-    #
 
     # 为每部设备创建单独的线程运行
     threads = []
