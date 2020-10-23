@@ -67,7 +67,7 @@ def watch_kuaishou_video(pid, w, h, hour):
     看快手视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 # 从打开到关闭看快手视频的完整过程
@@ -103,7 +103,7 @@ def watch_douyin_video(pid, w, h, hour=3):
     看抖音视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 def full_watch_douyin_video(pid, w, h, hour):
@@ -124,7 +124,7 @@ def watch_huoshan_video(pid, w, h, hour=4):
     看火山视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 def full_watch_huoshan_video(pid, w, h, hour):
@@ -205,7 +205,7 @@ def jingdong_video_coin(pid, w, h, hour=5):
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 15))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 def full_jingdong_video_coin(pid, w, h, hour):
@@ -277,7 +277,7 @@ def watch_weishi_video(pid, w, h, hour=8):
     看微视视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
     # 1. 收集现金
     input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
 
@@ -435,7 +435,7 @@ def watch_shuabao_video(pid, w, h, hour):
     """
     print('看刷宝视频 ' + datetime.now().__str__())
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 def shuabao_video(pid, w, h, num):
@@ -444,7 +444,7 @@ def shuabao_video(pid, w, h, num):
     """
     print('看刷宝视频 ' + datetime.now().__str__())
     for i in range(0, num):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 # ~~~~~~~~~~趣头条~~~~~~~~~~
@@ -455,7 +455,7 @@ def watch_qutoutiao_svideo(pid, w, h, hour):
     # 　1. 点击中间下方小视频
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 def full_watch_qutoutiao_svideo(pid, w, h, hour):
@@ -492,7 +492,7 @@ def watch_baidu_svideo(pid, w, h, hour):
     input.tap(pid, w / 3, h / 3)
     # 3. 滑动小视频
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 
 # ~~~~~~~~~~喜马拉雅~~~~~~~~~~
@@ -506,7 +506,7 @@ def watch_douhuo_video(pid, w, h, sec=300):
     input.tap(pid, w / 3, h / 3)
     # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w, h / 2, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h / 2, randrange(5, 16))
 
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 

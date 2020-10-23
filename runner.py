@@ -104,7 +104,6 @@ def run(pid):
     phone.go_home(pid)
 
     # 代码测试位置
-    app.full_jingdong_video_coin(pid, w, h, hour=11)
 
     while True:
         while datetime.now().hour.__eq__(0):
