@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin
+from src import phone, input, checkin, schedule
 from src.info import HEIGHT, WIDTH, packages
 
 
@@ -295,6 +295,7 @@ def read_shuqi_novel(pid, w, h, sec=300):
     minutes = sec / 60 + datetime.now().minute
     if minutes < 60:
         while datetime.now().minute < minutes:
+            # 3. 滑动阅读小说
             # 防止点击广告
             phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
     else:
@@ -303,13 +304,18 @@ def read_shuqi_novel(pid, w, h, sec=300):
             phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
 
 
+# 进入福利页面
+def shuqi_benefit_page(pid, w, h):
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+
+
 def shuqi_video_coin(pid, w, h, num):
     """
     看视频赚金币
     """
     print('书旗看视频赚金币 ' + datetime.now().__str__())
-    # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    shuqi_benefit_page(pid, w, h)
     # 看视频
     for i in range(0, num):
         # 2. 点击快速得百万金币
@@ -318,17 +324,6 @@ def shuqi_video_coin(pid, w, h, num):
         time.sleep(30)
         # 4. 返回到福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.8 * h / HEIGHT)  # <==== modify
-
-
-def shuqi_invent_friend(pid, w, h):
-    # 1. 下滑到最下
-    phone.swipe_down_to_up(pid, w, h, internal=100)
-    # 2. 点击邀请书友
-    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
-    # 3. 点击微信好友
-    input.tap(pid, 1.2 * w / WIDTH, (HEIGHT - 2.8) * h / HEIGHT)
-    # 4. 回退到福利页面
-    phone.go_back(pid)
 
 
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~

@@ -274,22 +274,21 @@ def run(pid):
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
-            # [x] 看视频赚金币
-            # 1. 打开程序
+            # 打开程序
             checkin.shuqi(pid, w, h)
-            # 2. 看视频赚金币
+            # [x] 看视频赚金币
+            # 10个视频
+            # 8min赚0.3元
             app.shuqi_video_coin(pid, w, h, num=10)
-            # 3. 邀请书友
-            app.shuqi_invent_friend(pid, w, h)
-            # 4. 退出程序
+            # 退出程序
             phone.stop_app(pid, packages['shuqi'])
 
-            # [x] 阅读书旗小说
-            # 1. 打开程序
+            # 打开程序
             checkin.shuqi(pid, w, h)
-            # 2. 阅读书旗小说
+            # [x] 阅读书旗小说
+            # 5min赚0.005元
             app.read_shuqi_novel(pid, w, h, sec=300)
-            # 3. 退出程序
+            # 退出程序
             phone.stop_app(pid, packages['shuqi'])
 
             utils.tail_work(pid, w, h, hour=9)

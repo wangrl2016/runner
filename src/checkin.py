@@ -79,7 +79,7 @@ def weishi(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def shuqi(pid, w, h, gap=15):
+def shuqi(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出

@@ -123,18 +123,12 @@ def weishi(pid, w, h):
 
 
 def shuqi(pid, w, h):
-    # TODO: 需要解决后退弹出提示框的问题
+    # 后退会弹出提示框
     # 不后退有时会有悬浮窗
-    phone.go_back(pid)
-    # 2. 点击中间下方福利
+    phone.swipe_up_to_down(pid, w, h / 2, gap=2, internal=100)
+    # 1. 点击中间下方的福利
     # 显示签到成功
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 3. 点击看视频赚金币
-    input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <= modify
-    # 4. 播放30s
-    time.sleep(30)
-    # 5. 点击关闭返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=2)
 
 
 def yingke(pid, w, h):
