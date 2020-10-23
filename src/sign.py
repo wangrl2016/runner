@@ -258,11 +258,14 @@ def ximalaya(pid, w, h):
     phone.go_back(pid)
 
 
-# noinspection PyUnusedLocal
 def douhuo(pid, w, h):
-    # 没有签到
     # 1. 假装回退关闭可能的悬浮窗
     phone.go_back(pid)
+    # 2. 点击个人中心图标
+    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)
+    # 3. 点击火苗管理
+    # 显示签到成功
+    input.tap(pid, w / 2, 8.0 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
