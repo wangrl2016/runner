@@ -486,6 +486,14 @@ def pinduoduo_street_money(pid, w, h):
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
+
+def shuabao_benefit_page(pid, w, h):
+    # 1. 点击福利
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 2. 回退关闭悬浮窗
+    phone.go_back(pid)
+
+
 def watch_shuabao_video(pid, w, h, hour):
     """
     看刷宝视频

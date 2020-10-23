@@ -752,28 +752,24 @@ def taobao(pid, w, h):
 
 
 def shuabao(pid, w, h):
-    def benefit_page():
-        # 1. 点击福利
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-        # 2. 回退关闭悬浮窗
-        phone.go_back(pid)
-
     # 看福利视频
     def benefit_video():
         # 1. 点击去观看
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)  # <== modify
+        # 等待关闭按钮弹出
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT, gap=10)  # <== modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击关闭
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
     if datetime.now().minute < SCHEDULE_TIME and datetime.now().hour.__gt__(13):
-        # 1. 打开刷宝
+        # 打开刷宝
         checkin.shuabao(pid)
-        benefit_page()
+        app.shuabao_benefit_page(pid, w, h)
         # [x] 看福利视频
+        # 10次
         benefit_video()
-        # 3. 关闭刷宝
+        # 关闭刷宝
         phone.stop_app(pid, packages['shuabao'])
 
 
