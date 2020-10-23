@@ -662,26 +662,21 @@ def kugou(pid, w, h):
 
 
 def huitoutiao(pid, w, h):
+    # 时段奖励
     def time_reward():
         # 1. 点击领取
         # 有时候没有广告视频
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
 
-    def full_time_reward():
-        # 1.打开惠头条
+    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.huitoutiao(pid)
+        # [x] 时段奖励
+        # 每个小时一次
+        # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+        # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
         time_reward()
-        # 3. 关闭惠头条
         phone.stop_app(pid, packages['huitoutiao'])
-
-    # [x] 时段奖励
-    # 每个小时一次
-    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        full_time_reward()
-    elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
-        full_time_reward()
 
 
 def zhongqing(pid, w, h):

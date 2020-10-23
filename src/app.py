@@ -375,6 +375,11 @@ def listen_kugou_music(pid, w, h, sec=300):
 
 # ~~~~~~~~~~惠头条~~~~~~~~~~
 
+def huitoutiao_benefit_page(pid, w, h):
+    # 1. 点击中间下方的任务中心
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def read_huitoutiao_article(pid, w, h, num):
     """
     阅读惠头条文章
@@ -390,6 +395,21 @@ def read_huitoutiao_article(pid, w, h, num):
             phone.swipe_down_to_up(pid, w, h)
         # 4. 返回上级目录
         phone.go_back(pid)
+
+
+def watch_huitoutiao_video(pid, w, h, sec):
+    """
+    看惠头条视频
+    """
+    print('看惠头条视频 ' + datetime.now().__str__())
+    # 1. 点击惠头条视频
+    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击视频
+    input.tap(pid, w / 2, h / 4)
+    # 3. 播放
+    time.sleep(sec)
+    # 4. 返回到首页
+    phone.go_back(pid)
 
 
 # ~~~~~~~~~~中青看点~~~~~~~~~~

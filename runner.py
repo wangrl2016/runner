@@ -331,6 +331,11 @@ def run(pid):
             # 3. 关闭程序
             phone.stop_app(pid, packages['huitoutiao'])
 
+            checkin.huitoutiao(pid)
+            # [x] 看惠头条视频
+            app.watch_huitoutiao_video(pid, w, h, sec=180)
+            phone.stop_app(pid, packages['huitoutiao'])
+
             utils.tail_work(pid, w, h, hour=12)
 
         # 中青看点
