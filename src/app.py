@@ -166,7 +166,7 @@ def jingdong_good(pid, w, h, num):
     print('京东逛商品赚金币 ' + datetime.now().__str__())
     jingdong_benefit_page(pid, w, h)
     # 1. 点击逛商品赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.4 * h / HEIGHT)  # <=== modify
+    input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <=== modify
     for i in range(0, num):
         # 2. 逛15s
         for j in range(0, 3):
@@ -182,7 +182,7 @@ def jingdong_activity(pid, w, h, num):
     print('京东逛活动赚金币 ' + datetime.now().__str__())
     jingdong_benefit_page(pid, w, h)
     # 1. 点击逛活动赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <=== modify
+    input.tap(pid, w / 2, 9.7 * h / HEIGHT)  # <=== modify
     for i in range(0, num):
         # 2. 逛15s
         for j in range(0, 3):
@@ -198,12 +198,11 @@ def jingdong_video_coin(pid, w, h, hour=5):
     print('京东看视频赚金币 ' + datetime.now().__str__())
     jingdong_benefit_page(pid, w, h)
     # 1. 点击看视频赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 11.0 * h / HEIGHT)  # <=== modify
-    # 2. 点击关闭可能存在的广告悬浮窗
-    input.tap(pid, (WIDTH - 0.5) * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT, gap=3)
-    # 3. 任意点击视频进入
+    input.tap(pid, w / 2, 11.0 * h / HEIGHT)  # <=== modify
+    # 2. 任意点击视频进入
+    # 可能存在广告悬浮窗
     input.tap(pid, w / 3, h / 2)
-    # 4. 滑动屏幕观看
+    # 3. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
@@ -448,6 +447,15 @@ def shuabao_video(pid, w, h, num):
 
 
 # ~~~~~~~~~~趣头条~~~~~~~~~~
+
+def qutoutiao_benefit_page(pid, w, h):
+    """
+    进入福利页面
+    """
+    # 1. 点击左下角任务
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def watch_qutoutiao_svideo(pid, w, h, hour):
     """
     看趣头条小视频

@@ -155,7 +155,6 @@ def toutiao(pid, w, h):
     phone.stop_app(pid, packages['toutiao'])
 
 
-# noinspection PyUnusedLocal
 def kuaishou(pid, w, h):
     # 开宝箱
     # 时间跨度依次递增
@@ -201,7 +200,6 @@ def kuaishou(pid, w, h):
         phone.stop_app(pid, packages['kuaishou'])
 
 
-# noinspection PyUnusedLocal
 def douyin(pid, w, h):
     # 福利页面
     def benefit_page():
@@ -315,7 +313,6 @@ def huoshan_open_treasure(pid, w, h):
     phone.go_back(pid)
 
 
-# noinspection PyUnusedLocal
 def huoshan(pid, w, h):
     def benefit_page():
         # 1. 点击红包
@@ -402,7 +399,6 @@ def fanqie_open_treasure(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
 
 
-# noinspection PyUnusedLocal
 def fanqie(pid, w, h):
     # 分享好书给好友
     def book_share():
@@ -465,7 +461,6 @@ def fanchang_open_treasure(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
 
 
-# noinspection PyUnusedLocal
 def fanchang(pid, w, h):
     # 进入福利页面
     def benefit_page():
@@ -547,8 +542,7 @@ def fanchang(pid, w, h):
 
 # noinspection PyUnusedLocal
 def weishi(pid, w, h):
-    if datetime.now().minute > SCHEDULE_TIME:
-        return None
+    return None
 
 
 def shuqi(pid, w, h):
@@ -574,7 +568,6 @@ def shuqi(pid, w, h):
         phone.stop_app(pid, packages['shuqi'])
 
 
-# noinspection PyUnusedLocal
 def yingke(pid, w, h):
     # 进入福利页面
     def benefit_page():
@@ -629,7 +622,6 @@ def kugou_background_music(pid, w, h):
     phone.go_home(pid)
 
 
-# noinspection PyUnusedLocal
 def kugou(pid, w, h):
     # 进入福利页面
     def benefit_page():
@@ -639,10 +631,9 @@ def kugou(pid, w, h):
     # 刷创意视频
     def creative_video():
         # 1. 点击去赚钱
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
-        # 2. 播放35s
-        # 包含等待弹出关闭界面
-        time.sleep(35)
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT, gap=10)  # <= modify
+        # 2. 播放30s
+        time.sleep(30)
         # 3. 点击返回到福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
         # 4. 再次回退消除奖励页面
@@ -661,11 +652,11 @@ def kugou(pid, w, h):
         phone.stop_app(pid, packages['kugou'])
 
         # [x] 播放酷狗音乐
-        # 存在音频占用
-        # 播放2个小时
+        # 存在音频占用播放2个小时
         # 1个小时720金币
-        if datetime.now().hour.__eq__(18) and datetime.now().hour.__eq__(19):
+        if datetime.now().hour.__eq__(7) and datetime.now().hour.__eq__(8):
             checkin.kugou(pid, w, h)
+            # 下个时段关闭音乐
             kugou_background_music(pid, w, h)
 
 
@@ -684,8 +675,8 @@ def huitoutiao(pid, w, h):
 
     # [x] 时段奖励
     # 每个小时一次
-    # 1, 4, 7开上半时段
-    # 2, 5, 8开下半时段
+    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
         full_time_reward()
     elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
@@ -772,116 +763,85 @@ def shuabao(pid, w, h):
         phone.stop_app(pid, packages['shuabao'])
 
 
-# 趣头条开宝箱
-def qutoutiao_open_treasure(pid, w, h):
-    # 1. 点击宝箱
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
-    # 2. 播放广告50s
-    time.sleep(50)
-    # 3. 回退到福利页面
-    # 第1次退出广告界面
-    # 第2次退出金币提示界面
-    phone.go_back(pid, times=2)
-
-
 def qutoutiao(pid, w, h):
-    # 进入任务页面
-    def benefit_page():
-        # 2. 点击任务
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
     # 看广告视频拿金币
     def video_coin():
         # 1. 点击看广告视频拿金币
         input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)  # <=== modify
-        # 2. 播放45s
-        time.sleep(45)
+        # 2. 播放50s
+        time.sleep(50)
         # 3. 回退到福利页面
-        phone.go_back(pid)
+        phone.go_back(pid, times=3, gap=1)
 
     # 开宝箱
-    def full_open_treasure():
-        # 打开趣头条
-        checkin.qutoutiao(pid)
-        benefit_page()
-        # [x] 开宝箱
-        qutoutiao_open_treasure(pid, w, h)
-        # 关闭趣头条
-        phone.stop_app(pid, packages['qutoutiao'])
+    def open_treasure():
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
+        # 2. 播放广告50s
+        time.sleep(50)
+        # 3. 回退到未知页面
+        phone.go_back(pid, times=3, gap=1)
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
-        # 1. 下滑到最底下
-        phone.swipe_down_to_up(pid, w, h, internal=100)
-        # 2. 点击睡觉赚金币
-        input.tap(pid, w / 2, 4.2 * h / HEIGHT)  # <=== modify
-        # 3. 点击我要睡了/我睡醒了
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, (HEIGHT - 1.7) * h / HEIGHT)  # <=== modify
+        # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
-        # 4. 返回到回到福利页面
+        # 3. 返回到福利页面
         phone.go_back(pid)
 
-        # [x] 摇钱树领金币
-        if datetime.now().hour.__eq__(15):
-            money_tree()
+    # 时段奖励
+    def time_reward():
+        # 1. 点击左下角头条
+        # 有时弹出广告悬浮窗
+        input.tap(pid, 0.6 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+        # 2. 点击领取
+        input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 1.0 * h / HEIGHT)
+        # 有时弹出广告悬浮窗
 
-        # 5. 福利页面恢复原样
-        phone.swipe_up_to_down(pid, w, h, internal=100)
-
-    def full_sleep_money(is_sleep):
-        checkin.qutoutiao(pid)
-        benefit_page()
-        sleep_money(is_sleep)
-        phone.stop_app(pid, packages['qutoutiao'])
-
-    def money_tree():
-        # 1. 点击摇钱树领金币
-        input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <=== modify
-        # 2. 摇5次
-        for i in range(0, 5):
-            # 领金币
-            input.tap(pid, w / 2, 10.6 * h / HEIGHT)
-            # 播放45s
-            time.sleep(45)
-            # 回退到摇钱树页面
-            phone.go_back(pid)
-
-    # [x] 开宝箱
-    # 每个小时一次
-    # 1, 4, 7开上半时段
-    # 2, 5, 8开下半时段
-    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.qutoutiao(pid)
-        benefit_page()
-
-        qutoutiao_open_treasure(pid, w, h)
-
-        # [x] 看广告视频拿金币
-        # 每天可以看六次
-        if datetime.now().hour.__gt__(6):
-            # 进入趣头条
-            checkin.qutoutiao(pid)
-            benefit_page()
-            # [x] 看趣头条拿金币
-            video_coin()
-
-        # 退出趣头条
-        phone.stop_app(pid, packages['qutoutiao'])
-
-    elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
-        full_open_treasure()
-
-    # [x] 睡觉赚金币
-    # 20:00-08:00为睡觉时间
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.qutoutiao(pid)
+        app.qutoutiao_benefit_page(pid, w, h)
+
+        # [x] 睡觉赚金币
+        # 20:00-08:00为睡觉时间
+        # 12:00-14:00为午休时间
         if datetime.now().hour.__eq__(20):
-            full_sleep_money(False)
+            sleep_money(False)
         elif datetime.now().hour.__eq__(9):
-            full_sleep_money(True)
+            sleep_money(True)
         elif datetime.now().hour.__eq__(12):
-            full_sleep_money(False)
+            sleep_money(False)
         elif datetime.now().hour.__eq__(15):
-            full_sleep_money(True)
+            sleep_money(True)
+
+        # [x] 时段奖励
+        # 阶梯式时间分布
+        time_reward()
+
+        phone.stop_app(pid, packages['qutoutiao'])
+
+    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+        checkin.qutoutiao(pid)
+        app.qutoutiao_benefit_page(pid, w, h)
+        # [x] 开宝箱
+        # 每个小时一次
+        # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+        # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+        open_treasure()
+        phone.stop_app(pid, packages['qutoutiao'])
+
+    if datetime.now().hour.__gt__(2) and datetime.now().hour.__lt__(9):
+        # 进入趣头条
+        checkin.qutoutiao(pid)
+        app.qutoutiao_benefit_page(pid, w, h)
+        # [x] 看广告视频拿金币
+        # 每天可以看6次
+        video_coin()
+        phone.stop_app(pid, packages['qutoutiao'])
 
 
 def baidu(pid, w, h):
