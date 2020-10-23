@@ -585,21 +585,23 @@ def yingke(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(12):
-        # 进入福利页面
-        checkin.yingke(pid, w, h)
-        benefit_page()
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        # 无法解决小米手机振动问题
+        if datetime.now().hour.__gt__(9) and datetime.now().hour.__le__(20):
+            # 进入福利页面
+            checkin.yingke(pid, w, h)
+            benefit_page()
 
-        # [x] 看福利视频
-        # 可以看10次
-        # 后续奖励金更多
-        benefit_video()
-        # [x] 开宝箱
-        # 次数未知
-        open_treasure()
+            # [x] 看福利视频
+            # 可以看10次
+            # 后续奖励金更多
+            benefit_video()
+            # [x] 开宝箱
+            # 次数未知
+            open_treasure()
 
-        # 关闭映客
-        phone.stop_app(pid, packages['yingke'])
+            # 关闭映客
+            phone.stop_app(pid, packages['yingke'])
 
 
 def kugou_background_music(pid, w, h):

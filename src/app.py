@@ -328,7 +328,7 @@ def shuqi_video_coin(pid, w, h, num):
 
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
-def watch_yingke_live(pid, w, h, sec=300):
+def watch_yingke_live(pid, w, h, sec):
     """
     看映客直播
     """
@@ -341,9 +341,9 @@ def watch_yingke_live(pid, w, h, sec=300):
     time.sleep(sec)
     for i in range(0, 3):
         # 4. 分享直播间3次
-        input.tap(pid, 1.3 * w / WIDTH, 7.0 * h / HEIGHT)  # <== modify
+        input.tap(pid, 1.3 * w / WIDTH, 7.1 * h / HEIGHT)  # <== modify
         # 5. 选择微信
-        input.tap(pid, 0.9 * w / WIDTH, (HEIGHT - 2.9) * h / HEIGHT)
+        input.tap(pid, 0.9 * w / WIDTH, (HEIGHT - 2.8) * h / HEIGHT)
         # 6. 返回到直播界面
         phone.go_back(pid)
 

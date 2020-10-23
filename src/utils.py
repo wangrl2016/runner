@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from random import randrange
 
-from src import schedule, checkin, phone, app, info
+from src import schedule, checkin, phone, app
 from src.info import apps, activities, packages, SCHEDULE_TIME
 
 
