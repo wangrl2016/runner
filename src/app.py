@@ -154,85 +154,89 @@ def huoshan_money_tree(pid, w, h):
 
 # ~~~~~~~~~~京东极速版~~~~~~~~~~
 
-def jingdong_good(pid, w, h, sec):
+def jingdong_benefit_page(pid, w, h):
+    # 1. 点击赚钱
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def jingdong_good(pid, w, h, num):
     """
     逛商品赚金币
     """
     print('京东逛商品赚金币 ' + datetime.now().__str__())
-    # 1. 点击赚钱
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击逛商品赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.2 * h / HEIGHT)  # <== modify
-    count = 0
-    while count < sec:
-        # 3. 逛15s
-        for i in range(0, 3):
-            phone.swipe_down_to_up(pid, w, h, 5)
-        # 4. 点击下一个商品
+    jingdong_benefit_page(pid, w, h)
+    # 1. 点击逛商品赚金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.4 * h / HEIGHT)  # <=== modify
+    for i in range(0, num):
+        # 2. 逛15s
+        for j in range(0, 3):
+            phone.swipe_down_to_up(pid, w, h, gap=5)
+        # 3. 点击下一个商品
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
-        count += 20
 
 
-def jingdong_activity(pid, w, h, sec):
+def jingdong_activity(pid, w, h, num):
     """
     逛活动赚金币
     """
     print('京东逛活动赚金币 ' + datetime.now().__str__())
-    # 1. 点击赚钱
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击逛活动赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.5 * h / HEIGHT)  # <== modify
-    count = 0
-    while count < sec:
-        # 3. 逛15s
-        for i in range(0, 3):
+    jingdong_benefit_page(pid, w, h)
+    # 1. 点击逛活动赚金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <=== modify
+    for i in range(0, num):
+        # 2. 逛15s
+        for j in range(0, 3):
             phone.swipe_down_to_up(pid, w, h, 5)
-        # 4. 点击下一个商品
+        # 3. 点击下一个商品
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
-        count += 20
 
 
 def jingdong_video_coin(pid, w, h, hour=5):
     """
     京东看视频赚金币
     """
-    # 1. 点击赚钱按钮
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击看视频赚金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 9.7 * h / HEIGHT)  # <== modify
+    print('京东看视频赚金币 ' + datetime.now().__str__())
+    jingdong_benefit_page(pid, w, h)
+    # 1. 点击看视频赚金币
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 11.0 * h / HEIGHT)  # <=== modify
+    # 2. 点击关闭可能存在的广告悬浮窗
+    input.tap(pid, (WIDTH - 0.5) * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT, gap=3)
     # 3. 任意点击视频进入
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(9, 16))
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 15))
 
 
 def full_jingdong_video_coin(pid, w, h, hour):
-    print('京东看视频赚金币 ' + datetime.now().__str__())
-    # 1. 打开程序
+    # 打开程序
     checkin.jingdong(pid, w, h)
-    # 2. 看视频赚金币
+    # 看视频赚金币
     jingdong_video_coin(pid, w, h, hour)
-    # 3. 关闭程序
+    # 关闭程序
     phone.stop_app(pid, packages['jingdong'])
 
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
+def fanqie_benefit_page(pid, w, h):
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def fanqie_video_coin(pid, w, h, num=10):
     print("番茄看视频赚海量金币 " + datetime.now().__str__())
-    # 1. 点击中间福利按钮
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    fanqie_benefit_page(pid, w, h)
     for i in range(0, num):
         # 2. 点击看视频赚海量金币
         input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
         # 3. 播放30s
         time.sleep(30)
         # 4. 点击关闭返回上级页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 
-def read_fanqie_novel(pid, w, h, hour):
+def read_fanqie_novel(pid, w, h, sec):
     """
     阅读番茄小说
     """
@@ -240,8 +244,15 @@ def read_fanqie_novel(pid, w, h, hour):
     # 1. 点击主页任意一本书
     input.tap(pid, w / 3, h / 2)
     # 2. 向左滑动开始阅读
-    while datetime.now().hour.__eq__(hour):
-        phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            # 防止点击广告
+            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour.__eq__(hour):
+            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
 
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~

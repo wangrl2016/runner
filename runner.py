@@ -104,6 +104,7 @@ def run(pid):
     phone.go_home(pid)
 
     # 代码测试位置
+    app.full_jingdong_video_coin(pid, w, h, hour=11)
 
     while True:
         while datetime.now().hour.__eq__(0):
@@ -201,7 +202,7 @@ def run(pid):
             checkin.jingdong(pid, w, h)
             # 2. 逛商品赚金币
             # 50次
-            app.jingdong_good(pid, w, h, sec=1000)
+            app.jingdong_good(pid, w, h, num=50)
             # 3. 关闭程序
             phone.stop_app(pid, packages['jingdong'])
 
@@ -209,8 +210,7 @@ def run(pid):
             # 1. 打开程序
             checkin.jingdong(pid, w, h)
             # 2. 逛活动赚金币
-            # 10次
-            app.jingdong_activity(pid, w, h, sec=200)
+            app.jingdong_activity(pid, w, h, num=3)
             # 3. 关闭程序
             phone.stop_app(pid, packages['jingdong'])
 
@@ -223,23 +223,21 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
-            # [x] 看视频赚海量金币
-            # 1. 打开程序
+            # 打开程序
             checkin.fanqie(pid, w, h)
-            # 2. 看视频赚海量金币
+            # [x] 看视频赚海量金币
             # 10次
-            # 每次30s
-            # 如果全部做完会打乱顺序
-            app.fanqie_video_coin(pid, w, h, num=9)
-            # 3. 关闭程序
+            # 做完任务后放置到最底下
+            app.fanqie_video_coin(pid, w, h, num=10)
+            # 关闭程序
             phone.stop_app(pid, packages['fanqie'])
 
-            # [x] 阅读番茄小说
-            # 1. 打开程序
+            # 打开程序
             checkin.fanqie(pid, w, h)
-            # 2. 阅读番茄小说
-            app.read_fanqie_novel(pid, w, h, hour=6)
-            # 3. 关闭程序
+            # [x] 阅读番茄小说
+            # 6min赚0.007元
+            app.read_fanqie_novel(pid, w, h, sec=360)
+            # 关闭程序
             phone.stop_app(pid, packages['fanqie'])
 
             utils.tail_work(pid, w, h, hour=6)

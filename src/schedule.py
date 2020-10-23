@@ -391,7 +391,7 @@ def jingdong(pid, w, h):
 def fanqie_open_treasure(pid, w, h):
     # 1. 点击开宝箱得金币
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)  # <= modify
-    # 2. 点击看视频在领金币
+    # 2. 点击看视频再领金币
     input.tap(pid, w / 2, 8.7 * h / HEIGHT)
     # 3. 播放30s
     time.sleep(30)
@@ -401,10 +401,6 @@ def fanqie_open_treasure(pid, w, h):
 
 # noinspection PyUnusedLocal
 def fanqie(pid, w, h):
-    def benefit_page():
-        # 1. 点击中间下方的福利
-        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-
     # 分享好书给好友
     def book_share():
         # 1. 点击分享好书给好友
@@ -415,25 +411,40 @@ def fanqie(pid, w, h):
         input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 0.9 * h / HEIGHT)
         # 4. 点击微信
         input.tap(pid, 1.0 * w / WIDTH, 9.5 * h / HEIGHT)
+        # 5. 返回到程序主页
+        phone.go_back(pid, gap=2)
 
+    # 加入书架
     # 可能存在重复加入
     def add_bookshelf():
-        return None
+        # 1. 点击加入书架
+        input.tap(pid, w / 2, (HEIGHT - 3.2) * h / HEIGHT)
+        # 2. 点击任意一本书
+        input.tap(pid, w / 2, h * 2 / 3)
+        # 3. 点击加入书架图标
+        input.tap(pid, 4.6 * w / WIDTH, 1.2 * h / HEIGHT)
+        # 4. 返回到程序主页
+        phone.go_back(pid, gap=2)
 
     # 打开番茄
     checkin.fanqie(pid, w, h)
-    benefit_page()
+    app.fanqie_benefit_page(pid, w, h)
+
+    # 加入书架接在看视频赚海量金币之后
+    # 分享好书给好友接在加入书架之后
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(7):
+            app.fanqie_benefit_page(pid, w, h)
+            # [x] 加入书架
+            add_bookshelf()
+        elif datetime.now().hour.__eq__(8):
+            app.fanqie_benefit_page(pid, w, h)
+            # [x] 分享好书给好友
+            book_share()
 
     # [x] 开宝箱
     # 每20分钟一次开宝箱任务
     fanqie_open_treasure(pid, w, h)
-
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if datetime.now().hour.__eq__(21):
-            add_bookshelf()
-        elif datetime.now().hour.__eq__(22):
-            # [x] 分享好书给好友
-            book_share()
 
     # 关闭番茄
     phone.stop_app(pid, packages['fanqie'])
