@@ -478,6 +478,10 @@ def full_watch_qutoutiao_svideo(pid, w, h, hour):
 
 # ~~~~~~~~~~百度极速版~~~~~~~~~~
 
+def baidu_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def baidu_haokan_video(pid, w, h, num):
     # 1. 点击好看视频
     input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify

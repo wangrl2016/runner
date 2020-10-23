@@ -586,9 +586,9 @@ def yingke(pid, w, h):
     # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <= modify
-        # 2. 播放视频30s
-        time.sleep(30)
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=8)  # <= modify
+        # 2. 播放视频45s
+        time.sleep(45)
         # 3. 返回到福利页面
         phone.go_back(pid)
 
@@ -687,15 +687,8 @@ def zhongqing(pid, w, h):
     # 时段奖励
     def time_reward():
         # 1. 点击领取
-        for i in range(0, 2):
-            # 等待8s悬浮窗消失
-            # 点击看视频奖励
-            input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, 8)
-        # 2. 播放30s
-        time.sleep(30)
-        # 3. 返回程序主页
-        # 必须关闭才有奖励
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 有时候没有广告视频
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, gap=8)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
@@ -770,8 +763,8 @@ def qutoutiao(pid, w, h):
         input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)  # <=== modify
         # 2. 播放50s
         time.sleep(50)
-        # 3. 回退到福利页面
-        phone.go_back(pid, times=3, gap=1)
+        # 3. 回退到播放页面
+        phone.go_back(pid, times=2, gap=1)
 
     # 开宝箱
     def open_treasure():
@@ -779,8 +772,8 @@ def qutoutiao(pid, w, h):
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
         # 2. 播放广告50s
         time.sleep(50)
-        # 3. 回退到未知页面
-        phone.go_back(pid, times=3, gap=1)
+        # 3. 回退到播放页面
+        phone.go_back(pid, times=2, gap=1)
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
@@ -845,20 +838,31 @@ def qutoutiao(pid, w, h):
 
 
 def baidu(pid, w, h):
-    def benefit_page():
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 时段奖励
+    def time_reward():
+        # 1. 点击时段奖励
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 0.9 * h / HEIGHT)
+        # 2. 返回到程序主页
+        phone.go_back(pid)
 
+    # 开宝箱
     def open_treasure():
         # 1. 打开宝箱
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 10.1 * h / HEIGHT)  # <= modify
 
-    # [x] 开宝箱
-    # 金银铜三种宝箱
-    # 金宝箱需要3个小时
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 4).__eq__(0):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.baidu(pid)
-        benefit_page()
-        open_treasure()
+
+        # [x] 时段奖励
+        time_reward()
+
+        if (datetime.now().hour % 4).__eq__(0):
+            app.baidu_benefit_page(pid, w, h)
+            # [x] 开宝箱
+            # 金银铜三种宝箱
+            # 每个宝箱需要3个小时
+            open_treasure()
+
         phone.stop_app(pid, packages['baidu'])
 
 
