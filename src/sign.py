@@ -275,9 +275,11 @@ def kuge(pid, w, h):
     # 位置未知
     # 签到成功
     for i in range(0, 7):
-        input.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=2)
+        input.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=1)
     # 2. 回退到福利页面
-    phone.go_back(pid)
+    phone.go_back(pid, gap=2)
+    # 3. 必须回到儿歌页面
+    input.tap(pid, 2.0 * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal
