@@ -223,7 +223,7 @@ def douyin(pid, w, h):
     # 限时任务赚金币
     def limit_duty():
         # 1. 点击去领取
-        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 9.5 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 3, 9.5 * h / HEIGHT)  # <= modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 返回福利页面
@@ -234,7 +234,8 @@ def douyin(pid, w, h):
         # 1. 下滑到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击睡觉赚金币
-        input.tap(pid, w / 2, 5.5 * h / HEIGHT)  # <== modify
+        # 可能点到中间某个部位导致无效
+        input.tap(pid, w / 3, 5.5 * h / HEIGHT)  # <== modify
         # 3. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)
@@ -248,7 +249,7 @@ def douyin(pid, w, h):
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
         # 2. 点击吃饭补贴
-        input.tap(pid, w / 2, 10.6 * h / HEIGHT)  # <== modify
+        input.tap(pid, w / 3, 10.6 * h / HEIGHT)  # <== modify
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
         # TODO: 看视频领金币环节
