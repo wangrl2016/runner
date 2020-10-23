@@ -50,7 +50,8 @@ def douyin(pid, w, h):
     # 6. 退出播放页面
     phone.go_back(pid)
 
-    # [x] TODO: 开宝箱
+    # [x] 顺便开宝箱
+    schedule.douyin_open_treasure(pid, w, h)
 
 
 def huoshan(pid, w, h):
@@ -65,10 +66,8 @@ def huoshan(pid, w, h):
     time.sleep(30)
     # 5. 返回到福利页面
     phone.go_back(pid)
-    # 6. 顺便开宝箱
-    # 完成之后返回到福利页面
 
-    # [x] 开宝箱
+    # [x] 顺便开宝箱
     schedule.huoshan_open_treasure(pid, w, h)
 
 
