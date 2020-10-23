@@ -110,6 +110,7 @@ def run(pid):
             # [x] 所有程序的签到工作
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
+                utils.set_home_page(pid, w, h, a)
                 # 1. 打开程序
                 if tap_start(a):
                     getattr(checkin, a)(pid, w, h)

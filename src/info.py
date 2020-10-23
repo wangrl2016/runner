@@ -76,8 +76,6 @@ activities = {
     apps[22]: '#com.yingliang.clicknews/.MainActivity',
 }
 
-product_brands = ['vivo', ]
-
 # 程序的定时任务为25分钟
 # 主要因为有些任务20分钟一次
 SCHEDULE_TIME = 25

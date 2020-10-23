@@ -220,14 +220,15 @@ def douyin(pid, w, h):
     # 开宝箱得金币
     def open_treasure():
         # 1. 点击开宝箱得金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <== modify
         # 2. 点击看广告视频再赚金币
-        input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <= modify
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <== modify
         # 3. 播放30s
         time.sleep(30)
-        # 4. 返回福利页面
-        # 存在超过30s的广告需要返回两次
-        phone.go_back(pid, times=2)
+        # 4. 返回到播放页面
+        # 存在超过30s的广告需要返回三次
+        # 利用播放页面需要快速两次才能退出
+        phone.go_back(pid, times=3, gap=3)
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
@@ -292,6 +293,8 @@ def douyin(pid, w, h):
     # [x] 开宝箱得金币
     # 每20分钟一次
     open_treasure()
+
+    benefit_page()
     # [x] 限时任务赚金币
     # 每20分钟一次
     limit_duty()
