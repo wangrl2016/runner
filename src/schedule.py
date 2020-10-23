@@ -189,8 +189,8 @@ def kuaishou(pid, w, h):
         app.kuaishou_benefit_page(pid, w, h)
 
         # [x] 看直播领金币
-        # 21:00-24:00
-        if datetime.now().hour.__eq__(22):
+        # 20:00-24:00
+        if datetime.now().hour.__eq__(20):
             watch_live()
 
         # [x] 开宝箱
@@ -329,16 +329,6 @@ def huoshan(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # 睡觉赚金币
-    def sleep_money(is_sleep):
-        # 1. 点击睡觉赚金币
-        input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
-        # 2. 点击我要睡了/我睡醒了
-        for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
-        # 3. 返回到回到福利页面
-        phone.go_back(pid)
-
     # 晒收入
     def show_income():
         # 1. 点击晒收入
@@ -351,7 +341,18 @@ def huoshan(pid, w, h):
             input.tap(pid, w / 2, 9.2 * h / HEIGHT, 8)
             # 4. 返回到火山微信悬浮窗
             phone.go_back(pid)
-        # 5. 返回到福利页面
+            # 5. 返回到福利页面
+            phone.go_back(pid)
+
+    # 睡觉赚金币
+    def sleep_money(is_sleep):
+        print('火山睡觉赚钱 ' + datetime.now().__str__())
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, 8.3 * h / HEIGHT)  # <=== modify
+        # 2. 点击我要睡了/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, 8)  # <= modify
+        # 3. 返回到回到福利页面
         phone.go_back(pid)
 
     # 打开火山
@@ -359,26 +360,28 @@ def huoshan(pid, w, h):
     benefit_page()
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # [x] 开宝箱
-        # 每20分钟一次
-        huoshan_open_treasure(pid, w, h)
+        if datetime.now().hour.__eq__(1):
+            # [x] 晒收入
+            # 因为会打乱顺序
+            # 所以应该早于看视频
+            # 晚于签到
+            show_income()
+
+        # [x] 睡觉赚金币
+        # 20点睡觉3点起床收金币
+        if datetime.now().hour.__eq__(20):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(3):
+            sleep_money(True)
 
         # [x] 看视频赚海量金币
         # 总计20次
         if datetime.now().hour.__gt__(3):
             video_money()
 
-        # [x] 睡觉赚金币
-        # 20点睡觉3点起床收金币
-        if datetime.now().hour.__eq__(20):
-            sleep_money(False)
-
-            # [x] 晒收入
-            show_income()
-        elif datetime.now().hour.__eq__(3):
-            sleep_money(True)
-    else:
-        huoshan_open_treasure(pid, w, h)
+    # [x] 开宝箱
+    # 每20分钟一次
+    huoshan_open_treasure(pid, w, h)
 
     # 关闭火山
     phone.stop_app(pid, packages['huoshan'])
