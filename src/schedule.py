@@ -5,6 +5,15 @@ from src import checkin, phone, input, app
 from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
 
 
+###
+# 音频时间分配
+# 番茄畅听 (4, 5, 6)
+# 酷狗大字版 (7, 8)
+# 喜马拉雅 (9, 10, 11)
+# 酷狗儿歌 (12, 13)
+# 酷狗斗唱 (14, 15)
+###
+
 def toutiao_open_treasure(pid, w, h, gap=15):
     """
     今日头条开宝箱
@@ -242,6 +251,7 @@ def douyin(pid, w, h):
         input.tap(pid, w / 2, 10.6 * h / HEIGHT)  # <== modify
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
+        # TODO: 看视频领金币环节
         # 4. 返回到福利页面
         phone.go_back(pid)
         # 5. 滑到最上面
@@ -601,9 +611,9 @@ def kugou(pid, w, h):
         # 包含等待弹出关闭界面
         time.sleep(35)
         # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
         # 4. 再次回退消除奖励页面
-        phone.go_back(pid)
+        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
         # 进入程序
@@ -618,7 +628,10 @@ def kugou(pid, w, h):
         phone.stop_app(pid, packages['kugou'])
 
         # [x] 播放酷狗音乐
-        if datetime.now().hour.__eq__(18):
+        # 存在音频占用
+        # 播放2个小时
+        # 1个小时720金币
+        if datetime.now().hour.__eq__(18) and datetime.now().hour.__eq__(19):
             checkin.kugou(pid, w, h)
             kugou_background_music(pid, w, h)
 
@@ -753,10 +766,6 @@ def qutoutiao(pid, w, h):
         # 3. 回退到福利页面
         phone.go_back(pid)
 
-    # 时段奖励
-    def time_reward():
-        return None
-
     # 开宝箱
     def full_open_treasure():
         # 打开趣头条
@@ -811,6 +820,7 @@ def qutoutiao(pid, w, h):
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.qutoutiao(pid)
         benefit_page()
+
         qutoutiao_open_treasure(pid, w, h)
 
         # [x] 看广告视频拿金币
