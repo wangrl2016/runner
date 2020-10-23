@@ -585,7 +585,7 @@ def yingke(pid, w, h):
     # 开宝箱
     def open_treasure():
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <= modify
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <== modify
         # 2. 播放视频45s
         # 播放时间不同
         time.sleep(45)
@@ -625,11 +625,6 @@ def kugou_background_music(pid, w, h):
 
 
 def kugou(pid, w, h):
-    # 进入福利页面
-    def benefit_page():
-        # 1. 点击赚钱
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)  # <= modify
-
     # 刷创意视频
     def creative_video():
         # 1. 点击去赚钱
@@ -637,18 +632,43 @@ def kugou(pid, w, h):
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
-        # 4. 再次回退消除奖励页面
-        phone.go_back(pid, gap=1)
+        # 再次回退消除奖励页面
+        phone.go_back(pid, times=2, gap=1)
+
+    # 分享歌曲或者视频
+    def share_friend(is_song):
+        if is_song:
+            # 1. 点击进入播放页面
+            input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
+            # 2. 点击分享
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 1.1 * h / HEIGHT)
+        else:
+            # 1. 点击看点
+            input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)
+            # 2. 点击分享
+            input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 7.1 * h / HEIGHT)
+        # 3. 分享到微信
+        input.tap(pid, w / 3, 9.5 * h / HEIGHT)  # <= modify
+        # 4. 回到酷狗程序主页
+        phone.go_back(pid)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
         # 进入程序
         checkin.kugou(pid, w, h)
-        benefit_page()
+        app.kugou_benefit_page(pid, w, h)
 
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
+
+        if datetime.now().hour.__eq__(4):
+            # [x] 分享歌曲
+            # 每天1次
+            share_friend(True)
+        elif datetime.now().hour.__eq__(5):
+            # [x] 分享视频
+            # 每天1次
+            share_friend(False)
 
         # 关闭程序
         phone.stop_app(pid, packages['kugou'])

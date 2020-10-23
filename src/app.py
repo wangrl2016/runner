@@ -392,6 +392,12 @@ def share_yingke(pid, w, h, times):
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~
 
+# 进入福利页面
+def kugou_benefit_page(pid, w, h):
+    # 1. 点击赚钱
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)  # <= modify
+
+
 def listen_kugou_music(pid, w, h, sec=300):
     """
     听酷狗音乐

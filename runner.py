@@ -312,17 +312,9 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=10)
 
-        # 酷狗
+        # 酷狗大字版
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
-
-            # [x] 听酷狗音乐
-            # 1. 打开程序
-            checkin.kugou(pid, w, h)
-            # 2. 听酷狗音乐
-            app.listen_kugou_music(pid, w, h, sec=600)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['kugou'])
 
             utils.tail_work(pid, w, h, hour=11)
 
