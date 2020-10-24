@@ -84,18 +84,16 @@ def jingdong(pid, w, h):
 
 def fanqie(pid, w, h):
     # 1. 点击中间下方福利签到
-    # 签到成功
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # [x] 签到成功
+    app.fanqie_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <== modify
     # 3. 播放视频30s
     time.sleep(30)
     # 4. 点击关闭回退到福利页面
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
-    # 5. 顺便开宝箱
-    # 完成之后返回到福利页面
 
-    # [x] 开宝箱
+    # [x] 顺便开宝箱
     schedule.fanqie_open_treasure(pid, w, h)
 
 
