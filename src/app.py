@@ -313,6 +313,12 @@ def full_watch_weishi_video(pid, w, h, hour):
 
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
 
+# 进入福利页面
+def shuqi_benefit_page(pid, w, h):
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+
+
 def read_shuqi_novel(pid, w, h, sec=300):
     """
     阅读书旗小说
@@ -332,12 +338,6 @@ def read_shuqi_novel(pid, w, h, sec=300):
         hour = datetime.now().hour
         while datetime.now().hour.__eq__(hour):
             phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
-
-
-# 进入福利页面
-def shuqi_benefit_page(pid, w, h):
-    # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
 
 
 def shuqi_video_coin(pid, w, h, num):

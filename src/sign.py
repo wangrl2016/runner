@@ -126,11 +126,11 @@ def weishi(pid, w, h):
 
 def shuqi(pid, w, h):
     # 后退会弹出提示框
-    # 不后退有时会有悬浮窗
-    phone.swipe_up_to_down(pid, w, h / 2, gap=2, internal=100)
-    # 1. 点击中间下方的福利
-    # 显示签到成功
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=2)
+    # TODO: 不后退有时会有广告悬浮窗
+    phone.go_back(pid)
+    # 点击中间下方的福利
+    # [x] 签到成功
+    app.shuqi_benefit_page(pid, w, h)
 
 
 def yingke(pid, w, h):
