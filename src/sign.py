@@ -73,12 +73,13 @@ def huoshan(pid, w, h):
 
 def jingdong(pid, w, h):
     # 1. 点击中间的现金签到
-    input.tap(pid, w / 2, 6.8 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 7.1 * h / HEIGHT)  # <== modify
     # 2. 点击立即签到
-    # 显示签到成功
+    # [x] 签到成功
     input.tap(pid, w / 2, 5.8 * h / HEIGHT)  # <= modify
     # 3. 关闭成功界面
-    phone.go_back(pid)
+    # 还是在签到页面
+    phone.go_back(pid, gap=1)
 
 
 def fanqie(pid, w, h):
