@@ -472,6 +472,10 @@ def watch_huitoutiao_video(pid, w, h, sec):
 
 # ~~~~~~~~~~中青看点~~~~~~~~~~
 
+def zhongqing_benefit_page(pid, w, h):
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+
+
 def read_zhongqing_article(pid, w, h, num):
     """
     阅读中青看点文章

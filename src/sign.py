@@ -174,9 +174,9 @@ def zhongqing(pid, w, h):
     # 1. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
     # 2. 点击任务待签到
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    app.zhongqing_benefit_page(pid, w, h)
     # 3. 点击签到领现金
-    # 签到成功
+    # [x] 签到成功
     input.tap(pid, w / 2, 4.9 * h / HEIGHT)  # <= modify
     # 4. 回退到福利页面
     phone.go_back(pid)
