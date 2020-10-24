@@ -134,7 +134,7 @@ def shuqi(pid, w, h):
 
 
 def yingke(pid, w, h):
-    # 1. 假装退出可能出现的悬浮窗问题
+    # 1. 假装退出解决可能出现的悬浮窗问题
     # 2. 可能出现两次
     phone.go_back(pid, times=2)
     # 2. 点击右下角打开红包
@@ -144,7 +144,7 @@ def yingke(pid, w, h):
     # 4. 播放30s广告
     time.sleep(30)
     # 5. 点击关闭
-    # 弹出悬浮窗显示签到成功
+    # [x] 签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
     # 6. 回到程序主页
     phone.go_back(pid)
