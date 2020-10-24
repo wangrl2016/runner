@@ -57,9 +57,9 @@ def douyin(pid, w, h):
 def huoshan(pid, w, h):
     # 1. 假装想要退出解决弹出青少年模式悬浮窗的问题
     phone.go_back(pid)
-    # 2. 点击右下方红包宝箱
-    # 显示签到成功
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 2. 进入福利页面
+    # [x] 签到成功
+    app.huoshan_benefit_page(pid, w, h)
     # 3. 看广告再领金币
     input.tap(pid, w / 2, 9.5 * h / HEIGHT)
     # 4. 播放30s

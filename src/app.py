@@ -127,6 +127,14 @@ def full_watch_douyin_video(pid, w, h, hour):
 
 # ~~~~~~~~~~火山极速版~~~~~~~~~~
 
+def huoshan_benefit_page(pid, w, h, gap=3):
+    """
+    进入火山福利页面
+    """
+    # 1. 点击火山右下方红包
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <== modify
+
+
 def watch_huoshan_video(pid, w, h, hour=4):
     """
     看火山视频
