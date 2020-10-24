@@ -188,7 +188,7 @@ def pinduoduo(pid, w, h):
     # 2. 点击中间的现金签到
     input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
     # 3. 点击签到领现金
-    # 签到成功
+    # [x] 签到成功
     input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
     # 3. 返回到程序主页
     phone.go_back(pid)
