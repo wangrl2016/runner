@@ -287,11 +287,22 @@ def kuge(pid, w, h):
     input.tap(pid, 2.0 * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
 
-# noinspection PyUnusedLocal
 def makan(pid, w, h):
-    return None
+    # 1. 回退关闭可能的悬浮窗
+    phone.go_back(pid, gap=1)
+    # 2. 点击任务
+    # [x] 签到成功
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 3. 返回到主页
+    phone.go_back(pid)
+    # 4. 获取时段奖励
+    input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT)  # <= modify
 
 
 # noinspection PyUnusedLocal
 def diandian(pid, w, h):
-    return None
+    # 1. 回退关闭可能的悬浮窗
+    phone.go_back(pid, gap=1)
+    # 2. 点击任务
+    # [x] 签到成功
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
