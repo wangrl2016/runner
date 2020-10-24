@@ -204,7 +204,7 @@ def shuabao(pid, w, h):
     # 1. 假装回退关闭可能的悬浮窗
     phone.go_back(pid)
     # 2. 点击下方福利
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    app.shuabao_benefit_page(pid, w, h)
     # 3. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
     # 4. 点击立即签到
@@ -223,14 +223,15 @@ def shuabao(pid, w, h):
 # noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
     # 1. 点击右下方任务
-    # 显示签到成功
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # [x] 签到成功
+    app.qutoutiao_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 6.8 * h / HEIGHT)
-    # 3. 播放50s
-    time.sleep(50)
-    # 4. 回退到福利页面
-    phone.go_back(pid)
+    input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
+    # 3. 播放40s
+    # TODO: 播放时长
+    time.sleep(40)
+    # 4. 回退到未知页面
+    phone.go_back(pid, gap=1)
 
 
 # noinspection PyUnusedLocal
