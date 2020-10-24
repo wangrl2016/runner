@@ -16,7 +16,7 @@ def toutiao(pid, w, h):
     # 4. 返回到任务页面
     phone.go_back(pid)
 
-    # [x] 开宝箱
+    # [x] 顺便开宝箱
     schedule.toutiao_open_treasure(pid, w, h)
 
 
@@ -33,22 +33,24 @@ def kuaishou(pid, w, h):
 
 
 def douyin(pid, w, h):
-    # 1. 假装退出弹出青少年模式悬浮窗的问题
+    # 1. 假装退出解决弹出的青少年模式悬浮窗问题
     phone.go_back(pid)
     # 2. 点击下方的福袋
     # 等待10s签到界面出现
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, 10)
+    # TODO: 有时没有弹出页面
+    app.douyin_benefit_page(pid, w, h, gap=10)
     # 3. 点击立即签到领金币
-    # 签到成功
     # 4. 看视频再赚金币
+    # [x] 签到成功
     for i in range(0, 2):
-        input.tap(pid, w / 2, 9.7 * h / HEIGHT)
+        input.tap(pid, w / 2, 9.7 * h / HEIGHT)  # <=== modify
     # 5. 播放30s
     time.sleep(30)
-    # 6. 退出播放页面
-    phone.go_back(pid)
+    # 6. 退出到播放页面
+    phone.go_back(pid, times=3)
 
     # [x] 顺便开宝箱
+    app.douyin_benefit_page(pid, w, h, gap=3)
     schedule.douyin_open_treasure(pid, w, h)
 
 

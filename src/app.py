@@ -98,6 +98,14 @@ def kuaishou_reward_task(pid, w, h, num):
 
 # ~~~~~~~~~~抖音极速版~~~~~~~~~~
 
+def douyin_benefit_page(pid, w, h, gap=3):
+    """
+    进入抖音福利页面
+    """
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def watch_douyin_video(pid, w, h, hour=3):
     """
     看抖音视频
