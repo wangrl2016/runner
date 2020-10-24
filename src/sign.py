@@ -114,8 +114,14 @@ def fanchang(pid, w, h):
 
 # noinspection PyUnusedLocal
 def weishi(pid, w, h):
-    # 没有签到窗口
-    return None
+    # 1. 回退解决青少年悬浮窗的问题
+    phone.go_back(pid)
+    # 2. 点击右上角红包
+    # TODO: 可能出现悬浮窗
+    input.tap(pid, 5.2 * w / WIDTH, 0.9 * h / HEIGHT)
+    # 3. 点击签到
+    # [x] 签到成功
+    input.tap(pid, w / 2, 7.5 * h / HEIGHT)
 
 
 def shuqi(pid, w, h):
