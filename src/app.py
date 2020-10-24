@@ -58,7 +58,7 @@ def kuaishou_benefit_page(pid, w, h, gap=3):
     # 1. 点击左上角菜单栏
     input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT, gap)  # <= modify
     # 2. 点击去赚钱
-    input.tap(pid, w / 2, 7.2 * h / HEIGHT, gap)  # <=== modify
+    input.tap(pid, w / 3, 7.2 * h / HEIGHT, gap)  # <=== modify
 
 
 # 只包含看视频的过程

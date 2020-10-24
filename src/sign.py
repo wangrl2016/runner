@@ -23,14 +23,12 @@ def toutiao(pid, w, h):
 def kuaishou(pid, w, h):
     # 1. 假装后退解决弹出青少年模式悬浮窗的问题
     phone.go_back(pid)
-    # 2. 点击左上角的菜单栏
-    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)  # <= modify
-    # 3. 点击去赚钱显示福利页面
-    input.tap(pid, w / 2, 7.2 * h / HEIGHT)  # <== modify
-    # 4. 点击立即签到
-    # 签到成功
-    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <= modify
-    # 5. 退出到播放界面
+    # 2. 进入快手福利页面
+    app.kuaishou_benefit_page(pid, w, h, gap=5)
+    # 3. 显示签到页面点击立即签到
+    # [x] 签到成功
+    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
+    # 4. 回退到播放界面
     phone.go_back(pid)
 
 
