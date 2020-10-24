@@ -98,19 +98,17 @@ def fanqie(pid, w, h):
 
 
 def fanchang(pid, w, h):
-    # 1. 点击福利
-    # 显示签到成功
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    # 1. 进入福利页面
+    # [x] 签到成功
+    app.fanchang_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
     input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
     # 3. 播放视频30s
     time.sleep(30)
     # 4. 点击关闭回退到福利页面
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
-    # 5. 顺便开宝箱
-    # 完成之后返回到福利页面
 
-    # [x] 开宝箱
+    # [x] 顺便开宝箱
     schedule.fanchang_open_treasure(pid, w, h)
 
 

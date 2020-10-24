@@ -272,6 +272,10 @@ def read_fanqie_novel(pid, w, h, sec):
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
+def fanchang_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+
+
 def fanchang_video_coin(pid, w, h, num):
     print("番畅看视频赚海量金币 " + datetime.now().__str__())
     # 1. 点击福利按钮
