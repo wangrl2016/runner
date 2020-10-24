@@ -12,7 +12,7 @@ def toutiao_benefit_page(pid, w, h, gap=3):
     进入今日头条福利页面
     """
     # 1. 点击福利
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
 
 
 def read_toutiao_article(pid, w, h, num):

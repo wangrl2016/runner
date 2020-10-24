@@ -10,7 +10,8 @@ ROWS = [1.4, 3.4, 5.4, 7.4, 9.4, 11.4]
 COLUMNS = [1.0, 2.6, 4.2, 5.8]
 
 
-def toutiao(pid, gap=10):
+# 默认设置8s
+def toutiao(pid, gap=8):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

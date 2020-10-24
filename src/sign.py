@@ -5,15 +5,15 @@ from src.info import WIDTH, HEIGHT
 
 
 def toutiao(pid, w, h):
-    # 1. 点击右下方福利
+    # 1. 点击右下方任务栏目
     # 显示签到界面
     # [x] 签到成功
     app.toutiao_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
     input.tap(pid, w / 2, 9.0 * h / HEIGHT)  # <== modify
-    # 3. 看15s视频
+    # 3. 播放15s
     time.sleep(15)
-    # 4. 点击关闭
+    # 4. 返回到任务页面
     phone.go_back(pid)
 
     # [x] 开宝箱
