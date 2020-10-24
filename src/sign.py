@@ -237,8 +237,8 @@ def qutoutiao(pid, w, h):
 # noinspection PyUnusedLocal
 def baidu(pid, w, h):
     # 1. 点击右下方去签到
-    # 显示签到成功
-    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # [x] 签到成功
+    app.baidu_benefit_page(pid, w, h)
     for i in range(0, 5):
         # 2. 看视频再领金币
         input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
