@@ -250,16 +250,16 @@ def baidu(pid, w, h):
 
 def ximalaya(pid, w, h):
     # 1. 点击右下方福利
-    # 显示签到成功
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # [x] 签到成功
+    app.ximalaya_benefit_page(pid, w, h)
     # 2. 看视频再领金币
     input.tap(pid, w / 2, 9.5 * h / HEIGHT)
     # 3. 播放30s
     time.sleep(30)
     # 4. 关闭返回广告页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
     # 5. 返回到福利页面
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
 
 
 def douhuo(pid, w, h):

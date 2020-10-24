@@ -599,6 +599,8 @@ def watch_baidu_svideo(pid, w, h, hour):
 
 # ~~~~~~~~~~喜马拉雅~~~~~~~~~~
 
+def ximalaya_benefit_page(pid, w, h):
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
 def watch_douhuo_video(pid, w, h, sec=300):
