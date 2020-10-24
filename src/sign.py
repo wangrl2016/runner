@@ -196,7 +196,7 @@ def pinduoduo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
-    # 红包很难提现
+    # 有现金红包
     return None
 
 
@@ -214,10 +214,10 @@ def shuabao(pid, w, h):
     # 6. 播放30s
     time.sleep(30)
     # 7. 点击关闭
-    # 显示签到成功页面
+    # [x]签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
     # 8. 回退显示获取元宝页面
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
 
 
 # noinspection PyUnusedLocal
