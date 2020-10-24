@@ -602,7 +602,7 @@ def yingke(pid, w, h):
         # 小米手机无法解决振动问题
         if datetime.now().hour.__gt__(9) and datetime.now().hour.__le__(20):
             checkin.yingke(pid, w, h)
-            app.baidu_benefit_page(pid, w, h)
+            app.yingke_benefit_page(pid, w, h)
             # [x] 看福利视频
             # 可以看10次
             # 后续奖励金更多
