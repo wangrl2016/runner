@@ -438,11 +438,9 @@ def fanqie(pid, w, h):
     # 分享好书给好友接在加入书架之后
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if datetime.now().hour.__eq__(7):
-            app.fanqie_benefit_page(pid, w, h)
             # [x] 加入书架
             add_bookshelf()
         elif datetime.now().hour.__eq__(8):
-            app.fanqie_benefit_page(pid, w, h)
             # [x] 分享好书给好友
             book_share()
 
@@ -632,7 +630,8 @@ def kugou(pid, w, h):
     # 刷创意视频
     def creative_video():
         # 1. 点击去赚钱
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT, gap=10)  # <= modify
+        # 高需要确保兼容性
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 12.5 / HEIGHT, gap=10)  # <= modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
@@ -867,7 +866,7 @@ def baidu(pid, w, h):
         # 1. 打开宝箱
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 10.1 * h / HEIGHT)  # <= modify
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
         checkin.baidu(pid)
 
         # [x] 时段奖励
