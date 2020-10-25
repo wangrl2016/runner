@@ -272,7 +272,6 @@ def run(pid):
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
-            # 打开程序
             # 无法确定关闭的位置所以强制关闭
             for i in range(0, 10):
                 # 有广告稍微延长时间
@@ -281,7 +280,6 @@ def run(pid):
                 # 10个视频
                 # 8min赚0.3元
                 app.shuqi_video_coin(pid, w, h)
-                # 退出程序
                 phone.stop_app(pid, packages['shuqi'])
 
             # 打开程序
@@ -302,15 +300,14 @@ def run(pid):
             # [x] 分享映客极速版
             # 分享3次
             # 也可以在直播间分享
+            # 1min赚0.045元
             app.share_yingke(pid, w, h, times=3)
             phone.stop_app(pid, packages['yingke'])
 
-            # [x] 看映客直播
-            # 1. 打开程序
             checkin.yingke(pid, w, h)
-            # 2. 看映客直播
+            # [x] 看映客直播
+            # 20min赚0.25元
             app.watch_yingke_live(pid, w, h, sec=1200)
-            # 3. 退出程序
             phone.stop_app(pid, packages['yingke'])
 
             utils.tail_work(pid, w, h, hour=10)

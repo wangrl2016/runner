@@ -119,9 +119,11 @@ def full_watch_douyin_video(pid, w, h, hour):
     print('看抖音视频 ' + datetime.now().__str__())
     # 1. 打开程序
     checkin.douyin(pid)
-    # 2. 看抖音视频
+    # 2. 回退消除可能的悬浮窗
+    phone.go_back(pid)
+    # 3. 看抖音视频
     watch_douyin_video(pid, w, h, hour)
-    # 3. 关闭程序
+    # 4. 关闭程序
     phone.stop_app(pid, packages['douyin'])
 
 
@@ -598,6 +600,7 @@ def watch_baidu_svideo(pid, w, h, hour):
 
 def ximalaya_benefit_page(pid, w, h):
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
 def watch_douhuo_video(pid, w, h, sec=300):

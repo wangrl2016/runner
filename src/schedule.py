@@ -610,7 +610,7 @@ def yingke(pid, w, h):
             phone.stop_app(pid, packages['yingke'])
 
             checkin.yingke(pid, w, h, gap=10)
-            app.baidu_benefit_page(pid, w, h)
+            app.yingke_benefit_page(pid, w, h)
             # [x] 开宝箱
             # 10次
             open_treasure()
