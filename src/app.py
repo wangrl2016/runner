@@ -103,7 +103,7 @@ def douyin_benefit_page(pid, w, h, gap=3):
     进入抖音福利页面
     """
     # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def watch_douyin_video(pid, w, h, hour=3):
@@ -134,7 +134,7 @@ def huoshan_benefit_page(pid, w, h, gap=3):
     进入火山福利页面
     """
     # 1. 点击火山右下方红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <== modify
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
 
 
 def watch_huoshan_video(pid, w, h, hour=4):
@@ -612,6 +612,25 @@ def watch_douhuo_video(pid, w, h, sec=300):
     while (datetime.now() - start).seconds < sec:
         phone.swipe_down_to_up(pid, w, h / 2, randrange(5, 16))
 
+
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 
 # ~~~~~~~~~~点点新闻~~~~~~~~~~
+
+def diandian_benefit_page(pid, w, h, gap=3):
+    # 进入福利页面
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+def daily_packet(pid, w, h):
+    """
+    天天领红包
+    """
+    # 1. 进入福利页面
+    diandian_benefit_page(pid, w, h)
+    # 2. 点击领取今日红包
+    input.tap(pid, w / 2, 10.2 * h / HEIGHT, gap=8)
+    # 3. 播放30s
+    time.sleep(30)
+    # 4. 返回到福利页面
+    phone.go_back(pid)

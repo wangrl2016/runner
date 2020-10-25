@@ -466,6 +466,12 @@ def run(pid):
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
 
+            for i in range(0, 10):
+                checkin.diandian(pid, w, h)
+                # [x] 天天领红包
+                app.daily_packet(pid, w, h)
+                phone.stop_app(pid, packages['diandian'])
+
             utils.tail_work(pid, w, h, hour=23)
 
 
