@@ -340,20 +340,17 @@ def read_shuqi_novel(pid, w, h, sec=300):
             phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
 
 
-def shuqi_video_coin(pid, w, h, num):
+def shuqi_video_coin(pid, w, h):
     """
     看视频赚金币
     """
     print('书旗看视频赚金币 ' + datetime.now().__str__())
     shuqi_benefit_page(pid, w, h)
     # 看视频
-    for i in range(0, num):
-        # 2. 点击快速得百万金币
-        input.tap(pid, w / 2, 10.4 * h / HEIGHT, gap=8)  # <== modify
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.8 * h / HEIGHT)  # <==== modify
+    # 2. 点击快速得百万金币
+    input.tap(pid, w / 2, 10.4 * h / HEIGHT, gap=10)  # <== modify
+    # 3. 播放30s
+    time.sleep(30)
 
 
 # ~~~~~~~~~~映客直播极速版~~~~~~~~~~

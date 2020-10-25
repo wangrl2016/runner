@@ -273,13 +273,16 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             # 打开程序
-            checkin.shuqi(pid, w, h)
-            # [x] 看视频赚金币
-            # 10个视频
-            # 8min赚0.3元
-            app.shuqi_video_coin(pid, w, h, num=10)
-            # 退出程序
-            phone.stop_app(pid, packages['shuqi'])
+            # 无法确定关闭的位置所以强制关闭
+            for i in range(0, 10):
+                # 有广告稍微延长时间
+                checkin.shuqi(pid, w, h, gap=12)
+                # [x] 看视频赚金币
+                # 10个视频
+                # 8min赚0.3元
+                app.shuqi_video_coin(pid, w, h)
+                # 退出程序
+                phone.stop_app(pid, packages['shuqi'])
 
             # 打开程序
             checkin.shuqi(pid, w, h)
