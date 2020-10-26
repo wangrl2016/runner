@@ -626,6 +626,7 @@ def daily_packet(pid, w, h):
     """
     天天领红包
     """
+    print('天天领红包 ' + datetime.now().__str__())
     # 1. 进入福利页面
     diandian_benefit_page(pid, w, h)
     # 2. 点击领取今日红包
