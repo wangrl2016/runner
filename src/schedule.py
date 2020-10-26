@@ -947,7 +947,16 @@ def kuge(pid, w, h):
 
 # noinspection PyUnusedLocal
 def makan(pid, w, h):
-    return None
+    def time_reward():
+        input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.makan(pid, w, h)
+        # 消除悬浮窗
+        phone.go_back(pid)
+        # [x] 时段奖励
+        time_reward()
+        phone.stop_app(pid, packages['makan'])
 
 
 # noinspection PyUnusedLocal
