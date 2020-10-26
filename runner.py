@@ -460,6 +460,10 @@ def run(pid):
         while datetime.now().hour.__eq__(22):
             schedule_apps(pid, w, h)
 
+            checkin.makan(pid, w, h)
+            app.read_makan_article(pid, w, h, num=20)
+            phone.stop_app(pid, packages['makan'])
+
             utils.tail_work(pid, w, h, hour=22)
 
         # 点点新闻
@@ -471,6 +475,10 @@ def run(pid):
                 # [x] 天天领红包
                 app.daily_packet(pid, w, h)
                 phone.stop_app(pid, packages['diandian'])
+
+            checkin.diandian(pid, w, h)
+            app.read_diandian_article(pid, w, h, num=20)
+            phone.stop_app(pid, packages['diandian'])
 
             utils.tail_work(pid, w, h, hour=23)
 

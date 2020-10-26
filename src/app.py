@@ -615,6 +615,23 @@ def watch_douhuo_video(pid, w, h, sec=300):
 
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 
+def read_makan_article(pid, w, h, num):
+    """
+    看蚂蚁看点文章
+    """
+    print('看蚂蚁看点文章 ' + datetime.now().__str__())
+    for i in (0, num):
+        # 1. 点击文章
+        input.tap(pid, w / 2, h / 3)
+        for i in range(0, 10):
+            # 2. 向上滑动
+            phone.swipe_down_to_up(pid, w, h, gap=3)
+        # 3. 返回上级
+        phone.go_back(pid)
+        # 4. 刷新页面
+        phone.swipe_up_to_down(pid, w, h)
+
+
 # ~~~~~~~~~~点点新闻~~~~~~~~~~
 
 def diandian_benefit_page(pid, w, h, gap=3):
@@ -635,3 +652,20 @@ def daily_packet(pid, w, h):
     time.sleep(30)
     # 4. 返回到福利页面
     phone.go_back(pid)
+
+
+def read_diandian_article(pid, w, h, num):
+    """
+    看点点文章
+    """
+    print('看点点新闻文章 ' + datetime.now().__str__())
+    for i in (0, num):
+        # 1. 点击文章
+        input.tap(pid, w / 2, h / 2)
+        for i in range(0, 10):
+            # 2. 向上滑动
+            phone.swipe_down_to_up(pid, w, h, gap=3)
+        # 3. 返回上级
+        phone.go_back(pid)
+        # 4. 刷新页面
+        phone.swipe_up_to_down(pid, w, h)
