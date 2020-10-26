@@ -10,8 +10,7 @@ ROWS = [1.4, 3.4, 5.4, 7.4, 9.4, 11.4]
 COLUMNS = [1.0, 2.6, 4.2, 5.8]
 
 
-# 默认设置8s
-def toutiao(pid, gap=8):
+def toutiao(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -80,7 +79,7 @@ def weishi(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def shuqi(pid, w, h, gap=10):
+def shuqi(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
@@ -107,7 +106,7 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
-def huitoutiao(pid, gap=10):
+def huitoutiao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -115,7 +114,7 @@ def huitoutiao(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def zhongqing(pid, w, h, gap=10):
+def zhongqing(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
@@ -133,7 +132,7 @@ def pinduoduo(pid, w, h, gap=10):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
-def taobao(pid, gap=15):
+def taobao(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -190,7 +189,7 @@ def kuge(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def makan(pid, w, h, gap=10):
+def makan(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid, gap)
     # 模仿启动输出
