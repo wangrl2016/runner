@@ -12,7 +12,7 @@ def go_home(pid, gap=1):
     time.sleep(gap)
 
 
-def go_back(pid, times=1, gap=3):
+def go_back(pid, times=1, gap=2):
     """
     回退到上级页面
     """

@@ -183,9 +183,9 @@ def kuaishou(pid, w, h):
             # 4. 上滑出现下一个
             phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
         # 5. 返回到福利页面
-        phone.go_back(pid, gap=8)
+        phone.go_back(pid, gap=2)
         # 6. 福利页面恢复原样
-        phone.swipe_up_to_down(pid, w, h, 3, internal=100)
+        phone.swipe_up_to_down(pid, w, h, gap=1, internal=100)
 
     # 每隔一个小时开一次宝箱
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
@@ -253,14 +253,24 @@ def douyin(pid, w, h):
     def meal_allowance():
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, internal=100)
+
+        eat_location = utils.current_words_location(pid, '吃')
+        if eat_location is None:
+            print('没有获取到吃饭补贴的位置')
+            return
+        height = eat_location['y'] + eat_location['h']
+
         # 2. 点击吃饭补贴
-        input.tap(pid, w / 3, 8.6 * h / HEIGHT)  # <==== modify
+        input.tap(pid, w / 3, height)
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
-        # TODO: 看视频领金币环节
-        # 4. 返回到福利页面
-        phone.go_back(pid)
-        # 5. 滑到最上面
+        # 4. 看视频再领金币
+        input.tap(pid, w / 2, 9.0 * h / HEIGHT)
+        # 5. 播放30s
+        time.sleep(30)
+        # 6. 返回到福利页面
+        phone.go_back(pid, times=2, gap=1)
+        # 7. 滑到最上面
         phone.swipe_up_to_down(pid, w, h, internal=100)
 
     # 游戏抽奖
@@ -310,14 +320,14 @@ def douyin(pid, w, h):
 
 # 火山开宝箱
 def huoshan_open_treasure(pid, w, h):
-    # 2. 点击开宝箱得金币
+    # 1. 点击开宝箱得金币
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
-    # 3. 点击看视频金币翻倍按钮
+    # 2. 点击看视频金币翻倍按钮
     input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
-    # 4. 播放30s
+    # 3. 播放30s
     time.sleep(30)
-    # 5. 返回到福利页面
-    phone.go_back(pid)
+    # 4. 返回到福利页面
+    phone.go_back(pid, gap=2)
 
 
 def huoshan(pid, w, h):
@@ -579,27 +589,21 @@ def shuqi(pid, w, h):
 def yingke(pid, w, h):
     # 看福利视频
     def benefit_video():
+        print('映客福利视频 ' + datetime.now().__str__())
         # 1. 点击领金币
         input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <== modify
         # 2. 播放45s
         # 播放时间不同
         time.sleep(45)
-        # 3. 返回到福利页面
-        # 有时无法返回
-        # 直接退出有奖励
-        phone.go_back(pid, gap=1)
 
     # 开宝箱
     def open_treasure():
+        print('映客开宝箱 ' + datetime.now().__str__())
         # 1. 点击开宝箱领金币
         input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <== modify
         # 2. 播放视频45s
         # 播放时间不同
         time.sleep(45)
-        # 3. 返回到福利页面
-        # 有时无法返回
-        # 直接退出有奖励
-        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # 小米手机无法解决振动问题
@@ -607,12 +611,11 @@ def yingke(pid, w, h):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 看福利视频
-            # 可以看10次
-            # 后续奖励金更多
+            # 10次
             benefit_video()
             phone.stop_app(pid, packages['yingke'])
 
-            checkin.yingke(pid, w, h, gap=10)
+            checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 开宝箱
             # 10次
@@ -636,7 +639,7 @@ def kugou(pid, w, h):
     def creative_video():
         # 1. 点击去赚钱
         # 高需要确保兼容性
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 12.5 * h / HEIGHT, gap=10)  # <=== modify
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 12.7 * h / HEIGHT, gap=10)  # <=== modify
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
