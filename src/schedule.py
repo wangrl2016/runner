@@ -168,9 +168,9 @@ def kuaishou(pid, w, h):
     # [x] 看直播领金币
     def watch_live():
         # 1. 向上滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w, h, gap=3, internal=100)
+        phone.swipe_down_to_up(pid, w, h, gap=3, internal=200)
         # 2. 点击看直播按钮
-        live_location = utils.current_words_location(pid, '看直播')
+        live_location = utils.current_words_location(pid, '看直播领金币')
         if live_location is None:
             print('没有获取到看直播领金币的位置')
             return

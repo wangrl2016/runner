@@ -115,14 +115,16 @@ def current_words_location(pid, words, output_dir='out'):
     # 3. 截图信息对比
     for i in range(0, len(data['text'])):
         if data['text'][i].__eq__(words[0]):
+            is_found = True
             for j, word in enumerate(words):
                 if not word.__eq__(data['text'][i + j]):
-                    i += j
+                    is_found = False
                     break
-            os.remove(os.path.join(output_dir, photo_name))
-            # 4. 返回处理结果
-            return {'x': data['left'][i], 'y': data['top'][i],
-                    'w': data['width'][i], 'h': data['height'][i]}
+            if is_found:
+                # 4. 返回处理结果
+                os.remove(os.path.join(output_dir, photo_name))
+                return {'x': data['left'][i], 'y': data['top'][i],
+                        'w': data['width'][i], 'h': data['height'][i]}
     os.remove(os.path.join(output_dir, photo_name))
     return None
 

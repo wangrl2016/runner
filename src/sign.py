@@ -130,7 +130,7 @@ def shuqi(pid, w, h):
     phone.go_back(pid)
     # 点击中间下方的福利
     # [x] 签到成功
-    app.shuqi_benefit_page(pid, w, h)
+    app.shuqi_benefit_page(pid, w, h, gap=5)
 
 
 def yingke(pid, w, h):

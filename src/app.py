@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin, schedule, utils
+from src import phone, input, checkin, utils
 from src.info import HEIGHT, WIDTH, packages
 
 
@@ -81,6 +81,7 @@ def full_watch_kuaishou_video(pid, w, h, hour):
     phone.stop_app(pid, packages['kuaishou'])
 
 
+# noinspection PyUnusedLocal
 def kuaishou_reward_task(pid, w, h, num):
     """
     1000金币悬赏任务
@@ -321,9 +322,9 @@ def full_watch_weishi_video(pid, w, h, hour):
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
 
 # 进入福利页面
-def shuqi_benefit_page(pid, w, h):
+def shuqi_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def read_shuqi_novel(pid, w, h, sec=300):
