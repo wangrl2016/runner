@@ -278,7 +278,7 @@ def run(pid):
                 checkin.shuqi(pid, w, h, gap=12)
                 # [x] 看视频赚金币
                 # 10个视频
-                # 8min赚0.3元
+                # 10min赚0.3元
                 app.shuqi_video_coin(pid, w, h)
                 phone.stop_app(pid, packages['shuqi'])
 

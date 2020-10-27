@@ -620,10 +620,10 @@ def read_makan_article(pid, w, h, num):
     看蚂蚁看点文章
     """
     print('看蚂蚁看点文章 ' + datetime.now().__str__())
-    for i in (0, num):
+    for i in range(0, num):
         # 1. 点击文章
         input.tap(pid, w / 2, h / 3)
-        for i in range(0, 10):
+        for j in range(0, 10):
             # 2. 向上滑动
             phone.swipe_down_to_up(pid, w, h, gap=3)
         # 3. 返回上级
@@ -659,10 +659,10 @@ def read_diandian_article(pid, w, h, num):
     看点点文章
     """
     print('看点点新闻文章 ' + datetime.now().__str__())
-    for i in (0, num):
+    for i in range(0, num):
         # 1. 点击文章
         input.tap(pid, w / 2, h / 2)
-        for i in range(0, 10):
+        for j in range(0, 10):
             # 2. 向上滑动
             phone.swipe_down_to_up(pid, w, h, gap=3)
         # 3. 返回上级
