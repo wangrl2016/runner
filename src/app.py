@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin, schedule
+from src import phone, input, checkin, schedule, utils
 from src.info import HEIGHT, WIDTH, packages
 
 
@@ -86,10 +86,15 @@ def kuaishou_reward_task(pid, w, h, num):
     1000金币悬赏任务
     """
     print('快手1000金币悬赏任务 ' + datetime.now().__str__())
+    reward_location = utils.current_words_location(pid, '悬赏')
+    if reward_location is None:
+        print('没有获取到1000金币悬赏任务的位置')
+        return
+    height = reward_location['y'] + reward_location['h']
     for i in range(0, num):
         # 3. 点击福利按钮
         # 位置不定
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.2 * h / HEIGHT)  # <== modify
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
         # 4. 播放30s
         time.sleep(30)
         # 5. 返回到福利页面

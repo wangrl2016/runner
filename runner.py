@@ -57,17 +57,6 @@ def cycle(pid):
             # [x] 看微视视频
             app.full_watch_weishi_video(pid, w, h, hour)
 
-        hour = datetime.now().hour
-        while run_apps.__contains__('shuabao') and datetime.now().hour.__eq__(hour):
-            # [x] 看刷宝视频
-            print('看刷宝视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.shuabao(pid)
-            # 2. 看刷宝视频
-            app.watch_shuabao_video(pid, w, h, hour)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['shuabao'])
-
 
 def run(pid):
     # 需要保持手机处于亮屏状态
@@ -89,8 +78,6 @@ def run(pid):
 
     # 文字识别
     # photo_name = phone.get_page_photo(pid, output=out_dir)
-    # text = pytesseract.image_to_string(Image.open(os.path.join(out_dir, photo_name)), lang='chi_sim')
-    # print(text)
     # data = pytesseract.image_to_data(Image.open(os.path.join(out_dir, photo_name)),
     #                                  output_type=Output.DICT, lang='chi_sim')
     # for i in range(0, len(data['text'])):
@@ -152,16 +139,13 @@ def run(pid):
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
-            # [x] 1000金币悬赏任务
-            # 1. 打开程序
             checkin.kuaishou(pid)
-            # 重要任务稍微延长时间
-            app.kuaishou_benefit_page(pid, w, h, gap=5)
-            # 2. 悬赏任务做9次
-            # 不然完成后会放置最下面
-            # 打乱原本的顺序
-            app.kuaishou_reward_task(pid, w, h, num=9)
-            # 3. 关闭程序
+            app.kuaishou_benefit_page(pid, w, h)
+            # [x] 1000金币悬赏任务
+            # 10次
+            # 6min赚0.1元
+            # 做完之后放置在最下面
+            app.kuaishou_reward_task(pid, w, h, num=10)
             phone.stop_app(pid, packages['kuaishou'])
 
             app.full_watch_kuaishou_video(pid, w, h, hour=2)

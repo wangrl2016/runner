@@ -5,6 +5,10 @@ from random import randrange
 from src import schedule, checkin, phone, app
 from src.info import apps, activities, packages, SCHEDULE_TIME
 
+import pytesseract
+from PIL import Image
+from pytesseract import Output
+
 
 def tap_start(a):
     """
@@ -40,7 +44,7 @@ def schedule_apps(pid, w, h):
             set_home_page(pid, w, h, a)
             getattr(schedule, a)(pid, w, h)
 
-        if (datetime.now().hour % 7).__eq__(0):
+        if (datetime.now().hour % 5).__eq__(0):
             # 手机休息5分钟
             phone.sleep_to_weak(pid, w, h, gap=300)
 
@@ -97,3 +101,27 @@ def get_photos(path):
             if os.path.splitext(file)[1].__eq__('.png'):
                 photos.append(os.path.join(root, file))
     return photos
+
+
+def current_words_location(pid, words, output_dir='out'):
+    """
+    获取当前页面上文字的位置
+    """
+    # 1. 获取到手机截图
+    photo_name = phone.get_page_photo(pid, output_dir)
+    # 2. 对截图进行识别
+    data = pytesseract.image_to_data(Image.open(os.path.join(output_dir, photo_name)),
+                                     output_type=Output.DICT, lang='chi_sim')
+    # 3. 截图信息对比
+    for i in range(0, len(data['text'])):
+        if data['text'][i].__eq__(words[0]):
+            for j, word in enumerate(words):
+                if not word.__eq__(data['text'][i + j]):
+                    i += j
+                    break
+            os.remove(os.path.join(output_dir, photo_name))
+            # 4. 返回处理结果
+            return {'x': data['left'][i], 'y': data['top'][i],
+                    'w': data['width'][i], 'h': data['height'][i]}
+    os.remove(os.path.join(output_dir, photo_name))
+    return None
