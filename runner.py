@@ -11,9 +11,6 @@ from src import phone, checkin, sign, app, utils
 from src.info import packages, apps, high_serials
 from src.utils import tap_start, schedule_apps
 
-# import pytesseract
-# from PIL import Image
-# from pytesseract import Output
 
 MAX_PHOTOS_STORE = 50
 
@@ -77,11 +74,7 @@ def run(pid):
                         print(line)
 
     # 文字识别
-    # photo_name = phone.get_page_photo(pid, output=out_dir)
-    # data = pytesseract.image_to_data(Image.open(os.path.join(out_dir, photo_name)),
-    #                                  output_type=Output.DICT, lang='chi_sim')
-    # for i in range(0, len(data['text'])):
-    #     print(data['text'][i], data['left'][i], data['top'][i], data['width'][i], data['height'][i])
+    utils.print_current_location(pid)
 
     # 获取手机的大小
     (w, h) = phone.get_size(pid)

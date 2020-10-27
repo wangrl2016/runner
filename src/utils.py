@@ -125,3 +125,16 @@ def current_words_location(pid, words, output_dir='out'):
                     'w': data['width'][i], 'h': data['height'][i]}
     os.remove(os.path.join(output_dir, photo_name))
     return None
+
+
+def print_current_location(pid, out_dir='out'):
+    """
+    打印当前页面文字的位置
+    调试使用的函数
+    """
+    photo_name = phone.get_page_photo(pid, output=out_dir)
+    data = pytesseract.image_to_data(Image.open(os.path.join(out_dir, photo_name)),
+                                     output_type=Output.DICT, lang='chi_sim')
+    for i in range(0, len(data['text'])):
+        print(data['text'][i], data['left'][i], data['top'][i], data['width'][i], data['height'][i])
+    os.remove(os.path.join(out_dir, photo_name))

@@ -1,7 +1,7 @@
 import time
 from datetime import datetime
 
-from src import checkin, phone, input, app
+from src import checkin, phone, input, app, utils
 from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
 
 
@@ -170,8 +170,13 @@ def kuaishou(pid, w, h):
         # 1. 向上滑动页面打开看直播领金币
         phone.swipe_down_to_up(pid, w, h, gap=3, internal=100)
         # 2. 点击看直播按钮
-        # 位置不定
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 8.8 * h / HEIGHT)  # <=== modify
+        live_location = utils.current_words_location(pid, '看直播')
+        if live_location is None:
+            print('没有获取到看直播领金币的位置')
+            return
+        height = live_location['y'] + live_location['h']
+
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
         for i in range(0, 10):
             # 3. 观看30s
             time.sleep(30)
@@ -188,9 +193,9 @@ def kuaishou(pid, w, h):
         checkin.kuaishou(pid)
         app.kuaishou_benefit_page(pid, w, h)
 
-        # [x] 看直播领金币
-        # 20:00-24:00
         if datetime.now().hour.__eq__(20):
+            # [x] 看直播领金币
+            # 20:00-24:00
             watch_live()
 
         # [x] 开宝箱
