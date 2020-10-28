@@ -447,6 +447,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             checkin.makan(pid, w, h)
+            phone.go_back(pid, gap=2)
             app.read_makan_article(pid, w, h, num=20)
             phone.stop_app(pid, packages['makan'])
 
@@ -463,7 +464,13 @@ def run(pid):
                 phone.stop_app(pid, packages['diandian'])
 
             checkin.diandian(pid, w, h)
+            # [x] 看新闻
             app.read_diandian_article(pid, w, h, num=20)
+            phone.stop_app(pid, packages['diandian'])
+
+            checkin.diandian(pid, w, h)
+            # [x] 看视频
+            app.watch_diandian_video(pid, w, h, num=10)
             phone.stop_app(pid, packages['diandian'])
 
             utils.tail_work(pid, w, h, hour=23)
