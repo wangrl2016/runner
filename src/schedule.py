@@ -704,6 +704,8 @@ def huitoutiao(pid, w, h):
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.huitoutiao(pid)
 
+        # [x] 阅读惠头条文章
+        app.read_huitoutiao_article(pid, w, h, num=1)
 
         # [x] 时段奖励
         # 每个小时一次

@@ -450,12 +450,13 @@ def read_huitoutiao_article(pid, w, h, num):
     print('阅读惠头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
-        phone.swipe_down_to_up(pid, w, h)
-        # 2. 点击文章
-        input.tap(pid, w / 2, h * 3 / 4)
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
+        # 2. 阅读中间文章
+        input.tap(pid, w / 2, h * 3 / 5)
         # 3. 滑动阅读
-        for j in range(0, 5):
-            phone.swipe_down_to_up(pid, w, h)
+        for j in range(0, 10):
+            phone.swipe_down_to_up(pid, w, h, gap=3)
         # 4. 返回上级目录
         phone.go_back(pid)
 

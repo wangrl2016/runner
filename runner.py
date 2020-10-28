@@ -298,12 +298,9 @@ def run(pid):
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
-            # [x] 阅读惠头条文章
-            # 1. 打开程序
             checkin.huitoutiao(pid)
-            # 2. 阅读惠头条文章
-            app.read_huitoutiao_article(pid, w, h, num=30)
-            # 3. 关闭程序
+            # [x] 阅读惠头条文章
+            app.read_huitoutiao_article(pid, w, h, num=20)
             phone.stop_app(pid, packages['huitoutiao'])
 
             checkin.huitoutiao(pid)
