@@ -666,11 +666,11 @@ def daily_packet(pid, w, h):
     # 1. 进入福利页面
     diandian_benefit_page(pid, w, h)
     # 2. 点击领取今日红包
-    input.tap(pid, w / 2, 10.2 * h / HEIGHT, gap=8)
+    input.tap(pid, w / 2, 10.2 * h / HEIGHT, gap=10)
     # 3. 播放30s
     time.sleep(30)
-    # 4. 返回到福利页面
-    phone.go_back(pid)
+    # 4. 必须返回到福利页面
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 
 def read_diandian_article(pid, w, h, num):
