@@ -11,7 +11,6 @@ from src import phone, checkin, sign, app, utils
 from src.info import packages, apps, high_serials
 from src.utils import tap_start, schedule_apps
 
-
 MAX_PHOTOS_STORE = 50
 
 
@@ -377,6 +376,16 @@ def run(pid):
         # 趣头条
         while datetime.now().hour.__eq__(17):
             schedule_apps(pid, w, h)
+
+            # [x] 看头条文章
+            checkin.qutoutiao(pid)
+            app.read_qutoutiao_article(pid, w, h, num=10)
+            phone.stop_app(pid, packages['qutoutiao'])
+
+            # [x] 看头条视频
+            checkin.qutoutiao(pid)
+            app.watch_qutoutiao_video(pid, w, h, num=10)
+            phone.stop_app(pid, packages['qutoutiao'])
 
             # [x] 看趣头条小视频
             app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)

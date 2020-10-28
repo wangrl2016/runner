@@ -551,6 +551,16 @@ def qutoutiao_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+# noinspection PyUnusedLocal
+def read_qutoutiao_article(pid, w, h, num):
+    return None
+
+
+# noinspection PyUnusedLocal
+def watch_qutoutiao_video(pid, w, h, num):
+    return None
+
+
 def watch_qutoutiao_svideo(pid, w, h, hour):
     """
     看趣头条小视频
@@ -558,6 +568,7 @@ def watch_qutoutiao_svideo(pid, w, h, hour):
     # 　1. 点击中间下方小视频
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     while datetime.now().hour.__eq__(hour):
+        # TODO: 中途出现彩蛋需要点击
         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 
 

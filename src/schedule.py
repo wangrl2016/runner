@@ -252,7 +252,7 @@ def douyin(pid, w, h):
     # 吃饭补贴
     def meal_allowance():
         # 1. 下滑任务页面到最下面
-        phone.swipe_down_to_up(pid, w, h, internal=100)
+        phone.swipe_down_to_up(pid, w, h, gap=5)
 
         eat_location = utils.current_words_location(pid, '吃')
         if eat_location is None:
