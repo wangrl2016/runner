@@ -317,12 +317,9 @@ def run(pid):
         while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
 
-            # [x] 阅读中青看点文章
-            # 1. 打开程序
             checkin.zhongqing(pid, w, h)
-            # 2. 阅读中青看点文章
-            app.read_zhongqing_article(pid, w, h, num=30)
-            # 3. 关闭程序
+            # [x] 阅读中青看点文章
+            app.read_zhongqing_article(pid, w, h, num=10)
             phone.stop_app(pid, packages['zhongqing'])
 
             utils.tail_work(pid, w, h, hour=13)

@@ -703,6 +703,8 @@ def huitoutiao(pid, w, h):
     if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.huitoutiao(pid)
+
+
         # [x] 时段奖励
         # 每个小时一次
         # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
@@ -722,6 +724,12 @@ def zhongqing(pid, w, h):
         checkin.zhongqing(pid, w, h)
         # [x] 时段奖励
         time_reward()
+
+        # 消除奖励提醒
+        phone.go_back(pid, gap=2)
+        # [x] 阅读文章
+        app.read_zhongqing_article(pid, w, h, num=1)
+
         phone.stop_app(pid, packages['zhongqing'])
 
 
