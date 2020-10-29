@@ -81,25 +81,29 @@ def full_watch_kuaishou_video(pid, w, h, hour):
     phone.stop_app(pid, packages['kuaishou'])
 
 
-# noinspection PyUnusedLocal
 def kuaishou_reward_task(pid, w, h, num):
     """
     1000金币悬赏任务
     """
     print('快手1000金币悬赏任务 ' + datetime.now().__str__())
+    # 1. 向上滑动
+    # 由于被宝箱遮挡
+    phone.swipe_down_to_up(pid, w, h)
     reward_location = utils.current_words_location(pid, '悬赏')
     if reward_location is None:
         print('没有获取到1000金币悬赏任务的位置')
         return
     height = reward_location['y'] + reward_location['h']
     for i in range(0, num):
-        # 3. 点击福利按钮
+        # 2. 点击福利按钮
         # 位置不定
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
-        # 4. 播放30s
+        # 3. 播放30s
         time.sleep(30)
-        # 5. 返回到福利页面
+        # 4. 返回到福利页面
         phone.go_back(pid)
+    # 5. 向下滑动
+    phone.swipe_up_to_down(pid, w, h)
 
 
 # ~~~~~~~~~~抖音极速版~~~~~~~~~~
