@@ -966,10 +966,10 @@ def kuge(pid, w, h):
             phone.stop_app(pid, packages['kuge'])
 
 
-# noinspection PyUnusedLocal
 def makan(pid, w, h):
     def time_reward():
-        input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT)
+        # 1. 点击领取
+        input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.makan(pid, w, h)
@@ -980,6 +980,9 @@ def makan(pid, w, h):
         phone.stop_app(pid, packages['makan'])
 
 
-# noinspection PyUnusedLocal
 def diandian(pid, w, h):
-    return None
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.diandian(pid, w, h)
+        # [x] 阅读点点文章
+        app.read_diandian_article(pid, w, h, num=1)
+        phone.stop_app(pid, packages['diandian'])

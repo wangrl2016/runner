@@ -668,6 +668,7 @@ def read_makan_article(pid, w, h, num):
         for j in range(0, 10):
             # 2. 向上滑动
             phone.swipe_down_to_up(pid, w, h, gap=3)
+        # TODO: 如何解决可能出现的彩蛋
         # 3. 返回上级
         phone.go_back(pid)
         # 4. 刷新页面
@@ -709,8 +710,9 @@ def read_diandian_article(pid, w, h, num):
             phone.swipe_down_to_up(pid, w, h, gap=2)
         # 3. 返回上级
         phone.go_back(pid, gap=2)
-        # 4. 刷新页面
-        phone.swipe_up_to_down(pid, w, h)
+        if num.__ne__(1):
+            # 4. 刷新页面
+            phone.swipe_up_to_down(pid, w, h)
 
 
 def watch_diandian_video(pid, w, h, num):

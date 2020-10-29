@@ -44,9 +44,9 @@ def schedule_apps(pid, w, h):
             set_home_page(pid, w, h, a)
             getattr(schedule, a)(pid, w, h)
 
-        if (datetime.now().hour % 5).__eq__(0):
+        if (datetime.now().hour % 4).__eq__(1):
             # 手机休息5分钟
-            phone.sleep_to_weak(pid, w, h, gap=300)
+            phone.sleep_to_weak(pid, w, h, gap=180)
 
         def watch_kuaishou_video():
             print('看快手视频 ' + datetime.now().__str__())

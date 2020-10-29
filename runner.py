@@ -449,7 +449,7 @@ def run(pid):
 
             checkin.makan(pid, w, h)
             phone.go_back(pid, gap=2)
-            app.read_makan_article(pid, w, h, num=20)
+            app.read_makan_article(pid, w, h, num=5)
             phone.stop_app(pid, packages['makan'])
 
             utils.tail_work(pid, w, h, hour=22)
