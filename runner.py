@@ -316,7 +316,12 @@ def run(pid):
 
             checkin.zhongqing(pid, w, h)
             # [x] 阅读中青看点文章
-            app.read_zhongqing_article(pid, w, h, num=10)
+            app.read_zhongqing_article(pid, w, h, num=5)
+            phone.stop_app(pid, packages['zhongqing'])
+
+            checkin.zhongqing(pid, w, h)
+            # [x] 看中青看点视频
+            app.watch_zhongqing_video(pid, w, h, num=5)
             phone.stop_app(pid, packages['zhongqing'])
 
             utils.tail_work(pid, w, h, hour=13)

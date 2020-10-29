@@ -504,6 +504,25 @@ def read_zhongqing_article(pid, w, h, num):
         phone.go_back(pid)
 
 
+def watch_zhongqing_video(pid, w, h, num):
+    """
+    看中青看点视频
+    """
+    print('看中青看点视频 ' + datetime.now().__str__())
+    # 1. 进入视频页面
+    input.tap(pid, 2.5 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 获取视频目录
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
+        # 3. 点击视频
+        input.tap(pid, w / 2, h / 4)
+        # 4. 播放30s
+        time.sleep(30)
+        # 5. 返回上级页面
+        phone.go_back(pid)
+
+
 # ~~~~~~~~~~拼多多~~~~~~~~~~
 def pinduoduo_street_money(pid, w, h):
     """

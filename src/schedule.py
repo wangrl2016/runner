@@ -732,6 +732,9 @@ def zhongqing(pid, w, h):
         # [x] 阅读文章
         app.read_zhongqing_article(pid, w, h, num=1)
 
+        # [x] 看中青看点视频
+        app.watch_zhongqing_video(pid, w, h, num=1)
+
         phone.stop_app(pid, packages['zhongqing'])
 
 
