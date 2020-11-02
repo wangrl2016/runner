@@ -86,43 +86,31 @@ def run(pid):
 
     while True:
         while datetime.now().hour.__eq__(0):
-            # [x] 所有程序的签到工作
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
                 utils.set_home_page(pid, w, h, a)
-                # 1. 打开程序
                 if tap_start(a):
                     getattr(checkin, a)(pid, w, h)
                 else:
                     getattr(checkin, a)(pid)
-                # 2. 所有程序签到工作
+                # [x] 所有程序签到工作
                 getattr(sign, a)(pid, w, h)
-
-                # 3. 关闭程序
                 phone.stop_app(pid, packages[a])
 
             utils.tail_work(pid, w, h, hour=0)
 
         # 今日头条
         while datetime.now().hour.__eq__(1):
-            # 花费35分钟
             schedule_apps(pid, w, h)
 
-            # [x] 阅读今日头条文章
-            # 花费5分钟
-            # 1. 打开程序
             checkin.toutiao(pid)
-            # 2. 阅读今日头条文章
-            app.read_toutiao_article(pid, w, h, num=15)
-            # 3. 关闭程序
+            # [x] 阅读今日头条文章
+            app.read_toutiao_article(pid, w, h, num=20)
             phone.stop_app(pid, packages['toutiao'])
 
-            # [x] 看视频
-            # 1. 打开程序
             checkin.toutiao(pid)
-            # 2. 看视频
-            app.toutiao_video(pid, w, h, num=10)
-            # 3. 关闭程序
+            # [x] 看头条视频
+            app.toutiao_video(pid, w, h, num=5)
             phone.stop_app(pid, packages['toutiao'])
 
             utils.tail_work(pid, w, h, hour=1)
