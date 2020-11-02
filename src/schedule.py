@@ -31,8 +31,14 @@ def toutiao_open_treasure(pid, w, h, gap=15):
 def toutiao(pid, w, h):
     # 吃饭补贴
     def meal_allowance():
-        # 1. 点击吃饭补贴
-        input.tap(pid, w * 2 / 3, 5.8 * h / HEIGHT)  # <== modify
+        # 1. 获取吃饭补贴的位置
+        eat_location = utils.current_words_location(pid, '饭')
+        if eat_location is None:
+            print('没有获取到吃饭补贴的位置')
+            return
+        width = eat_location['x'] + eat_location['w']
+        height = eat_location['y'] + eat_location['h']
+        input.tap(pid, width, height)
         # 2. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=3)  # <= modify
         # 3. 返回到福利页面
@@ -40,77 +46,19 @@ def toutiao(pid, w, h):
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
-        # 1. 点击睡觉赚钱
-        input.tap(pid, w / 3, 7.4 * h / HEIGHT)  # <== modify
+        # 1. 获取睡觉赚钱的位置
+        sleep_location = utils.current_words_location(pid, '睡觉')
+        if sleep_location is None:
+            print('没有获取到睡觉赚钱的位置')
+            return
+        width = sleep_location['x'] + sleep_location['w']
+        height = sleep_location['y'] + sleep_location['h']
+        input.tap(pid, width, height)
+
         # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
         # 3. 返回到福利页面
-        phone.go_back(pid)
-
-    # 免费抽手机
-    def free_phone():
-        # 1. 点击免费抽手机
-        input.tap(pid, w * 2 / 3, 7.4 * h / HEIGHT)  # <== modify
-        # 2. 点击抽奖
-        input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=10)  # <= modify
-        # 3. 返回到福利页面
-        phone.go_back(pid)
-
-    # 种菜赚金币
-    def grow_vegetables(is_first):
-        # 1. 点击种菜赚金币
-        input.tap(pid, w / 2, (HEIGHT - 2.2) * h / HEIGHT)  # <== modify
-        # 弹出离线产量悬浮窗
-        # 2. 点击看视频获取
-        input.tap(pid, w / 2, 8.3 * h / HEIGHT)  # <== modify
-        # 3. 播放15s
-        time.sleep(15)
-        # 4. 如果是第1次会返回到签到礼包页面
-        phone.go_back(pid)
-        if is_first:
-            # 5. 点击左下角领取奖励
-            input.tap(pid, w / 3, (HEIGHT - 3.5) * h / HEIGHT)
-            # 6. 点击确定
-            input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-            # 7. 关闭签到礼包页面
-            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 2.8 * h / HEIGHT)
-        # 8. 点击浇水
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT)
-        # 领取奖励
-        # 9. 点击左上角宝箱
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.7 * h / HEIGHT)
-        # 10. 点击看视频再领金币
-        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-        # 11. 播放20s
-        time.sleep(20)
-        # 12. 返回退出获取金币悬浮窗
-        phone.go_back(pid)
-        # 13. 点击中间确定
-        input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-        # 14. 返回到福利页面
-        phone.go_back(pid)
-
-    # 模拟开店
-    def open_shop(is_first):
-        # 1. 点击模拟开店栏目
-        input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
-        # 2. 点击看视频可额外获得营业额
-        input.tap(pid, w / 2, 8.3 * h / HEIGHT)
-        # 3. 播放20s
-        time.sleep(20)
-        # 4. 回退返回到游戏页面
-        phone.go_back(pid)
-        if is_first:
-            # 5. 点击左下角领取奖励
-            input.tap(pid, w / 3, (HEIGHT - 3.5) * h / HEIGHT)
-            # 6. 点击确定
-            input.tap(pid, w / 2, 8.4 * h / HEIGHT)
-            # 7. 关闭签到礼包页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 2.8 * h / HEIGHT)
-        # 5. 点击宝箱获取金币
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.0) * h / HEIGHT)
-        # 6. 返回福利页面
         phone.go_back(pid)
 
     # 打开头条
@@ -130,22 +78,6 @@ def toutiao(pid, w, h):
             sleep_money(False)
         elif hour.__eq__(8):
             sleep_money(True)
-
-        if hour.__eq__(6):
-            # [x] 免费抽手机
-            free_phone()
-            # [x] 种菜赚金币
-            # 5次
-            grow_vegetables(True)
-            # [x] 模拟开店赚钱
-            # 5次
-            open_shop(True)
-
-        # 7, 8, 9, 10
-        if hour.__gt__(6) and hour.__le__(11):
-            # [x] 种菜赚金币
-            grow_vegetables(False)
-            open_shop(False)
 
     # [x] 开宝箱
     # 每10分钟一次
