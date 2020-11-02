@@ -254,7 +254,7 @@ def douyin(pid, w, h):
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, gap=5)
 
-        eat_location = utils.current_words_location(pid, '吃')
+        eat_location = utils.current_words_location(pid, '饭点')
         if eat_location is None:
             print('没有获取到吃饭补贴的位置')
             return

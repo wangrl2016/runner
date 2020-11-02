@@ -103,7 +103,7 @@ def get_page_photo(pid, output, gap=1):
     subprocess.run(['adb', '-s', pid, 'pull', path, output],
                    check=True, stdout=subprocess.PIPE,
                    stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(gap)
+    time.sleep(gap * 2)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     time.sleep(gap)
     return filename
