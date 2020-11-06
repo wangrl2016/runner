@@ -82,8 +82,11 @@ def tail_work(pid, w, h, hour):
             app.full_watch_huoshan_video(pid, w, h, hour)
     elif hour.__lt__(16):
         while datetime.now().hour.__eq__(hour):
-            # [x] 看微视视频
-            app.full_watch_weishi_video(pid, w, h, hour)
+            # [x] 看快手视频
+            app.full_watch_kuaishou_video(pid, w, h, hour)
+        # while datetime.now().hour.__eq__(hour):
+        #     # [x] 看微视视频
+        #     app.full_watch_weishi_video(pid, w, h, hour)
     elif hour.__lt__(20):
         while datetime.now().hour.__eq__(hour):
             # [x] 看快手视频

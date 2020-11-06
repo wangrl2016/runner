@@ -48,11 +48,6 @@ def cycle(pid):
             # [x] 看火山视频
             app.full_watch_huoshan_video(pid, w, h, hour)
 
-        hour = datetime.now().hour
-        while run_apps.__contains__('weishi') and datetime.now().hour.__eq__(hour):
-            # [x] 看微视视频
-            app.full_watch_weishi_video(pid, w, h, hour)
-
 
 def run(pid):
     # 需要保持手机处于亮屏状态
@@ -101,6 +96,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=0)
 
         # 今日头条
+        # 墨迹天气极速版
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
@@ -224,12 +220,12 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=7)
 
-        # 微视
+        # 酷狗唱唱斗歌版
         while datetime.now().hour.__eq__(8):
             schedule_apps(pid, w, h)
 
-            # [x] 看微视视频
-            app.full_watch_weishi_video(pid, w, h, hour=8)
+            # # [x] 看微视视频
+            # app.full_watch_weishi_video(pid, w, h, hour=8)
 
             utils.tail_work(pid, w, h, hour=8)
 
@@ -332,80 +328,80 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=14)
 
-        # 淘宝
+        # 快音
         while datetime.now().hour.__eq__(15):
             schedule_apps(pid, w, h)
 
-            # 淘宝
-            # 1. 打开程序
-            checkin.taobao(pid)
-            # 2. 关闭程序
-            phone.stop_app(pid, packages['taobao'])
-
-            # [x] 京东看视频赚金币
-            app.full_jingdong_video_coin(pid, w, h, hour=15)
+            # # 淘宝
+            # # 1. 打开程序
+            # checkin.taobao(pid)
+            # # 2. 关闭程序
+            # phone.stop_app(pid, packages['taobao'])
+            #
+            # # [x] 京东看视频赚金币
+            # app.full_jingdong_video_coin(pid, w, h, hour=15)
 
             utils.tail_work(pid, w, h, hour=15)
 
-        # 刷宝
+        # 糖豆
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)
 
-            # [x] 看刷宝视频
-            # 1. 打开程序
-            checkin.shuabao(pid)
-            # 2. 看刷宝视频
-            app.shuabao_video(pid, w, h, num=50)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['shuabao'])
+            # # [x] 看刷宝视频
+            # # 1. 打开程序
+            # checkin.shuabao(pid)
+            # # 2. 看刷宝视频
+            # app.shuabao_video(pid, w, h, num=50)
+            # # 3. 关闭程序
+            # phone.stop_app(pid, packages['shuabao'])
 
             utils.tail_work(pid, w, h, hour=16)
 
-        # 趣头条
+        # 东方头条
         while datetime.now().hour.__eq__(17):
             schedule_apps(pid, w, h)
 
-            # [x] 看头条文章
-            checkin.qutoutiao(pid)
-            app.read_qutoutiao_article(pid, w, h, num=10)
-            phone.stop_app(pid, packages['qutoutiao'])
-
-            # [x] 看头条视频
-            checkin.qutoutiao(pid)
-            app.watch_qutoutiao_video(pid, w, h, num=10)
-            phone.stop_app(pid, packages['qutoutiao'])
-
-            # [x] 看趣头条小视频
-            app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)
+            # # [x] 看头条文章
+            # checkin.qutoutiao(pid)
+            # app.read_qutoutiao_article(pid, w, h, num=10)
+            # phone.stop_app(pid, packages['qutoutiao'])
+            #
+            # # [x] 看头条视频
+            # checkin.qutoutiao(pid)
+            # app.watch_qutoutiao_video(pid, w, h, num=10)
+            # phone.stop_app(pid, packages['qutoutiao'])
+            #
+            # # [x] 看趣头条小视频
+            # app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)
 
             utils.tail_work(pid, w, h, hour=17)
 
-        # 百度极速版
+        # 聚看点
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
-            # [x] 好看视频
-            # 花费8分钟
-            # 1. 打开程序
-            checkin.baidu(pid)
-            # 2. 看好看视频
-            app.baidu_haokan_video(pid, w, h, num=10)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['baidu'])
-
-            # [x] 看百度小视频
-            # 十分钟左右
-            print('看百度小视频 ' + datetime.now().__str__())
-            # 1. 打开程序
-            checkin.baidu(pid)
-            # 2. 看百度小视频
-            app.watch_baidu_svideo(pid, w, h, hour=18)
-            # 3. 关闭程序
-            phone.stop_app(pid, packages['baidu'])
+            # # [x] 好看视频
+            # # 花费8分钟
+            # # 1. 打开程序
+            # checkin.baidu(pid)
+            # # 2. 看好看视频
+            # app.baidu_haokan_video(pid, w, h, num=10)
+            # # 3. 关闭程序
+            # phone.stop_app(pid, packages['baidu'])
+            #
+            # # [x] 看百度小视频
+            # # 十分钟左右
+            # print('看百度小视频 ' + datetime.now().__str__())
+            # # 1. 打开程序
+            # checkin.baidu(pid)
+            # # 2. 看百度小视频
+            # app.watch_baidu_svideo(pid, w, h, hour=18)
+            # # 3. 关闭程序
+            # phone.stop_app(pid, packages['baidu'])
 
             utils.tail_work(pid, w, h, hour=18)
 
-        # 喜马拉雅
+        # 看点快报
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
