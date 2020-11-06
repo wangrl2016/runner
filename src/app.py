@@ -2,7 +2,7 @@ from datetime import datetime
 from random import randrange
 import time
 from src import phone, input, checkin, utils
-from src.info import HEIGHT, WIDTH, packages
+from src.info import HEIGHT, WIDTH, packages, contexts
 
 
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
@@ -699,8 +699,16 @@ def daily_packet(pid, w, h):
     print('天天领红包 ' + datetime.now().__str__())
     # 1. 进入福利页面
     diandian_benefit_page(pid, w, h)
-    # 2. 点击领取今日红包
-    input.tap(pid, w / 2, 10.2 * h / HEIGHT, gap=8)
+    # 2. 获取今日红包的位置
+    if '点点今日红包' not in contexts[pid]:
+        packet_location = utils.current_words_location(pid, '今日红包')
+        if packet_location is None:
+            print('没有获取到今日红包的位置')
+            return
+        height = packet_location['y'] + packet_location['h']
+        contexts[pid]['点点今日红包'] = height
+    input.tap(pid, w / 2, contexts[pid]['点点今日红包'])
+
     # 3. 播放30s
     time.sleep(30)
     # 4. 必须返回到福利页面
