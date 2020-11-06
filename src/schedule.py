@@ -2,7 +2,7 @@ import time
 from datetime import datetime
 
 from src import checkin, phone, input, app, utils
-from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME
+from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME, contexts
 
 
 ###
@@ -155,15 +155,19 @@ def douyin_open_treasure(pid, w, h):
 
 
 def douyin(pid, w, h):
-    # 福利页面
-    def benefit_page():
-        # 进入福利页面
-        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-
     # 限时任务赚金币
     def limit_duty():
-        # 1. 点击去领取
-        input.tap(pid, w / 3, 5.8 * h / HEIGHT)  # <=== modify
+        print('抖音限时任务赚金币 ' + datetime.now().__str__())
+        # 1. 获取限时任务的位置
+        if '限时' not in contexts[pid]:
+            limit_location = utils.current_words_location(pid, '限时')
+            if limit_location is None:
+                print('没有获取到限时任务的位置')
+                return
+            height = limit_location['y'] + limit_location['h']
+            contexts[pid]['限时'] = height
+        input.tap(pid, w / 3, contexts[pid]['限时'])
+
         # 2. 播放30s
         time.sleep(30)
         # 3. 返回福利页面
@@ -189,7 +193,7 @@ def douyin(pid, w, h):
         # 1. 下滑任务页面到最下面
         phone.swipe_down_to_up(pid, w, h, gap=5)
 
-        eat_location = utils.current_words_location(pid, '饭点')
+        eat_location = utils.current_words_location(pid, '饭')
         if eat_location is None:
             print('没有获取到吃饭补贴的位置')
             return
@@ -220,7 +224,7 @@ def douyin(pid, w, h):
         phone.go_back(pid, 2)
 
     checkin.douyin(pid)
-    benefit_page()
+    app.douyin_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # [x] 睡觉赚金币
@@ -244,7 +248,7 @@ def douyin(pid, w, h):
     # 每20分钟一次
     douyin_open_treasure(pid, w, h)
 
-    benefit_page()
+    app.douyin_benefit_page(pid, w, h)
     # [x] 限时任务赚金币
     # 每20分钟一次
     limit_duty()

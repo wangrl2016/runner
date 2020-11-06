@@ -20,7 +20,7 @@ def toutiao(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def kuaishou(pid, gap=15):
+def kuaishou(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -28,7 +28,7 @@ def kuaishou(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def douyin(pid, gap=15):
+def douyin(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -36,7 +36,7 @@ def douyin(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def huoshan(pid, gap=15):
+def huoshan(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -53,7 +53,7 @@ def jingdong(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-def fanqie(pid, w, h, gap=15):
+def fanqie(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
@@ -62,7 +62,7 @@ def fanqie(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-def fanchang(pid, w, h, gap=15):
+def fanchang(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 模仿启动输出
@@ -223,7 +223,7 @@ def kankuai(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def douhuo(pid, gap=15):
+def douhuo(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
