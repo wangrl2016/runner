@@ -1003,7 +1003,7 @@ def moji(pid, w, h):
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
-        checkin.moji(pid, w, h)
+        checkin.moji(pid)
         # [x] 手机气泡
         collect_coin()
         phone.stop_app(pid, packages['moji'])
