@@ -22,7 +22,7 @@ def toutiao_open_treasure(pid, w, h, gap=15):
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <== modify
     # 2. 点击看视频再领金币
     input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <== modify
-    # 3. 默认播放15s
+    # 3. 播放15s
     time.sleep(gap)
     # 4. 返回到任务页面
     phone.go_back(pid)
@@ -39,6 +39,7 @@ def toutiao(pid, w, h):
         width = eat_location['x'] + eat_location['w']
         height = eat_location['y'] + eat_location['h']
         input.tap(pid, width, height)
+
         # 2. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=3)  # <= modify
         # 3. 返回到福利页面
@@ -78,6 +79,9 @@ def toutiao(pid, w, h):
             sleep_money(False)
         elif hour.__eq__(8):
             sleep_money(True)
+
+        # [x] 阅读头条文章
+        app.read_toutiao_article(pid, w, h, num=1)
 
     # [x] 开宝箱
     # 每10分钟一次

@@ -12,7 +12,7 @@ def toutiao_benefit_page(pid, w, h, gap=3):
     进入今日头条福利页面
     """
     # 1. 点击福利
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
 
 def read_toutiao_article(pid, w, h, num):
@@ -22,13 +22,14 @@ def read_toutiao_article(pid, w, h, num):
     print('阅读头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
-        phone.swipe_up_to_down(pid, w, h)
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h / 3)
         # 3. 滑动阅读
         for j in range(0, 10):
             # 阅读30s
-            phone.swipe_down_to_up(pid, w, h / 2, gap=3)
+            phone.swipe_down_to_up(pid, w, h / 2, gap=2, internal=100)
         # 4. 返回上级目录
         phone.go_back(pid)
 
@@ -42,11 +43,12 @@ def toutiao_video(pid, w, h, num):
     input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 1. 向下刷新视频
-        phone.swipe_up_to_down(pid, w, h)
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
         # 2. 点击播放
         input.tap(pid, w / 2, h / 3)
-        # 3. 播放120s
-        time.sleep(120)
+        # 3. 播放60s
+        time.sleep(60)
 
 
 # ~~~~~~~~~~快手极速版~~~~~~~~~~

@@ -102,7 +102,7 @@ def run(pid):
 
             checkin.toutiao(pid)
             # [x] 阅读今日头条文章
-            app.read_toutiao_article(pid, w, h, num=20)
+            app.read_toutiao_article(pid, w, h, num=5)
             phone.stop_app(pid, packages['toutiao'])
 
             checkin.toutiao(pid)
