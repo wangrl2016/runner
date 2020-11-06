@@ -445,12 +445,7 @@ def run(pid):
             checkin.diandian(pid, w, h)
             # [x] 看新闻
             # 看完十几篇以后有倒计时
-            app.read_diandian_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['diandian'])
-
-            checkin.diandian(pid, w, h)
-            # [x] 看视频
-            app.watch_diandian_video(pid, w, h, num=5)
+            app.read_diandian_article(pid, w, h, num=10)
             phone.stop_app(pid, packages['diandian'])
 
             utils.tail_work(pid, w, h, hour=23)

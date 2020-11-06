@@ -721,30 +721,13 @@ def read_diandian_article(pid, w, h, num):
     """
     print('看点点新闻文章 ' + datetime.now().__str__())
     for i in range(0, num):
-        # 1. 点击文章
-        input.tap(pid, w / 2, h / 2, gap=5)
-        for j in range(0, 8):
-            # 2. 向上滑动
-            phone.swipe_down_to_up(pid, w, h, gap=2)
-        # 3. 返回上级
-        phone.go_back(pid, gap=2)
-        if num.__ne__(1):
-            # 4. 刷新页面
+        # 1. 向下刷新页面
+        if i.__eq__(0):
             phone.swipe_up_to_down(pid, w, h)
-
-
-def watch_diandian_video(pid, w, h, num):
-    """
-    看点点视频
-    """
-    # 1. 点击下方视频按钮
-    input.tap(pid, 2.6 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    for i in range(0, num):
-        # 2. 点击视频观看
-        input.tap(pid, w / 2, h / 3)
-        # 3. 播放20s
-        time.sleep(20)
-        # 4. 回到上级页面
-        phone.go_back(pid)
-        # 5. 刷新视频
-        phone.swipe_up_to_down(pid, w, h)
+        # 2. 点击文章
+        input.tap(pid, w / 2, h * 2 / 3, gap=5)
+        for j in range(0, 8):
+            # 3. 向上滑动
+            phone.swipe_down_to_up(pid, w, h, gap=2)
+        # 4. 返回上级
+        phone.go_back(pid, gap=2)
