@@ -10,7 +10,7 @@ def toutiao(pid, w, h):
     # [x] 签到成功
     app.toutiao_benefit_page(pid, w, h)
     # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.0 * h / HEIGHT)  # <== modify
+    input.tap(pid, w / 2, 9.1 * h / HEIGHT)  # <== modify
     # 3. 播放15s
     time.sleep(15)
     # 4. 返回到任务页面
@@ -24,7 +24,7 @@ def kuaishou(pid, w, h):
     # 1. 假装后退解决弹出青少年模式悬浮窗的问题
     phone.go_back(pid)
     # 2. 进入快手福利页面
-    app.kuaishou_benefit_page(pid, w, h, gap=3)
+    app.kuaishou_benefit_page(pid, w, h)
     # 3. 显示签到页面点击立即签到
     # [x] 签到成功
     input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
@@ -37,7 +37,6 @@ def douyin(pid, w, h):
     phone.go_back(pid)
     # 2. 点击下方的福袋
     # 等待10s签到界面出现
-    # TODO: 有时没有弹出页面
     app.douyin_benefit_page(pid, w, h, gap=10)
     # 3. 点击立即签到领金币
     # 4. 看视频再赚金币
@@ -73,13 +72,10 @@ def huoshan(pid, w, h):
 
 def jingdong(pid, w, h):
     # 1. 点击中间的现金签到
-    input.tap(pid, w / 2, 7.1 * h / HEIGHT)  # <== modify
+    input.tap(pid, w / 2, 7.6 * h / HEIGHT, gap=3)  # <=== modify
     # 2. 点击立即签到
     # [x] 签到成功
-    input.tap(pid, w / 2, 5.8 * h / HEIGHT)  # <= modify
-    # 3. 关闭成功界面
-    # 还是在签到页面
-    phone.go_back(pid, gap=1)
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)  # <= modify
 
 
 def fanqie(pid, w, h):
@@ -114,6 +110,7 @@ def fanchang(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuchang(pid, w, h):
+    # [x] 签到成功
     return None
 
 
@@ -131,7 +128,7 @@ def kuchang(pid, w, h):
 
 def shuqi(pid, w, h):
     # 后退会弹出提示框
-    # TODO: 不后退有时会有广告悬浮窗
+    # 不后退有时会有广告悬浮窗
     phone.go_back(pid)
     # 点击中间下方的福利
     # [x] 签到成功
@@ -142,17 +139,12 @@ def yingke(pid, w, h):
     # 1. 假装退出解决可能出现的悬浮窗问题
     # 2. 可能出现两次
     phone.go_back(pid, times=2)
-    # 2. 点击右下角打开红包
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 1.9) * h / HEIGHT)  # <= modify
+    # 2. 点击下方红包
+    app.yingke_benefit_page(pid, w, h)
     # 3. 点击立即签到
     input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
     # 4. 播放30s广告
     time.sleep(30)
-    # 5. 点击关闭
-    # [x] 签到成功
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
-    # 6. 回到程序主页
-    phone.go_back(pid)
 
 
 def kugou(pid, w, h):
@@ -160,9 +152,9 @@ def kugou(pid, w, h):
     app.kugou_benefit_page(pid, w, h)
     # 2. 点击每日签到栏
     # 显示签到成功
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT)  # <== modify
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT, gap=3)  # <== modify
     # 3. 返回到赚钱页面
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
 
 
 def huitoutiao(pid, w, h):
@@ -172,7 +164,7 @@ def huitoutiao(pid, w, h):
     app.huitoutiao_benefit_page(pid, w, h)
     # 3. 点击今日签到
     # [x] 签到成功
-    input.tap(pid, w / 2, 2.4 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=3)  # <= modify
 
 
 def zhongqing(pid, w, h):
@@ -180,23 +172,24 @@ def zhongqing(pid, w, h):
     phone.go_back(pid)
     # 2. 点击任务待签到
     app.zhongqing_benefit_page(pid, w, h)
+    phone.go_back(pid)
     # 3. 点击签到领现金
     # [x] 签到成功
     input.tap(pid, w / 2, 4.9 * h / HEIGHT)  # <= modify
     # 4. 回退到福利页面
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
 
 
 def pinduoduo(pid, w, h):
     # 1. 回退消除可能出现的悬浮窗
     phone.go_back(pid)
     # 2. 点击中间的现金签到
-    input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 5.5 * h / HEIGHT)  # <= modify
     # 3. 点击签到领现金
     # [x] 签到成功
     input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
     # 3. 返回到程序主页
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
 
 
 # # noinspection PyUnusedLocal
@@ -268,32 +261,44 @@ def pinduoduo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaiyin(pid, w, h):
-    return None
+    # 进入福利页面
+    # [x] 签到成功
+    app.kuaiyin_benefit_page(pid, w, h)
 
 
 # noinspection PyUnusedLocal
 def tangdou(pid, w, h):
-    return None
+    # 1. 进入福利页面
+    app.tangdou_benefit_page(pid, w, h)
+    # 2. 点击签到领现金
+    # [x] 签到成功
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
 def dongfang(pid, w, h):
-    return None
+    phone.go_back(pid)
+    app.dongfang_benefit_page(pid, w, h)
+    # [x] 签到成功
+    input.tap(pid, w / 2, 3.7 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
 def jukandian(pid, w, h):
-    return None
+    app.jukandian_benefit_page(pid, w, h)
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.4) * w / WIDTH, 2.2 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
 def kankuai(pid, w, h):
-    return None
+    # [x] 签到成功
+    app.kankuai_benefit_page(pid, w, h)
 
 
 def douhuo(pid, w, h):
     # 1. 假装回退关闭可能的悬浮窗
-    phone.go_back(pid, times=2)
+    phone.go_back(pid, times=1, gap=1)
     # 2. 点击个人中心图标
     input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)
     # 3. 点击火苗管理
@@ -307,13 +312,9 @@ def kuge(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, 1.2 * h / HEIGHT)
     # 点击签到
     # 位置未知
-    # 签到成功
+    # [x] 签到成功
     for i in range(0, 7):
         input.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=1)
-    # 2. 回退到福利页面
-    phone.go_back(pid, gap=2)
-    # 3. 必须回到儿歌页面
-    input.tap(pid, 2.0 * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
 
 def makan(pid, w, h):
@@ -321,7 +322,7 @@ def makan(pid, w, h):
     phone.go_back(pid, gap=1)
     # 2. 点击任务
     # [x] 签到成功
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    app.makan_benefit_page(pid, w, h)
     # 3. 返回到主页
     phone.go_back(pid)
     # 4. 获取时段奖励
@@ -334,9 +335,10 @@ def diandian(pid, w, h):
     phone.go_back(pid, gap=1)
     # 2. 点击任务
     # [x] 签到成功
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    app.diandian_benefit_page(pid, w, h)
 
 
 # noinspection PyUnusedLocal
 def moji(pid, w, h):
-    return None
+    # [x] 签到成功
+    app.moji_benefit_page(pid, w, h)

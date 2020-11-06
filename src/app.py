@@ -374,7 +374,7 @@ def shuqi_video_coin(pid, w, h):
 
 def yingke_benefit_page(pid, w, h, gap=5):
     # 1. 点击下面的横幅
-    input.tap(pid, w / 3, (HEIGHT - 1.8) * h / HEIGHT, gap)  # <= modify
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
 
 def watch_yingke_live(pid, w, h, sec):
@@ -547,6 +547,32 @@ def kuaiyin_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+# ~~~~~~~~~~糖豆~~~~~~~~~~
+def tangdou_benefit_page(pid, w, h):
+    # 1. 点击右下角我的栏目
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击任务中心
+    input.tap(pid, w / 2, 9.6 * h / HEIGHT)
+
+
+# ~~~~~~~~~~东方头条~~~~~~~~~~
+def dongfang_benefit_page(pid, w, h):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# ~~~~~~~~~~聚看点~~~~~~~~~~
+def jukandian_benefit_page(pid, w, h):
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# ~~~~~~~~~~看点快报~~~~~~~~~~
+def kankuai_benefit_page(pid, w, h):
+    # 1. 点击右下角我的栏目
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击福利红包
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+
+
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
@@ -667,6 +693,10 @@ def watch_douhuo_video(pid, w, h, sec=300):
 
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 
+def makan_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 def read_makan_article(pid, w, h, num):
     """
     看蚂蚁看点文章
@@ -689,7 +719,7 @@ def read_makan_article(pid, w, h, num):
 
 def diandian_benefit_page(pid, w, h, gap=3):
     # 进入福利页面
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def daily_packet(pid, w, h):
@@ -731,3 +761,8 @@ def read_diandian_article(pid, w, h, num):
             phone.swipe_down_to_up(pid, w, h, gap=2)
         # 4. 返回上级
         phone.go_back(pid, gap=2)
+
+
+# ~~~~~~~~~~墨迹天气~~~~~~~~~~
+def moji_benefit_page(pid, w, h):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
