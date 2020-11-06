@@ -14,6 +14,9 @@ numbers = ['15391503757', '15334195745', '17343162426', ]
 # 低配置手机前面用##表示
 high_serials = ['1fc4da61', 'ce7f96a00307', 'KVLZB65T95VKQOS8']
 
+# 保留运行信息
+contexts = {}
+
 # 程序名
 apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'jingdong', 'fanqie', 'fanchang', 'weishi',

@@ -8,7 +8,7 @@ import threading
 from datetime import datetime
 
 from src import phone, checkin, sign, app, utils
-from src.info import packages, apps, high_serials
+from src.info import packages, apps, high_serials, contexts
 from src.utils import tap_start, schedule_apps
 
 MAX_PHOTOS_STORE = 50
@@ -66,6 +66,7 @@ def run(pid):
             if p.__contains__('vivo'):
                 for line in properties:
                     if line.__contains__('ro.vivo.market.name'):
+                        contexts[pid]['phone_name'] = 'vivo'
                         print(line)
             if p.__contains__('Xiaomi'):
                 for line in properties:
@@ -483,6 +484,7 @@ def main(args):
     # 设备号对应的线程号
     pts = {}
     for pid in devices:
+        contexts.update({pid: {}})
         if high_serials.__contains__(pid):
             t = threading.Thread(target=run, args=(pid,), daemon=True)
             threads.append(t)
