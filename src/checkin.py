@@ -257,7 +257,7 @@ def diandian(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def moji(pid, w, h, gap=15):
+def moji(pid, w, h, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
