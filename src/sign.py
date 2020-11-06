@@ -113,15 +113,20 @@ def fanchang(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def weishi(pid, w, h):
-    # 1. 回退解决青少年悬浮窗的问题
-    phone.go_back(pid)
-    # 2. 点击右上角红包
-    # TODO: 可能出现悬浮窗
-    input.tap(pid, 5.2 * w / WIDTH, 0.9 * h / HEIGHT)
-    # 3. 点击签到
-    # [x] 签到成功
-    input.tap(pid, w / 2, 7.5 * h / HEIGHT)
+def kuchang(pid, w, h):
+    return None
+
+
+# # noinspection PyUnusedLocal
+# def weishi(pid, w, h):
+#     # 1. 回退解决青少年悬浮窗的问题
+#     phone.go_back(pid)
+#     # 2. 点击右上角红包
+#     # TODO: 可能出现悬浮窗
+#     input.tap(pid, 5.2 * w / WIDTH, 0.9 * h / HEIGHT)
+#     # 3. 点击签到
+#     # [x] 签到成功
+#     input.tap(pid, w / 2, 7.5 * h / HEIGHT)
 
 
 def shuqi(pid, w, h):
@@ -194,72 +199,96 @@ def pinduoduo(pid, w, h):
     phone.go_back(pid)
 
 
+# # noinspection PyUnusedLocal
+# def taobao(pid, w, h):
+#     # 有现金红包
+#     return None
+#
+#
+# def shuabao(pid, w, h):
+#     # 1. 假装回退关闭可能的悬浮窗
+#     phone.go_back(pid)
+#     # 2. 点击下方福利
+#     app.shuabao_benefit_page(pid, w, h)
+#     # 3. 假装想要退出关闭可能的悬浮窗
+#     phone.go_back(pid)
+#     # 4. 点击立即签到
+#     input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 1.9 * h / HEIGHT)  # <= modify
+#     # 5. 点击看视频签到
+#     input.tap(pid, w * 3 / 4, 9.7 * h / HEIGHT)  # <= modify
+#     # 6. 播放30s
+#     time.sleep(30)
+#     # 7. 点击关闭
+#     # [x]签到成功
+#     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+#     # 8. 回退显示获取元宝页面
+#     phone.go_back(pid, gap=1)
+#
+#
+# # noinspection PyUnusedLocal
+# def qutoutiao(pid, w, h):
+#     # 1. 点击右下方任务
+#     # [x] 签到成功
+#     app.qutoutiao_benefit_page(pid, w, h)
+#     # 2. 点击看视频再领金币
+#     input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
+#     # 3. 播放40s
+#     # TODO: 播放时长
+#     time.sleep(40)
+#     # 4. 回退到未知页面
+#     phone.go_back(pid, gap=1)
+#
+#
+# # noinspection PyUnusedLocal
+# def baidu(pid, w, h):
+#     # 1. 点击右下方去签到
+#     # [x] 签到成功
+#     app.baidu_benefit_page(pid, w, h)
+#     for i in range(0, 5):
+#         # 2. 看视频再领金币
+#         input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
+#         # 3. 播放30s
+#         time.sleep(30)
+#         # 回退到悬浮窗页面
+#         phone.go_back(pid, gap=4)
+#
+#
+# def ximalaya(pid, w, h):
+#     # 1. 点击右下方福利
+#     # [x] 签到成功
+#     app.ximalaya_benefit_page(pid, w, h)
+#     # 2. 看视频再领金币
+#     input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+#     # 3. 播放30s
+#     time.sleep(30)
+#     # 4. 关闭返回广告页面
+#     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
+#     # 5. 返回到福利页面
+#     phone.go_back(pid, gap=1)
+
 # noinspection PyUnusedLocal
-def taobao(pid, w, h):
-    # 有现金红包
+def kuaiyin(pid, w, h):
     return None
 
 
-def shuabao(pid, w, h):
-    # 1. 假装回退关闭可能的悬浮窗
-    phone.go_back(pid)
-    # 2. 点击下方福利
-    app.shuabao_benefit_page(pid, w, h)
-    # 3. 假装想要退出关闭可能的悬浮窗
-    phone.go_back(pid)
-    # 4. 点击立即签到
-    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 1.9 * h / HEIGHT)  # <= modify
-    # 5. 点击看视频签到
-    input.tap(pid, w * 3 / 4, 9.7 * h / HEIGHT)  # <= modify
-    # 6. 播放30s
-    time.sleep(30)
-    # 7. 点击关闭
-    # [x]签到成功
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
-    # 8. 回退显示获取元宝页面
-    phone.go_back(pid, gap=1)
+# noinspection PyUnusedLocal
+def tangdou(pid, w, h):
+    return None
 
 
 # noinspection PyUnusedLocal
-def qutoutiao(pid, w, h):
-    # 1. 点击右下方任务
-    # [x] 签到成功
-    app.qutoutiao_benefit_page(pid, w, h)
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
-    # 3. 播放40s
-    # TODO: 播放时长
-    time.sleep(40)
-    # 4. 回退到未知页面
-    phone.go_back(pid, gap=1)
+def dongfang(pid, w, h):
+    return None
 
 
 # noinspection PyUnusedLocal
-def baidu(pid, w, h):
-    # 1. 点击右下方去签到
-    # [x] 签到成功
-    app.baidu_benefit_page(pid, w, h)
-    for i in range(0, 5):
-        # 2. 看视频再领金币
-        input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
-        # 3. 播放30s
-        time.sleep(30)
-        # 回退到悬浮窗页面
-        phone.go_back(pid, gap=4)
+def jukandian(pid, w, h):
+    return None
 
 
-def ximalaya(pid, w, h):
-    # 1. 点击右下方福利
-    # [x] 签到成功
-    app.ximalaya_benefit_page(pid, w, h)
-    # 2. 看视频再领金币
-    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 关闭返回广告页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
-    # 5. 返回到福利页面
-    phone.go_back(pid, gap=1)
+# noinspection PyUnusedLocal
+def kankuai(pid, w, h):
+    return None
 
 
 def douhuo(pid, w, h):
@@ -306,3 +335,8 @@ def diandian(pid, w, h):
     # 2. 点击任务
     # [x] 签到成功
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# noinspection PyUnusedLocal
+def moji(pid, w, h):
+    return None
