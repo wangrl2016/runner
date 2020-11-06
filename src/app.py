@@ -662,7 +662,7 @@ def watch_douhuo_video(pid, w, h, sec=300):
     input.tap(pid, w / 3, h / 3)
     # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w, h / 2, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w * 2 / 3, h * 2 / 3, randrange(5, 16))
 
 
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
