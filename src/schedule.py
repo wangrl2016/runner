@@ -723,9 +723,26 @@ def pinduoduo(pid, w, h):
             phone.stop_app(pid, 'pinduoduo')
 
 
-# noinspection PyUnusedLocal
 def kuaiyin(pid, w, h):
-    return None
+    def drink_water(is_next):
+        # 1. 点击喝水赚钱
+        input.tap(pid, 2.6 * w / WIDTH, 4.5 * h / HEIGHT)
+        # 2. 点击水杯
+        for i in range(0, 4):
+            input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, (5.2 if is_next else 3.5) * h / HEIGHT, gap=1)
+        # 3. 看视频
+        input.tap(pid, w / 2, 9.3 * h / HEIGHT)
+        # 4. 播放30s
+        time.sleep(30)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        hour = datetime.now().hour
+        if hour.__eq__(6) or hour.__eq__(9) or hour.__eq__(11) or (hour.__gt__(12) and hour.__lt__(18)):
+            checkin.kuaiyin(pid, w, h)
+            app.kuaiyin_benefit_page(pid, w, h)
+            # [x] 八次喝水
+            drink_water(False if hour.__lt__(14) else True)
+            phone.stop_app(pid, packages['kuaiyin'])
 
 
 # noinspection PyUnusedLocal
@@ -925,7 +942,6 @@ def kankuai(pid, w, h):
 #             if datetime.now().hour.__eq__(15):
 #                 # 关闭喜马拉雅
 #                 phone.stop_app(pid, 'ximalaya')
-
 
 # noinspection PyUnusedLocal
 def douhuo(pid, w, h):

@@ -542,6 +542,11 @@ def pinduoduo_street_money(pid, w, h):
         phone.swipe_down_to_up(pid, w, h, gap=2)
 
 
+# ~~~~~~~~~~快音~~~~~~~~~~
+def kuaiyin_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
