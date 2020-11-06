@@ -253,16 +253,16 @@ def fanqie_benefit_page(pid, w, h):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-def fanqie_video_coin(pid, w, h, num=10):
-    print("番茄看视频赚海量金币 " + datetime.now().__str__())
-    fanqie_benefit_page(pid, w, h)
-    for i in range(0, num):
-        # 2. 点击看视频赚海量金币
-        input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 点击关闭返回上级页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+# def fanqie_video_coin(pid, w, h, num=10):
+#     print("番茄看视频赚海量金币 " + datetime.now().__str__())
+#     fanqie_benefit_page(pid, w, h)
+#     for i in range(0, num):
+#         # 2. 点击看视频赚海量金币
+#         input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
+#         # 3. 播放30s
+#         time.sleep(30)
+#         # 4. 点击关闭返回上级页面
+#         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 
 def read_fanqie_novel(pid, w, h, sec):

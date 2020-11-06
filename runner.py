@@ -182,14 +182,12 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
-            # 打开程序
-            checkin.fanqie(pid, w, h)
-            # [x] 看视频赚海量金币
-            # 10次
-            # 做完任务后放置到最底下
-            app.fanqie_video_coin(pid, w, h, num=10)
-            # 关闭程序
-            phone.stop_app(pid, packages['fanqie'])
+            # checkin.fanqie(pid, w, h)
+            # # [x] 看视频赚海量金币
+            # # 10次
+            # # 做完任务后放置到最底下
+            # app.fanqie_video_coin(pid, w, h, num=10)
+            # phone.stop_app(pid, packages['fanqie'])
 
             # 打开程序
             checkin.fanqie(pid, w, h)
