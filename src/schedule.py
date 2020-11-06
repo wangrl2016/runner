@@ -750,9 +750,16 @@ def tangdou(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def dongfang(pid, w, h):
-    return None
+    # 时段奖励
+    def time_reward():
+        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=3)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.dongfang(pid, w, h)
+        # [x] 时段奖励
+        time_reward()
+        phone.stop_app(pid, packages['dongfang'])
 
 
 # noinspection PyUnusedLocal
