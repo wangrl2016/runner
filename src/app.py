@@ -292,15 +292,18 @@ def fanchang_benefit_page(pid, w, h):
 
 def fanchang_video_coin(pid, w, h, num):
     print("番畅看视频赚海量金币 " + datetime.now().__str__())
-    # 1. 点击福利按钮
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 2. 点击看视频赚海量金币
-        input.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=8)
+        input.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=3)
         # 3. 播放30s
         time.sleep(30)
         # 4. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+
+
+# ~~~~~~~~~~酷狗唱唱斗歌版~~~~~~~~~~
+def kuchang_benefit_page(pid, w, h):
+    input.tap(pid, 2.0 * w / WIDTH, 1.4 * h / HEIGHT)
 
 
 # ~~~~~~~~~~微视~~~~~~~~~~

@@ -159,14 +159,14 @@ def douyin(pid, w, h):
     def limit_duty():
         print('抖音限时任务赚金币 ' + datetime.now().__str__())
         # 1. 获取限时任务的位置
-        if '限时' not in contexts[pid]:
+        if '抖音限时' not in contexts[pid]:
             limit_location = utils.current_words_location(pid, '限时')
             if limit_location is None:
                 print('没有获取到限时任务的位置')
                 return
             height = limit_location['y'] + limit_location['h']
-            contexts[pid]['限时'] = height
-        input.tap(pid, w / 3, contexts[pid]['限时'])
+            contexts[pid]['抖音限时'] = height
+        input.tap(pid, w / 3, contexts[pid]['抖音限时'])
 
         # 2. 播放30s
         time.sleep(30)
@@ -414,91 +414,111 @@ def fanchang_open_treasure(pid, w, h):
 
 
 def fanchang(pid, w, h):
-    # 进入福利页面
-    def benefit_page():
-        # 1. 点击下方的福利
-        input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-
     # 完整的开宝箱流程
-    def full_open_treasure():
+    def full_fanchang_open_treasure():
         checkin.fanchang(pid, w, h)
-        benefit_page()
+        app.fanchang_benefit_page(pid, w, h)
         fanchang_open_treasure(pid, w, h)
-        # 收听番唱音频时不能退出程序
-        if datetime.now().hour.__gt__(7) and datetime.now().hour.__lt__(12):
-            phone.go_home(pid)
-        else:
-            phone.stop_app(pid, packages['fanchang'])
+        phone.stop_app(pid, packages['fanchang'])
 
-    # 收听音频
-    def listen_sound():
-        # 1. 点击中间下方的播放界面
-        input.tap(pid, w / 2, (HEIGHT - 0.6) * h / HEIGHT)
+    # # 收听音频
+    # def listen_sound():
+    #     # 1. 点击中间下方的播放界面
+    #     input.tap(pid, w / 2, (HEIGHT - 0.6) * h / HEIGHT)
 
-    def collect_listen_coin():
-        # 1. 点击中间下方的播放界面
-        listen_sound()
-        # 2. 点击立即领取
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)
-        for i in range(0, 9):
-            # 3. 点击领红包
-            input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
-            # 4. 点击看视频再领金币
-            input.tap(pid, w / 2, 8.3 * h / HEIGHT)
-            # 5. 播放30s
-            time.sleep(30)
-            # 返回到领取界面
-            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+    # def collect_listen_coin():
+    #     # 1. 点击中间下方的播放界面
+    #     listen_sound()
+    #     # 2. 点击立即领取
+    #     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)
+    #     for i in range(0, 9):
+    #         # 3. 点击领红包
+    #         input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
+    #         # 4. 点击看视频再领金币
+    #         input.tap(pid, w / 2, 8.3 * h / HEIGHT)
+    #         # 5. 播放30s
+    #         time.sleep(30)
+    #         # 返回到领取界面
+    #         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
-    # [x] 听番畅音频
-    # 08:00-09:00-10:00-11:00-12:00
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if datetime.now().hour.__eq__(8):
-            checkin.fanchang(pid, w, h)
-            # [x] 收听番唱音频
-            listen_sound()
-            # 回退到程序主页
-            phone.go_back(pid)
-            # 后台播放
-            phone.go_home(pid)
-        elif datetime.now().hour.__eq__(9):
-            # 解锁广告
-            # 1. 进入番畅音频
-            checkin.fanchang(pid, w, h)
-            listen_sound()
-            # 2. 点击看小视频免费听
-            input.tap(pid, 4.7 * w / WIDTH, 0.9 * h / HEIGHT)
-            # 3. 播放45s
-            time.sleep(45)
-            # 4. 点击关闭
-            # 播放页面
-            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-            # 5. 回退到主页
-            phone.go_back(pid)
-            # ６．后台播放
-            phone.go_home(pid)
-        elif datetime.now().hour.__eq__(12):
-            checkin.fanchang(pid, w, h)
-            collect_listen_coin()
-            phone.stop_app(pid, packages['fanchang'])
+    # # [x] 听番畅音频
+    # # 08:00-09:00-10:00-11:00-12:00
+    # if datetime.now().minute.__lt__(SCHEDULE_TIME):
+    #     if datetime.now().hour.__eq__(8):
+    #         checkin.fanchang(pid, w, h)
+    #         # [x] 收听番唱音频
+    #         listen_sound()
+    #         # 回退到程序主页
+    #         phone.go_back(pid)
+    #         # 后台播放
+    #         phone.go_home(pid)
+    #     elif datetime.now().hour.__eq__(9):
+    #         # 解锁广告
+    #         # 1. 进入番畅音频
+    #         checkin.fanchang(pid, w, h)
+    #         listen_sound()
+    #         # 2. 点击看小视频免费听
+    #         input.tap(pid, 4.7 * w / WIDTH, 0.9 * h / HEIGHT)
+    #         # 3. 播放45s
+    #         time.sleep(45)
+    #         # 4. 点击关闭
+    #         # 播放页面
+    #         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+    #         # 5. 回退到主页
+    #         phone.go_back(pid)
+    #         # ６．后台播放
+    #         phone.go_home(pid)
+    #     elif datetime.now().hour.__eq__(12):
+    #         checkin.fanchang(pid, w, h)
+    #         collect_listen_coin()
+    #         phone.stop_app(pid, packages['fanchang'])
 
     # [x] 开宝箱
     # 每个小时一次
     # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
     # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        full_open_treasure()
+        full_fanchang_open_treasure()
     elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
-        full_open_treasure()
+        full_fanchang_open_treasure()
 
 
 # # noinspection PyUnusedLocal
 # def weishi(pid, w, h):
 #     return None
 
-# noinspection PyUnusedLocal
 def kuchang(pid, w, h):
-    return None
+    # 看创意视频
+    def kuchang_creative_video():
+        print('酷狗唱唱看创意视频 ' + datetime.now().__str__())
+        # 1. 获取创意视频的位置
+        if '酷狗唱唱创意' not in contexts[pid]:
+            creative_location = utils.current_words_location(pid, '创意')
+            if creative_location is None:
+                print('没有获取到创意视频的位置')
+                return
+            height = creative_location['y'] + creative_location['h']
+            contexts[pid]['酷狗唱唱创意'] = height
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, contexts[pid]['酷狗唱唱创意'])
+
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 返回上级页面
+        phone.go_back(pid, gap=1)
+
+    def full_kuchang_creative_video():
+        checkin.kuchang(pid, w, h)
+        app.kuchang_benefit_page(pid, w, h)
+        kuchang_creative_video()
+        phone.stop_app(pid, packages['kuchang'])
+
+    # 每个小时一次
+    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
+        full_kuchang_creative_video()
+    elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
+        full_kuchang_creative_video()
 
 
 def shuqi(pid, w, h):
