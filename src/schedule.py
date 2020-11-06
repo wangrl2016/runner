@@ -5,15 +5,6 @@ from src import checkin, phone, input, app, utils
 from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME, contexts
 
 
-###
-# 音频时间分配
-# 番茄畅听 (4, 5, 6)
-# 酷狗大字版 (7, 8)
-# 喜马拉雅 (9, 10, 11)
-# 酷狗儿歌 (12, 13)
-# 酷狗斗唱 (14, 15)
-###
-
 def toutiao_open_treasure(pid, w, h, gap=15):
     """
     今日头条开宝箱
@@ -764,7 +755,15 @@ def dongfang(pid, w, h):
 
 # noinspection PyUnusedLocal
 def jukandian(pid, w, h):
-    return None
+    # 时段奖励
+    def time_reward():
+        input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.jukandian(pid, w, h)
+        # [x] 时段奖励
+        time_reward()
+        phone.stop_app(pid, packages['jukandian'])
 
 
 # noinspection PyUnusedLocal
