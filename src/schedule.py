@@ -283,20 +283,20 @@ def huoshan(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    # 晒收入
-    def show_income():
-        # 1. 点击晒收入
-        input.tap(pid, w / 2, (HEIGHT - 3.3) * h / HEIGHT)
-        # 2. 点击微信
-        input.tap(pid, w / 2, 8.3 * h / HEIGHT)
-        for i in range(0, 3):
-            # 3. 点击去粘贴
-            # 进入微信页面
-            input.tap(pid, w / 2, 9.2 * h / HEIGHT, 8)
-            # 4. 返回到火山微信悬浮窗
-            phone.go_back(pid)
-            # 5. 返回到福利页面
-            phone.go_back(pid)
+    # # 晒收入
+    # def show_income():
+    #     # 1. 点击晒收入
+    #     input.tap(pid, w / 2, (HEIGHT - 3.3) * h / HEIGHT)
+    #     # 2. 点击微信
+    #     input.tap(pid, w / 2, 8.3 * h / HEIGHT)
+    #     for i in range(0, 3):
+    #         # 3. 点击去粘贴
+    #         # 进入微信页面
+    #         input.tap(pid, w / 2, 9.2 * h / HEIGHT, 8)
+    #         # 4. 返回到火山微信悬浮窗
+    #         phone.go_back(pid)
+    #         # 5. 返回到福利页面
+    #         phone.go_back(pid)
 
     # 睡觉赚金币
     def sleep_money(is_sleep):
@@ -314,12 +314,12 @@ def huoshan(pid, w, h):
     benefit_page()
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if datetime.now().hour.__eq__(1):
-            # [x] 晒收入
-            # 因为会打乱顺序
-            # 所以应该早于看视频
-            # 晚于签到
-            show_income()
+        # if datetime.now().hour.__eq__(1):
+        #     # [x] 晒收入
+        #     # 因为会打乱顺序
+        #     # 所以应该早于看视频
+        #     # 晚于签到
+        #     show_income()
 
         # [x] 睡觉赚金币
         # 20点睡觉3点起床收金币

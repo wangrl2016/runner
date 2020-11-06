@@ -152,7 +152,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=4)
 
-        # 京东
+        # 京东极速版
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
@@ -161,7 +161,7 @@ def run(pid):
             checkin.jingdong(pid, w, h)
             # 2. 逛商品赚金币
             # 50次
-            app.jingdong_good(pid, w, h, num=50)
+            app.jingdong_good(pid, w, h, num=20)
             # 3. 关闭程序
             phone.stop_app(pid, packages['jingdong'])
 

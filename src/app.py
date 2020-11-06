@@ -198,11 +198,11 @@ def jingdong_good(pid, w, h, num):
     # 1. 点击逛商品赚金币
     input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <=== modify
     for i in range(0, num):
-        # 2. 逛15s
-        for j in range(0, 3):
+        # 2. 逛10s
+        for j in range(0, 2):
             phone.swipe_down_to_up(pid, w, h, gap=5)
         # 3. 点击下一个商品
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.4 * h / HEIGHT)  # <=== modify
 
 
 def jingdong_activity(pid, w, h, num):
