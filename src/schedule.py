@@ -645,30 +645,19 @@ def huitoutiao(pid, w, h):
         # 有时候没有广告视频
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
 
-    def advert_reward():
-        # 1. 点击领取
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.2) * h / HEIGHT)
-        # 2. 播放30s
-        time.sleep(30)
-        # 3. 返回上级页面
-        phone.go_back(pid, gap=1)
-
-    checkin.huitoutiao(pid)
-    # [x] 阅读惠头条文章
-    app.read_huitoutiao_article(pid, w, h, num=1)
-
     if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+        checkin.huitoutiao(pid)
+        # [x] 阅读惠头条文章
+        app.read_huitoutiao_article(pid, w, h, num=1)
+
         # [x] 时段奖励
         # 每个小时一次
         # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
         # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
         time_reward()
-    else:
-        # [x] 广告视频奖励
-        advert_reward()
 
-    phone.stop_app(pid, packages['huitoutiao'])
+        phone.stop_app(pid, packages['huitoutiao'])
 
 
 def zhongqing(pid, w, h):
@@ -731,6 +720,7 @@ def kuaiyin(pid, w, h):
         if hour.__eq__(6) or hour.__eq__(9) or hour.__eq__(11) or (hour.__gt__(12) and hour.__lt__(18)):
             checkin.kuaiyin(pid, w, h)
             app.kuaiyin_benefit_page(pid, w, h)
+            phone.go_back(pid, gap=1)
             # [x] 八次喝水
             drink_water(False if hour.__lt__(14) else True)
             phone.stop_app(pid, packages['kuaiyin'])
