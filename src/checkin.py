@@ -71,12 +71,21 @@ def fanchang(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-def weishi(pid, gap=15):
+def kuchang(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
+
+
+# def weishi(pid, gap=15):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def shuqi(pid, w, h, gap=15):
@@ -132,7 +141,16 @@ def pinduoduo(pid, w, h, gap=10):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
-def taobao(pid, gap=10):
+def kuaiyin(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
+
+
+def tangdou(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -140,31 +158,64 @@ def taobao(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def shuabao(pid, gap=15):
+# def taobao(pid, gap=10):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+#
+#
+# def shuabao(pid, gap=15):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+#
+#
+# def qutoutiao(pid, gap=15):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+#
+#
+# def baidu(pid, gap=15):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+#
+#
+# def ximalaya(pid, gap=15):
+#     # 1. 回到手机主界面
+#     phone.go_home(pid)
+#     # 2. 启动程序
+#     phone.start_app(pid, activities[
+#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+def dongfang(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
-def qutoutiao(pid, gap=15):
+def jukandian(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
-def baidu(pid, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
-def ximalaya(pid, gap=15):
+def kankuai(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -199,6 +250,14 @@ def makan(pid, w, h, gap=20):
 
 
 def diandian(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
+
+
+def moji(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
