@@ -96,9 +96,9 @@ def kuaishou_reward_task(pid, w, h, num):
         print('没有获取到1000金币悬赏任务的位置')
         return
     height = reward_location['y'] + reward_location['h']
+
     for i in range(0, num):
         # 2. 点击福利按钮
-        # 位置不定
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
         # 3. 播放30s
         time.sleep(30)

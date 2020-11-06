@@ -111,13 +111,14 @@ def kuaishou(pid, w, h):
             print('没有获取到看直播领金币的位置')
             return
         height = live_location['y'] + live_location['h']
-
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
+
         for i in range(0, 10):
             # 3. 观看30s
             time.sleep(30)
             # 4. 上滑出现下一个
             phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
+
         # 5. 返回到福利页面
         phone.go_back(pid, gap=2)
         # 6. 福利页面恢复原样
@@ -125,7 +126,6 @@ def kuaishou(pid, w, h):
 
     # 每隔一个小时开一次宝箱
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
-        # 打开快手
         checkin.kuaishou(pid)
         app.kuaishou_benefit_page(pid, w, h)
 
@@ -137,7 +137,6 @@ def kuaishou(pid, w, h):
         # [x] 开宝箱
         open_treasure()
 
-        # 关闭快手
         phone.stop_app(pid, packages['kuaishou'])
 
 

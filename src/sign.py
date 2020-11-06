@@ -24,7 +24,7 @@ def kuaishou(pid, w, h):
     # 1. 假装后退解决弹出青少年模式悬浮窗的问题
     phone.go_back(pid)
     # 2. 进入快手福利页面
-    app.kuaishou_benefit_page(pid, w, h, gap=5)
+    app.kuaishou_benefit_page(pid, w, h, gap=3)
     # 3. 显示签到页面点击立即签到
     # [x] 签到成功
     input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify

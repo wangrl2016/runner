@@ -95,7 +95,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=0)
 
-        # 今日头条
+        # 今日头条极速版
         # 墨迹天气极速版
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
@@ -106,13 +106,13 @@ def run(pid):
             phone.stop_app(pid, packages['toutiao'])
 
             checkin.toutiao(pid)
-            # [x] 看头条视频
+            # [x] 看今日头条视频
             app.toutiao_video(pid, w, h, num=5)
             phone.stop_app(pid, packages['toutiao'])
 
             utils.tail_work(pid, w, h, hour=1)
 
-        # 快手
+        # 快手极速版
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
@@ -124,8 +124,6 @@ def run(pid):
             # 做完之后放置在最下面
             app.kuaishou_reward_task(pid, w, h, num=10)
             phone.stop_app(pid, packages['kuaishou'])
-
-            app.full_watch_kuaishou_video(pid, w, h, hour=2)
 
             utils.tail_work(pid, w, h, hour=2)
 
