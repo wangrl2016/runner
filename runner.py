@@ -373,6 +373,10 @@ def run(pid):
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
+            checkin.jukandian(pid, w, h)
+            app.read_jukandian_article(pid, w, h, num=10)
+            phone.stop_app(pid, packages['jukandian'])
+
             # # [x] 好看视频
             # # 花费8分钟
             # # 1. 打开程序

@@ -757,6 +757,10 @@ def jukandian(pid, w, h):
         checkin.jukandian(pid, w, h)
         # [x] 时段奖励
         time_reward()
+
+        # [x] 阅读文章
+        app.read_jukandian_article(pid, w, h, num=1)
+
         phone.stop_app(pid, packages['jukandian'])
 
 
