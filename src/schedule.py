@@ -700,9 +700,11 @@ def kuaiyin(pid, w, h):
         for i in range(0, 4):
             input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, (5.2 if is_next else 3.5) * h / HEIGHT, gap=1)
         # 3. 看视频
-        input.tap(pid, w / 2, 9.3 * h / HEIGHT)
+        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
         # 4. 播放30s
         time.sleep(30)
+        # 5. 关闭返回上级目录
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         hour = datetime.now().hour
