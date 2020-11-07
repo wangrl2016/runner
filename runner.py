@@ -344,6 +344,11 @@ def run(pid):
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)
 
+            checkin.tangdou(pid)
+            app.tangdou_benefit_page(pid, w, h)
+            app.tangdou_funny_video(pid, w, h, num=30)
+            phone.stop_app(pid, packages['tangdou'])
+
             # # [x] 看刷宝视频
             # # 1. 打开程序
             # checkin.shuabao(pid)
