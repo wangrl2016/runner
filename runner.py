@@ -251,6 +251,7 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             checkin.yingke(pid, w, h)
+            app.yingke_benefit_page(pid, w, h)
             # [x] 分享映客极速版
             # 分享3次
             # 也可以在直播间分享

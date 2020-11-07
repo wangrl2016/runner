@@ -407,20 +407,18 @@ def share_yingke(pid, w, h, times):
     分享映客直播间
     """
     print('分享映客直播间 ' + datetime.now().__str__())
-    # 1. 进入福利页面
-    yingke_benefit_page(pid, w, h)
-    # 2. 滑动到最下面
+    # 1. 滑动到最下面
     phone.swipe_down_to_up(pid, w, h / 2, internal=100)
 
     for i in range(0, times):
-        # 3. 点击分享映客极速版
+        # 2. 点击分享映客极速版
         input.tap(pid, w / 2, (HEIGHT - 3.5) * h / HEIGHT)
-        # 4. 点击分享到微信
+        # 3. 点击分享到微信
         input.tap(pid, 1.7 * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)
-        # 5. 返回到福利页面
+        # 4. 返回到福利页面
         phone.go_back(pid)
 
-    # 6. 滑动到最上面
+    # 5. 滑动到最上面
     phone.swipe_up_to_down(pid, w, h / 2, internal=100)
 
 
