@@ -92,7 +92,7 @@ def remove_screenshot(pid, filename, gap=1):
     time.sleep(gap)
 
 
-def get_page_photo(pid, output, gap=1):
+def get_page_photo(pid, output, gap=2):
     """
     获取手机的页面
     """

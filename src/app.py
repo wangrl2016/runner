@@ -532,14 +532,12 @@ def zhongqing_weixin_article(pid, w, h, num):
     # 1. 点击个人对话框
     input.tap(pid, w / 2, 2.0 * h / HEIGHT, gap=2)
     # 2. 点击领取奖励
-    input.tap(pid, w / 2, h / 4)
-    # 3. 点击开始阅读
-    input.tap(pid, w / 2, 10.0 * h / HEIGHT)
+    input.tap(pid, w / 2, h / 4, gap=8)
     for i in range(0, num):
         # 4. 阅读10s
         time.sleep(10)
         # 5. 返回到自动播放页面
-        phone.go_back(pid)
+        phone.go_back(pid, gap=5)
 
 
 # ~~~~~~~~~~拼多多~~~~~~~~~~

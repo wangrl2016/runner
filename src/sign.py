@@ -127,9 +127,9 @@ def kuchang(pid, w, h):
 
 
 def shuqi(pid, w, h):
-    # 后退会弹出提示框
+    # TODO: 后退会弹出提示框
     # 不后退有时会有广告悬浮窗
-    phone.go_back(pid)
+    # phone.go_back(pid)
     # 点击中间下方的福利
     # [x] 签到成功
     app.shuqi_benefit_page(pid, w, h, gap=5)
