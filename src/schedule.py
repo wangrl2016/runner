@@ -55,6 +55,10 @@ def toutiao(pid, w, h):
 
     # 打开头条
     checkin.toutiao(pid)
+
+    # [x] 阅读头条文章
+    app.read_toutiao_article(pid, w, h, num=1)
+
     app.toutiao_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
@@ -70,9 +74,6 @@ def toutiao(pid, w, h):
             sleep_money(False)
         elif hour.__eq__(8):
             sleep_money(True)
-
-        # [x] 阅读头条文章
-        app.read_toutiao_article(pid, w, h, num=1)
 
     # [x] 开宝箱
     # 每10分钟一次
@@ -726,7 +727,10 @@ def tangdou(pid, w, h):
 def dongfang(pid, w, h):
     # 时段奖励
     def time_reward():
+        # 1. 点击领取奖励
         input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=3)
+        # 2. 消除奖励页面
+        phone.go_back(pid)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.dongfang(pid, w, h)
