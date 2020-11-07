@@ -601,6 +601,17 @@ def kankuai_benefit_page(pid, w, h):
     input.tap(pid, w / 2, 9.5 * h / HEIGHT)
 
 
+def watch_kankuai_advert(pid, w, h, num):
+    print("看点快报广告 " + datetime.now().__str__())
+    for i in range(0, num):
+        # 1. 点击去观看
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)
+        # 2. 播放15s
+        time.sleep(15)
+        # 3. 点击关闭
+        input.tap(pid, 0.5 * w / WIDTH, 1.7 * h / HEIGHT, gap=2)  # <=== modify
+
+
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~

@@ -402,6 +402,13 @@ def run(pid):
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
+            for i in range(0, 3):
+                checkin.kankuai(pid)
+                app.kankuai_benefit_page(pid, w, h)
+                # [x] 看广告领金币
+                app.watch_kankuai_advert(pid, w, h, num=10)
+                phone.stop_app(pid, packages['kankuai'])
+
             utils.tail_work(pid, w, h, hour=19)
 
         # 抖音火山
