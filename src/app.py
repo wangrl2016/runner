@@ -544,7 +544,21 @@ def pinduoduo_street_money(pid, w, h):
 
 # ~~~~~~~~~~快音~~~~~~~~~~
 def kuaiyin_benefit_page(pid, w, h):
+    # 点击右下方福利按钮
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def watch_kuaiyin_video(pid, w, h):
+    """
+    看快音视频
+    """
+    # 1. 点击播放
+    input.tap(pid, 1.1 * w / WIDTH, 4.4 * h / HEIGHT)
+    # 2. 播放40s
+    time.sleep(40)
+    # 3. 关闭返回上级页面
+    # TODO: 关闭的位置
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~

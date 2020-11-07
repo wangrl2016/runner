@@ -331,14 +331,12 @@ def run(pid):
         while datetime.now().hour.__eq__(15):
             schedule_apps(pid, w, h)
 
-            # # 淘宝
-            # # 1. 打开程序
-            # checkin.taobao(pid)
-            # # 2. 关闭程序
-            # phone.stop_app(pid, packages['taobao'])
-            #
-            # # [x] 京东看视频赚金币
-            # app.full_jingdong_video_coin(pid, w, h, hour=15)
+            for i in range(0, 5):
+                checkin.kuaiyin(pid, w, h)
+                app.kuaiyin_benefit_page(pid, w, h)
+                # [x] 快音看视频赚钱
+                app.watch_kuaiyin_video(pid, w, h)
+                phone.stop_app(pid, packages['kuaiyin'])
 
             utils.tail_work(pid, w, h, hour=15)
 
