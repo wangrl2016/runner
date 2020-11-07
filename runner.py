@@ -435,11 +435,10 @@ def run(pid):
         while datetime.now().hour.__eq__(20):
             schedule_apps(pid, w, h)
 
-            # [x] 看抖音火山视频
-            # 1. 打开程序
             checkin.douhuo(pid)
-            app.watch_douhuo_video(pid, w, h, sec=1200)
-            # 3. 关闭程序
+            # [x] 看抖音火山视频
+            # 中途可能存在广告导致无法播放
+            app.watch_douhuo_video(pid, w, h, sec=300)
             phone.stop_app(pid, packages['douhuo'])
 
             utils.tail_work(pid, w, h, hour=20)
