@@ -528,6 +528,18 @@ def watch_zhongqing_video(pid, w, h, num):
         phone.go_back(pid)
 
 
+def zhongqing_weixin_article(pid, w, h, num):
+    # 1. 点击个人对话框
+    input.tap(pid, w / 2, 2.0 * h / HEIGHT, gap=2)
+    # 2. 点击领取奖励
+    input.tap(pid, w / 2, h / 4)
+    for i in range(0, num):
+        # 3. 阅读10s
+        time.sleep(10)
+        # 4. 返回到自动播放页面
+        phone.go_back(pid)
+
+
 # ~~~~~~~~~~拼多多~~~~~~~~~~
 def pinduoduo_street_money(pid, w, h):
     """
@@ -859,7 +871,7 @@ def read_diandian_article(pid, w, h, num):
     print('看点点新闻文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 向下刷新页面
-        if i.__eq__(0):
+        if i.__ne__(0):
             phone.swipe_up_to_down(pid, w, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h * 2 / 3, gap=5)

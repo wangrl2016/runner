@@ -58,6 +58,7 @@ packages = {
     apps[21]: 'com.ldzs.zhangxin',
     apps[22]: 'com.yingliang.clicknews',
     apps[23]: 'com.moji.mjweather.light',
+    'weixin': 'com.tencent.mm',
 }
 
 activities = {
@@ -91,6 +92,7 @@ activities = {
     apps[21]: '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     apps[22]: '#com.yingliang.clicknews/.MainActivity',
     apps[23]: 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
+    'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
 
 # 程序的定时任务为25分钟
