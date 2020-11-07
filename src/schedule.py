@@ -490,12 +490,12 @@ def kuchang(pid, w, h):
                 return
             height = creative_location['y'] + creative_location['h']
             contexts[pid]['酷狗唱唱创意'] = height
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, contexts[pid]['酷狗唱唱创意'])
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, contexts[pid]['酷狗唱唱创意'], gap=10)
 
         # 2. 播放30s
         time.sleep(30)
         # 3. 返回上级页面
-        phone.go_back(pid, gap=1)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
     # 每个小时一次
     # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
