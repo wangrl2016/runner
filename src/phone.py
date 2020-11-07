@@ -100,9 +100,12 @@ def get_page_photo(pid, output, gap=2):
     path = os.path.join('/sdcard', filename)
     subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', path])
     time.sleep(gap)
-    subprocess.run(['adb', '-s', pid, 'pull', path, output],
-                   check=True, stdout=subprocess.PIPE,
-                   stderr=subprocess.STDOUT, universal_newlines=True)
+    try:
+        subprocess.run(['adb', '-s', pid, 'pull', path, output],
+                       check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    except Exception as e:
+        print('获取照片失败 ' + str(e))
     time.sleep(gap * 2)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     time.sleep(gap)

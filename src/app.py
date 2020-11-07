@@ -457,16 +457,18 @@ def read_huitoutiao_article(pid, w, h, num):
     阅读惠头条文章
     """
     print('阅读惠头条文章 ' + datetime.now().__str__())
+    # 1. 消除可能存在的悬浮窗
+    phone.go_back(pid, gap=1)
     for i in range(0, num):
-        # 1. 获取文章目录
+        # 2. 获取文章目录
         if i.__ne__(0):
             phone.swipe_up_to_down(pid, w, h)
-        # 2. 阅读中间文章
+        # 3. 阅读中间文章
         input.tap(pid, w / 2, h * 3 / 5)
-        # 3. 滑动阅读
+        # 4. 滑动阅读
         for j in range(0, 10):
             phone.swipe_down_to_up(pid, w, h, gap=3)
-        # 4. 返回上级目录
+        # 5. 返回上级目录
         phone.go_back(pid)
 
 
@@ -532,7 +534,7 @@ def zhongqing_weixin_article(pid, w, h, num):
     # 1. 点击个人对话框
     input.tap(pid, w / 2, 2.0 * h / HEIGHT, gap=2)
     # 2. 点击领取奖励
-    input.tap(pid, w / 2, h / 4, gap=8)
+    input.tap(pid, w * 2 / 3, h / 5, gap=8)
     for i in range(0, num):
         # 4. 阅读10s
         time.sleep(10)
