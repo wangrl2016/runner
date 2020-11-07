@@ -2,7 +2,7 @@
 # 通过实际测量手机获得
 # 毫米为单位
 WIDTH = 6.8
-HEIGHT = 14.6
+HEIGHT = 14.3
 
 phones = {
     'vivo-u3x': ['720x1544'],
