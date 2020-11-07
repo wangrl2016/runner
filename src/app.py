@@ -594,6 +594,7 @@ def jukandian_benefit_page(pid, w, h):
 
 
 def read_jukandian_article(pid, w, h, num):
+    # 可能存在悬浮窗
     for i in range(0, num):
         # 1. 刷新页面
         if i.__ne__(0):
@@ -605,6 +606,32 @@ def read_jukandian_article(pid, w, h, num):
             phone.swipe_down_to_up(pid, w, h / 3, gap=2, internal=300)
         # 4. 返回上级目录
         phone.go_back(pid, gap=1)
+
+
+def watch_jukandian_video(pid, w, h, num):
+    # 可能存在悬浮窗
+    # 1. 点击视频按钮
+    input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        if i.__ne__(0):
+            # 2. 刷新页面
+            phone.swipe_up_to_down(pid, w, h)
+        # 3. 点击播放
+        input.tap(pid, w / 2, h / 5)
+        # 4. 播放30s
+        time.sleep(30)
+        # 5. 返回上级页面
+        phone.go_back(pid)
+
+
+def watch_jukandian_svideo(pid, w, h, num):
+    # 1. 点击小视频
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 看小视频
+        phone.swipe_down_to_up(pid, w, h, randrange(6, 16))
+    # 3. 返回上级页面
+    phone.go_back(pid, gap=1)
 
 
 # ~~~~~~~~~~看点快报~~~~~~~~~~

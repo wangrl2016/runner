@@ -378,7 +378,18 @@ def run(pid):
             schedule_apps(pid, w, h)
 
             checkin.jukandian(pid, w, h)
-            app.read_jukandian_article(pid, w, h, num=10)
+            # [x] 阅读文章
+            app.read_jukandian_article(pid, w, h, num=5)
+            phone.stop_app(pid, packages['jukandian'])
+
+            checkin.jukandian(pid, w, h)
+            # [x] 视频
+            app.watch_jukandian_video(pid, w, h, num=5)
+            phone.stop_app(pid, packages['jukandian'])
+
+            checkin.jukandian(pid, w, h)
+            # [x] 小视频
+            app.watch_jukandian_svideo(pid, w, h, num=20)
             phone.stop_app(pid, packages['jukandian'])
 
             # # [x] 好看视频

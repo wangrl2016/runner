@@ -704,6 +704,7 @@ def kuaiyin(pid, w, h):
         # 4. 播放30s
         time.sleep(30)
         # 5. 关闭返回上级目录
+        # TODO: 位置未确定
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
@@ -743,6 +744,7 @@ def jukandian(pid, w, h):
     # 时段奖励
     def time_reward():
         input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT)
+        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.jukandian(pid, w, h)
@@ -999,6 +1001,7 @@ def moji(pid, w, h):
         # 3. 播放30s
         time.sleep(30)
         # 4. 返回上级页面
+        # TODO: 位置未确定
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
