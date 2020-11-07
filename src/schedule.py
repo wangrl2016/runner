@@ -619,14 +619,6 @@ def kugou(pid, w, h):
         # 关闭程序
         phone.stop_app(pid, packages['kugou'])
 
-        # [x] 播放酷狗音乐
-        # 存在音频占用播放2个小时
-        # 1个小时720金币
-        if datetime.now().hour.__eq__(7) and datetime.now().hour.__eq__(8):
-            checkin.kugou(pid, w, h)
-            # 下个时段关闭音乐
-            kugou_background_music(pid, w, h)
-
 
 def huitoutiao(pid, w, h):
     # 时段奖励
