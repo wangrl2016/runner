@@ -270,6 +270,11 @@ def run(pid):
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
+            checkin.kugou(pid, w, h)
+            # [x] 酷狗背景音乐
+            # 下次进入的时候关闭
+            app.kugou_background_music(pid, w, h)
+
             utils.tail_work(pid, w, h, hour=11)
 
         # 惠头条

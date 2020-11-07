@@ -432,17 +432,19 @@ def kugou_benefit_page(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.7) * h / HEIGHT)  # <= modify
 
 
-def listen_kugou_music(pid, w, h, sec=300):
+def kugou_background_music(pid, w, h):
     """
     听酷狗音乐
     """
     print('听酷狗音乐 ' + datetime.now().__str__())
-    # 1. 点击中间下方进入播放页面
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    # 1. 点击下方图标进入播放页面
+    input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
     # 2. 点击播放
-    input.tap(pid, w / 2, (HEIGHT - 1.5) * h / HEIGHT)  # <= modify
-    # 3. 播放
-    time.sleep(sec)
+    input.tap(pid, w / 2, (HEIGHT - 1.4) * h / HEIGHT)
+    # 3. 回到主页
+    phone.go_back(pid)
+    # 4. 后台播放
+    phone.go_home(pid)
 
 
 # ~~~~~~~~~~惠头条~~~~~~~~~~
@@ -605,7 +607,7 @@ def watch_kankuai_advert(pid, w, h, num):
     print("看点快报广告 " + datetime.now().__str__())
     for i in range(0, num):
         # 1. 点击去观看
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=3)
         # 2. 播放15s
         time.sleep(15)
         # 3. 点击关闭
