@@ -740,6 +740,10 @@ def dongfang(pid, w, h):
         checkin.dongfang(pid, w, h)
         # [x] 时段奖励
         time_reward()
+
+        # [x] 阅读文章
+        app.read_dongfang_article(pid, w, h, num=1)
+
         phone.stop_app(pid, packages['dongfang'])
 
 

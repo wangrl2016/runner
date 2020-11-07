@@ -560,6 +560,20 @@ def dongfang_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+def read_dongfang_article(pid, w, h, num):
+    for i in range(0, num):
+        # 1. 刷新页面
+        if i.__ne__(0):
+            phone.swipe_down_to_up(pid, w, h)
+        # 2. 进入文章
+        input.tap(pid, w / 2, h / 2, gap=3)
+        for j in range(0, 15):
+            # 3. 浏览文章
+            phone.swipe_down_to_up(pid, w, h / 3, gap=2, internal=300)
+        # 4. 返回上级目录
+        phone.go_back(pid, gap=1)
+
+
 # ~~~~~~~~~~聚看点~~~~~~~~~~
 def jukandian_benefit_page(pid, w, h):
     input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
