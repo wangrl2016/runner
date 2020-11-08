@@ -460,6 +460,8 @@ def run(pid):
 
             checkin.makan(pid, w, h)
             phone.go_back(pid, gap=2)
+            # [x] 阅读蚂蚁看点文章
+            # 需要提前解决彩蛋问题
             app.read_makan_article(pid, w, h, num=5)
             phone.stop_app(pid, packages['makan'])
 

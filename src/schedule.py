@@ -1033,6 +1033,15 @@ def makan(pid, w, h):
         time_reward()
         phone.stop_app(pid, packages['makan'])
 
+        if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(21):
+            checkin.makan(pid, w, h)
+            phone.go_back(pid, gap=2)
+            # [x] 阅读蚂蚁看点文章
+            app.read_makan_article(pid, w, h, num=1)
+            # 解决彩蛋问题
+            input.tap(pid, 1.0 * w / WIDTH, 2.3 * h / HEIGHT, gap=2)
+            phone.stop_app(pid, packages['makan'])
+
 
 def diandian(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
