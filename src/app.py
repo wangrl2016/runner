@@ -221,11 +221,14 @@ def jingdong_video_coin(pid, w, h, hour=5):
     京东看视频赚金币
     """
     print('京东看视频赚金币 ' + datetime.now().__str__())
-    jingdong_benefit_page(pid, w, h)
-    # 1. 点击看视频赚金币
-    input.tap(pid, w / 2, 11.0 * h / HEIGHT)  # <=== modify
+    for i in range(0, 2):
+        jingdong_benefit_page(pid, w, h)
+        # 1. 点击看视频赚金币
+        input.tap(pid, w / 2, 11.0 * h / HEIGHT)  # <=== modify
+        # 消除可能存在的悬浮窗
+        if i.__eq__(0):
+            phone.go_back(pid, times=3)
     # 2. 任意点击视频进入
-    # 可能存在广告悬浮窗
     input.tap(pid, w / 3, h / 2)
     # 3. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
