@@ -863,14 +863,7 @@ def kankuai(pid, w, h):
 #         # 3. 回退到播放页面
 #         phone.go_back(pid, times=2, gap=1)
 #
-#     # 开宝箱
-#     def open_treasure():
-#         # 1. 点击宝箱
-#         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
-#         # 2. 播放广告50s
-#         time.sleep(50)
-#         # 3. 回退到播放页面
-#         phone.go_back(pid, times=2, gap=1)
+
 #
 #     # 睡觉赚钱
 #     def sleep_money(is_sleep):
@@ -913,16 +906,6 @@ def kankuai(pid, w, h):
 #
 #         phone.stop_app(pid, packages['qutoutiao'])
 #
-#     if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
-#             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
-#         checkin.qutoutiao(pid)
-#         app.qutoutiao_benefit_page(pid, w, h)
-#         # [x] 开宝箱
-#         # 每个小时一次
-#         # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-#         # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-#         open_treasure()
-#         phone.stop_app(pid, packages['qutoutiao'])
 #
 #     if datetime.now().hour.__gt__(2) and datetime.now().hour.__lt__(9):
 #         # 进入趣头条
@@ -1068,6 +1051,23 @@ def moji(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def qutoutiao(pid, w, h):
-    return None
+    # 开宝箱
+    def open_treasure():
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
+        # 2. 播放广告50s
+        time.sleep(50)
+        # 3. 回退到播放页面
+        phone.go_back(pid, times=2, gap=1)
+
+    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+        checkin.qutoutiao(pid)
+        app.qutoutiao_benefit_page(pid, w, h)
+        # [x] 开宝箱
+        # 每个小时一次
+        # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+        # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+        open_treasure()
+        phone.stop_app(pid, packages['qutoutiao'])
