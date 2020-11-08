@@ -218,19 +218,6 @@ def pinduoduo(pid, w, h):
 #     phone.go_back(pid, gap=1)
 #
 #
-# # noinspection PyUnusedLocal
-# def qutoutiao(pid, w, h):
-#     # 1. 点击右下方任务
-#     # [x] 签到成功
-#     app.qutoutiao_benefit_page(pid, w, h)
-#     # 2. 点击看视频再领金币
-#     input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
-#     # 3. 播放40s
-#     # TODO: 播放时长
-#     time.sleep(40)
-#     # 4. 回退到未知页面
-#     phone.go_back(pid, gap=1)
-#
 #
 # # noinspection PyUnusedLocal
 # def baidu(pid, w, h):
@@ -342,3 +329,16 @@ def diandian(pid, w, h):
 def moji(pid, w, h):
     # [x] 签到成功
     app.moji_benefit_page(pid, w, h)
+
+
+def qutoutiao(pid, w, h):
+    # 1. 点击右下方任务
+    # [x] 签到成功
+    app.qutoutiao_benefit_page(pid, w, h)
+    # 2. 点击看视频再领金币
+    input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
+    # 3. 播放40s
+    # TODO: 播放时长
+    time.sleep(40)
+    # 4. 回退到未知页面
+    phone.go_back(pid, gap=1)

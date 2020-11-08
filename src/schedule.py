@@ -1066,3 +1066,8 @@ def diandian(pid, w, h):
 # noinspection PyUnusedLocal
 def moji(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def qutoutiao(pid, w, h):
+    return None

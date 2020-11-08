@@ -724,14 +724,7 @@ def watch_kankuai_advert(pid, w, h, num):
 #         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 #
 #
-# # ~~~~~~~~~~趣头条~~~~~~~~~~
-#
-# def qutoutiao_benefit_page(pid, w, h):
-#     """
-#     进入福利页面
-#     """
-#     # 1. 点击左下角任务
-#     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
 #
 #
 # # noinspection PyUnusedLocal
@@ -909,3 +902,9 @@ def read_diandian_article(pid, w, h, num):
 # ~~~~~~~~~~墨迹天气~~~~~~~~~~
 def moji_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# ~~~~~~~~~~趣头条~~~~~~~~~~
+def qutoutiao_benefit_page(pid, w, h):
+    # 1. 点击左下角任务
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)

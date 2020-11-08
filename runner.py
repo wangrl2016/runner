@@ -84,7 +84,6 @@ def run(pid):
         while datetime.now().hour.__eq__(0):
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
-                utils.set_home_page(pid, w, h, a)
                 if tap_start(a):
                     getattr(checkin, a)(pid, w, h)
                 else:
