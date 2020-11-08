@@ -813,9 +813,11 @@ def watch_douhuo_video(pid, w, h, sec=300):
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
-    # 1. 点击播放
+    # 1. 确认在儿歌页面
+    input.tap(pid, 2.0 * h / HEIGHT, 1.2 * h / HEIGHT)
+    # 2. 点击播放
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <== modify
-    # 2. 回到后台
+    # 3. 回到后台
     phone.go_home(pid)
 
 

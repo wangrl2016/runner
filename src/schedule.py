@@ -1001,9 +1001,23 @@ def douhuo(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def kuge(pid, w, h):
-    return None
+    def share_song():
+        # 1. 点击进入全屏播放页面
+        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+        # 2. 点击右上角分享
+        input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 0.9 * h / HEIGHT)
+        # 3. 点击微信
+        input.tap(pid, w / 6, h * 6 / 7)
+        # 4. 返回
+        phone.go_back(pid, gap=1)
+
+    if datetime.now().minute.__gt__(SCHEDULE_TIME) and datetime.now().hour.__eq__(22):
+        checkin.kuge(pid, w, h)
+        # [x] 分享歌曲
+        share_song()
+        # 随便关闭酷狗儿歌后台播放
+        phone.stop_app(pid, packages['kuge'])
 
 
 def makan(pid, w, h):
