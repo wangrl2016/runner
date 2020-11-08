@@ -993,21 +993,4 @@ def diandian(pid, w, h):
 
 # noinspection PyUnusedLocal
 def moji(pid, w, h):
-    def collect_coin():
-        # 1. 点击气泡
-        input.tap(pid, 0.8 * w / WIDTH, h / 2)
-        # 2. 点击看视频领取
-        input.tap(pid, w / 2, 8.2 * h / HEIGHT)
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 返回上级页面
-        # TODO: 位置未确定
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
-
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
-        checkin.moji(pid)
-        # [x] 手机气泡
-        collect_coin()
-        phone.stop_app(pid, packages['moji'])
-
     return None
