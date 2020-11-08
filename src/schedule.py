@@ -1001,28 +1001,9 @@ def douhuo(pid, w, h):
     return None
 
 
-# 后台收听酷狗儿歌
-def play_kuge_background(pid, w, h):
-    # 1. 进入酷狗儿歌
-    checkin.kuge(pid, w, h)
-    # 2. 确认在主页
-    input.tap(pid, 2.0 * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
-    # 3. 点击播放
-    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <== modify
-    # 4. 回到后台
-    phone.go_home(pid)
-
-
+# noinspection PyUnusedLocal
 def kuge(pid, w, h):
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if datetime.now().hour.__eq__(12):
-            # [x] 收听酷狗儿歌
-            play_kuge_background(pid, w, h)
-        elif datetime.now().hour.__eq__(13):
-            phone.stop_app(pid, packages['kuge'])
-            play_kuge_background(pid, w, h)
-        elif datetime.now().hour.__eq__(14):
-            phone.stop_app(pid, packages['kuge'])
+    return None
 
 
 def makan(pid, w, h):

@@ -445,11 +445,16 @@ def run(pid):
 
         # 酷狗儿歌
         while datetime.now().hour.__eq__(21):
+            checkin.kuge(pid, w, h)
+            # [x] 后台播放酷狗儿歌
+            app.kuge_play_background(pid, w, h)
+
             schedule_apps(pid, w, h)
 
-            # TODO: 更新程序工作
-
             utils.tail_work(pid, w, h, hour=21)
+
+            # 退出酷狗儿歌
+            phone.stop_app(pid, packages['kuge'])
 
         # 蚂蚁看点
         while datetime.now().hour.__eq__(22):

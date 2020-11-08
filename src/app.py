@@ -810,6 +810,17 @@ def watch_douhuo_video(pid, w, h, sec=300):
         phone.swipe_down_to_up(pid, w * 2 / 3, h * 2 / 3, randrange(5, 16))
 
 
+# ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
+def kuge_play_background(pid, w, h):
+    print('后台播放酷狗儿歌 ' + datetime.now().__str__())
+    # 1. 点击播放
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <== modify
+    # 2. 回到后台
+    phone.go_home(pid)
+
+
+# ~~~~~~~~~~抖音火山版~~~~~~~~~~
+
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 
 def makan_benefit_page(pid, w, h):
