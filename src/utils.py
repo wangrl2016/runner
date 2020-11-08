@@ -17,21 +17,6 @@ def tap_start(a):
     return activities[a].__contains__('#')
 
 
-def set_home_page(pid, w, h, a):
-    """
-    通过app的位置设置当前页面
-    """
-    if apps.__len__().__gt__(24) and apps.index(a).__eq__(0):
-        # 滑动到首页
-        phone.go_home(pid)
-        for i in range(0, int(apps.__len__() / 25)):
-            phone.swipe_left_to_right(pid, w, h, gap=1)
-    elif apps.index(a).__eq__(24):
-        # 滑动到第2页
-        phone.go_home(pid)
-        phone.swipe_right_to_left(pid, w, h)
-
-
 def schedule_apps(pid, w, h):
     """
     做两次程序的定时任务
@@ -41,7 +26,6 @@ def schedule_apps(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         print('第1次定时任务 ' + datetime.now().__str__())
         for a in apps:
-            set_home_page(pid, w, h, a)
             getattr(schedule, a)(pid, w, h)
 
         if (datetime.now().hour % 4).__eq__(1):
@@ -62,7 +46,6 @@ def schedule_apps(pid, w, h):
 
     print('第2次定时任务 ' + datetime.now().__str__())
     for a in apps:
-        set_home_page(pid, w, h, a)
         getattr(schedule, a)(pid, w, h)
 
 
