@@ -830,9 +830,6 @@ def makan_benefit_page(pid, w, h):
 
 
 def read_makan_article(pid, w, h, num):
-    """
-    看蚂蚁看点文章
-    """
     print('看蚂蚁看点文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 点击文章
@@ -845,6 +842,17 @@ def read_makan_article(pid, w, h, num):
         phone.go_back(pid)
         # 4. 刷新页面
         phone.swipe_up_to_down(pid, w, h)
+
+
+def makan_search_coin(pid, w, h, num):
+    print('蚂蚁看点搜索赚 ' + datetime.now().__str__())
+    # 1. 点击搜索赚
+    input.tap(pid, 2.6 * w / WIDTH, 6.4 * h / HEIGHT)
+    for i in range(0, num):
+        # 2. 点击搜索词
+        input.tap(pid, w / 3, (HEIGHT - 1.2) * h / HEIGHT)
+        # 3. 返回上级页面
+        phone.go_back(pid, gap=5)
 
 
 # ~~~~~~~~~~点点新闻~~~~~~~~~~
