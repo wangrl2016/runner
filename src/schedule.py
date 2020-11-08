@@ -691,6 +691,7 @@ def pinduoduo(pid, w, h):
 
 def kuaiyin(pid, w, h):
     def drink_water(is_next):
+        print('快音喝水赚钱 ' + datetime.now().__str__())
         # 1. 点击喝水赚钱
         input.tap(pid, 2.6 * w / WIDTH, 4.5 * h / HEIGHT)
         # 2. 点击水杯
@@ -700,18 +701,42 @@ def kuaiyin(pid, w, h):
         input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
         # 4. 播放30s
         time.sleep(30)
-        # 5. 关闭返回上级目录
-        # TODO: 位置未确定
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
+
+    def advert_video():
+        print('快音视频广告 ' + datetime.now().__str__())
+        # 1. 点击看视频赚钱
+        input.tap(pid, 1.0 * w / WIDTH, 4.5 * h / HEIGHT, gap=8)
+        # 2. 播放30s
+        time.sleep(30)
+
+    def offline_coin():
+        print('快音离线收益 ' + datetime.now().__str__())
+        # 1. 看视频领取100金币
+        input.tap(pid, w / 2, 8.0 * h / HEIGHT)
+        # 2. 播放30s
+        time.sleep(30)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
+
+        checkin.kuaiyin(pid, w, h)
+        app.kuaiyin_benefit_page(pid, w, h)
+        # [x] 离线收益
+        offline_coin()
+        phone.stop_app(pid, packages['kuaiyin'])
+
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(9) or hour.__eq__(11) or (hour.__gt__(12) and hour.__lt__(18)):
             checkin.kuaiyin(pid, w, h)
             app.kuaiyin_benefit_page(pid, w, h)
-            phone.go_back(pid, gap=1)
             # [x] 八次喝水
             drink_water(False if hour.__lt__(14) else True)
+            phone.stop_app(pid, packages['kuaiyin'])
+
+        if (datetime.now().hour % 3).__eq__(0):
+            checkin.kuaiyin(pid, w, h)
+            app.kuaiyin_benefit_page(pid, w, h)
+            # [x] 看视频赚钱
+            advert_video()
             phone.stop_app(pid, packages['kuaiyin'])
 
 
