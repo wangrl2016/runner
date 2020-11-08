@@ -705,7 +705,7 @@ def kuaiyin(pid, w, h):
     def advert_video():
         print('快音视频广告 ' + datetime.now().__str__())
         # 1. 点击看视频赚钱
-        input.tap(pid, 1.0 * w / WIDTH, 4.5 * h / HEIGHT, gap=8)
+        input.tap(pid, 1.0 * w / WIDTH, 4.4 * h / HEIGHT, gap=8)
         # 2. 播放30s
         time.sleep(30)
 
@@ -716,12 +716,35 @@ def kuaiyin(pid, w, h):
         # 2. 播放30s
         time.sleep(30)
 
+    def open_treasure():
+        print('快音开宝箱 ' + datetime.now().__str__())
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.5 * h / HEIGHT)
+        # 2. 点击看视频再领金币
+        input.tap(pid, w / 2, 7.8 * h / HEIGHT, gap=10)
+        # 3. 播放30s
+        time.sleep(30)
+
+    def sleep_money(is_sleep):
+        print('快音睡觉赚钱 ' + datetime.now().__str__())
+        # 1. 点击睡觉赚钱
+        input.tap(pid, 4.1 * w / WIDTH, 4.4 * h / HEIGHT)
+        # 3. 点击我要睡觉/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT, gap=8)
+
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
 
         checkin.kuaiyin(pid, w, h)
         app.kuaiyin_benefit_page(pid, w, h)
         # [x] 离线收益
         offline_coin()
+        phone.stop_app(pid, packages['kuaiyin'])
+
+        checkin.kuaiyin(pid, w, h)
+        app.kuaiyin_benefit_page(pid, w, h)
+        # [x] 开宝箱
+        open_treasure()
         phone.stop_app(pid, packages['kuaiyin'])
 
         hour = datetime.now().hour
@@ -731,6 +754,14 @@ def kuaiyin(pid, w, h):
             # [x] 八次喝水
             drink_water(False if hour.__lt__(14) else True)
             phone.stop_app(pid, packages['kuaiyin'])
+
+        # [x] 睡觉赚钱
+        # 21:00-2:00为睡觉时间
+        # 06:00-09:00为醒来时间
+        if hour.__eq__(21):
+            sleep_money(False)
+        elif hour.__eq__(6):
+            sleep_money(True)
 
         if (datetime.now().hour % 3).__eq__(0):
             checkin.kuaiyin(pid, w, h)
