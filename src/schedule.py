@@ -1025,10 +1025,22 @@ def makan(pid, w, h):
         # 1. 点击领取
         input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
 
+    def get_coin():
+        # 1. 点击点我领金币
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 10.7 * h / HEIGHT)
+        # 2. 点击免费领金币
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 9.3 * h / HEIGHT)
+        # 3. 返回到首页
+        phone.go_back(pid, times=2)
+
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.makan(pid, w, h)
         # 消除悬浮窗
         phone.go_back(pid)
+        app.makan_benefit_page(pid, w, h)
+        # [x] 领金币
+        get_coin()
+
         # [x] 时段奖励
         time_reward()
         phone.stop_app(pid, packages['makan'])
