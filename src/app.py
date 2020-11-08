@@ -527,9 +527,12 @@ def watch_zhongqing_video(pid, w, h, num):
 
 def zhongqing_weixin_article(pid, w, h, num):
     # 1. 点击个人对话框
-    input.tap(pid, w / 2, 2.0 * h / HEIGHT, gap=2)
+    input.tap(pid, w / 2, 2.0 * h / HEIGHT, gap=3)
     # 2. 点击领取奖励
-    input.tap(pid, w * 2 / 3, h / 5, gap=8)
+    input.tap(pid, w * 2 / 3, h / 5)
+    # 3. 点击开始阅读
+    for i in range(0, 2):
+        input.tap(pid, w / 2, 9.8 * h / HEIGHT)
     for i in range(0, num):
         # 4. 阅读10s
         time.sleep(10)
