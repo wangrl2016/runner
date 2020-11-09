@@ -460,12 +460,12 @@ def read_huitoutiao_article(pid, w, h, num):
     for i in range(0, num):
         # 2. 获取文章目录
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w, randrange(h / 2, h))
         # 3. 阅读中间文章
-        input.tap(pid, w / 2, h * 3 / 5)
+        input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
         # 4. 滑动阅读
-        for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w, h, gap=3)
+        for j in range(0, randrange(9, 12)):
+            phone.swipe_down_to_up(pid, w, randrange(h / 2, h), randrange(2, 5), internal=300)
         # 5. 返回上级目录
         phone.go_back(pid)
 

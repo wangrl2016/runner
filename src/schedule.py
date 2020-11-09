@@ -673,11 +673,12 @@ def zhongqing(pid, w, h):
         # [x] 看中青看点视频
         app.watch_zhongqing_video(pid, w, h, num=1)
         phone.stop_app(pid, packages['zhongqing'])
-    else:
-        checkin.weixin(pid)
-        # [x] 阅读微信文章
-        app.zhongqing_weixin_article(pid, w, h, num=5)
-        phone.stop_app(pid, packages['weixin'])
+
+        if (datetime.now().hour % 4).__eq__(0):
+            checkin.weixin(pid)
+            # [x] 阅读微信文章
+            app.zhongqing_weixin_article(pid, w, h, num=5)
+            phone.stop_app(pid, packages['weixin'])
 
 
 def pinduoduo(pid, w, h):
