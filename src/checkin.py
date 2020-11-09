@@ -80,14 +80,6 @@ def kuchang(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-# def weishi(pid, gap=15):
-#     # 1. 回到手机主界面
-#     phone.go_home(pid)
-#     # 2. 启动程序
-#     phone.start_app(pid, activities[
-#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def shuqi(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -269,6 +261,14 @@ def qutoutiao(pid, gap=15):
 
 
 def baidu(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def weishi(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

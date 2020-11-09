@@ -1071,3 +1071,8 @@ def baidu(pid, w, h):
         # [x] 时段奖励
         time_reward()
         phone.stop_app(pid, packages['baidu'])
+
+
+# noinspection PyUnusedLocal
+def weishi(pid, w, h):
+    return None

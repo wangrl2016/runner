@@ -909,3 +909,5 @@ def qutoutiao_benefit_page(pid, w, h):
 # ~~~~~~~~~~百度极速版~~~~~~~~~~
 def baidu_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+# ~~~~~~~~~~微视~~~~~~~~~~

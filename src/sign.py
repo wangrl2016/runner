@@ -344,3 +344,8 @@ def baidu(pid, w, h):
         time.sleep(30)
         # 回退到悬浮窗页面
         phone.go_back(pid, gap=4)
+
+
+# noinspection PyUnusedLocal
+def weishi(pid, w, h):
+    return None
