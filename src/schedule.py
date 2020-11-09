@@ -717,14 +717,14 @@ def kuaiyin(pid, w, h):
     def advert_video():
         print('快音视频广告 ' + datetime.now().__str__())
         # 1. 点击看视频赚钱
-        input.tap(pid, 1.0 * w / WIDTH, 4.4 * h / HEIGHT, gap=8)
+        input.tap(pid, 1.0 * w / WIDTH, 4.4 * h / HEIGHT, gap=10)
         # 2. 播放30s
         time.sleep(30)
 
     def offline_coin():
         print('快音离线收益 ' + datetime.now().__str__())
         # 1. 看视频领取100金币
-        input.tap(pid, w / 2, 8.0 * h / HEIGHT)
+        input.tap(pid, w / 2, 8.0 * h / HEIGHT, gap=10)
         # 2. 播放30s
         time.sleep(30)
 
