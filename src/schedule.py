@@ -1047,3 +1047,8 @@ def weishi(pid, w, h):
 # noinspection PyUnusedLocal
 def ximalaya(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def wuba(pid, w, h):
+    return None

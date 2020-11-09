@@ -348,3 +348,9 @@ def ximalaya(pid, w, h):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
     # 5. 返回到福利页面
     phone.go_back(pid, gap=1)
+
+
+def wuba(pid, w, h):
+    phone.go_back(pid, gap=1)
+    # TODO: 未完成
+    app.wuba_benefit_page(pid, w, h)
