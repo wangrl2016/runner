@@ -2,6 +2,7 @@ import os
 import subprocess
 import time
 from datetime import datetime
+from random import randrange
 
 
 def go_home(pid, gap=1):
@@ -25,6 +26,8 @@ def swipe_down_to_up(pid, w, h, gap=3, internal=200):
     """
     从下往上滑动屏幕
     """
+    w = w - randrange(0, 100)
+    h = h - randrange(0, 200)
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'swipe',
                     str(int(w / 2)), str(int(h * 3 / 4)),
                     str(int(w / 2)), str(int(h * 1 / 4)),
@@ -36,6 +39,8 @@ def swipe_up_to_down(pid, w, h, gap=3, internal=200):
     """
     从上往下滑动屏幕
     """
+    w = w - randrange(0, 100)
+    h = h - randrange(0, 200)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w / 2)), str(int(h * 1 / 4)),
                      str(int(w / 2)), str(int(h * 3 / 4)),
@@ -47,6 +52,8 @@ def swipe_right_to_left(pid, w, h, gap=3, internal=200):
     """
     从右往左滑动屏幕
     """
+    w = w - randrange(0, 100)
+    h = h - randrange(0, 200)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w * 3 / 4)), str(int(h / 2)),
                      str(int(w * 1 / 4)), str(int(h / 2)),
@@ -58,6 +65,8 @@ def swipe_left_to_right(pid, w, h, gap=3, internal=200):
     """
     从右往左滑动屏幕
     """
+    w = w - randrange(0, 100)
+    h = h - randrange(0, 200)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w * 1 / 4)), str(int(h / 2)),
                      str(int(w * 3 / 4)), str(int(h / 2)),
