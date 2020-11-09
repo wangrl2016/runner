@@ -79,14 +79,16 @@ def jingdong(pid, w, h):
 
 
 def fanqie(pid, w, h):
-    # 1. 点击中间下方福利签到
+    # 1. 假装退出关闭可能存在的悬浮窗
+    phone.go_back(pid, gap=1)
+    # 2. 点击中间下方福利签到
     # [x] 签到成功
     app.fanqie_benefit_page(pid, w, h)
-    # 2. 点击看视频再领金币
+    # 3. 点击看视频再领金币
     input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <== modify
-    # 3. 播放视频30s
+    # 4. 播放视频30s
     time.sleep(30)
-    # 4. 点击关闭回退到福利页面
+    # 5. 点击关闭回退到福利页面
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
 
     # [x] 顺便开宝箱
