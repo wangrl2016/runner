@@ -347,7 +347,7 @@ def fanqie_open_treasure(pid, w, h):
     # 3. 播放30s
     time.sleep(30)
     # 4. 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <= modify
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
 
 
 def fanqie(pid, w, h):
@@ -402,7 +402,7 @@ def fanchang_open_treasure(pid, w, h):
     # 3. 播放30s
     time.sleep(30)
     # 4. 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
 
 
 def fanchang(pid, w, h):
@@ -573,8 +573,16 @@ def kugou(pid, w, h):
     # 刷创意视频
     def creative_video():
         # 1. 点击去赚钱
-        # 高需要确保兼容性
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 12.7 * h / HEIGHT, gap=10)  # <=== modify
+        # 获取创意视频的位置
+        if '酷狗创意视频' not in contexts[pid]:
+            video_location = utils.current_words_location(pid, '创')
+            if video_location is None:
+                print('没有获取到创意视频的位置')
+                return
+            height = video_location['y'] + video_location['h']
+            contexts[pid]['酷狗创意视频'] = height
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, contexts[pid]['酷狗创意视频'], gap=8)
+
         # 2. 播放30s
         time.sleep(30)
         # 3. 点击返回到福利页面
@@ -621,25 +629,28 @@ def kugou(pid, w, h):
 
 
 def huitoutiao(pid, w, h):
-    # 时段奖励
-    def time_reward():
-        # 1. 点击领取
-        # 有时候没有广告视频
-        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
+    # 平台检测到作弊工具
+    return None
 
-    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
-            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
-        checkin.huitoutiao(pid)
-        # [x] 阅读惠头条文章
-        app.read_huitoutiao_article(pid, w, h, num=1)
-
-        # [x] 时段奖励
-        # 每个小时一次
-        # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-        # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-        time_reward()
-
-        phone.stop_app(pid, packages['huitoutiao'])
+    # # 时段奖励
+    # def time_reward():
+    #     # 1. 点击领取
+    #     # 有时候没有广告视频
+    #     input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
+    #
+    # if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+    #         (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+    #     checkin.huitoutiao(pid)
+    #     # [x] 阅读惠头条文章
+    #     app.read_huitoutiao_article(pid, w, h, num=1)
+    #
+    #     # [x] 时段奖励
+    #     # 每个小时一次
+    #     # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    #     # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+    #     time_reward()
+    #
+    #     phone.stop_app(pid, packages['huitoutiao'])
 
 
 def zhongqing(pid, w, h):
@@ -795,7 +806,6 @@ def dongfang(pid, w, h):
         phone.stop_app(pid, packages['dongfang'])
 
 
-# noinspection PyUnusedLocal
 def jukandian(pid, w, h):
     # 时段奖励
     def time_reward():
