@@ -61,6 +61,13 @@ packages = {
     'wuba': 'com.wuba.town.client',
     'taobao': 'com.taobao.litetao',
     'shuabao': 'com.jm.video',
+    'yuetoutiao': 'com.expflow.reading',
+    'midu': 'com.lechuan.mdwz',
+    'qire': 'com.qixiao.qrxs',
+    'quhongbao': 'com.qixiao.qrxs',
+    'hongshi': 'com.jxbz.hbdsp',
+    'youliao': 'com.youliao.topic',
+    'wukong': 'com.yshx.wukong',
 }
 
 activities = {
@@ -96,6 +103,13 @@ activities = {
     'wuba': 'com.wuba.town.client/com.wuba.town.TownCenterActivity',
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
+    'yuetoutiao': 'com.expflow.reading/.activity.MainActivity',
+    'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
+    'qire': 'com.qixiao.qrxs/.ui.activity.MainActivity',
+    'quhongbao': 'com.qixiao.qrxs/.ui.activity.MainActivity',
+    'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
+    'youliao': '#com.youliao.topic/.TrueMainActivity',
+    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 }
 
 # 程序的定时任务为25分钟
