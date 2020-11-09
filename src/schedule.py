@@ -928,33 +928,6 @@ def kankuai(pid, w, h):
 #         phone.stop_app(pid, packages['qutoutiao'])
 #
 #
-# def baidu(pid, w, h):
-#     # 时段奖励
-#     def time_reward():
-#         # 1. 点击时段奖励
-#         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 0.9 * h / HEIGHT)
-#         # 2. 返回到程序主页
-#         phone.go_back(pid)
-#
-#     # 开宝箱
-#     def open_treasure():
-#         # 1. 打开宝箱
-#         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 10.1 * h / HEIGHT)  # <= modify
-#
-#     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
-#         checkin.baidu(pid)
-#
-#         # [x] 时段奖励
-#         time_reward()
-#
-#         if (datetime.now().hour % 4).__eq__(0):
-#             app.baidu_benefit_page(pid, w, h)
-#             # [x] 开宝箱
-#             # 金银铜三种宝箱
-#             # 每个宝箱需要3个小时
-#             open_treasure()
-#
-#         phone.stop_app(pid, packages['baidu'])
 #
 #
 # def ximalaya(pid, w, h):
@@ -1082,3 +1055,19 @@ def qutoutiao(pid, w, h):
         # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
         open_treasure()
         phone.stop_app(pid, packages['qutoutiao'])
+
+
+# noinspection PyUnusedLocal
+def baidu(pid, w, h):
+    # 时段奖励
+    def time_reward():
+        # 1. 点击时段奖励
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 0.9 * h / HEIGHT)
+        # 2. 返回到程序主页
+        phone.go_back(pid)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
+        checkin.baidu(pid)
+        # [x] 时段奖励
+        time_reward()
+        phone.stop_app(pid, packages['baidu'])

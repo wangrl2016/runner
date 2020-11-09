@@ -757,11 +757,7 @@ def watch_kankuai_advert(pid, w, h, num):
 #     # 3. 关闭程序
 #     phone.stop_app(pid, packages['qutoutiao'])
 #
-#
-# # ~~~~~~~~~~百度极速版~~~~~~~~~~
-#
-# def baidu_benefit_page(pid, w, h):
-#     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
 #
 #
 # def baidu_haokan_video(pid, w, h, num):
@@ -907,4 +903,9 @@ def moji_benefit_page(pid, w, h):
 # ~~~~~~~~~~趣头条~~~~~~~~~~
 def qutoutiao_benefit_page(pid, w, h):
     # 1. 点击左下角任务
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# ~~~~~~~~~~百度极速版~~~~~~~~~~
+def baidu_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
