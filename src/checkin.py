@@ -165,16 +165,7 @@ def tangdou(pid, gap=15):
 #     phone.start_app(pid, activities[
 #         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 #
-#
 
-#
-#
-# def ximalaya(pid, gap=15):
-#     # 1. 回到手机主界面
-#     phone.go_home(pid)
-#     # 2. 启动程序
-#     phone.start_app(pid, activities[
-#         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 def dongfang(pid, w, h, gap=15):
     # 1. 回到手机主界面
@@ -269,6 +260,14 @@ def baidu(pid, gap=15):
 
 
 def weishi(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def ximalaya(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

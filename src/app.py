@@ -784,11 +784,6 @@ def watch_kankuai_advert(pid, w, h, num):
 #     while datetime.now().hour.__eq__(hour):
 #         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
 #
-#
-# # ~~~~~~~~~~喜马拉雅~~~~~~~~~~
-#
-# def ximalaya_benefit_page(pid, w, h):
-#     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
@@ -910,4 +905,9 @@ def qutoutiao_benefit_page(pid, w, h):
 def baidu_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
+
 # ~~~~~~~~~~微视~~~~~~~~~~
+
+# ~~~~~~~~~~喜马拉雅极速版~~~~~~~~~~
+def ximalaya_benefit_page(pid, w, h):
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
