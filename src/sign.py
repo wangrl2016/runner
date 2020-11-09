@@ -1,7 +1,7 @@
 import time
 
 from src import input, phone, schedule, app
-from src.info import WIDTH, HEIGHT
+from src.info import WIDTH, HEIGHT, packages
 
 
 def toutiao(pid, w, h):
@@ -129,10 +129,9 @@ def kuchang(pid, w, h):
 
 
 def shuqi(pid, w, h):
-    # TODO: 后退会弹出提示框
+    # 后退会弹出提示框
     # 不后退有时会有广告悬浮窗
-    # phone.go_back(pid)
-    # 点击中间下方的福利
+    # TODO: 强制关闭再进入
     # [x] 签到成功
     app.shuqi_benefit_page(pid, w, h, gap=5)
 
@@ -323,13 +322,13 @@ def baidu(pid, w, h):
     # 1. 点击右下方去签到
     # [x] 签到成功
     app.baidu_benefit_page(pid, w, h)
-    for i in range(0, 5):
-        # 2. 看视频再领金币
-        input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
-        # 3. 播放30s
-        time.sleep(30)
-        # 回退到悬浮窗页面
-        phone.go_back(pid, gap=4)
+    # for i in range(0, 5):
+    #     # 2. 看视频再领金币
+    #     input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
+    #     # 3. 播放30s
+    #     time.sleep(30)
+    #     # 回退到悬浮窗页面
+    #     phone.go_back(pid, gap=4)
 
 
 # noinspection PyUnusedLocal
