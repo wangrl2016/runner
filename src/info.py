@@ -77,6 +77,8 @@ packages = {
 activities = {
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
 
+    'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
+
     'jingdong': '#com.jd.jdlite/.MainFrameActivity',
     'fanqie': '#com.dragon.read/.pages.main.MainFragmentActivity',
     'fanchang': '#com.xs.fm/com.dragon.read.pages.main.MainFragmentActivity',
@@ -117,6 +119,7 @@ activities = {
     'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
+    'ersansi': 'com.browser2345/.BrowserActivity',
 
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
