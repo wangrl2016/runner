@@ -10,38 +10,40 @@ ROWS = [1.4, 3.4, 5.4, 7.4, 9.4, 11.4]
 COLUMNS = [1.0, 2.6, 4.2, 5.8]
 
 
-def toutiao(pid, gap=10):
+def midu(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    # 头条进入首页是空等时间
-    # 所以设定启动程序的时间要短
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def kuaishou(pid, gap=10):
+def youliao(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def douyin(pid, gap=10):
+def wukong(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def huoshan(pid, gap=10):
+def lanmao(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
+    # 模仿启动输出
+    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
 def jingdong(pid, w, h, gap=15):
@@ -107,14 +109,6 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
-def huitoutiao(pid, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def zhongqing(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -142,14 +136,6 @@ def kuaiyin(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
-def tangdou(pid, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def dongfang(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -166,22 +152,6 @@ def jukandian(pid, w, h, gap=15):
     print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
-
-
-def kankuai(pid, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
-def douhuo(pid, gap=10):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def kuge(pid, w, h, gap=15):
@@ -210,7 +180,19 @@ def diandian(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def moji(pid, gap=10):
+# 25-48
+
+def toutiao(pid, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    # 头条进入首页是空等时间
+    # 所以设定启动程序的时间要短
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def kuaishou(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -218,7 +200,15 @@ def moji(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def weixin(pid, gap=10):
+def douyin(pid, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def huoshan(pid, gap=10):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -282,6 +272,14 @@ def shuabao(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
+def huitoutiao(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
 def yuetoutiao(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -290,10 +288,99 @@ def yuetoutiao(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def midu(pid, w, h, gap=15):
+def chejia(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
-    # 模仿启动输出
-    print('Staring: Intent { cmp=' + activities[inspect.getframeinfo(inspect.currentframe()).function.__str__()] + ' }')
     # 2. 启动程序
-    input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def qire(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def quhongbao(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def hongshi(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def doudou(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def yuetoutiao(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def kankuai(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def douhuo(pid, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def moji(pid, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def ersansi(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def tangdou(pid, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+# 48-72
+
+def weixin(pid, gap=10):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
