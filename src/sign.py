@@ -4,7 +4,6 @@ from src import input, phone, schedule, app
 from src.info import WIDTH, HEIGHT
 
 
-# noinspection PyUnusedLocal
 def midu(pid, w, h):
     # 1. 消除可能的悬浮窗
     phone.go_back(pid, gap=1)
@@ -15,7 +14,16 @@ def midu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def youliao(pid, w, h):
-    return None
+    phone.go_back(pid, gap=1)
+    # 1. 点击右上角
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 0.8 * h / HEIGHT)
+    # 2. 看视频再领金币
+    input.tap(pid, w / 2, 9.9 * h / HEIGHT)
+    # 3. 播放30s
+    time.sleep(30)
+    # 4. 关闭视频才能获得金币
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal

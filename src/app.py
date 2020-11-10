@@ -20,7 +20,7 @@ def read_youliao_article(pid, w, h, num):
         if i.__ne__(0):
             phone.swipe_up_to_down(pid, w, h)
         # 2. 点击进入文章
-        input.tap(pid, w / 2, h / 3)
+        input.tap(pid, w / 2, h * 4 / 5)
         # 3. 阅读30s
         for j in range(0, 10):
             phone.swipe_down_to_up(pid, w, h, gap=3)
