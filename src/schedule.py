@@ -5,6 +5,31 @@ from src import checkin, phone, input, app, utils
 from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME, contexts
 
 
+# noinspection PyUnusedLocal
+def midu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def youliao(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def wukong(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def lanmao(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def jingdong(pid, w, h):
+    return None
+
+
 def toutiao_open_treasure(pid, w, h, gap=15):
     """
     今日头条开宝箱
@@ -331,11 +356,6 @@ def huoshan(pid, w, h):
 
     # 关闭火山
     phone.stop_app(pid, packages['huoshan'])
-
-
-# noinspection PyUnusedLocal
-def jingdong(pid, w, h):
-    return None
 
 
 # 番茄开宝箱
@@ -1066,9 +1086,4 @@ def shuabao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yuetoutiao(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
-def midu(pid, w, h):
     return None

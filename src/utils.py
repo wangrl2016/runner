@@ -2,7 +2,7 @@ import os
 from datetime import datetime
 from random import randrange
 
-from src import schedule, checkin, phone, app
+from src import schedule, checkin, phone, app, info
 from src.info import apps, activities, packages, SCHEDULE_TIME
 
 import pytesseract
@@ -36,7 +36,7 @@ def schedule_apps(pid, w, h):
     """
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         print('第1次定时任务 ' + datetime.now().__str__())
-        for a in apps:
+        for a in info.apps:
             getattr(schedule, a)(pid, w, h)
 
         if (datetime.now().hour % 4).__eq__(1):
@@ -56,7 +56,7 @@ def schedule_apps(pid, w, h):
             watch_kuaishou_video()
 
     print('第2次定时任务 ' + datetime.now().__str__())
-    for a in apps:
+    for a in info.apps:
         getattr(schedule, a)(pid, w, h)
 
 
