@@ -193,10 +193,6 @@ def pinduoduo(pid, w, h):
     phone.go_back(pid, gap=1)
 
 
-# # noinspection PyUnusedLocal
-# def taobao(pid, w, h):
-#     # 有现金红包
-#     return None
 #
 #
 # def shuabao(pid, w, h):
@@ -352,3 +348,8 @@ def wuba(pid, w, h):
     phone.go_back(pid, gap=1)
     # TODO: 未完成
     app.wuba_benefit_page(pid, w, h)
+
+# noinspection PyUnusedLocal
+def taobao(pid, w, h):
+    # 有现金红包
+    return None

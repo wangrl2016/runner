@@ -1052,3 +1052,8 @@ def ximalaya(pid, w, h):
 # noinspection PyUnusedLocal
 def wuba(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def taobao(pid, w, h):
+    return None

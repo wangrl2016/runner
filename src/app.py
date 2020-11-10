@@ -916,3 +916,5 @@ def ximalaya_benefit_page(pid, w, h):
 # ~~~~~~~~~~五八同城本地版~~~~~~~~~~
 def wuba_benefit_page(pid, w, h):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+
+# ~~~~~~~~~~淘宝特价版~~~~~~~~~~
