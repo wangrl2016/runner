@@ -1,7 +1,7 @@
 import time
 
 from src import input, phone, schedule, app
-from src.info import WIDTH, HEIGHT, packages
+from src.info import WIDTH, HEIGHT
 
 
 def toutiao(pid, w, h):

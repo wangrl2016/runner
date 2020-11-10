@@ -3,7 +3,7 @@ from datetime import datetime
 from random import randrange
 
 from src import schedule, checkin, phone, app, info
-from src.info import apps, activities, packages, SCHEDULE_TIME
+from src.info import activities, packages, SCHEDULE_TIME
 
 import pytesseract
 from PIL import Image

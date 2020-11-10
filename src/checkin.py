@@ -280,14 +280,6 @@ def huitoutiao(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def yuetoutiao(pid, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def chejia(pid, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)

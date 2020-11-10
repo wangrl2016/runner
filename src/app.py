@@ -1,8 +1,8 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin, utils
-from src.info import HEIGHT, WIDTH, packages, contexts
+from src import phone, input, checkin, utils, info
+from src.info import HEIGHT, WIDTH
 
 
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
@@ -80,7 +80,7 @@ def full_watch_kuaishou_video(pid, w, h, hour):
     # 2. 看快手视频
     watch_kuaishou_video(pid, w, h, hour)
     # 3. 关闭程序
-    phone.stop_app(pid, packages['kuaishou'])
+    phone.stop_app(pid, info.packages['kuaishou'])
 
 
 # noinspection PyUnusedLocal
@@ -131,7 +131,7 @@ def full_watch_douyin_video(pid, w, h, hour):
     # 3. 看抖音视频
     watch_douyin_video(pid, w, h, hour)
     # 4. 关闭程序
-    phone.stop_app(pid, packages['douyin'])
+    phone.stop_app(pid, info.packages['douyin'])
 
 
 # ~~~~~~~~~~火山极速版~~~~~~~~~~
@@ -159,7 +159,7 @@ def full_watch_huoshan_video(pid, w, h, hour):
     # 2. 看火山视频
     watch_huoshan_video(pid, w, h, hour)
     # 3. 关闭程序
-    phone.stop_app(pid, packages['huoshan'])
+    phone.stop_app(pid, info.packages['huoshan'])
 
 
 def huoshan_money_tree(pid, w, h):
@@ -241,7 +241,7 @@ def full_jingdong_video_coin(pid, w, h, hour):
     # 看视频赚金币
     jingdong_video_coin(pid, w, h, hour)
     # 关闭程序
-    phone.stop_app(pid, packages['jingdong'])
+    phone.stop_app(pid, info.packages['jingdong'])
 
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
@@ -857,14 +857,14 @@ def daily_packet(pid, w, h):
     # 1. 进入福利页面
     diandian_benefit_page(pid, w, h)
     # 2. 获取今日红包的位置
-    if '点点今日红包' not in contexts[pid]:
+    if '点点今日红包' not in info.contexts[pid]:
         packet_location = utils.current_words_location(pid, '今日红包')
         if packet_location is None:
             print('没有获取到今日红包的位置')
             return
         height = packet_location['y'] + packet_location['h']
-        contexts[pid]['点点今日红包'] = height
-    input.tap(pid, w / 2, contexts[pid]['点点今日红包'])
+        info.contexts[pid]['点点今日红包'] = height
+    input.tap(pid, w / 2, info.contexts[pid]['点点今日红包'])
 
     # 3. 播放30s
     time.sleep(30)
