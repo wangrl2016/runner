@@ -55,7 +55,6 @@ packages = {
     apps[21]: 'com.ldzs.zhangxin',
     apps[22]: 'com.yingliang.clicknews',
     apps[23]: 'com.moji.mjweather.light',
-    'weixin': 'com.tencent.mm',
     'qutoutiao': 'com.jifen.qukan',
     'baidu': 'com.baidu.searchbox.lite',
     'weishi': 'com.tencent.weishi',
@@ -70,6 +69,9 @@ packages = {
     'hongshi': 'com.jxbz.hbdsp',
     'youliao': 'com.youliao.topic',
     'wukong': 'com.yshx.wukong',
+    'chejia': 'com.autohome.speed',
+    'doudou': 'com.kanshu.ksgb.fastread.doudou',
+    'weixin': 'com.tencent.mm',
 }
 
 activities = {
@@ -97,7 +99,6 @@ activities = {
     apps[21]: '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     apps[22]: '#com.yingliang.clicknews/.MainActivity',
     apps[23]: 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
-    'weixin': 'com.tencent.mm/.ui.LauncherUI',
     'qutoutiao': 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     'baidu': 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     'weishi': 'com.tencent.weishi/com.tencent.oscar.module.splash.SplashActivity',
@@ -112,6 +113,9 @@ activities = {
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
     'youliao': '#com.youliao.topic/.TrueMainActivity',
     'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
+    'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
+    'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
+    'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
 
 # 程序的定时任务为25分钟
