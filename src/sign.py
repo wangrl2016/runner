@@ -244,11 +244,9 @@ def dongfang(pid, w, h):
     input.tap(pid, w / 2, 3.7 * h / HEIGHT)
 
 
-# noinspection PyUnusedLocal
 def jukandian(pid, w, h):
-    app.jukandian_benefit_page(pid, w, h)
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.4) * w / WIDTH, 2.2 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
