@@ -5,6 +5,23 @@ from src import phone, input, checkin, utils, info
 from src.info import HEIGHT, WIDTH
 
 
+# ~~~~~~~~~~有料看看~~~~~~~~~~
+
+def read_youliao_article(pid, w, h, num):
+    print('阅读有料看看文章　' + datetime.now().__str__())
+    for i in range(0, 10):
+        # 1. 下拉刷新
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
+        # 2. 点击进入文章
+        input.tap(pid, w / 2, h / 3)
+        # 3. 阅读30s
+        for j in range(0, 10):
+            phone.swipe_down_to_up(pid, w, h, gap=3)
+        # 4. 返回上级目录
+        phone.go_back(pid)
+
+
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
 def toutiao_benefit_page(pid, w, h, gap=3):

@@ -112,6 +112,10 @@ def run(pid):
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
+            checkin.youliao(pid, w, h)
+            app.read_youliao_article(pid, w, h, num=5)
+            phone.stop_app(pid, info.packages['youliao'])
+
             checkin.kuaishou(pid)
             app.kuaishou_benefit_page(pid, w, h)
             # [x] 1000金币悬赏任务
