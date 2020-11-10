@@ -26,6 +26,7 @@ apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
         'kuge', 'makan', 'diandian', 'moji',
         'qutoutiao', 'baidu', 'weishi', 'ximalaya',
         'wuba', 'taobao', 'shuabao', 'yuetoutiao',
+        'midu',
         ]
 
 # 程序对应的包名
