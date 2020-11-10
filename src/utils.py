@@ -3,7 +3,7 @@ from datetime import datetime
 from random import randrange
 
 from src import schedule, checkin, phone, app, info
-from src.info import activities, packages, SCHEDULE_TIME
+from src.info import activities, SCHEDULE_TIME
 
 import pytesseract
 from PIL import Image
@@ -49,7 +49,7 @@ def schedule_apps(pid, w, h):
             # 从下往上翻页
             while datetime.now().minute < SCHEDULE_TIME:
                 phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-            phone.stop_app(pid, packages['kuaishou'])
+            phone.stop_app(pid, info.packages['kuaishou'])
 
         # [x] 看快手视频
         if datetime.now().minute < SCHEDULE_TIME:

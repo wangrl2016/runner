@@ -8,7 +8,7 @@ import threading
 from datetime import datetime
 
 from src import phone, checkin, sign, app, utils, info
-from src.info import packages, apps, high_serials, contexts, activities
+from src.info import high_serials, activities
 from src.utils import schedule_apps
 
 MAX_PHOTOS_STORE = 50
@@ -28,8 +28,8 @@ def cycle(pid):
     # 检测有哪些程序可以在手机上运行
     phone_packages = phone.list_packages(pid)
     run_apps = []
-    for p in packages:
-        if phone_packages.__contains__(packages[p]):
+    for p in info.packages:
+        if phone_packages.__contains__(info.packages[p]):
             run_apps.append(p)
 
     while True:
@@ -61,7 +61,7 @@ def run(pid):
             if p.__contains__('vivo'):
                 for line in properties:
                     if line.__contains__('ro.vivo.market.name'):
-                        contexts[pid]['phone_name'] = 'vivo'
+                        info.contexts[pid]['phone_name'] = 'vivo'
                         print(line)
             if p.__contains__('Xiaomi'):
                 for line in properties:
@@ -83,14 +83,14 @@ def run(pid):
     while True:
         while datetime.now().hour.__eq__(0):
             print('所有程序的签到工作 ' + datetime.now().__str__())
-            for a in apps:
+            for a in info.apps:
                 if utils.is_coordinate_checkin(a):
                     getattr(checkin, a)(pid, w, h)
                 else:
                     getattr(checkin, a)(pid)
                 # [x] 所有程序的签到工作
                 getattr(sign, a)(pid, w, h)
-                phone.stop_app(pid, packages[a])
+                phone.stop_app(pid, info.packages[a])
 
             utils.tail_work(pid, w, h, hour=0)
 
@@ -100,12 +100,12 @@ def run(pid):
             checkin.toutiao(pid)
             # [x] 阅读今日头条文章
             app.read_toutiao_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['toutiao'])
+            phone.stop_app(pid, info.packages['toutiao'])
 
             checkin.toutiao(pid)
             # [x] 看今日头条视频
             app.toutiao_video(pid, w, h, num=5)
-            phone.stop_app(pid, packages['toutiao'])
+            phone.stop_app(pid, info.packages['toutiao'])
 
             utils.tail_work(pid, w, h, hour=1)
 
@@ -119,7 +119,7 @@ def run(pid):
             # 6min赚0.1元
             # 做完之后放置在最下面
             app.kuaishou_reward_task(pid, w, h, num=10)
-            phone.stop_app(pid, packages['kuaishou'])
+            phone.stop_app(pid, info.packages['kuaishou'])
 
             utils.tail_work(pid, w, h, hour=2)
 
@@ -139,7 +139,7 @@ def run(pid):
             checkin.huoshan(pid)
             app.huoshan_money_tree(pid, w, h)
             # 2. 退出程序
-            phone.stop_app(pid, packages['huoshan'])
+            phone.stop_app(pid, info.packages['huoshan'])
 
             # [x] 看火山视频
             app.full_watch_huoshan_video(pid, w, h, hour=4)
@@ -156,7 +156,7 @@ def run(pid):
             # 50次
             app.jingdong_good(pid, w, h, num=20)
             # 3. 关闭程序
-            phone.stop_app(pid, packages['jingdong'])
+            phone.stop_app(pid, info.packages['jingdong'])
 
             # [x] 逛活动赚金币
             # 1. 打开程序
@@ -164,7 +164,7 @@ def run(pid):
             # 2. 逛活动赚金币
             app.jingdong_activity(pid, w, h, num=3)
             # 3. 关闭程序
-            phone.stop_app(pid, packages['jingdong'])
+            phone.stop_app(pid, info.packages['jingdong'])
 
             # [x] 看视频赚金币
             app.full_jingdong_video_coin(pid, w, h, hour=5)
@@ -180,7 +180,7 @@ def run(pid):
             # # 10次
             # # 做完任务后放置到最底下
             # app.fanqie_video_coin(pid, w, h, num=10)
-            # phone.stop_app(pid, packages['fanqie'])
+            # phone.stop_app(pid, info.packages['fanqie'])
 
             # 打开程序
             checkin.fanqie(pid, w, h)
@@ -188,7 +188,7 @@ def run(pid):
             # 6min赚0.007元
             app.read_fanqie_novel(pid, w, h, sec=360)
             # 关闭程序
-            phone.stop_app(pid, packages['fanqie'])
+            phone.stop_app(pid, info.packages['fanqie'])
 
             utils.tail_work(pid, w, h, hour=6)
 
@@ -202,7 +202,7 @@ def run(pid):
             # 10次每次30s
             # 做完会打乱顺序
             app.fanchang_video_coin(pid, w, h, num=10)
-            phone.stop_app(pid, packages['fanchang'])
+            phone.stop_app(pid, info.packages['fanchang'])
 
             utils.tail_work(pid, w, h, hour=7)
 
@@ -227,7 +227,7 @@ def run(pid):
                 # 10个视频
                 # 10min赚0.3元
                 app.shuqi_video_coin(pid, w, h)
-                phone.stop_app(pid, packages['shuqi'])
+                phone.stop_app(pid, info.packages['shuqi'])
 
             # 打开程序
             checkin.shuqi(pid, w, h)
@@ -235,7 +235,7 @@ def run(pid):
             # 5min赚0.005元
             app.read_shuqi_novel(pid, w, h, sec=300)
             # 退出程序
-            phone.stop_app(pid, packages['shuqi'])
+            phone.stop_app(pid, info.packages['shuqi'])
 
             utils.tail_work(pid, w, h, hour=9)
 
@@ -250,13 +250,13 @@ def run(pid):
             # 也可以在直播间分享
             # 1min赚0.045元
             app.share_yingke(pid, w, h, times=3)
-            phone.stop_app(pid, packages['yingke'])
+            phone.stop_app(pid, info.packages['yingke'])
 
             checkin.yingke(pid, w, h)
             # [x] 看映客直播
             # 20min赚0.25元
             app.watch_yingke_live(pid, w, h, sec=1200)
-            phone.stop_app(pid, packages['yingke'])
+            phone.stop_app(pid, info.packages['yingke'])
 
             utils.tail_work(pid, w, h, hour=10)
 
@@ -278,12 +278,12 @@ def run(pid):
             checkin.huitoutiao(pid)
             # [x] 阅读惠头条文章
             app.read_huitoutiao_article(pid, w, h, num=20)
-            phone.stop_app(pid, packages['huitoutiao'])
+            phone.stop_app(pid, info.packages['huitoutiao'])
 
             checkin.huitoutiao(pid)
             # [x] 看惠头条视频
             app.watch_huitoutiao_video(pid, w, h, sec=180)
-            phone.stop_app(pid, packages['huitoutiao'])
+            phone.stop_app(pid, info.packages['huitoutiao'])
 
             utils.tail_work(pid, w, h, hour=12)
 
@@ -294,12 +294,12 @@ def run(pid):
             checkin.zhongqing(pid, w, h)
             # [x] 阅读中青看点文章
             app.read_zhongqing_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['zhongqing'])
+            phone.stop_app(pid, info.packages['zhongqing'])
 
             checkin.zhongqing(pid, w, h)
             # [x] 看中青看点视频
             app.watch_zhongqing_video(pid, w, h, num=5)
-            phone.stop_app(pid, packages['zhongqing'])
+            phone.stop_app(pid, info.packages['zhongqing'])
 
             utils.tail_work(pid, w, h, hour=13)
 
@@ -313,7 +313,7 @@ def run(pid):
             # 2. 逛街得现金
             app.pinduoduo_street_money(pid, w, h)
             # 3. 关闭程序
-            phone.stop_app(pid, packages['pinduoduo'])
+            phone.stop_app(pid, info.packages['pinduoduo'])
 
             # [x] 京东看视频赚金币
             app.full_jingdong_video_coin(pid, w, h, hour=14)
@@ -329,7 +329,7 @@ def run(pid):
                 app.kuaiyin_benefit_page(pid, w, h)
                 # [x] 快音看视频赚钱
                 app.watch_kuaiyin_video(pid, w, h)
-                phone.stop_app(pid, packages['kuaiyin'])
+                phone.stop_app(pid, info.packages['kuaiyin'])
 
             utils.tail_work(pid, w, h, hour=15)
 
@@ -340,7 +340,7 @@ def run(pid):
             checkin.tangdou(pid)
             app.tangdou_benefit_page(pid, w, h)
             app.tangdou_funny_video(pid, w, h, num=30)
-            phone.stop_app(pid, packages['tangdou'])
+            phone.stop_app(pid, info.packages['tangdou'])
 
             # # [x] 看刷宝视频
             # # 1. 打开程序
@@ -348,7 +348,7 @@ def run(pid):
             # # 2. 看刷宝视频
             # app.shuabao_video(pid, w, h, num=50)
             # # 3. 关闭程序
-            # phone.stop_app(pid, packages['shuabao'])
+            # phone.stop_app(pid, info.packages['shuabao'])
 
             utils.tail_work(pid, w, h, hour=16)
 
@@ -359,12 +359,12 @@ def run(pid):
             # # [x] 看头条文章
             # checkin.qutoutiao(pid)
             # app.read_qutoutiao_article(pid, w, h, num=10)
-            # phone.stop_app(pid, packages['qutoutiao'])
+            # phone.stop_app(pid, info.packages['qutoutiao'])
             #
             # # [x] 看头条视频
             # checkin.qutoutiao(pid)
             # app.watch_qutoutiao_video(pid, w, h, num=10)
-            # phone.stop_app(pid, packages['qutoutiao'])
+            # phone.stop_app(pid, info.packages['qutoutiao'])
             #
             # # [x] 看趣头条小视频
             # app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)
@@ -378,17 +378,17 @@ def run(pid):
             checkin.jukandian(pid, w, h)
             # [x] 阅读文章
             app.read_jukandian_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['jukandian'])
+            phone.stop_app(pid, info.packages['jukandian'])
 
             checkin.jukandian(pid, w, h)
             # [x] 视频
             app.watch_jukandian_video(pid, w, h, num=5)
-            phone.stop_app(pid, packages['jukandian'])
+            phone.stop_app(pid, info.packages['jukandian'])
 
             checkin.jukandian(pid, w, h)
             # [x] 小视频
             app.watch_jukandian_svideo(pid, w, h, num=20)
-            phone.stop_app(pid, packages['jukandian'])
+            phone.stop_app(pid, info.packages['jukandian'])
 
             # # [x] 好看视频
             # # 花费8分钟
@@ -397,7 +397,7 @@ def run(pid):
             # # 2. 看好看视频
             # app.baidu_haokan_video(pid, w, h, num=10)
             # # 3. 关闭程序
-            # phone.stop_app(pid, packages['baidu'])
+            # phone.stop_app(pid, info.packages['baidu'])
             #
             # # [x] 看百度小视频
             # # 十分钟左右
@@ -407,7 +407,7 @@ def run(pid):
             # # 2. 看百度小视频
             # app.watch_baidu_svideo(pid, w, h, hour=18)
             # # 3. 关闭程序
-            # phone.stop_app(pid, packages['baidu'])
+            # phone.stop_app(pid, info.packages['baidu'])
 
             utils.tail_work(pid, w, h, hour=18)
 
@@ -420,7 +420,7 @@ def run(pid):
                 app.kankuai_benefit_page(pid, w, h)
                 # [x] 看广告领金币
                 app.watch_kankuai_advert(pid, w, h, num=10)
-                phone.stop_app(pid, packages['kankuai'])
+                phone.stop_app(pid, info.packages['kankuai'])
 
             utils.tail_work(pid, w, h, hour=19)
 
@@ -432,7 +432,7 @@ def run(pid):
             # [x] 看抖音火山视频
             # 中途可能存在广告导致无法播放
             app.watch_douhuo_video(pid, w, h, sec=300)
-            phone.stop_app(pid, packages['douhuo'])
+            phone.stop_app(pid, info.packages['douhuo'])
 
             utils.tail_work(pid, w, h, hour=20)
 
@@ -456,14 +456,14 @@ def run(pid):
             # [x] 阅读蚂蚁看点文章
             # 需要提前解决彩蛋问题
             app.read_makan_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['makan'])
+            phone.stop_app(pid, info.packages['makan'])
 
             checkin.makan(pid, w, h)
             phone.go_back(pid)
             app.makan_benefit_page(pid, w, h)
             # [x] 蚂蚁看点搜索赚钱
             app.makan_search_coin(pid, w, h, num=12)
-            phone.stop_app(pid, packages['makan'])
+            phone.stop_app(pid, info.packages['makan'])
 
             utils.tail_work(pid, w, h, hour=22)
 
@@ -475,13 +475,13 @@ def run(pid):
                 checkin.diandian(pid, w, h)
                 # [x] 天天领红包
                 app.daily_packet(pid, w, h)
-                phone.stop_app(pid, packages['diandian'])
+                phone.stop_app(pid, info.packages['diandian'])
 
             checkin.diandian(pid, w, h)
             # [x] 看新闻
             # 看完十几篇以后有倒计时
             app.read_diandian_article(pid, w, h, num=10)
-            phone.stop_app(pid, packages['diandian'])
+            phone.stop_app(pid, info.packages['diandian'])
 
             utils.tail_work(pid, w, h, hour=23)
 
@@ -503,7 +503,7 @@ def main(args):
     # 设备号对应的线程号
     pts = {}
     for pid in devices:
-        contexts.update({pid: {}})
+        info.contexts.update({pid: {}})
         if high_serials.__contains__(pid):
             t = threading.Thread(target=run, args=(pid,), daemon=True)
             threads.append(t)
@@ -521,10 +521,10 @@ def main(args):
         # 结束前关闭所有程序
         for d in devices:
             ats = phone.get_top_activities(d)
-            for a in apps:
-                if ats.__contains__(packages[a]):
-                    print('关闭运行的程序 ' + packages[a])
-                    phone.stop_app(d, packages[a], 0.2)
+            for a in info.apps:
+                if ats.__contains__(info.packages[a]):
+                    print('关闭运行的程序 ' + info.packages[a])
+                    phone.stop_app(d, info.packages[a], 0.2)
         sys.exit(0)
 
     # 处理中断情况
