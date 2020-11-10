@@ -21,7 +21,7 @@ def get_packages_dict(activities_dict):
     """
     通过activity的名字获取package的名字
     """
-    packages_dict = activities_dict
+    packages_dict = activities_dict.copy()
     for key in packages_dict:
         packages_dict[key] = packages_dict[key][1 if packages_dict[key].__contains__('#') else 0:
                                                 packages_dict[key].index('/')]

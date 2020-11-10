@@ -94,8 +94,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=0)
 
-        # 今日头条极速版
-        # 墨迹天气极速版
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
@@ -111,7 +109,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=1)
 
-        # 快手极速版
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
@@ -126,7 +123,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=2)
 
-        # 抖音
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
@@ -135,7 +131,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=3)
 
-        # 火山小视频
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 
@@ -151,7 +146,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=4)
 
-        # 京东极速版
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
@@ -562,7 +556,6 @@ if __name__ == '__main__':
 
     # 初始化全局变量
     info.apps = list(activities.keys())
-    print(info.apps)
     info.packages = utils.get_packages_dict(activities)
 
     main(parser.parse_args())

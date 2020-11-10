@@ -1,8 +1,8 @@
 import time
 from datetime import datetime
 
-from src import checkin, phone, input, app, utils
-from src.info import packages, WIDTH, HEIGHT, SCHEDULE_TIME, contexts
+from src import checkin, phone, input, app, utils, info
+from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
 
 
 # noinspection PyUnusedLocal
@@ -105,7 +105,7 @@ def toutiao(pid, w, h):
     toutiao_open_treasure(pid, w, h)
 
     # 关闭头条
-    phone.stop_app(pid, packages['toutiao'])
+    phone.stop_app(pid, info.packages['toutiao'])
 
 
 def kuaishou(pid, w, h):
@@ -154,7 +154,7 @@ def kuaishou(pid, w, h):
         # [x] 开宝箱
         open_treasure()
 
-        phone.stop_app(pid, packages['kuaishou'])
+        phone.stop_app(pid, info.packages['kuaishou'])
 
 
 # 开宝箱得金币
@@ -176,14 +176,14 @@ def douyin(pid, w, h):
     def limit_duty():
         print('抖音限时任务赚金币 ' + datetime.now().__str__())
         # 1. 获取限时任务的位置
-        if '抖音限时' not in contexts[pid]:
+        if '抖音限时' not in info.contexts[pid]:
             limit_location = utils.current_words_location(pid, '限时')
             if limit_location is None:
                 print('没有获取到限时任务的位置')
                 return
             height = limit_location['y'] + limit_location['h']
-            contexts[pid]['抖音限时'] = height
-        input.tap(pid, w / 3, contexts[pid]['抖音限时'])
+            info.contexts[pid]['抖音限时'] = height
+        input.tap(pid, w / 3, info.contexts[pid]['抖音限时'])
 
         # 2. 播放30s
         time.sleep(30)
@@ -271,7 +271,7 @@ def douyin(pid, w, h):
     limit_duty()
 
     # 关闭抖音
-    phone.stop_app(pid, packages['douyin'])
+    phone.stop_app(pid, info.packages['douyin'])
 
 
 # 火山开宝箱
@@ -355,7 +355,7 @@ def huoshan(pid, w, h):
     huoshan_open_treasure(pid, w, h)
 
     # 关闭火山
-    phone.stop_app(pid, packages['huoshan'])
+    phone.stop_app(pid, info.packages['huoshan'])
 
 
 # 番茄开宝箱
@@ -410,7 +410,7 @@ def fanqie(pid, w, h):
     fanqie_open_treasure(pid, w, h)
 
     # 关闭番茄
-    phone.stop_app(pid, packages['fanqie'])
+    phone.stop_app(pid, info.packages['fanqie'])
 
 
 # 番茄畅听开宝箱
@@ -431,7 +431,7 @@ def fanchang(pid, w, h):
         checkin.fanchang(pid, w, h)
         app.fanchang_benefit_page(pid, w, h)
         fanchang_open_treasure(pid, w, h)
-        phone.stop_app(pid, packages['fanchang'])
+        phone.stop_app(pid, info.packages['fanchang'])
 
     # # 收听音频
     # def listen_sound():
@@ -483,7 +483,7 @@ def fanchang(pid, w, h):
     #     elif datetime.now().hour.__eq__(12):
     #         checkin.fanchang(pid, w, h)
     #         collect_listen_coin()
-    #         phone.stop_app(pid, packages['fanchang'])
+    #         phone.stop_app(pid, info.packages['fanchang'])
 
     # [x] 开宝箱
     # 每个小时一次
@@ -504,14 +504,14 @@ def kuchang(pid, w, h):
     def kuchang_creative_video():
         print('酷狗唱唱看创意视频 ' + datetime.now().__str__())
         # 1. 获取创意视频的位置
-        if '酷狗唱唱创意' not in contexts[pid]:
+        if '酷狗唱唱创意' not in info.contexts[pid]:
             creative_location = utils.current_words_location(pid, '创意')
             if creative_location is None:
                 print('没有获取到创意视频的位置')
                 return
             height = creative_location['y'] + creative_location['h']
-            contexts[pid]['酷狗唱唱创意'] = height
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, contexts[pid]['酷狗唱唱创意'], gap=10)
+            info.contexts[pid]['酷狗唱唱创意'] = height
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, info.contexts[pid]['酷狗唱唱创意'], gap=10)
 
         # 2. 播放30s
         time.sleep(30)
@@ -526,7 +526,7 @@ def kuchang(pid, w, h):
         checkin.kuchang(pid, w, h)
         app.kuchang_benefit_page(pid, w, h)
         kuchang_creative_video()
-        phone.stop_app(pid, packages['kuchang'])
+        phone.stop_app(pid, info.packages['kuchang'])
 
 
 def shuqi(pid, w, h):
@@ -549,7 +549,7 @@ def shuqi(pid, w, h):
         # [x] 邀请书友
         # 20s赚0.01元
         shuqi_invent_friend()
-        phone.stop_app(pid, packages['shuqi'])
+        phone.stop_app(pid, info.packages['shuqi'])
 
 
 def yingke(pid, w, h):
@@ -579,14 +579,14 @@ def yingke(pid, w, h):
             # [x] 看福利视频
             # 10次
             benefit_video()
-            phone.stop_app(pid, packages['yingke'])
+            phone.stop_app(pid, info.packages['yingke'])
 
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 开宝箱
             # 10次
             open_treasure()
-            phone.stop_app(pid, packages['yingke'])
+            phone.stop_app(pid, info.packages['yingke'])
 
 
 def kugou(pid, w, h):
@@ -594,14 +594,14 @@ def kugou(pid, w, h):
     def creative_video():
         # 1. 点击去赚钱
         # 获取创意视频的位置
-        if '酷狗创意视频' not in contexts[pid]:
+        if '酷狗创意视频' not in info.contexts[pid]:
             video_location = utils.current_words_location(pid, '创')
             if video_location is None:
                 print('没有获取到创意视频的位置')
                 return
             height = video_location['y'] + video_location['h']
-            contexts[pid]['酷狗创意视频'] = height
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, contexts[pid]['酷狗创意视频'], gap=8)
+            info.contexts[pid]['酷狗创意视频'] = height
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=8)
 
         # 2. 播放30s
         time.sleep(30)
@@ -645,7 +645,7 @@ def kugou(pid, w, h):
             share_friend(False)
 
         # 关闭程序
-        phone.stop_app(pid, packages['kugou'])
+        phone.stop_app(pid, info.packages['kugou'])
 
 
 # noinspection PyUnusedLocal
@@ -671,7 +671,7 @@ def huitoutiao(pid, w, h):
     #     # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
     #     time_reward()
     #
-    #     phone.stop_app(pid, packages['huitoutiao'])
+    #     phone.stop_app(pid, info.packages['huitoutiao'])
 
 
 def zhongqing(pid, w, h):
@@ -693,13 +693,13 @@ def zhongqing(pid, w, h):
 
         # [x] 看中青看点视频
         app.watch_zhongqing_video(pid, w, h, num=1)
-        phone.stop_app(pid, packages['zhongqing'])
+        phone.stop_app(pid, info.packages['zhongqing'])
 
         if (datetime.now().hour % 4).__eq__(0):
             checkin.weixin(pid)
             # [x] 阅读微信文章
             app.zhongqing_weixin_article(pid, w, h, num=5)
-            phone.stop_app(pid, packages['weixin'])
+            phone.stop_app(pid, info.packages['weixin'])
 
 
 def pinduoduo(pid, w, h):
@@ -772,13 +772,13 @@ def kuaiyin(pid, w, h):
         app.kuaiyin_benefit_page(pid, w, h)
         # [x] 离线收益
         offline_coin()
-        phone.stop_app(pid, packages['kuaiyin'])
+        phone.stop_app(pid, info.packages['kuaiyin'])
 
         checkin.kuaiyin(pid, w, h)
         app.kuaiyin_benefit_page(pid, w, h)
         # [x] 开宝箱
         open_treasure()
-        phone.stop_app(pid, packages['kuaiyin'])
+        phone.stop_app(pid, info.packages['kuaiyin'])
 
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(9) or hour.__eq__(11) or (hour.__gt__(12) and hour.__lt__(18)):
@@ -786,7 +786,7 @@ def kuaiyin(pid, w, h):
             app.kuaiyin_benefit_page(pid, w, h)
             # [x] 八次喝水
             drink_water(False if hour.__lt__(14) else True)
-            phone.stop_app(pid, packages['kuaiyin'])
+            phone.stop_app(pid, info.packages['kuaiyin'])
 
         # [x] 睡觉赚钱
         # 21:00-2:00为睡觉时间
@@ -801,7 +801,7 @@ def kuaiyin(pid, w, h):
             app.kuaiyin_benefit_page(pid, w, h)
             # [x] 看视频赚钱
             advert_video()
-            phone.stop_app(pid, packages['kuaiyin'])
+            phone.stop_app(pid, info.packages['kuaiyin'])
 
 
 # noinspection PyUnusedLocal
@@ -825,7 +825,7 @@ def dongfang(pid, w, h):
         # [x] 阅读文章
         app.read_dongfang_article(pid, w, h, num=1)
 
-        phone.stop_app(pid, packages['dongfang'])
+        phone.stop_app(pid, info.packages['dongfang'])
 
 
 def jukandian(pid, w, h):
@@ -842,7 +842,7 @@ def jukandian(pid, w, h):
         # [x] 阅读文章
         app.read_jukandian_article(pid, w, h, num=1)
 
-        phone.stop_app(pid, packages['jukandian'])
+        phone.stop_app(pid, info.packages['jukandian'])
 
 
 # noinspection PyUnusedLocal
@@ -860,7 +860,7 @@ def kankuai(pid, w, h):
 #         # 3. 收取特币
 #         input.tap(pid, 4.3 * w / WIDTH, 6.9 * h / HEIGHT)  # <= modify
 #         # 4. 关闭淘宝
-#         phone.stop_app(pid, packages['taobao'])
+#         phone.stop_app(pid, info.packages['taobao'])
 #
 #
 # def shuabao(pid, w, h):
@@ -882,7 +882,7 @@ def kankuai(pid, w, h):
 #         # 10次
 #         benefit_video()
 #         # 关闭刷宝
-#         phone.stop_app(pid, packages['shuabao'])
+#         phone.stop_app(pid, info.packages['shuabao'])
 #
 #
 # def qutoutiao(pid, w, h):
@@ -936,7 +936,7 @@ def kankuai(pid, w, h):
 #         # 阶梯式时间分布
 #         time_reward()
 #
-#         phone.stop_app(pid, packages['qutoutiao'])
+#         phone.stop_app(pid, info.packages['qutoutiao'])
 #
 #
 #     if datetime.now().hour.__gt__(2) and datetime.now().hour.__lt__(9):
@@ -946,7 +946,7 @@ def kankuai(pid, w, h):
 #         # [x] 看广告视频拿金币
 #         # 每天可以看6次
 #         video_coin()
-#         phone.stop_app(pid, packages['qutoutiao'])
+#         phone.stop_app(pid, info.packages['qutoutiao'])
 
 
 # noinspection PyUnusedLocal
@@ -970,7 +970,7 @@ def kuge(pid, w, h):
         # [x] 分享歌曲
         share_song()
         # 随便关闭酷狗儿歌后台播放
-        phone.stop_app(pid, packages['kuge'])
+        phone.stop_app(pid, info.packages['kuge'])
 
 
 def makan(pid, w, h):
@@ -996,7 +996,7 @@ def makan(pid, w, h):
 
         # [x] 时段奖励
         time_reward()
-        phone.stop_app(pid, packages['makan'])
+        phone.stop_app(pid, info.packages['makan'])
 
         if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(21):
             checkin.makan(pid, w, h)
@@ -1005,7 +1005,7 @@ def makan(pid, w, h):
             app.read_makan_article(pid, w, h, num=1)
             # 解决彩蛋问题
             input.tap(pid, 1.0 * w / WIDTH, 2.3 * h / HEIGHT, gap=2)
-            phone.stop_app(pid, packages['makan'])
+            phone.stop_app(pid, info.packages['makan'])
 
 
 def diandian(pid, w, h):
@@ -1013,7 +1013,7 @@ def diandian(pid, w, h):
         checkin.diandian(pid, w, h)
         # [x] 阅读点点文章
         app.read_diandian_article(pid, w, h, num=1)
-        phone.stop_app(pid, packages['diandian'])
+        phone.stop_app(pid, info.packages['diandian'])
 
 
 # noinspection PyUnusedLocal
@@ -1040,7 +1040,7 @@ def qutoutiao(pid, w, h):
         # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
         # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
         open_treasure()
-        phone.stop_app(pid, packages['qutoutiao'])
+        phone.stop_app(pid, info.packages['qutoutiao'])
 
 
 # noinspection PyUnusedLocal
@@ -1056,7 +1056,7 @@ def baidu(pid, w, h):
         checkin.baidu(pid)
         # [x] 时段奖励
         time_reward()
-        phone.stop_app(pid, packages['baidu'])
+        phone.stop_app(pid, info.packages['baidu'])
 
 
 # noinspection PyUnusedLocal
