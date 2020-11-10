@@ -155,9 +155,13 @@ def display_on(pid):
     屏幕是否处于唤醒状态
     默认处于唤醒状态
     """
-    p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'power'],
-                       check=True, stdout=subprocess.PIPE,
-                       stderr=subprocess.STDOUT, universal_newlines=True)
+    try:
+        p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'power'],
+                           check=True, stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, universal_newlines=True)
+    except Exception as e:
+        print(e)
+        return True
     time.sleep(1)
     for line in p.stdout.split('\n'):
         if line.__contains__('Display Power'):
