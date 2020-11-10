@@ -542,9 +542,8 @@ def main(args):
         t.join()
 
 
-if __name__ == '__main__':
-    parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
-    parser.add_argument('-s', '--serial', help='phone serial number')
+def init():
+    # 初始化out目录
     out_dir = 'out'
     if not os.path.exists(out_dir):
         os.makedirs(out_dir)
@@ -553,5 +552,14 @@ if __name__ == '__main__':
     if len(photos).__gt__(MAX_PHOTOS_STORE):
         for photo in photos:
             os.remove(photo)
+
+    # 初始化全局变量
+
+
+if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
+    parser.add_argument('-s', '--serial', help='phone serial number')
+
+    init()
 
     main(parser.parse_args())
