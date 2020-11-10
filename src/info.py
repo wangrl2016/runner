@@ -75,16 +75,14 @@ packages = {
 }
 
 activities = {
-    'toutiao': 'com.ss.android.article.lite/.activity.SplashActivity',
-    'kuaishou': 'com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
-    'douyin': 'com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
-    'huoshan': 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
+    'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
+
     'jingdong': '#com.jd.jdlite/.MainFrameActivity',
     'fanqie': '#com.dragon.read/.pages.main.MainFragmentActivity',
     'fanchang': '#com.xs.fm/com.dragon.read.pages.main.MainFragmentActivity',
     'kuchang': '#com.kugou.android.douge/com.kugou.android.app.MediaActivity',
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
-    'yingke': '# com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
+    'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
     'huitoutiao': 'com.cashtoutiao/.account.ui.main.MainTabActivity',
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
@@ -99,6 +97,11 @@ activities = {
     'makan': '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     'diandian': '#com.yingliang.clicknews/.MainActivity',
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
+
+    'toutiao': 'com.ss.android.article.lite/.activity.SplashActivity',
+    'kuaishou': 'com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
+    'douyin': 'com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
+    'huoshan': 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
     'qutoutiao': 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     'baidu': 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     'weishi': 'com.tencent.weishi/com.tencent.oscar.module.splash.SplashActivity',
@@ -107,7 +110,6 @@ activities = {
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
     'yuetoutiao': 'com.expflow.reading/.activity.MainActivity',
-    'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
     'qire': 'com.qixiao.qrxs/.ui.activity.MainActivity',
     'quhongbao': 'com.qixiao.qrxs/.ui.activity.MainActivity',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
@@ -115,6 +117,7 @@ activities = {
     'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
+
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
 
