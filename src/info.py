@@ -75,52 +75,63 @@ packages = {
 }
 
 activities = {
+    # 1-24
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
-
+    'youliao': '#com.youliao.topic/.TrueMainActivity',
+    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     'jingdong': '#com.jd.jdlite/.MainFrameActivity',
     'fanqie': '#com.dragon.read/.pages.main.MainFragmentActivity',
     'fanchang': '#com.xs.fm/com.dragon.read.pages.main.MainFragmentActivity',
     'kuchang': '#com.kugou.android.douge/com.kugou.android.app.MediaActivity',
+
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
-    'huitoutiao': 'com.cashtoutiao/.account.ui.main.MainTabActivity',
+
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
     'pinduoduo': '#com.xunmeng.pinduoduo/.ui.activity.HomeActivity',
     'kuaiyin': '#com.kuaiyin.player/.v2.ui.main.MainActivity',
-    'tangdou': 'com.bokecc.dance/.activity.MainActivity',
+
     'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
-    'kankuai': 'com.tencent.reading/.activity.SplashActivity',
-    'douhuo': 'com.ss.android.ugc.live/.main.MainActivity',
+
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',
     'makan': '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     'diandian': '#com.yingliang.clicknews/.MainActivity',
-    'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
 
+    # 24-48
     'toutiao': 'com.ss.android.article.lite/.activity.SplashActivity',
     'kuaishou': 'com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
     'douyin': 'com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
     'huoshan': 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
+
     'qutoutiao': 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     'baidu': 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     'weishi': 'com.tencent.weishi/com.tencent.oscar.module.splash.SplashActivity',
     'ximalaya': 'com.ximalaya.ting.lite/com.ximalaya.ting.android.host.activity.MainActivity',
+
     'wuba': 'com.wuba.town.client/com.wuba.town.TownCenterActivity',
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
-    'yuetoutiao': 'com.expflow.reading/.activity.MainActivity',
+    'huitoutiao': 'com.cashtoutiao/.account.ui.main.MainTabActivity',
+
+    'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
     'qire': 'com.qixiao.qrxs/.ui.activity.MainActivity',
     'quhongbao': 'com.qixiao.qrxs/.ui.activity.MainActivity',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
-    'youliao': '#com.youliao.topic/.TrueMainActivity',
-    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
-    'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
-    'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
-    'ersansi': 'com.browser2345/.BrowserActivity',
 
+    'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
+    'yuetoutiao': 'com.expflow.reading/.activity.MainActivity',
+    'kankuai': 'com.tencent.reading/.activity.SplashActivity',
+    'douhuo': 'com.ss.android.ugc.live/.main.MainActivity',
+
+    'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
+    'ersansi': 'com.browser2345/.BrowserActivity',
+    'tangdou': 'com.bokecc.dance/.activity.MainActivity',
+
+    # 49-72
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
 
