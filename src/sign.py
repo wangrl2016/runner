@@ -381,3 +381,8 @@ def tangdou(pid, w, h):
     # 2. 点击签到领现金
     # [x] 签到成功
     input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)
+
+
+# noinspection PyUnusedLocal
+def weixin(pid, w, h):
+    return None
