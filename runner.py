@@ -9,7 +9,7 @@ from datetime import datetime
 
 from src import phone, checkin, sign, app, utils
 from src.info import packages, apps, high_serials, contexts
-from src.utils import tap_start, schedule_apps
+from src.utils import schedule_apps
 
 MAX_PHOTOS_STORE = 50
 
@@ -84,11 +84,11 @@ def run(pid):
         while datetime.now().hour.__eq__(0):
             print('所有程序的签到工作 ' + datetime.now().__str__())
             for a in apps:
-                if tap_start(a):
+                if utils.is_coordinate_checkin(a):
                     getattr(checkin, a)(pid, w, h)
                 else:
                     getattr(checkin, a)(pid)
-                # [x] 所有程序签到工作
+                # [x] 所有程序的签到工作
                 getattr(sign, a)(pid, w, h)
                 phone.stop_app(pid, packages[a])
 

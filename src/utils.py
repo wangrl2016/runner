@@ -10,9 +10,9 @@ from PIL import Image
 from pytesseract import Output
 
 
-def tap_start(a):
+def is_coordinate_checkin(a):
     """
-    程序需要点击桌面图标启动
+    :return: 程序是否需要点击桌面图标启动
     """
     return activities[a].__contains__('#')
 
