@@ -17,62 +17,11 @@ high_serials = ['1fc4da61', 'ce7f96a00307', '9404d35e0307']
 # 保留运行信息
 contexts = {}
 
-# 程序名
-apps = ['toutiao', 'kuaishou', 'douyin', 'huoshan',
-        'jingdong', 'fanqie', 'fanchang', 'kuchang',
-        'shuqi', 'yingke', 'kugou', 'huitoutiao',
-        'zhongqing', 'pinduoduo', 'kuaiyin', 'tangdou',
-        'dongfang', 'jukandian', 'kankuai', 'douhuo',
-        'kuge', 'makan', 'diandian', 'moji',
-        'qutoutiao', 'baidu', 'weishi', 'ximalaya',
-        'wuba', 'taobao', 'shuabao', 'yuetoutiao',
-        'midu',
-        ]
+# 所有程序名
+apps = []
 
-# 程序对应的包名
-packages = {
-    'toutiao': 'com.ss.android.article.lite',
-    'kuaishou': 'com.kuaishou.nebula',
-    'douyin': 'com.ss.android.ugc.aweme.lite',
-    'huoshan': 'com.ss.android.ugc.livelite',
-    'jingdong': 'com.jd.jdlite',
-    'fanqie': 'com.dragon.read',
-    'fanchang': 'com.xs.fm',
-    'kuchang': 'com.kugou.android.douge',
-    'shuqi': 'com.shuqi.controller',
-    'yingke': 'com.ingkee.lite',
-    'kugou': 'com.kugou.android.elder',
-    'huitoutiao': 'com.cashtoutiao',
-    'zhongqing': 'cn.youth.news',
-    'pinduoduo': 'com.xunmeng.pinduoduo',
-    'kuaiyin': 'com.kuaiyin.player',
-    'tangdou': 'com.bokecc.dance',
-    'dongfang': 'com.songheng.eastnews',
-    'jukandian': 'com.xiangzi.jukandian',
-    'kankuai': 'com.tencent.reading',
-    'douhuo': 'com.ss.android.ugc.live',
-    'kuge': 'com.kugou.android.child',
-    'makan': 'com.ldzs.zhangxin',
-    'diandian': 'com.yingliang.clicknews',
-    'moji': 'com.moji.mjweather.light',
-    'qutoutiao': 'com.jifen.qukan',
-    'baidu': 'com.baidu.searchbox.lite',
-    'weishi': 'com.tencent.weishi',
-    'ximalaya': 'com.ximalaya.ting.lite',
-    'wuba': 'com.wuba.town.client',
-    'taobao': 'com.taobao.litetao',
-    'shuabao': 'com.jm.video',
-    'yuetoutiao': 'com.expflow.reading',
-    'midu': 'com.lechuan.mdwz',
-    'qire': 'com.qixiao.qrxs',
-    'quhongbao': 'com.qixiao.qrxs',
-    'hongshi': 'com.jxbz.hbdsp',
-    'youliao': 'com.youliao.topic',
-    'wukong': 'com.yshx.wukong',
-    'chejia': 'com.autohome.speed',
-    'doudou': 'com.kanshu.ksgb.fastread.doudou',
-    'weixin': 'com.tencent.mm',
-}
+# 所有程序对应的包名
+packages = {}
 
 activities = {
     # 1-24

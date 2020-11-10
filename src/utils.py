@@ -17,6 +17,17 @@ def is_coordinate_checkin(a):
     return activities[a].__contains__('#')
 
 
+def get_packages_dict(activities_dict):
+    """
+    通过activity的名字获取package的名字
+    """
+    packages_dict = activities_dict
+    for key in packages_dict:
+        packages_dict[key] = packages_dict[key][1 if packages_dict[key].__contains__('#') else 0:
+                                                packages_dict[key].index('/')]
+    return packages_dict
+
+
 def schedule_apps(pid, w, h):
     """
     做两次程序的定时任务

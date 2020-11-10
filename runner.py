@@ -8,7 +8,7 @@ import threading
 from datetime import datetime
 
 from src import phone, checkin, sign, app, utils
-from src.info import packages, apps, high_serials, contexts
+from src.info import packages, apps, high_serials, contexts, activities
 from src.utils import schedule_apps
 
 MAX_PHOTOS_STORE = 50
@@ -553,13 +553,15 @@ def init():
         for photo in photos:
             os.remove(photo)
 
-    # 初始化全局变量
-
 
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
     parser.add_argument('-s', '--serial', help='phone serial number')
 
     init()
+
+    # 初始化全局变量
+    apps = activities.items()
+    packages = utils.get_packages_dict(activities)
 
     main(parser.parse_args())
