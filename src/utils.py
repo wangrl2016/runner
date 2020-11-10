@@ -29,7 +29,7 @@ def schedule_apps(pid, w, h):
             getattr(schedule, a)(pid, w, h)
 
         if (datetime.now().hour % 4).__eq__(1):
-            # 手机休息5分钟
+            # 手机休息180s
             phone.sleep_to_weak(pid, w, h, gap=180)
 
         def watch_kuaishou_video():
@@ -67,9 +67,6 @@ def tail_work(pid, w, h, hour):
         while datetime.now().hour.__eq__(hour):
             # [x] 看快手视频
             app.full_watch_kuaishou_video(pid, w, h, hour)
-        # while datetime.now().hour.__eq__(hour):
-        #     # [x] 看微视视频
-        #     app.full_watch_weishi_video(pid, w, h, hour)
     elif hour.__lt__(20):
         while datetime.now().hour.__eq__(hour):
             # [x] 看快手视频
@@ -95,6 +92,8 @@ def current_words_location(pid, words, output_dir='out'):
     """
     # 1. 获取到手机截图
     photo_name = phone.get_page_photo(pid, output_dir)
+    if photo_name is None:
+        return None
     # 2. 对截图进行识别
     data = pytesseract.image_to_data(Image.open(os.path.join(output_dir, photo_name)),
                                      output_type=Output.DICT, lang='chi_sim')

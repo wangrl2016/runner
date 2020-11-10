@@ -115,6 +115,7 @@ def get_page_photo(pid, output, gap=2):
                        stderr=subprocess.STDOUT, universal_newlines=True)
     except Exception as e:
         print('获取照片失败 ' + str(e))
+        return None
     time.sleep(gap * 2)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     time.sleep(gap)
