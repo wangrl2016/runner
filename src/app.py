@@ -5,11 +5,17 @@ from src import phone, input, checkin, utils, info
 from src.info import HEIGHT, WIDTH
 
 
+# ~~~~~~~~~~米读极速版~~~~~~~~~~
+
+def midu_benefit_page(pid, w, h):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 # ~~~~~~~~~~有料看看~~~~~~~~~~
 
 def read_youliao_article(pid, w, h, num):
     print('阅读有料看看文章　' + datetime.now().__str__())
-    for i in range(0, 10):
+    for i in range(0, num):
         # 1. 下拉刷新
         if i.__ne__(0):
             phone.swipe_up_to_down(pid, w, h)
