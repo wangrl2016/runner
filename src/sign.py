@@ -359,3 +359,8 @@ def taobao(pid, w, h):
 # noinspection PyUnusedLocal
 def shuabao(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def yuetoutiao(pid, w, h):
+    return None
