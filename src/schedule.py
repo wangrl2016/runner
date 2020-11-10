@@ -1057,3 +1057,8 @@ def wuba(pid, w, h):
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def shuabao(pid, w, h):
+    return None
