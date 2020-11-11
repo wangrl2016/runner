@@ -234,7 +234,7 @@ def run(pid):
             # 无法确定关闭的位置所以强制关闭
             for i in range(0, 10):
                 checkin.shuqi(pid, w, h, gap=12)
-                # [x] 看视频赚金币
+                # [x] 书旗小说看视频赚金币
                 # 10个视频
                 # 10min赚0.3元
                 app.shuqi_video_coin(pid, w, h)
@@ -262,8 +262,6 @@ def run(pid):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 分享映客极速版
-            # 分享3次
-            # 也可以在直播间分享
             # 1min赚0.045元
             app.share_yingke(pid, w, h, times=3)
             phone.stop_app(pid, info.packages['yingke'])
@@ -304,8 +302,16 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=12)
 
         # 中青看点
+        # 汽车之家
         while datetime.now().hour.__eq__(13):
             schedule_apps(pid, w, h)
+
+            for i in range(0, 2):
+                checkin.chejia(pid)
+                app.chejia_benefit_page(pid, w, h)
+                # [x] 看汽车之家福利视频
+                app.chejia_benefit_video(pid, w, h, num=5)
+                phone.stop_app(pid, info.packages['chejia'])
 
             checkin.zhongqing(pid, w, h)
             # [x] 阅读中青看点文章

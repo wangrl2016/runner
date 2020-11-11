@@ -953,9 +953,29 @@ def watch_wuba_video(pid, w, h, num):
         # 等待5s自动播放下一个
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=10)
 
+
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
+
+# ~~~~~~~~~~惠头条~~~~~~~~~~
+
+# ~~~~~~~~~~汽车之家~~~~~~~~~~
+def chejia_benefit_page(pid, w, h):
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def chejia_benefit_video(pid, w, h, num):
+    print('观看汽车之家福利视频 ' + datetime.now().time().__str__())
+    # 1. 滑动进入到最下面
+    phone.swipe_down_to_up(pid, w, h)
+    for i in range(0, num):
+        # 2. 点击观看视频
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT, gap=10)
+        # 3. 播放30s
+        time.sleep(30)
+        # 3. 关闭返回福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 # ~~~~~~~~~~悦头条~~~~~~~~~~
 
