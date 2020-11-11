@@ -91,7 +91,7 @@ def jingdong_activity(pid, w, h, num):
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
 
 
-def jingdong_video_coin(pid, w, h, hour=5):
+def jingdong_video_coin(pid, w, h, hour):
     """
     京东看视频赚金币
     """
