@@ -86,7 +86,6 @@ def kuchang(pid, w, h):
 def shuqi(pid, w, h):
     # 后退会弹出提示框
     # 不后退有时会有广告悬浮窗
-    # TODO: 强制关闭再进入
     # [x] 签到成功
     app.shuqi_benefit_page(pid, w, h, gap=5)
 

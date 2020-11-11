@@ -549,15 +549,6 @@ def jukandian(pid, w, h):
 #         # 3. 返回到福利页面
 #         phone.go_back(pid)
 #
-#     # 时段奖励
-#     def time_reward():
-#         # 1. 点击左下角头条
-#         # 有时弹出广告悬浮窗
-#         input.tap(pid, 0.6 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-#         # 2. 点击领取
-#         input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 1.0 * h / HEIGHT)
-#         # 有时弹出广告悬浮窗
-#
 #     if datetime.now().minute.__lt__(SCHEDULE_TIME):
 #         checkin.qutoutiao(pid)
 #         app.qutoutiao_benefit_page(pid, w, h)
@@ -989,7 +980,7 @@ def qutoutiao(pid, w, h):
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
         # 2. 播放广告50s
         time.sleep(50)
-        # 3. 回退到播放页面
+        # 3. 回退到程序主页
         phone.go_back(pid, times=2, gap=1)
 
     if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
