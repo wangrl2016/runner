@@ -11,6 +11,22 @@ def midu_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+def read_midu_novel(pid, w, h, sec):
+    print('阅读米读小说 ' + datetime.now().__str__())
+    # 1. 点击中间的小说
+    input.tap(pid, w / 2, h / 2)
+    # 2. 向左滑动开始阅读
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            # 防止点击广告
+            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour.__eq__(hour):
+            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
+
+
 # ~~~~~~~~~~有料看看~~~~~~~~~~
 
 def read_youliao_article(pid, w, h, num):
@@ -768,7 +784,7 @@ def read_toutiao_article(pid, w, h, num):
         # 1. 获取文章目录
         phone.swipe_up_to_down(pid, w, h)
         # 2. 点击文章
-        input.tap(pid, w / 2, h / 3)
+        input.tap(pid, w / 2, h * 2 / 5)
         # 3. 滑动阅读
         for j in range(0, 10):
             # 阅读30s

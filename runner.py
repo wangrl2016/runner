@@ -97,6 +97,12 @@ def run(pid):
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
+            checkin.midu(pid, w, h)
+            app.midu_benefit_page(pid, w, h)
+            # [x] 阅读米读小说
+            app.read_midu_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['midu'])
+
             checkin.toutiao(pid)
             # [x] 阅读今日头条文章
             app.read_toutiao_article(pid, w, h, num=5)
