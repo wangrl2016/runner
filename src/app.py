@@ -766,8 +766,7 @@ def read_toutiao_article(pid, w, h, num):
     print('阅读头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+        phone.swipe_up_to_down(pid, w, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h / 3)
         # 3. 滑动阅读
