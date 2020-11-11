@@ -133,9 +133,13 @@ def start_app(pid, activity, gap=15):
     """
     启动程序
     """
-    subprocess.run(['adb', '-s', pid, 'shell', 'am', 'start', '-n', activity],
-                   check=True, stdout=subprocess.PIPE,
-                   stderr=subprocess.STDOUT, universal_newlines=True)
+    try:
+        subprocess.run(['adb', '-s', pid, 'shell', 'am', 'start', '-n', activity],
+                       check=True, stdout=subprocess.PIPE,
+                       stderr=subprocess.STDOUT, universal_newlines=True)
+    except Exception as e:
+        print('启动程序失败 ' + str(e))
+        return None
     time.sleep(gap)
 
 
