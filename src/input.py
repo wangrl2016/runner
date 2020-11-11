@@ -34,7 +34,8 @@ def tap(pid, w, h, gap=5):
     """
     以像素点点击屏幕坐标为(px, py)的位置
     """
-    w = w + randrange(-10, 5)
+    w = w + randrange(-10, 10)
+    h = h + randrange(-5, 5)
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'tap', str(int(w)), str(int(h))])
     time.sleep(gap)
 
