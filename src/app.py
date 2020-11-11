@@ -31,6 +31,9 @@ def read_youliao_article(pid, w, h, num):
 # ~~~~~~~~~~悟空赚钱~~~~~~~~~~
 
 # ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
+def lanmao_benefit_page(pid, w, h):
+    # 1. 点击中间下方懒猫
+    input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
 
 
 # ~~~~~~~~~~京东极速版~~~~~~~~~~

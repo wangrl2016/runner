@@ -33,6 +33,7 @@ def wukong(pid, w, h):
 
 # noinspection PyUnusedLocal
 def lanmao(pid, w, h):
+    # [x] 签到成功
     return None
 
 
