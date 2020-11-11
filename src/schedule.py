@@ -381,7 +381,7 @@ def kuaiyin(pid, w, h):
         input.tap(pid, 2.6 * w / WIDTH, 4.5 * h / HEIGHT)
         # 2. 点击水杯
         for i in range(0, 4):
-            input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, (5.2 if is_next else 3.5) * h / HEIGHT, gap=1)
+            input.tap(pid, (0.9 + i * 1.5) * w / WIDTH, (5.2 if is_next else 3.5) * h / HEIGHT, gap=1)
         # 3. 看视频
         input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
         # 4. 播放30s

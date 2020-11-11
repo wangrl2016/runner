@@ -14,7 +14,7 @@ def midu_benefit_page(pid, w, h):
 def read_midu_novel(pid, w, h, sec):
     print('阅读米读小说 ' + datetime.now().__str__())
     # 1. 点击中间的小说
-    input.tap(pid, w / 2, h / 2)
+    input.tap(pid, w / 2, h / 2, gap=3)
     # 2. 向左滑动开始阅读
     minutes = sec / 60 + datetime.now().minute
     if minutes < 60:
