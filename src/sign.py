@@ -304,9 +304,13 @@ def ximalaya(pid, w, h):
 
 
 def wuba(pid, w, h):
-    phone.go_back(pid, gap=1)
-    # TODO: 未完成
+    # 1. 点击福利页面
     app.wuba_benefit_page(pid, w, h)
+    # 2. 分享到朋友圈
+    input.tap(pid, w / 2, (HEIGHT - 8.3) * h / HEIGHT, gap=10)
+    # 3. 返回到主页
+    # [x] 签到成功
+    phone.go_back(pid, gap=1)
 
 
 # noinspection PyUnusedLocal

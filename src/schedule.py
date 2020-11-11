@@ -1032,6 +1032,13 @@ def ximalaya(pid, w, h):
 
 # noinspection PyUnusedLocal
 def wuba(pid, w, h):
+    def time_reward():
+        print('五八同城时段奖励 ' + datetime.now().time().__str__())
+        # 点击右上角
+        input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 1.1 * h / HEIGHT)
+        # 返回到程序主页
+        phone.go_back(pid)
+
     return None
 
 
