@@ -155,7 +155,7 @@ def dongfang(pid, w, h):
 
 def jukandian(pid, w, h):
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal

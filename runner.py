@@ -394,7 +394,7 @@ def run(pid):
 
             checkin.jukandian(pid, w, h)
             # [x] 小视频
-            app.watch_jukandian_svideo(pid, w, h, num=20)
+            app.watch_jukandian_svideo(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
 
             # # [x] 好看视频
