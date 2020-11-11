@@ -241,23 +241,20 @@ def yingke(pid, w, h):
     def benefit_video():
         print('映客福利视频 ' + datetime.now().__str__())
         # 1. 点击领金币
-        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT)  # <== modify
-        # 2. 播放45s
-        # 播放时间不同
-        time.sleep(45)
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 4.7 * h / HEIGHT, gap=10)  # <== modify
+        # 2. 播放30s
+        time.sleep(30)
 
     # 开宝箱
     def open_treasure():
         print('映客开宝箱 ' + datetime.now().__str__())
         # 1. 点击开宝箱领金币
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)  # <== modify
-        # 2. 播放视频45s
-        # 播放时间不同
-        time.sleep(45)
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=10)  # <== modify
+        # 2. 播放视频30s
+        time.sleep(30)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        # 小米手机无法解决振动问题
-        if datetime.now().hour.__gt__(9) and datetime.now().hour.__le__(20):
+        if datetime.now().hour.__gt__(9) and datetime.now().hour.__lt__(21):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 看福利视频
@@ -285,7 +282,7 @@ def kugou(pid, w, h):
                 return
             height = video_location['y'] + video_location['h']
             info.contexts[pid]['酷狗创意视频'] = height
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=8)
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=10)
 
         # 2. 播放30s
         time.sleep(30)
@@ -308,13 +305,11 @@ def kugou(pid, w, h):
         # 3. 分享到微信
         input.tap(pid, w / 3, 9.5 * h / HEIGHT)  # <= modify
         # 4. 回到酷狗程序主页
-        phone.go_back(pid)
+        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
-        # 进入程序
         checkin.kugou(pid, w, h)
         app.kugou_benefit_page(pid, w, h)
-
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
@@ -327,7 +322,6 @@ def kugou(pid, w, h):
             # [x] 分享视频
             # 每天1次
             share_friend(False)
-
         # 关闭程序
         phone.stop_app(pid, info.packages['kugou'])
 
