@@ -205,9 +205,13 @@ def get_top_activities(pid):
     获取最上面的activity名称
     :return: activity名称
     """
-    p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'activity', 'top'],
-                       check=True, stdout=subprocess.PIPE,
-                       stderr=subprocess.STDOUT, universal_newlines=True)
+    try:
+        p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'activity', 'top'],
+                           check=True, stdout=subprocess.PIPE,
+                           stderr=subprocess.STDOUT, universal_newlines=True)
+    except Exception as e:
+        print(e)
+        return None
     return p.stdout
 
 

@@ -536,6 +536,8 @@ def main(args):
         # 结束前关闭所有程序
         for d in devices:
             ats = phone.get_top_activities(d)
+            if ats is None:
+                sys.exit(0)
             for a in info.apps:
                 if ats.__contains__(info.packages[a]):
                     print('关闭运行的程序 ' + info.packages[a])
