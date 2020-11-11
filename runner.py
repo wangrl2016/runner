@@ -494,8 +494,7 @@ def main(args):
     # 获取设备号
     devices = []
     if args.serial:
-        for s in args.serial.split(' '):
-            devices.append(s)
+        devices.append(args.serial)
     else:
         devices = phone.get_devices()
     print(devices)
