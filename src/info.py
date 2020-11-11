@@ -38,10 +38,12 @@ activities = {
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
+    'qire': '#com.qixiao.qrxs/.ui.activity.MainActivity',
 
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
     'pinduoduo': '#com.xunmeng.pinduoduo/.ui.activity.HomeActivity',
     'kuaiyin': '#com.kuaiyin.player/.v2.ui.main.MainActivity',
+    'quhongbao': '#com.chenglie.hongbao/com.bytedance.sdk.openadsdk.activity.base.TTDelegateActivity',
 
     'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
@@ -67,8 +69,6 @@ activities = {
     'huitoutiao': 'com.cashtoutiao/.account.ui.main.MainTabActivity',
 
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
-    'qire': 'com.qixiao.qrxs/.ui.activity.MainActivity',
-    'quhongbao': 'com.qixiao.qrxs/.ui.activity.MainActivity',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
 
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
