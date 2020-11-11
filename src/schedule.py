@@ -647,10 +647,11 @@ def makan(pid, w, h):
 
 def diandian(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.diandian(pid, w, h)
-        # [x] 阅读点点文章
-        app.read_diandian_article(pid, w, h, num=1)
-        phone.stop_app(pid, info.packages['diandian'])
+        if (datetime.now().hour % 3).__eq__(0):
+            checkin.diandian(pid, w, h)
+            # [x] 阅读点点文章
+            app.read_diandian_article(pid, w, h, num=3)
+            phone.stop_app(pid, info.packages['diandian'])
 
 
 def toutiao_open_treasure(pid, w, h, gap=15):

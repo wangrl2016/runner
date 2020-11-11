@@ -737,7 +737,7 @@ def read_diandian_article(pid, w, h, num):
         # 2. 点击文章
         input.tap(pid, w / 2, h * 2 / 3, gap=5)
         for j in range(0, 8):
-            # 3. 向上滑动
+            # 3. 向上滑动15s
             phone.swipe_down_to_up(pid, w, h, gap=2)
         # 4. 返回上级
         phone.go_back(pid, gap=2)
