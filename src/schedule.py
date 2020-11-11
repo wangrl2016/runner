@@ -479,7 +479,7 @@ def jukandian(pid, w, h):
     # 时段奖励
     def time_reward():
         input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT)
-        phone.go_back(pid, gap=1)
+        phone.go_back(pid)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.jukandian(pid, w, h)
