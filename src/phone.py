@@ -139,7 +139,7 @@ def start_app(pid, activity, gap=15):
     time.sleep(gap)
 
 
-def list_packages(pid, gap=1):
+def list_packages(pid):
     """
     获取程序包名
     :return: 包含包名的字符串
@@ -147,7 +147,6 @@ def list_packages(pid, gap=1):
     p = subprocess.run(['adb', '-s', pid, 'shell', 'pm', 'list', 'package'],
                        check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(gap)
     return p.stdout
 
 
@@ -163,7 +162,6 @@ def display_on(pid):
     except Exception as e:
         print(e)
         return True
-    time.sleep(1)
     for line in p.stdout.split('\n'):
         if line.__contains__('Display Power'):
             if line.__contains__('OFF'):
@@ -181,14 +179,13 @@ def wakeup(pid, gap=3):
     time.sleep(gap)
 
 
-def sleep(pid, gap=3):
+def sleep(pid):
     """
     和KEYCODE_POWER表现一致
     但是如果屏幕是熄灭状态该操作没有效果
     """
     print("关闭屏幕 " + datetime.now().__str__())
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_SLEEP'])
-    time.sleep(gap)
 
 
 def power(pid, gap=3):
@@ -199,7 +196,7 @@ def power(pid, gap=3):
     time.sleep(gap)
 
 
-def get_top_activities(pid, gap=1):
+def get_top_activities(pid):
     """
     获取最上面的activity名称
     :return: activity名称
@@ -207,8 +204,6 @@ def get_top_activities(pid, gap=1):
     p = subprocess.run(['adb', '-s', pid, 'shell', 'dumpsys', 'activity', 'top'],
                        check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(gap)
-
     return p.stdout
 
 
@@ -216,7 +211,7 @@ def sleep_to_weak(pid, w, h, gap=300):
     """
     手机休息到唤醒
     """
-    sleep(pid, 3)
+    sleep(pid)
     time.sleep(gap)
     wakeup(pid, 3)
     if not display_on(pid):
