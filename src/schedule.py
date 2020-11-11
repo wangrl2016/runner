@@ -1039,7 +1039,12 @@ def wuba(pid, w, h):
         # 返回到程序主页
         phone.go_back(pid)
 
-    return None
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if (datetime.now().hour % 4).__eq__(0):
+            checkin.wuba(pid)
+            # [x] 时段奖励
+            time_reward()
+            phone.stop_app(pid, info.packages['wuba'])
 
 
 # noinspection PyUnusedLocal
