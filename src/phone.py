@@ -118,7 +118,6 @@ def get_page_photo(pid, output, gap=2):
         return None
     time.sleep(gap * 2)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
-    time.sleep(gap)
     return filename
 
 
@@ -232,7 +231,6 @@ def get_size(pid):
     """
     p = subprocess.run(['adb', '-s', pid, 'shell', 'wm', 'size'], check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(2)
     size_str = p.stdout.strip('\n')
     print(size_str)
     for s in size_str.split(' '):
@@ -246,7 +244,6 @@ def get_dpi(pid):
     """
     p = subprocess.run(['adb', '-s', pid, 'shell', 'wm', 'density'], check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(2)
     dpi_str = p.stdout.strip('\n')
     return int(dpi_str.split(' ')[-1])
 
@@ -257,7 +254,6 @@ def get_devices():
     """
     p = subprocess.run(['adb', 'devices'], check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
-    time.sleep(1)
     devices = []
     for line in p.stdout.split('\n'):
         line = line.strip('\n')
@@ -274,7 +270,7 @@ def reboot(devices):
     """
     for pid in devices:
         subprocess.run(['adb', '-s', pid, 'reboot'])
-        time.sleep(120)
+        time.sleep(60)
 
 
 def get_device_properties(pid):
