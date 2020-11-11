@@ -941,6 +941,18 @@ def ximalaya_benefit_page(pid, w, h):
 def wuba_benefit_page(pid, w, h):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
+
+def watch_wuba_video(pid, w, h, num):
+    print('看五八同城广告视频 ' + datetime.now().time().__str__())
+    # 1. 点击看视频赚金币
+    input.tap(pid, w / 2, 10.8 * h / HEIGHT, gap=10)
+    for i in range(0, num):
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 点击关闭
+        # 等待5s自动播放下一个
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=10)
+
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~

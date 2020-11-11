@@ -228,13 +228,11 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=8)
 
-        # 书旗小说
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
             # 无法确定关闭的位置所以强制关闭
             for i in range(0, 10):
-                # 有广告稍微延长时间
                 checkin.shuqi(pid, w, h, gap=12)
                 # [x] 看视频赚金币
                 # 10个视频
@@ -242,7 +240,12 @@ def run(pid):
                 app.shuqi_video_coin(pid, w, h)
                 phone.stop_app(pid, info.packages['shuqi'])
 
-            # 打开程序
+            checkin.wuba(pid)
+            app.wuba_benefit_page(pid, w, h)
+            # [x] 五八同城看视频赚金币
+            app.watch_wuba_video(pid, w, h, num=7)
+            phone.stop_app(pid, info.packages['wuba'])
+
             checkin.shuqi(pid, w, h)
             # [x] 阅读书旗小说
             # 5min赚0.005元
