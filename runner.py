@@ -313,17 +313,8 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=13)
 
-        # 拼多多
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
-
-            # [x] 逛街得现金
-            # 1. 打开程序
-            checkin.pinduoduo(pid, w, h)
-            # 2. 逛街得现金
-            app.pinduoduo_street_money(pid, w, h)
-            # 3. 关闭程序
-            phone.stop_app(pid, info.packages['pinduoduo'])
 
             # [x] 京东看视频赚金币
             app.full_jingdong_video_coin(pid, w, h, hour=14)
