@@ -34,6 +34,15 @@ def schedule_apps(pid, w, h):
     第1次半个小时，其余的时间用来看视频
     第2次做重要的任务
     """
+
+    def watch_kuaishou_video():
+        print('看快手视频 ' + datetime.now().__str__())
+        checkin.kuaishou(pid)
+        # 从下往上翻页
+        while datetime.now().minute < SCHEDULE_TIME:
+            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.stop_app(pid, info.packages['kuaishou'])
+
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         print('第1次定时任务 ' + datetime.now().__str__())
         for a in info.apps:
@@ -42,14 +51,6 @@ def schedule_apps(pid, w, h):
         if (datetime.now().hour % 4).__eq__(1):
             # 手机休息180s
             phone.sleep_to_weak(pid, w, h, gap=180)
-
-        def watch_kuaishou_video():
-            print('看快手视频 ' + datetime.now().__str__())
-            checkin.kuaishou(pid)
-            # 从下往上翻页
-            while datetime.now().minute < SCHEDULE_TIME:
-                phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-            phone.stop_app(pid, info.packages['kuaishou'])
 
         # [x] 看快手视频
         if datetime.now().minute < SCHEDULE_TIME:
