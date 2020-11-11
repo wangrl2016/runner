@@ -28,176 +28,9 @@ def read_youliao_article(pid, w, h, num):
         phone.go_back(pid)
 
 
-# ~~~~~~~~~~今日头条极速版~~~~~~~~~~
+# ~~~~~~~~~~悟空赚钱~~~~~~~~~~
 
-def toutiao_benefit_page(pid, w, h, gap=3):
-    """
-    进入今日头条福利页面
-    """
-    # 1. 点击福利
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
-
-
-def read_toutiao_article(pid, w, h, num):
-    """
-    阅读今日头条文章
-    """
-    print('阅读头条文章 ' + datetime.now().__str__())
-    for i in range(0, num):
-        # 1. 获取文章目录
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
-        # 2. 点击文章
-        input.tap(pid, w / 2, h / 3)
-        # 3. 滑动阅读
-        for j in range(0, 10):
-            # 阅读30s
-            phone.swipe_down_to_up(pid, w, h / 2, gap=2, internal=100)
-        # 4. 返回上级目录
-        phone.go_back(pid)
-
-
-def toutiao_video(pid, w, h, num):
-    """
-    看头条视频
-    """
-    print('看今日头条视频 ' + datetime.now().__str__())
-    # 1. 点击下方视频按钮
-    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    for i in range(0, num):
-        # 1. 向下刷新视频
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
-        # 2. 点击播放
-        input.tap(pid, w / 2, h / 3)
-        # 3. 播放60s
-        time.sleep(60)
-
-
-# ~~~~~~~~~~快手极速版~~~~~~~~~~
-
-def kuaishou_benefit_page(pid, w, h, gap=3):
-    """
-    进入快手福利页面
-    """
-    # 1. 点击左上角菜单栏
-    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT, gap)  # <= modify
-    # 2. 点击去赚钱
-    input.tap(pid, w / 3, 6.3 * h / HEIGHT, gap)  # <=== modify
-
-
-# 只包含看视频的过程
-def watch_kuaishou_video(pid, w, h, hour):
-    """
-    看快手视频
-    """
-    while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-
-
-# 从打开到关闭看快手视频的完整过程
-def full_watch_kuaishou_video(pid, w, h, hour):
-    print('看快手视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.kuaishou(pid)
-    # 2. 看快手视频
-    watch_kuaishou_video(pid, w, h, hour)
-    # 3. 关闭程序
-    phone.stop_app(pid, info.packages['kuaishou'])
-
-
-# noinspection PyUnusedLocal
-def kuaishou_reward_task(pid, w, h, num):
-    """
-    1000金币悬赏任务
-    """
-    print('快手1000金币悬赏任务 ' + datetime.now().__str__())
-    reward_location = utils.current_words_location(pid, '悬')
-    if reward_location is None:
-        print('没有获取到1000金币悬赏任务的位置')
-        return
-    height = reward_location['y'] + reward_location['h']
-    for i in range(0, num):
-        # 1. 点击福利按钮
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
-        # 2. 播放30s
-        time.sleep(30)
-        # 3. 返回到福利页面
-        phone.go_back(pid)
-
-
-# ~~~~~~~~~~抖音极速版~~~~~~~~~~
-
-def douyin_benefit_page(pid, w, h, gap=3):
-    """
-    进入抖音福利页面
-    """
-    # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
-
-
-def watch_douyin_video(pid, w, h, hour=3):
-    """
-    看抖音视频
-    """
-    while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-
-
-def full_watch_douyin_video(pid, w, h, hour):
-    # [x] 看抖音视频
-    print('看抖音视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.douyin(pid)
-    # 2. 回退消除可能的悬浮窗
-    phone.go_back(pid)
-    # 3. 看抖音视频
-    watch_douyin_video(pid, w, h, hour)
-    # 4. 关闭程序
-    phone.stop_app(pid, info.packages['douyin'])
-
-
-# ~~~~~~~~~~火山极速版~~~~~~~~~~
-
-def huoshan_benefit_page(pid, w, h, gap=3):
-    """
-    进入火山福利页面
-    """
-    # 1. 点击火山右下方红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
-
-
-def watch_huoshan_video(pid, w, h, hour=4):
-    """
-    看火山视频
-    """
-    while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-
-
-def full_watch_huoshan_video(pid, w, h, hour):
-    print('看火山视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.huoshan(pid)
-    # 2. 看火山视频
-    watch_huoshan_video(pid, w, h, hour)
-    # 3. 关闭程序
-    phone.stop_app(pid, info.packages['huoshan'])
-
-
-def huoshan_money_tree(pid, w, h):
-    """
-    摇钱树
-    """
-    print('火山摇钱树 ' + datetime.now().__str__())
-    # 1. 点击右下方红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击摇钱树
-    input.tap(pid, w / 3, 5.0 * h / HEIGHT)
-    # 3. 摇钱
-    input.tap(pid, w / 2, h / 2)
-    # 返回到任务页面
-    phone.go_back(pid)
+# ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
 
 
 # ~~~~~~~~~~京东极速版~~~~~~~~~~
@@ -911,6 +744,178 @@ def read_diandian_article(pid, w, h, num):
             phone.swipe_down_to_up(pid, w, h, gap=2)
         # 4. 返回上级
         phone.go_back(pid, gap=2)
+
+
+# ~~~~~~~~~~今日头条极速版~~~~~~~~~~
+
+def toutiao_benefit_page(pid, w, h, gap=3):
+    """
+    进入今日头条福利页面
+    """
+    # 1. 点击福利
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
+
+
+def read_toutiao_article(pid, w, h, num):
+    """
+    阅读今日头条文章
+    """
+    print('阅读头条文章 ' + datetime.now().__str__())
+    for i in range(0, num):
+        # 1. 获取文章目录
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
+        # 2. 点击文章
+        input.tap(pid, w / 2, h / 3)
+        # 3. 滑动阅读
+        for j in range(0, 10):
+            # 阅读30s
+            phone.swipe_down_to_up(pid, w, h / 2, gap=2, internal=100)
+        # 4. 返回上级目录
+        phone.go_back(pid)
+
+
+def toutiao_video(pid, w, h, num):
+    """
+    看头条视频
+    """
+    print('看今日头条视频 ' + datetime.now().__str__())
+    # 1. 点击下方视频按钮
+    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    for i in range(0, num):
+        # 1. 向下刷新视频
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w, h)
+        # 2. 点击播放
+        input.tap(pid, w / 2, h / 3)
+        # 3. 播放60s
+        time.sleep(60)
+
+
+# ~~~~~~~~~~快手极速版~~~~~~~~~~
+
+def kuaishou_benefit_page(pid, w, h, gap=3):
+    """
+    进入快手福利页面
+    """
+    # 1. 点击左上角菜单栏
+    input.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT, gap)  # <= modify
+    # 2. 点击去赚钱
+    input.tap(pid, w / 3, 6.3 * h / HEIGHT, gap)  # <=== modify
+
+
+# 只包含看视频的过程
+def watch_kuaishou_video(pid, w, h, hour):
+    """
+    看快手视频
+    """
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+
+
+# 从打开到关闭看快手视频的完整过程
+def full_watch_kuaishou_video(pid, w, h, hour):
+    print('看快手视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.kuaishou(pid)
+    # 2. 看快手视频
+    watch_kuaishou_video(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, info.packages['kuaishou'])
+
+
+# noinspection PyUnusedLocal
+def kuaishou_reward_task(pid, w, h, num):
+    """
+    1000金币悬赏任务
+    """
+    print('快手1000金币悬赏任务 ' + datetime.now().__str__())
+    reward_location = utils.current_words_location(pid, '悬')
+    if reward_location is None:
+        print('没有获取到1000金币悬赏任务的位置')
+        return
+    height = reward_location['y'] + reward_location['h']
+    for i in range(0, num):
+        # 1. 点击福利按钮
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 返回到福利页面
+        phone.go_back(pid)
+
+
+# ~~~~~~~~~~抖音极速版~~~~~~~~~~
+
+def douyin_benefit_page(pid, w, h, gap=3):
+    """
+    进入抖音福利页面
+    """
+    # 1. 点击中间下方的福利
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+def watch_douyin_video(pid, w, h, hour=3):
+    """
+    看抖音视频
+    """
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+
+
+def full_watch_douyin_video(pid, w, h, hour):
+    # [x] 看抖音视频
+    print('看抖音视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.douyin(pid)
+    # 2. 回退消除可能的悬浮窗
+    phone.go_back(pid)
+    # 3. 看抖音视频
+    watch_douyin_video(pid, w, h, hour)
+    # 4. 关闭程序
+    phone.stop_app(pid, info.packages['douyin'])
+
+
+# ~~~~~~~~~~火山极速版~~~~~~~~~~
+
+def huoshan_benefit_page(pid, w, h, gap=3):
+    """
+    进入火山福利页面
+    """
+    # 1. 点击火山右下方红包
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
+
+
+def watch_huoshan_video(pid, w, h, hour=4):
+    """
+    看火山视频
+    """
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+
+
+def full_watch_huoshan_video(pid, w, h, hour):
+    print('看火山视频 ' + datetime.now().__str__())
+    # 1. 打开程序
+    checkin.huoshan(pid)
+    # 2. 看火山视频
+    watch_huoshan_video(pid, w, h, hour)
+    # 3. 关闭程序
+    phone.stop_app(pid, info.packages['huoshan'])
+
+
+def huoshan_money_tree(pid, w, h):
+    """
+    摇钱树
+    """
+    print('火山摇钱树 ' + datetime.now().__str__())
+    # 1. 点击右下方红包
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击摇钱树
+    input.tap(pid, w / 3, 5.0 * h / HEIGHT)
+    # 3. 摇钱
+    input.tap(pid, w / 2, h / 2)
+    # 返回到任务页面
+    phone.go_back(pid)
 
 
 # ~~~~~~~~~~墨迹天气~~~~~~~~~~
