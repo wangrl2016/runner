@@ -426,11 +426,12 @@ def kuaiyin(pid, w, h):
         offline_coin()
         phone.stop_app(pid, info.packages['kuaiyin'])
 
-        checkin.kuaiyin(pid, w, h)
-        app.kuaiyin_benefit_page(pid, w, h)
-        # [x] 开宝箱
-        open_treasure()
-        phone.stop_app(pid, info.packages['kuaiyin'])
+        if (datetime.now().hour % 2).__eq__(0):
+            checkin.kuaiyin(pid, w, h)
+            app.kuaiyin_benefit_page(pid, w, h)
+            # [x] 开宝箱
+            open_treasure()
+            phone.stop_app(pid, info.packages['kuaiyin'])
 
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(9) or hour.__eq__(11) or (hour.__gt__(12) and hour.__lt__(18)):
