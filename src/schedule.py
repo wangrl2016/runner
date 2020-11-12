@@ -601,13 +601,16 @@ def toutiao(pid, w, h):
     def meal_allowance():
         print('今日头条吃饭补贴 ' + datetime.now().time().__str__())
         # 1. 获取吃饭补贴的位置
-        eat_location = utils.current_words_location(pid, '饭')
-        if eat_location is None:
-            print('没有获取到吃饭补贴的位置')
-            return
-        width = eat_location['x'] + eat_location['w']
-        height = eat_location['y'] + eat_location['h']
-        input.tap(pid, width, height)
+        if '今日头条吃饭补贴' not in info.contexts['pid']:
+            eat_location = utils.current_words_location(pid, '饭')
+            if eat_location is None:
+                print('没有获取到吃饭补贴的位置')
+                return
+            width = eat_location['x'] + eat_location['w']
+            height = eat_location['y'] + eat_location['h']
+            info.contexts[pid]['今日头条吃饭补贴'] = str(width) + 'x' + str(height)
+        input.tap(pid, int(info.contexts[pid]['今日头条吃饭补贴'].split('x')[0]),
+                  int(info.contexts[pid]['今日头条吃饭补贴'].split('x')[1]))
 
         # 2. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=3)  # <= modify
