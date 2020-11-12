@@ -310,9 +310,6 @@ def huitoutiao_benefit_page(pid, w, h):
 
 
 def read_huitoutiao_article(pid, w, h, num):
-    """
-    阅读惠头条文章
-    """
     print('阅读惠头条文章 ' + datetime.now().__str__())
     # 1. 消除可能存在的悬浮窗
     phone.go_back(pid, gap=1)
@@ -434,9 +431,6 @@ def tangdou_benefit_page(pid, w, h):
 
 def tangdou_funny_video(pid, w, h, num):
     print('糖豆有趣短视频 ' + datetime.now().__str__())
-    """
-    刷有趣短视频
-    """
     # 1. 向上滑动
     phone.swipe_down_to_up(pid, w / 2, h, gap=3)
     # 2. 点击有趣短视频按钮

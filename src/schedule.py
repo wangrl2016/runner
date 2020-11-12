@@ -208,8 +208,8 @@ def yingke(pid, w, h):
 
 
 def kugou(pid, w, h):
-    # 刷创意视频
     def creative_video():
+        print('酷狗刷创意视频 ' + datetime.now().time().__str__())
         # 1. 点击去赚钱
         # 获取创意视频的位置
         if '酷狗创意视频' not in info.contexts[pid]:
@@ -227,8 +227,8 @@ def kugou(pid, w, h):
         # 再次回退消除奖励页面
         phone.go_back(pid, times=2, gap=1)
 
-    # 分享歌曲或者视频
     def share_friend(is_song):
+        print('酷狗分享视频或歌曲 ' + datetime.now().__str__())
         if is_song:
             # 1. 点击进入播放页面
             input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
@@ -264,8 +264,8 @@ def kugou(pid, w, h):
 
 
 def zhongqing(pid, w, h):
-    # 时段奖励
     def time_reward():
+        print('中青看点时段奖励 ' + datetime.now().time().__str__())
         # 1. 点击领取
         # 有时候没有广告视频
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, gap=8)
@@ -292,8 +292,8 @@ def zhongqing(pid, w, h):
 
 
 def pinduoduo(pid, w, h):
-    # 定时红包
     def timed_envelope():
+        print('拼多多定时红包 ' + datetime.now().time().__str__())
         # 1. 点击现金签到
         input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
         # 2. 点击定时红包
@@ -397,6 +397,7 @@ def kuaiyin(pid, w, h):
 def dongfang(pid, w, h):
     # 时段奖励
     def time_reward():
+        print('东方头条时段奖励 ' + datetime.now().time().__str__())
         # 1. 点击领取奖励
         input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=3)
         # 2. 消除奖励页面
@@ -414,8 +415,8 @@ def dongfang(pid, w, h):
 
 
 def jukandian(pid, w, h):
-    # 时段奖励
     def time_reward():
+        print('聚看点时段奖励 ' + datetime.now().time().__str__())
         input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT)
         phone.go_back(pid)
 
@@ -522,6 +523,7 @@ def jukandian(pid, w, h):
 
 def kuge(pid, w, h):
     def share_song():
+        print('酷狗儿歌分享歌曲 ' + datetime.now().time().__str__())
         # 1. 点击进入全屏播放页面
         input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
         # 2. 点击右上角分享
@@ -541,6 +543,7 @@ def kuge(pid, w, h):
 
 def makan(pid, w, h):
     def time_reward():
+        print('蚂蚁看点时段奖励 ' + datetime.now().time().__str__())
         # 1. 点击领取
         input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
 
@@ -555,7 +558,7 @@ def makan(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.makan(pid, w, h)
         # 消除悬浮窗
-        phone.go_back(pid)
+        phone.go_back(pid, gap=1)
         app.makan_benefit_page(pid, w, h)
         # [x] 领金币
         get_coin()
@@ -583,23 +586,20 @@ def diandian(pid, w, h):
             phone.stop_app(pid, info.packages['diandian'])
 
 
-def toutiao_open_treasure(pid, w, h, gap=15):
-    """
-    今日头条开宝箱
-    """
-    # 1. 点击宝箱
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <== modify
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <== modify
-    # 3. 播放15s
-    time.sleep(gap)
-    # 4. 返回到任务页面
-    phone.go_back(pid)
-
-
 def toutiao(pid, w, h):
-    # 吃饭补贴
+    def open_treasure():
+        print('今日头条开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)  # <== modify
+        # 2. 点击看视频再领金币
+        input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <== modify
+        # 3. 播放15s
+        time.sleep(15)
+        # 4. 返回到任务页面
+        phone.go_back(pid)
+
     def meal_allowance():
+        print('今日头条吃饭补贴 ' + datetime.now().time().__str__())
         # 1. 获取吃饭补贴的位置
         eat_location = utils.current_words_location(pid, '饭')
         if eat_location is None:
@@ -616,6 +616,7 @@ def toutiao(pid, w, h):
 
     # 睡觉赚钱
     def sleep_money(is_sleep):
+        print('今日头条睡觉赚钱 ' + datetime.now().time().__str__())
         # 1. 获取睡觉赚钱的位置
         sleep_location = utils.current_words_location(pid, '睡觉')
         if sleep_location is None:
@@ -655,7 +656,7 @@ def toutiao(pid, w, h):
 
     # [x] 开宝箱
     # 每10分钟一次
-    toutiao_open_treasure(pid, w, h)
+    open_treasure()
 
     # 关闭头条
     phone.stop_app(pid, info.packages['toutiao'])

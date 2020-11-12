@@ -197,10 +197,7 @@ def toutiao(pid, w, h):
     # 3. 播放15s
     time.sleep(15)
     # 4. 返回到任务页面
-    phone.go_back(pid)
-
-    # [x] 顺便开宝箱
-    schedule.toutiao_open_treasure(pid, w, h)
+    phone.go_back(pid, gap=1)
 
 
 def kuaishou(pid, w, h):
