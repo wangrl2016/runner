@@ -334,7 +334,7 @@ def kuaiyin(pid, w, h):
     def offline_coin():
         print('快音离线收益 ' + datetime.now().__str__())
         # 1. 看视频领取100金币
-        input.tap(pid, w / 2, 8.0 * h / HEIGHT, gap=10)
+        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)  # <=== modify
         # 2. 播放30s
         time.sleep(30)
 
