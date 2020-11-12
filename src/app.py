@@ -170,24 +170,21 @@ def kuchang_benefit_page(pid, w, h):
 
 # ~~~~~~~~~~微视~~~~~~~~~~
 
-# def watch_weishi_video(pid, w, h, hour=8):
-#     """
-#     看微视视频
-#     """
-#     while datetime.now().hour.__eq__(hour):
-#         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-#     # 1. 收集现金
-#     input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
-#
-#
-# def full_watch_weishi_video(pid, w, h, hour):
-#     print('看微视视频 ' + datetime.now().__str__())
-#     # 1. 进入微视
-#     checkin.weishi(pid)
-#     # 2. 看视频
-#     watch_weishi_video(pid, w, h, hour)
-#     # 3. 退出程序
-#     phone.stop_app(pid, 'weishi')
+def watch_weishi_video(pid, w, h, sec):
+    print('看微视视频 ' + datetime.now().time().__str__())
+    # 1. 消除可能存在的悬浮窗
+    phone.go_back(pid, gap=1)
+    # 2. 从下往上翻页
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute.__lt__(minutes):
+            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour.__eq__(hour):
+            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+    # 3. 收集现金
+    input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
 
 
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
@@ -692,7 +689,7 @@ def diandian_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
-def daily_packet(pid, w, h):
+def diandian_daily_packet(pid, w, h):
     """
     天天领红包
     """

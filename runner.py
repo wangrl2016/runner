@@ -220,11 +220,14 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=7)
 
         # 酷狗唱唱斗歌版
+        # 微视视频
         while datetime.now().hour.__eq__(8):
             schedule_apps(pid, w, h)
 
-            # # [x] 看微视视频
-            # app.full_watch_weishi_video(pid, w, h, hour=8)
+            checkin.weishi(pid)
+            # [x] 看微视视频
+            app.watch_weishi_video(pid, w, h, sec=180)
+            phone.stop_app(pid, info.packages['weishi'])
 
             utils.tail_work(pid, w, h, hour=8)
 
@@ -262,19 +265,18 @@ def run(pid):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 分享映客极速版
-            # 1min赚0.045元
             app.share_yingke(pid, w, h, times=3)
             phone.stop_app(pid, info.packages['yingke'])
 
             checkin.yingke(pid, w, h)
             # [x] 看映客直播
-            # 20min赚0.25元
             app.watch_yingke_live(pid, w, h, sec=1200)
             phone.stop_app(pid, info.packages['yingke'])
 
             utils.tail_work(pid, w, h, hour=10)
 
         # 酷狗大字版
+        # 刷宝短视频
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
@@ -487,7 +489,7 @@ def run(pid):
             for i in range(0, 10):
                 checkin.diandian(pid, w, h)
                 # [x] 天天领红包
-                app.daily_packet(pid, w, h)
+                app.diandian_daily_packet(pid, w, h)
                 phone.stop_app(pid, info.packages['diandian'])
 
             checkin.diandian(pid, w, h)
