@@ -602,7 +602,7 @@ def toutiao(pid, w, h):
     def meal_allowance():
         print('今日头条吃饭补贴 ' + datetime.now().time().__str__())
         # 1. 获取吃饭补贴的位置
-        if '今日头条吃饭补贴' not in info.contexts['pid']:
+        if '今日头条吃饭补贴' not in info.contexts[pid]:
             eat_location = utils.current_words_location(pid, '饭')
             if eat_location is None:
                 print('没有获取到吃饭补贴的位置')
