@@ -657,7 +657,7 @@ def toutiao(pid, w, h):
         # 20:00-2:00为睡觉时间
         if hour.__eq__(20):
             sleep_money(False)
-        elif hour.__eq__(8):
+        elif hour.__eq__(6):
             sleep_money(True)
 
     # [x] 开宝箱
@@ -669,19 +669,17 @@ def toutiao(pid, w, h):
 
 
 def kuaishou(pid, w, h):
-    # 开宝箱
-    # 时间跨度依次递增
-    # 每天有次数限制
     def open_treasure():
+        print('快手开宝箱 ' + datetime.now().time().__str__())
         # 1. 点击开宝箱得金币
         input.tap(pid, 5.7 * w / WIDTH, (HEIGHT - 3.1) * h / HEIGHT)  # <== modify
         # 2. 返回到播放视频的页面
         phone.go_back(pid)
 
-    # [x] 看直播领金币
-    def watch_live():
-        # 1. 向上滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w / 2, h, gap=3, internal=200)
+    def watch_live(num):
+        print('快手看直播领金币 ' + datetime.now().__str__())
+        # 1. 向上滑动到页面底部
+        phone.swipe_down_to_up(pid, w / 2, h)
         # 2. 点击看直播按钮
         live_location = utils.current_words_location(pid, '看直播领金币')
         if live_location is None:
@@ -690,26 +688,26 @@ def kuaishou(pid, w, h):
         height = live_location['y'] + live_location['h']
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, height)
 
-        for i in range(0, 10):
+        for i in range(0, num):
             # 3. 观看30s
             time.sleep(30)
             # 4. 上滑出现下一个
-            phone.swipe_down_to_up(pid, w / 2, h / 2, internal=100, gap=5)
+            phone.swipe_down_to_up(pid, w / 2, h, gap=5)
 
         # 5. 返回到福利页面
-        phone.go_back(pid, gap=2)
+        phone.go_back(pid)
         # 6. 福利页面恢复原样
-        phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h)
 
     # 每隔一个小时开一次宝箱
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
         checkin.kuaishou(pid)
         app.kuaishou_benefit_page(pid, w, h)
 
-        if datetime.now().hour.__eq__(20):
+        if datetime.now().hour.__eq__(20) or datetime.now().hour.__eq__(22):
             # [x] 看直播领金币
             # 20:00-24:00
-            watch_live()
+            watch_live(num=5)
 
         # [x] 开宝箱
         open_treasure()
