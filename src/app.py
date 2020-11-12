@@ -188,8 +188,6 @@ def watch_weishi_video(pid, w, h, sec):
 
 
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
-
-# 进入福利页面
 def shuqi_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
@@ -489,8 +487,8 @@ def read_jukandian_article(pid, w, h, num):
         # 1. 刷新页面
         if i.__ne__(0):
             phone.swipe_up_to_down(pid, w / 2, h)
-        # 2. 进入文章
-        input.tap(pid, w / 2, h / 2, gap=3)
+        # 2. 查看详情进入文章
+        input.tap(pid, w * 2 / 3, 8.8 * h / HEIGHT, gap=3)  # <=== modify
         for j in range(0, 15):
             # 3. 浏览文章
             phone.swipe_down_to_up(pid, w / 2, h / 3, gap=2, internal=300)
