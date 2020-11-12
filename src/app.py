@@ -259,13 +259,13 @@ def watch_yingke_live(pid, w, h, sec):
     chat_with_anchor(times=3)
 
 
-def share_yingke(pid, w, h, times):
+def share_yingke_live(pid, w, h, times):
     """
     分享映客直播间
     """
     print('分享映客直播间 ' + datetime.now().__str__())
     # 1. 滑动到最下面
-    phone.swipe_down_to_up(pid, w / 2, h / 2, internal=100)
+    phone.swipe_down_to_up(pid, w / 2, h, internal=100)
 
     for i in range(0, times):
         # 2. 点击分享映客极速版
@@ -276,7 +276,7 @@ def share_yingke(pid, w, h, times):
         phone.go_back(pid)
 
     # 5. 滑动到最上面
-    phone.swipe_up_to_down(pid, w / 2, h / 2, internal=100)
+    phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~

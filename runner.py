@@ -264,7 +264,7 @@ def run(pid):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 分享映客极速版
-            app.share_yingke(pid, w, h, times=3)
+            app.share_yingke_live(pid, w, h, times=3)
             phone.stop_app(pid, info.packages['yingke'])
 
             checkin.yingke(pid, w, h)
