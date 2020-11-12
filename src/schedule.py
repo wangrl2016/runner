@@ -618,13 +618,16 @@ def toutiao(pid, w, h):
     def sleep_money(is_sleep):
         print('今日头条睡觉赚钱 ' + datetime.now().time().__str__())
         # 1. 获取睡觉赚钱的位置
-        sleep_location = utils.current_words_location(pid, '睡觉')
-        if sleep_location is None:
-            print('没有获取到睡觉赚钱的位置')
-            return
-        width = sleep_location['x'] + sleep_location['w']
-        height = sleep_location['y'] + sleep_location['h']
-        input.tap(pid, width, height)
+        if '今日头条睡觉' not in info.contexts[pid]:
+            sleep_location = utils.current_words_location(pid, '觉')
+            if sleep_location is None:
+                print('没有获取到睡觉赚钱的位置')
+                return
+            width = sleep_location['x'] + sleep_location['w']
+            height = sleep_location['y'] + sleep_location['h']
+            info.contexts[pid]['今日头条睡觉'] = str(width) + 'x' + str(height)
+        input.tap(pid, int(info.contexts[pid]['今日头条睡觉'].split('x')[0]),
+                  int(info.contexts[pid]['今日头条睡觉'].split('x')[1]))
 
         # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
