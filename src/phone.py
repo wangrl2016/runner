@@ -129,7 +129,7 @@ def stop_app(pid, package, gap=1):
     time.sleep(gap)
 
 
-def start_app(pid, activity, gap=15):
+def start_app(pid, activity, gap):
     """
     启动程序
     """

@@ -185,12 +185,12 @@ def ximalaya(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def wuba(pid, gap=15):
+def wuba(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def taobao(pid, gap=15):
+def taobao(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
@@ -200,17 +200,17 @@ def shuabao(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def huitoutiao(pid, gap=15):
+def huitoutiao(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def chejia(pid, gap=15):
+def chejia(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def qire(pid, gap=15):
+def qire(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 

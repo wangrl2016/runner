@@ -84,5 +84,5 @@ activities = {
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
 }
 
-# 程序的定时任务为25分钟
-SCHEDULE_TIME = 25
+# 程序的定时任务为30分钟
+SCHEDULE_TIME = 30
