@@ -34,7 +34,7 @@ def read_youliao_article(pid, w, h, num):
     for i in range(0, num):
         # 1. 下拉刷新
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击进入文章
         input.tap(pid, w / 2, h * 4 / 5)
         # 3. 阅读30s
@@ -278,7 +278,7 @@ def share_yingke(pid, w, h, times):
         phone.go_back(pid)
 
     # 5. 滑动到最上面
-    phone.swipe_up_to_down(pid, w, h / 2, internal=100)
+    phone.swipe_up_to_down(pid, w / 2, h / 2, internal=100)
 
 
 # ~~~~~~~~~~酷狗大字版~~~~~~~~~~
@@ -321,7 +321,7 @@ def read_huitoutiao_article(pid, w, h, num):
     for i in range(0, num):
         # 2. 获取文章目录
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, randrange(h / 2, h))
+            phone.swipe_up_to_down(pid, w / 2, randrange(h / 2, h))
         # 3. 阅读中间文章
         input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
         # 4. 滑动阅读
@@ -360,7 +360,7 @@ def read_zhongqing_article(pid, w, h, num):
     for i in range(0, num):
         # 1. 获取文章目录
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h / 3)
         # 3. 滑动阅读
@@ -380,7 +380,7 @@ def watch_zhongqing_video(pid, w, h, num):
     for i in range(0, num):
         # 2. 获取视频目录
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 3. 点击视频
         input.tap(pid, w / 2, h / 4)
         # 4. 播放30s
@@ -455,7 +455,7 @@ def tangdou_funny_video(pid, w, h, num):
     # 4. 返回上级页面
     phone.go_back(pid, gap=1)
     # 5. 向下滑动
-    phone.swipe_up_to_down(pid, w, h, gap=1, internal=100)
+    phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
 
 
 # ~~~~~~~~~~东方头条~~~~~~~~~~
@@ -467,7 +467,7 @@ def read_dongfang_article(pid, w, h, num):
     for i in range(0, num):
         # 1. 刷新页面
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 进入文章
         input.tap(pid, w / 2, h / 2, gap=3)
         for j in range(0, 15):
@@ -488,7 +488,7 @@ def read_jukandian_article(pid, w, h, num):
     for i in range(0, num):
         # 1. 刷新页面
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 进入文章
         input.tap(pid, w / 2, h / 2, gap=3)
         for j in range(0, 15):
@@ -506,7 +506,7 @@ def watch_jukandian_video(pid, w, h, num):
     for i in range(0, num):
         if i.__ne__(0):
             # 2. 刷新页面
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 3. 点击播放
         input.tap(pid, w / 2, h / 5)
         # 4. 播放30s
@@ -548,14 +548,6 @@ def watch_kankuai_advert(pid, w, h, num):
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
-#
-# def shuabao_benefit_page(pid, w, h):
-#     # 1. 点击福利
-#     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-#     # 2. 回退关闭悬浮窗
-#     phone.go_back(pid)
-#
-#
 def watch_shuabao_video(pid, w, h, num):
     """
     看刷宝视频
@@ -605,7 +597,7 @@ def watch_shuabao_video(pid, w, h, num):
 #     input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
 #     for i in range(0, num):
 #         # 2. 刷新页面
-#         phone.swipe_up_to_down(pid, w, h)
+#         phone.swipe_up_to_down(pid, w / 2, h)
 #         # 3. 点击播放
 #         input.tap(pid, w / 2, h / 3)
 #         # ４. 播放35s
@@ -668,7 +660,7 @@ def read_makan_article(pid, w, h, num):
         # 3. 返回上级
         phone.go_back(pid)
         # 4. 刷新页面
-        phone.swipe_up_to_down(pid, w, h)
+        phone.swipe_up_to_down(pid, w / 2, h)
 
 
 def makan_search_coin(pid, w, h, num):
@@ -720,7 +712,7 @@ def read_diandian_article(pid, w, h, num):
     for i in range(0, num):
         # 1. 向下刷新页面
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h * 2 / 3, gap=5)
         for j in range(0, 8):
@@ -747,7 +739,7 @@ def read_toutiao_article(pid, w, h, num):
     print('阅读头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
-        phone.swipe_up_to_down(pid, w, h)
+        phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h * 2 / 5)
         # 3. 滑动阅读
@@ -768,7 +760,7 @@ def toutiao_video(pid, w, h, num):
     for i in range(0, num):
         # 1. 向下刷新视频
         if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击播放
         input.tap(pid, w / 2, h / 3)
         # 3. 播放60s

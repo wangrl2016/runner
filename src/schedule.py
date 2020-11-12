@@ -225,7 +225,7 @@ def shuqi(pid, w, h):
         # 4. 回退到福利页面
         phone.go_back(pid, gap=1)
         # 5. 恢复原貌
-        phone.swipe_up_to_down(pid, w, h, gap=1, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
 
     if datetime.now().hour.__eq__(8):
         checkin.shuqi(pid, w, h)
@@ -754,7 +754,7 @@ def kuaishou(pid, w, h):
         # 5. 返回到福利页面
         phone.go_back(pid, gap=2)
         # 6. 福利页面恢复原样
-        phone.swipe_up_to_down(pid, w, h, gap=1, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
 
     # 每隔一个小时开一次宝箱
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
@@ -818,7 +818,7 @@ def douyin(pid, w, h):
         # 4. 返回到福利页面
         phone.go_back(pid)
         # 5. 滑到最上面
-        phone.swipe_up_to_down(pid, w, h, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
     # 吃饭补贴
     def meal_allowance():
@@ -842,7 +842,7 @@ def douyin(pid, w, h):
         # 6. 返回到福利页面
         phone.go_back(pid, times=2, gap=1)
         # 7. 滑到最上面
-        phone.swipe_up_to_down(pid, w, h, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
     # 游戏抽奖
     def game_lottery():
