@@ -58,10 +58,7 @@ def fanqie(pid, w, h):
     # 4. 播放视频30s
     time.sleep(30)
     # 5. 点击关闭回退到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
-
-    # [x] 顺便开宝箱
-    schedule.fanqie_open_treasure(pid, w, h)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
 
 
 def fanchang(pid, w, h):
@@ -73,10 +70,7 @@ def fanchang(pid, w, h):
     # 3. 播放视频30s
     time.sleep(30)
     # 4. 点击关闭回退到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)  # <== modify
-
-    # [x] 顺便开宝箱
-    schedule.fanchang_open_treasure(pid, w, h)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
 
 
 # noinspection PyUnusedLocal

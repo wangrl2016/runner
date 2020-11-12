@@ -42,19 +42,19 @@ def jingdong(pid, w, h):
     return None
 
 
-# 番茄开宝箱
-def fanqie_open_treasure(pid, w, h):
-    # 1. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)  # <= modify
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 8.7 * h / HEIGHT)
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
-
-
 def fanqie(pid, w, h):
+    # 番茄开宝箱
+    def open_treasure():
+        print('番茄小说开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击开宝箱得金币
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.3) * h / HEIGHT)  # <= modify
+        # 2. 点击看视频再领金币
+        input.tap(pid, w / 2, 8.7 * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <= modify
+
     # 分享好书给好友
     def book_share():
         # 1. 点击任意一本书
@@ -91,97 +91,34 @@ def fanqie(pid, w, h):
 
     # [x] 开宝箱
     # 每20分钟一次开宝箱任务
-    fanqie_open_treasure(pid, w, h)
+    open_treasure()
 
     # 关闭番茄
     phone.stop_app(pid, info.packages['fanqie'])
 
 
-# 番茄畅听开宝箱
-def fanchang_open_treasure(pid, w, h):
-    # 1. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 9.9 * h / HEIGHT)  # <= modify
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
-
-
 def fanchang(pid, w, h):
-    # 完整的开宝箱流程
-    def full_fanchang_open_treasure():
+    def open_treasure():
+        print('番茄畅听开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击开宝箱得金币
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
+        # 2. 点击看视频再领金币
+        input.tap(pid, w / 2, 9.9 * h / HEIGHT)  # <= modify
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回到福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
+
+    # 1, 4, 7, 10, 13, 16, 19, 22上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23下半时段
+    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.fanchang(pid, w, h)
         app.fanchang_benefit_page(pid, w, h)
-        fanchang_open_treasure(pid, w, h)
+        # [x] 番茄畅听开宝箱
+        open_treasure()
         phone.stop_app(pid, info.packages['fanchang'])
 
-    # # 收听音频
-    # def listen_sound():
-    #     # 1. 点击中间下方的播放界面
-    #     input.tap(pid, w / 2, (HEIGHT - 0.6) * h / HEIGHT)
-
-    # def collect_listen_coin():
-    #     # 1. 点击中间下方的播放界面
-    #     listen_sound()
-    #     # 2. 点击立即领取
-    #     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 10.0 * h / HEIGHT)
-    #     for i in range(0, 9):
-    #         # 3. 点击领红包
-    #         input.tap(pid, w / 2, (HEIGHT - 0.9) * h / HEIGHT)
-    #         # 4. 点击看视频再领金币
-    #         input.tap(pid, w / 2, 8.3 * h / HEIGHT)
-    #         # 5. 播放30s
-    #         time.sleep(30)
-    #         # 返回到领取界面
-    #         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-
-    # # [x] 听番畅音频
-    # # 08:00-09:00-10:00-11:00-12:00
-    # if datetime.now().minute.__lt__(SCHEDULE_TIME):
-    #     if datetime.now().hour.__eq__(8):
-    #         checkin.fanchang(pid, w, h)
-    #         # [x] 收听番唱音频
-    #         listen_sound()
-    #         # 回退到程序主页
-    #         phone.go_back(pid)
-    #         # 后台播放
-    #         phone.go_home(pid)
-    #     elif datetime.now().hour.__eq__(9):
-    #         # 解锁广告
-    #         # 1. 进入番畅音频
-    #         checkin.fanchang(pid, w, h)
-    #         listen_sound()
-    #         # 2. 点击看小视频免费听
-    #         input.tap(pid, 4.7 * w / WIDTH, 0.9 * h / HEIGHT)
-    #         # 3. 播放45s
-    #         time.sleep(45)
-    #         # 4. 点击关闭
-    #         # 播放页面
-    #         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-    #         # 5. 回退到主页
-    #         phone.go_back(pid)
-    #         # ６．后台播放
-    #         phone.go_home(pid)
-    #     elif datetime.now().hour.__eq__(12):
-    #         checkin.fanchang(pid, w, h)
-    #         collect_listen_coin()
-    #         phone.stop_app(pid, info.packages['fanchang'])
-
-    # [x] 开宝箱
-    # 每个小时一次
-    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME):
-        full_fanchang_open_treasure()
-    elif (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME):
-        full_fanchang_open_treasure()
-
-
-# # noinspection PyUnusedLocal
-# def weishi(pid, w, h):
-#     return None
 
 def kuchang(pid, w, h):
     # 看创意视频
