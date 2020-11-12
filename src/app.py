@@ -413,12 +413,9 @@ def watch_kuaiyin_video(pid, w, h):
     看快音视频
     """
     # 1. 点击播放
-    input.tap(pid, 1.1 * w / WIDTH, 4.4 * h / HEIGHT)
-    # 2. 播放40s
-    time.sleep(40)
-    # 3. 关闭返回上级页面
-    # TODO: 关闭的位置
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT)
+    input.tap(pid, 1.1 * w / WIDTH, 4.4 * h / HEIGHT, gap=10)
+    # 2. 播放30s
+    time.sleep(30)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~

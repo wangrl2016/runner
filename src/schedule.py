@@ -342,7 +342,7 @@ def kuaiyin(pid, w, h):
     def open_treasure():
         print('快音开宝箱 ' + datetime.now().__str__())
         # 1. 点击宝箱
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.5 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.0 * h / HEIGHT)
         # 2. 点击看视频再领金币
         input.tap(pid, w / 2, 7.8 * h / HEIGHT, gap=10)
         # 3. 播放30s

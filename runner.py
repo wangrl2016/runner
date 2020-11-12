@@ -69,7 +69,7 @@ def run(pid):
                         print(line)
 
     # 文字识别
-    utils.print_current_location(pid)
+    # utils.print_current_location(pid)
 
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
