@@ -344,7 +344,7 @@ def kuaiyin(pid, w, h):
         # 1. 点击宝箱
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.0 * h / HEIGHT)
         # 2. 点击看视频再领金币
-        input.tap(pid, w / 2, 7.8 * h / HEIGHT, gap=10)
+        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
         # 3. 播放30s
         time.sleep(30)
 
