@@ -283,6 +283,11 @@ def run(pid):
             # 下次进入的时候关闭
             app.kugou_background_music(pid, w, h)
 
+            checkin.shuabao(pid)
+            # [x] 看刷宝视频
+            app.watch_shuabao_video(pid, w, h, num=30)
+            phone.stop_app(pid, info.packages['shuabao'])
+
             utils.tail_work(pid, w, h, hour=11)
 
         # 惠头条
@@ -357,14 +362,6 @@ def run(pid):
             app.tangdou_benefit_page(pid, w, h)
             app.tangdou_funny_video(pid, w, h, num=30)
             phone.stop_app(pid, info.packages['tangdou'])
-
-            # # [x] 看刷宝视频
-            # # 1. 打开程序
-            # checkin.shuabao(pid)
-            # # 2. 看刷宝视频
-            # app.shuabao_video(pid, w, h, num=50)
-            # # 3. 关闭程序
-            # phone.stop_app(pid, info.packages['shuabao'])
 
             utils.tail_work(pid, w, h, hour=16)
 

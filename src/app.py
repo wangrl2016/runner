@@ -212,11 +212,11 @@ def read_shuqi_novel(pid, w, h, sec=300):
         while datetime.now().minute < minutes:
             # 3. 滑动阅读小说
             # 防止点击广告
-            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(3, 5))
     else:
         hour = datetime.now().hour
         while datetime.now().hour.__eq__(hour):
-            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(3, 5))
 
 
 def shuqi_video_coin(pid, w, h):
@@ -559,24 +559,14 @@ def watch_kankuai_advert(pid, w, h, num):
 #     phone.go_back(pid)
 #
 #
-# def watch_shuabao_video(pid, w, h, hour):
-#     """
-#     看刷宝视频
-#     """
-#     print('看刷宝视频 ' + datetime.now().__str__())
-#     while datetime.now().hour.__eq__(hour):
-#         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-#
-#
-# def shuabao_video(pid, w, h, num):
-#     """
-#     以次数来看刷宝视频
-#     """
-#     print('看刷宝视频 ' + datetime.now().__str__())
-#     for i in range(0, num):
-#         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
-#
-#
+def watch_shuabao_video(pid, w, h, num):
+    """
+    看刷宝视频
+    """
+    print('看刷宝短视频 ' + datetime.now().time().__str__())
+    for i in range(0, num):
+        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+
 
 #
 #
@@ -945,7 +935,7 @@ def wuba_benefit_page(pid, w, h):
 def watch_wuba_video(pid, w, h, num):
     print('看五八同城广告视频 ' + datetime.now().time().__str__())
     # 1. 点击看视频赚金币
-    input.tap(pid, w / 2, 10.8 * h / HEIGHT, gap=10)
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=10)  # <== modify
     for i in range(0, num):
         # 2. 播放30s
         time.sleep(30)

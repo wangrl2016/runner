@@ -195,7 +195,7 @@ def taobao(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def shuabao(pid, gap=15):
+def shuabao(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
