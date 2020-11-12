@@ -717,42 +717,31 @@ def read_diandian_article(pid, w, h, num):
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
 def toutiao_benefit_page(pid, w, h, gap=3):
-    """
-    进入今日头条福利页面
-    """
     # 1. 点击福利
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
 
 def read_toutiao_article(pid, w, h, num):
-    """
-    阅读今日头条文章
-    """
-    print('阅读头条文章 ' + datetime.now().__str__())
+    print('阅读今日头条文章 ' + datetime.now().__str__())
     for i in range(0, num):
         # 1. 获取文章目录
         phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
         input.tap(pid, w / 2, h * 2 / 5)
-        # 3. 滑动阅读
+        # 3. 滑动阅读30s
         for j in range(0, 10):
-            # 阅读30s
-            phone.swipe_down_to_up(pid, w / 2, h / 2, gap=2, internal=100)
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(2, 5))
         # 4. 返回上级目录
         phone.go_back(pid)
 
 
 def toutiao_video(pid, w, h, num):
-    """
-    看头条视频
-    """
     print('看今日头条视频 ' + datetime.now().__str__())
     # 1. 点击下方视频按钮
     input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 1. 向下刷新视频
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w / 2, h)
+        phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击播放
         input.tap(pid, w / 2, h / 3)
         # 3. 播放60s
