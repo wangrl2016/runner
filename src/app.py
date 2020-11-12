@@ -39,7 +39,7 @@ def read_youliao_article(pid, w, h, num):
         input.tap(pid, w / 2, h * 4 / 5)
         # 3. 阅读30s
         for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w, h, gap=3)
+            phone.swipe_down_to_up(pid, w / 2, h, gap=3)
         # 4. 返回上级目录
         phone.go_back(pid)
 
@@ -70,7 +70,7 @@ def jingdong_good(pid, w, h, num):
     for i in range(0, num):
         # 2. 逛10s
         for j in range(0, 2):
-            phone.swipe_down_to_up(pid, w, h, gap=5)
+            phone.swipe_down_to_up(pid, w / 2, h, gap=5)
         # 3. 点击下一个商品
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.4 * h / HEIGHT)  # <=== modify
 
@@ -86,7 +86,7 @@ def jingdong_activity(pid, w, h, num):
     for i in range(0, num):
         # 2. 逛15s
         for j in range(0, 3):
-            phone.swipe_down_to_up(pid, w, h, 5)
+            phone.swipe_down_to_up(pid, w / 2, h, 5)
         # 3. 点击下一个商品
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
 
@@ -105,7 +105,7 @@ def jingdong_video_coin(pid, w, h, hour):
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
@@ -178,11 +178,11 @@ def watch_weishi_video(pid, w, h, sec):
     minutes = sec / 60 + datetime.now().minute
     if minutes < 60:
         while datetime.now().minute.__lt__(minutes):
-            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     else:
         hour = datetime.now().hour
         while datetime.now().hour.__eq__(hour):
-            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     # 3. 收集现金
     input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
 
@@ -252,7 +252,7 @@ def watch_yingke_live(pid, w, h, sec):
         print('和主播聊天 ' + datetime.now().__str__())
         for i in range(0, times):
             # 1. 换一个主播
-            phone.swipe_down_to_up(pid, w, h)
+            phone.swipe_down_to_up(pid, w / 2, h)
             # 2. 点击聊天文字
             # [x] 和主播聊天
             input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)
@@ -267,7 +267,7 @@ def share_yingke(pid, w, h, times):
     """
     print('分享映客直播间 ' + datetime.now().__str__())
     # 1. 滑动到最下面
-    phone.swipe_down_to_up(pid, w, h / 2, internal=100)
+    phone.swipe_down_to_up(pid, w / 2, h / 2, internal=100)
 
     for i in range(0, times):
         # 2. 点击分享映客极速版
@@ -326,7 +326,7 @@ def read_huitoutiao_article(pid, w, h, num):
         input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
         # 4. 滑动阅读
         for j in range(0, randrange(9, 12)):
-            phone.swipe_down_to_up(pid, w, randrange(h / 2, h), randrange(2, 5), internal=300)
+            phone.swipe_down_to_up(pid, w / 2, randrange(h / 2, h), randrange(2, 5), internal=300)
         # 5. 返回上级目录
         phone.go_back(pid)
 
@@ -365,7 +365,7 @@ def read_zhongqing_article(pid, w, h, num):
         input.tap(pid, w / 2, h / 3)
         # 3. 滑动阅读
         for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w, h)
+            phone.swipe_down_to_up(pid, w / 2, h)
         # 4. 返回上级目录
         phone.go_back(pid)
 
@@ -440,7 +440,7 @@ def tangdou_funny_video(pid, w, h, num):
     刷有趣短视频
     """
     # 1. 向上滑动
-    phone.swipe_down_to_up(pid, w, h, gap=3)
+    phone.swipe_down_to_up(pid, w / 2, h, gap=3)
     # 2. 点击有趣短视频按钮
     video_location = utils.current_words_location(pid, '有趣')
     if video_location is None:
@@ -450,7 +450,7 @@ def tangdou_funny_video(pid, w, h, num):
     input.tap(pid, w / 2, height)
     # 3. 刷视频
     for i in range(0, num):
-        phone.swipe_down_to_up(pid, w, h)
+        phone.swipe_down_to_up(pid, w / 2, h)
         time.sleep(15)
     # 4. 返回上级页面
     phone.go_back(pid, gap=1)
@@ -472,7 +472,7 @@ def read_dongfang_article(pid, w, h, num):
         input.tap(pid, w / 2, h / 2, gap=3)
         for j in range(0, 15):
             # 3. 浏览文章
-            phone.swipe_down_to_up(pid, w, h / 3, gap=2, internal=300)
+            phone.swipe_down_to_up(pid, w / 2, h / 3, gap=2, internal=300)
         # 4. 返回上级目录
         phone.go_back(pid, gap=1)
 
@@ -493,7 +493,7 @@ def read_jukandian_article(pid, w, h, num):
         input.tap(pid, w / 2, h / 2, gap=3)
         for j in range(0, 15):
             # 3. 浏览文章
-            phone.swipe_down_to_up(pid, w, h / 3, gap=2, internal=300)
+            phone.swipe_down_to_up(pid, w / 2, h / 3, gap=2, internal=300)
         # 4. 返回上级目录
         phone.go_back(pid, gap=1)
 
@@ -521,7 +521,7 @@ def watch_jukandian_svideo(pid, w, h, num):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
     for i in range(0, num):
         # 2. 看小视频
-        phone.swipe_down_to_up(pid, w, h, randrange(6, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(6, 16))
     # 3. 返回上级页面
     phone.go_back(pid, gap=1)
 
@@ -562,7 +562,7 @@ def watch_shuabao_video(pid, w, h, num):
     """
     print('看刷宝短视频 ' + datetime.now().time().__str__())
     for i in range(0, num):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 #
@@ -585,7 +585,7 @@ def watch_shuabao_video(pid, w, h, num):
 #     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 #     while datetime.now().hour.__eq__(hour):
 #         # TODO: 中途出现彩蛋需要点击
-#         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+#         phone.swipe_down_to_up(pid, w/2, h, randrange(5, 16))
 #
 #
 # def full_watch_qutoutiao_svideo(pid, w, h, hour):
@@ -622,7 +622,7 @@ def watch_shuabao_video(pid, w, h, num):
 #     input.tap(pid, w / 3, h / 3)
 #     # 3. 滑动小视频
 #     while datetime.now().hour.__eq__(hour):
-#         phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+#         phone.swipe_down_to_up(pid, w/2, h, randrange(5, 16))
 #
 
 
@@ -634,7 +634,7 @@ def watch_douhuo_video(pid, w, h, sec=300):
     input.tap(pid, w / 3, h / 3)
     # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w * 2 / 3, h * 2 / 3, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 3, h * 2 / 3, randrange(5, 16))
 
 
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
@@ -663,7 +663,7 @@ def read_makan_article(pid, w, h, num):
         input.tap(pid, w / 2, h / 3)
         for j in range(0, 10):
             # 2. 向上滑动
-            phone.swipe_down_to_up(pid, w, h, gap=3)
+            phone.swipe_down_to_up(pid, w / 2, h, gap=3)
         # TODO: 如何解决可能出现的彩蛋
         # 3. 返回上级
         phone.go_back(pid)
@@ -725,7 +725,7 @@ def read_diandian_article(pid, w, h, num):
         input.tap(pid, w / 2, h * 2 / 3, gap=5)
         for j in range(0, 8):
             # 3. 向上滑动15s
-            phone.swipe_down_to_up(pid, w, h, gap=2)
+            phone.swipe_down_to_up(pid, w / 2, h, gap=2)
         # 4. 返回上级
         phone.go_back(pid, gap=2)
 
@@ -753,7 +753,7 @@ def read_toutiao_article(pid, w, h, num):
         # 3. 滑动阅读
         for j in range(0, 10):
             # 阅读30s
-            phone.swipe_down_to_up(pid, w, h / 2, gap=2, internal=100)
+            phone.swipe_down_to_up(pid, w / 2, h / 2, gap=2, internal=100)
         # 4. 返回上级目录
         phone.go_back(pid)
 
@@ -793,7 +793,7 @@ def watch_kuaishou_video(pid, w, h, hour):
     看快手视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 # 从打开到关闭看快手视频的完整过程
@@ -842,7 +842,7 @@ def watch_douyin_video(pid, w, h, hour=3):
     看抖音视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 def full_watch_douyin_video(pid, w, h, hour):
@@ -873,7 +873,7 @@ def watch_huoshan_video(pid, w, h, hour=4):
     看火山视频
     """
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 def full_watch_huoshan_video(pid, w, h, hour):
@@ -955,7 +955,7 @@ def chejia_benefit_page(pid, w, h):
 def chejia_benefit_video(pid, w, h, num):
     print('观看汽车之家福利视频 ' + datetime.now().time().__str__())
     # 1. 滑动进入到最下面
-    phone.swipe_down_to_up(pid, w, h)
+    phone.swipe_down_to_up(pid, w / 2, h)
     for i in range(0, num):
         # 2. 点击观看视频
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT, gap=10)

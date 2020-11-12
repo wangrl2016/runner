@@ -29,8 +29,8 @@ def swipe_down_to_up(pid, w, h, gap=3, internal=200):
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'swipe',
-                    str(int(w / 2)), str(int(h * 3 / 4)),
-                    str(int(w / 2)), str(int(h * 1 / 4)),
+                    str(int(w)), str(int(h * 3 / 4)),
+                    str(int(w)), str(int(h * 1 / 4)),
                     str(internal)])
     time.sleep(gap)
 
@@ -42,8 +42,8 @@ def swipe_up_to_down(pid, w, h, gap=3, internal=200):
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
-                     str(int(w / 2)), str(int(h * 1 / 4)),
-                     str(int(w / 2)), str(int(h * 3 / 4)),
+                     str(int(w)), str(int(h * 1 / 4)),
+                     str(int(w)), str(int(h * 3 / 4)),
                      str(internal)])
     time.sleep(gap)
 
@@ -225,7 +225,7 @@ def sleep_to_weak(pid, w, h, gap=300):
     if not display_on(pid):
         print("尝试再次唤醒手机 " + datetime.now().hour.__str__())
         wakeup(pid, 3)
-    swipe_down_to_up(pid, w, h, internal=100)
+    swipe_down_to_up(pid, w / 2, h, internal=100)
 
 
 def get_size(pid):

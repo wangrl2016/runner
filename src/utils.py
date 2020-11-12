@@ -40,7 +40,7 @@ def schedule_apps(pid, w, h):
         checkin.kuaishou(pid)
         # 从下往上翻页
         while datetime.now().minute < SCHEDULE_TIME:
-            phone.swipe_down_to_up(pid, w, h, randrange(5, 16))
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
         phone.stop_app(pid, info.packages['kuaishou'])
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):

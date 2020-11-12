@@ -217,7 +217,7 @@ def shuqi(pid, w, h):
     def shuqi_invent_friend():
         print("邀请书友 " + datetime.now().__str__())
         # 1. 下滑到最下
-        phone.swipe_down_to_up(pid, w, h, gap=2, internal=100)
+        phone.swipe_down_to_up(pid, w / 2, h, gap=2, internal=100)
         # 2. 点击邀请书友
         input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=3)
         # 3. 点击微信好友
@@ -736,7 +736,7 @@ def kuaishou(pid, w, h):
     # [x] 看直播领金币
     def watch_live():
         # 1. 向上滑动页面打开看直播领金币
-        phone.swipe_down_to_up(pid, w, h, gap=3, internal=200)
+        phone.swipe_down_to_up(pid, w / 2, h, gap=3, internal=200)
         # 2. 点击看直播按钮
         live_location = utils.current_words_location(pid, '看直播领金币')
         if live_location is None:
@@ -749,7 +749,7 @@ def kuaishou(pid, w, h):
             # 3. 观看30s
             time.sleep(30)
             # 4. 上滑出现下一个
-            phone.swipe_down_to_up(pid, w, h / 2, internal=100, gap=5)
+            phone.swipe_down_to_up(pid, w / 2, h / 2, internal=100, gap=5)
 
         # 5. 返回到福利页面
         phone.go_back(pid, gap=2)
@@ -808,7 +808,7 @@ def douyin(pid, w, h):
     # 睡觉赚钱
     def sleep_money(is_sleep):
         # 1. 下滑到最下面
-        phone.swipe_down_to_up(pid, w, h, internal=100)
+        phone.swipe_down_to_up(pid, w / 2, h, internal=100)
         # 2. 点击睡觉赚金币
         # 可能点到中间某个部位导致无效
         input.tap(pid, w / 3, 3.6 * h / HEIGHT)  # <==== modify
@@ -823,7 +823,7 @@ def douyin(pid, w, h):
     # 吃饭补贴
     def meal_allowance():
         # 1. 下滑任务页面到最下面
-        phone.swipe_down_to_up(pid, w, h, gap=5)
+        phone.swipe_down_to_up(pid, w / 2, h, gap=5)
 
         eat_location = utils.current_words_location(pid, '饭')
         if eat_location is None:

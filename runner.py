@@ -21,7 +21,7 @@ def cycle(pid):
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
     # 滑动手机打开屏幕
-    phone.swipe_down_to_up(pid, w, h)
+    phone.swipe_down_to_up(pid, w / 2, h)
     # 回到手机主页面
     phone.go_home(pid)
 
@@ -74,7 +74,7 @@ def run(pid):
     # 获取手机的大小
     (w, h) = phone.get_size(pid)
     # 滑动手机打开屏幕
-    phone.swipe_down_to_up(pid, w, h)
+    phone.swipe_down_to_up(pid, w / 2, h)
     # 回到手机主页面
     phone.go_home(pid)
 
