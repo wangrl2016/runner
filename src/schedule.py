@@ -293,16 +293,17 @@ def zhongqing(pid, w, h):
 
 def pinduoduo(pid, w, h):
     def timed_envelope():
-        print('拼多多定时红包 ' + datetime.now().time().__str__())
-        # 1. 点击现金签到
+        print('拼多多签到领钱 ' + datetime.now().time().__str__())
+        # 1. 点击签到领钱
         input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
-        # 2. 点击定时红包
-        input.tap(pid, 0.8 * w / WIDTH, 5.0 * h / HEIGHT)  # <= modify
-        # 3. 点击开
-        input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
-        # 4. 点击限时福利
-        # 提示获取签到金成功
-        input.tap(pid, 5.5 * w / WIDTH, 6.0 * h / HEIGHT)
+        # 2. 点击领取
+        input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
+        # 3. 点击定时领现金
+        input.tap(pid, 1.3 * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT, gap=3)  # <= modify
+        # 4. 点击开
+        input.tap(pid, w / 2, 1.0 * h / HEIGHT, gap=3)
+        # 5. 三选一
+        input.tap(pid, w / 2, h / 2, gap=2)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if (datetime.now().hour % 5).__eq__(0):
