@@ -226,11 +226,7 @@ def douyin(pid, w, h):
     # 5. 播放30s
     time.sleep(30)
     # 6. 退出到播放页面
-    phone.go_back(pid, times=3)
-
-    # [x] 顺便开宝箱
-    app.douyin_benefit_page(pid, w, h, gap=3)
-    schedule.douyin_open_treasure(pid, w, h)
+    phone.go_back(pid, gap=1)
 
 
 def huoshan(pid, w, h):
@@ -245,9 +241,6 @@ def huoshan(pid, w, h):
     time.sleep(30)
     # 5. 返回到福利页面
     phone.go_back(pid)
-
-    # [x] 顺便开宝箱
-    schedule.huoshan_open_treasure(pid, w, h)
 
 
 def qutoutiao(pid, w, h):

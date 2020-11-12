@@ -715,21 +715,20 @@ def kuaishou(pid, w, h):
         phone.stop_app(pid, info.packages['kuaishou'])
 
 
-# 开宝箱得金币
-def douyin_open_treasure(pid, w, h):
-    # 1. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <== modify
-    # 2. 点击看广告视频再赚金币
-    input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <== modify
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 返回到播放页面
-    # 存在超过30s的广告需要返回三次
-    # 利用播放页面需要快速两次才能退出
-    phone.go_back(pid, times=3, gap=3)
-
-
 def douyin(pid, w, h):
+    def open_treasure():
+        print('抖音开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击开宝箱得金币
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 1.1) * h / HEIGHT)  # <== modify
+        # 2. 点击看广告视频再赚金币
+        input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <== modify
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回到播放页面
+        # 存在超过30s的广告需要返回三次
+        # 利用播放页面需要快速两次才能退出
+        phone.go_back(pid, times=3, gap=3)
+
     # 限时任务赚金币
     def limit_duty():
         print('抖音限时任务赚金币 ' + datetime.now().__str__())
@@ -821,7 +820,7 @@ def douyin(pid, w, h):
 
     # [x] 开宝箱得金币
     # 每20分钟一次
-    douyin_open_treasure(pid, w, h)
+    open_treasure()
 
     app.douyin_benefit_page(pid, w, h)
     # [x] 限时任务赚金币
@@ -832,22 +831,17 @@ def douyin(pid, w, h):
     phone.stop_app(pid, info.packages['douyin'])
 
 
-# 火山开宝箱
-def huoshan_open_treasure(pid, w, h):
-    # 1. 点击开宝箱得金币
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
-    # 2. 点击看视频金币翻倍按钮
-    input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 返回到福利页面
-    phone.go_back(pid, gap=2)
-
-
 def huoshan(pid, w, h):
-    def benefit_page():
-        # 1. 点击红包
-        input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    def open_treasure():
+        print('火山视频开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击开宝箱得金币
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.1) * h / HEIGHT)  # <= modify
+        # 2. 点击看视频金币翻倍按钮
+        input.tap(pid, w / 2, 9.4 * h / HEIGHT)  # <= modify
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回到福利页面
+        phone.go_back(pid, gap=2)
 
     # 看视频赚海量金币
     def video_money():
@@ -873,7 +867,6 @@ def huoshan(pid, w, h):
     #         # 5. 返回到福利页面
     #         phone.go_back(pid)
 
-    # 睡觉赚金币
     def sleep_money(is_sleep):
         print('火山睡觉赚钱 ' + datetime.now().__str__())
         # 1. 点击睡觉赚金币
@@ -884,9 +877,8 @@ def huoshan(pid, w, h):
         # 3. 返回到回到福利页面
         phone.go_back(pid)
 
-    # 打开火山
     checkin.huoshan(pid)
-    benefit_page()
+    app.huoshan_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # if datetime.now().hour.__eq__(1):
@@ -910,7 +902,7 @@ def huoshan(pid, w, h):
 
     # [x] 开宝箱
     # 每20分钟一次
-    huoshan_open_treasure(pid, w, h)
+    open_treasure()
 
     # 关闭火山
     phone.stop_app(pid, info.packages['huoshan'])
@@ -938,16 +930,16 @@ def qutoutiao(pid, w, h):
         phone.stop_app(pid, info.packages['qutoutiao'])
 
 
-# noinspection PyUnusedLocal
 def baidu(pid, w, h):
     # 时段奖励
     def time_reward():
+        print('百度时段奖励 ' + datetime.now().time().__str__())
         # 1. 点击时段奖励
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 0.9 * h / HEIGHT)
         # 2. 返回到程序主页
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 2).__eq__(0):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 3).__eq__(0):
         checkin.baidu(pid)
         # [x] 时段奖励
         time_reward()
