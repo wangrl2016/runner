@@ -11,11 +11,6 @@ def midu(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def youliao(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
 def wukong(pid, w, h):
     return None
 

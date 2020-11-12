@@ -17,13 +17,6 @@ def midu(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def youliao(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
-
-
 def wukong(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -87,6 +80,13 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
+def qire(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
+
+
 def zhongqing(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -106,6 +106,13 @@ def kuaiyin(pid, w, h, gap=15):
     phone.go_home(pid)
     # 2. 启动程序
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
+
+
+def quhongbao(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
 def dongfang(pid, w, h, gap=15):
@@ -210,16 +217,6 @@ def chejia(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def qire(pid, gap=10):
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
-def quhongbao(pid, gap=15):
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def hongshi(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
@@ -263,7 +260,7 @@ def tangdou(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-# 48-72
+# 49-72
 
 def weixin(pid, gap=10):
     phone.start_app(pid, activities[
