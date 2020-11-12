@@ -25,10 +25,10 @@ packages = {}
 
 activities = {
     # 1-24
-    'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
-    'youliao': '#com.youliao.topic/.TrueMainActivity',
-    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
-    'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
+    'toutiao': 'com.ss.android.article.lite/.activity.SplashActivity',
+    'kuaishou': 'com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
+    'douyin': 'com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
+    'huoshan': 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
 
     'jingdong': '#com.jd.jdlite/.MainFrameActivity',
     'fanqie': '#com.dragon.read/.pages.main.MainFragmentActivity',
@@ -53,10 +53,10 @@ activities = {
     'diandian': '#com.yingliang.clicknews/.MainActivity',
 
     # 24-48
-    'toutiao': 'com.ss.android.article.lite/.activity.SplashActivity',
-    'kuaishou': 'com.kuaishou.nebula/com.yxcorp.gifshow.HomeActivity',
-    'douyin': 'com.ss.android.ugc.aweme.lite/com.ss.android.ugc.aweme.splash.SplashActivity',
-    'huoshan': 'com.ss.android.ugc.livelite/com.ss.android.ugc.live.main.MainActivity',
+    'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
+    'youliao': '#com.youliao.topic/.TrueMainActivity',
+    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
+    'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     'qutoutiao': 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     'baidu': 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',

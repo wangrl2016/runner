@@ -362,7 +362,10 @@ def doudou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yuetoutiao(pid, w, h):
-    return None
+    app.yuetoutiao_benefit_page(pid, w, h)
+    # 点击立即签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
