@@ -251,8 +251,7 @@ def run(pid):
 
             checkin.shuqi(pid, w, h)
             # [x] 阅读书旗小说
-            # 5min赚0.005元
-            app.read_shuqi_novel(pid, w, h, sec=300)
+            app.read_shuqi_novel(pid, w, h, sec=400)
             # 退出程序
             phone.stop_app(pid, info.packages['shuqi'])
 

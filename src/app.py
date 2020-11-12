@@ -207,11 +207,11 @@ def read_shuqi_novel(pid, w, h, sec=300):
         while datetime.now().minute < minutes:
             # 3. 滑动阅读小说
             # 防止点击广告
-            phone.swipe_right_to_left(pid, w, h / 7, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
     else:
         hour = datetime.now().hour
         while datetime.now().hour.__eq__(hour):
-            phone.swipe_right_to_left(pid, w, h / 7, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
 
 
 def shuqi_video_coin(pid, w, h):
