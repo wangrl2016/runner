@@ -115,21 +115,20 @@ def shuqi(pid, w, h):
     def shuqi_invent_friend():
         print("邀请书友 " + datetime.now().__str__())
         # 1. 下滑到最下
-        phone.swipe_down_to_up(pid, w / 2, h, gap=2, internal=100)
+        phone.swipe_down_to_up(pid, w / 2, h)
         # 2. 点击邀请书友
         input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=3)
         # 3. 点击微信好友
         input.tap(pid, 1.2 * w / WIDTH, (HEIGHT - 2.8) * h / HEIGHT, gap=3)
         # 4. 回退到福利页面
-        phone.go_back(pid, gap=1)
+        phone.go_back(pid)
         # 5. 恢复原貌
-        phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
+        phone.swipe_up_to_down(pid, w / 2, h)
 
     if datetime.now().hour.__eq__(8):
         checkin.shuqi(pid, w, h)
         app.shuqi_benefit_page(pid, w, h)
         # [x] 邀请书友
-        # 20s赚0.01元
         shuqi_invent_friend()
         phone.stop_app(pid, info.packages['shuqi'])
 

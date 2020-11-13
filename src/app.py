@@ -124,15 +124,10 @@ def read_shuqi_novel(pid, w, h, sec=300):
 
 
 def shuqi_video_coin(pid, w, h):
-    """
-    看视频赚金币
-    """
     print('书旗看视频赚金币 ' + datetime.now().__str__())
-    shuqi_benefit_page(pid, w, h)
-    # 看视频
-    # 2. 点击快速得百万金币
+    # 1. 点击快速得百万金币
     input.tap(pid, w / 2, 10.4 * h / HEIGHT, gap=10)  # <== modify
-    # 3. 播放30s
+    # 2. 播放30s
     time.sleep(30)
 
 
