@@ -345,8 +345,13 @@ def kuaiyin(pid, w, h):
             phone.stop_app(pid, info.packages['kuaiyin'])
 
 
+# noinspection PyUnusedLocal
+def quhongbao(pid, w, h):
+    
+    return None
+
+
 def dongfang(pid, w, h):
-    # 时段奖励
     def time_reward():
         print('东方头条时段奖励 ' + datetime.now().time().__str__())
         # 1. 点击领取奖励
@@ -932,11 +937,6 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def chejia(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
-def quhongbao(pid, w, h):
     return None
 
 
