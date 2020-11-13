@@ -66,52 +66,10 @@ def fanqie_benefit_page(pid, w, h):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-# def fanqie_video_coin(pid, w, h, num=10):
-#     print("番茄看视频赚海量金币 " + datetime.now().__str__())
-#     fanqie_benefit_page(pid, w, h)
-#     for i in range(0, num):
-#         # 2. 点击看视频赚海量金币
-#         input.tap(pid, w / 2, (HEIGHT - 1.8) * h / HEIGHT)  # <= modify
-#         # 3. 播放30s
-#         time.sleep(30)
-#         # 4. 点击关闭返回上级页面
-#         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
-
-
-def read_fanqie_novel(pid, w, h, sec):
-    """
-    阅读番茄小说
-    """
-    print('阅读番茄小说 ' + datetime.now().__str__())
-    # 1. 点击主页任意一本书
-    input.tap(pid, w / 3, h / 2)
-    # 2. 向左滑动开始阅读
-    minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
-        while datetime.now().minute < minutes:
-            # 防止点击广告
-            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
-    else:
-        hour = datetime.now().hour
-        while datetime.now().hour.__eq__(hour):
-            phone.swipe_right_to_left(pid, w, h / 4, randrange(3, 5))
-
-
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
 def fanchang_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-
-
-def fanchang_video_coin(pid, w, h, num):
-    print("番畅看视频赚海量金币 " + datetime.now().__str__())
-    for i in range(0, num):
-        # 2. 点击看视频赚海量金币
-        input.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=3)
-        # 3. 播放30s
-        time.sleep(30)
-        # 4. 点击返回到福利页面
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 
 # ~~~~~~~~~~酷狗唱唱斗歌版~~~~~~~~~~

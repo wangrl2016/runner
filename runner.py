@@ -151,13 +151,11 @@ def run(pid):
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
 
-            # 打开程序
-            checkin.fanqie(pid, w, h)
-            # [x] 阅读番茄小说
-            # 6min赚0.007元
-            app.read_fanqie_novel(pid, w, h, sec=360)
-            # 关闭程序
-            phone.stop_app(pid, info.packages['fanqie'])
+            checkin.jingdong(pid, w, h)
+            app.jingdong_benefit_page(pid, w, h)
+            # [x] 京东看视频赚金币
+            app.jingdong_video_coin(pid, w, h, hour=6)
+            phone.stop_app(pid, info.packages['jingdong'])
 
             utils.tail_work(pid, w, h, hour=6)
 
@@ -165,13 +163,11 @@ def run(pid):
         while datetime.now().hour.__eq__(7):
             schedule_apps(pid, w, h)
 
-            checkin.fanchang(pid, w, h)
-            app.fanchang_benefit_page(pid, w, h)
-            # [x] 看视频赚海量金币
-            # 10次每次30s
-            # 做完会打乱顺序
-            app.fanchang_video_coin(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['fanchang'])
+            checkin.jingdong(pid, w, h)
+            app.jingdong_benefit_page(pid, w, h)
+            # [x] 京东看视频赚金币
+            app.jingdong_video_coin(pid, w, h, hour=7)
+            phone.stop_app(pid, info.packages['jingdong'])
 
             utils.tail_work(pid, w, h, hour=7)
 
