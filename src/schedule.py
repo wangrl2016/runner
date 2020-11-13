@@ -721,14 +721,11 @@ def douyin(pid, w, h):
         # 3. 播放30s
         time.sleep(30)
         # 4. 返回到播放页面
-        # 存在超过30s的广告需要返回三次
-        # 利用播放页面需要快速两次才能退出
-        phone.go_back(pid, times=3, gap=3)
+        phone.go_back(pid, times=3, gap=1)
 
-    # 限时任务赚金币
     def limit_duty():
         print('抖音限时任务赚金币 ' + datetime.now().__str__())
-        # 1. 获取限时任务的位置
+        # 获取限时任务的位置
         if '抖音限时' not in info.contexts[pid]:
             limit_location = utils.current_words_location(pid, '限时')
             if limit_location is None:
@@ -736,6 +733,8 @@ def douyin(pid, w, h):
                 return
             height = limit_location['y'] + limit_location['h']
             info.contexts[pid]['抖音限时'] = height
+
+        # 点击限时赚金币
         input.tap(pid, w / 3, info.contexts[pid]['抖音限时'])
 
         # 2. 播放30s
@@ -743,60 +742,48 @@ def douyin(pid, w, h):
         # 3. 返回福利页面
         phone.go_back(pid)
 
-    # 睡觉赚钱
     def sleep_money(is_sleep):
-        # 1. 下滑到最下面
-        phone.swipe_down_to_up(pid, w / 2, h, internal=100)
-        # 2. 点击睡觉赚金币
-        # 可能点到中间某个部位导致无效
-        input.tap(pid, w / 3, 3.6 * h / HEIGHT)  # <==== modify
-        # 3. 点击我要睡了/我睡醒了
+        print('抖音睡觉赚钱 ' + datetime.now().time().__str__())
+        # 获取抖音睡觉的位置
+        if '抖音睡觉' not in info.contexts[pid]:
+            sleep_location = utils.current_words_location(pid, '觉')
+            if sleep_location is None:
+                print('没有获取到睡觉赚钱的位置')
+                return
+            info.contexts[pid]['抖音睡觉'] = sleep_location['y'] + sleep_location['h']
+
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 4, info.contexts[pid]['抖音睡觉'])
+
+        # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)
-        # 4. 返回到福利页面
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT)
+        # 3. 返回到福利页面
         phone.go_back(pid)
-        # 5. 滑到最上面
-        phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
-    # 吃饭补贴
     def meal_allowance():
-        # 1. 下滑任务页面到最下面
-        phone.swipe_down_to_up(pid, w / 2, h, gap=5)
+        print('抖音吃饭补贴 ' + datetime.now().time().__str__())
+        # 1. 下滑到任务页最下面
+        phone.swipe_down_to_up(pid, w / 2, h)
 
-        eat_location = utils.current_words_location(pid, '饭')
-        if eat_location is None:
-            print('没有获取到吃饭补贴的位置')
-            return
-        height = eat_location['y'] + eat_location['h']
+        if '抖音吃饭' not in info.contexts[pid]:
+            eat_location = utils.current_words_location(pid, '饭')
+            if eat_location is None:
+                print('没有获取到抖音吃饭补贴的位置')
+                return
+            info.contexts[pid]['抖音吃饭'] = eat_location['y'] + eat_location['h']
 
         # 2. 点击吃饭补贴
-        input.tap(pid, w / 3, height)
+        input.tap(pid, w / 3, info.contexts[pid]['抖音吃饭'])
         # 3. 领取补贴
-        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)  # <= modify
-        # 4. 看视频再领金币
-        input.tap(pid, w / 2, 9.0 * h / HEIGHT)
-        # 5. 播放30s
-        time.sleep(30)
-        # 6. 返回到福利页面
-        phone.go_back(pid, times=2, gap=1)
-        # 7. 滑到最上面
-        phone.swipe_up_to_down(pid, w / 2, h, internal=100)
-
-    # 游戏抽奖
-    def game_lottery():
-        # 1. 点击游戏中心
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 5.5 * h / HEIGHT)
-        # 2. 点击右下角抽奖
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 1.2) * h / HEIGHT)
-        # 3. 点击开始抽奖
-        input.tap(pid, w / 2, 10.8 * h / HEIGHT, 8)
-        # 4. 返回到福利页面
-        phone.go_back(pid, 2)
+        input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=2)  # <= modify
+        # 4. 返回到播放页面
+        phone.go_back(pid, times=3, gap=1)
 
     checkin.douyin(pid)
-    app.douyin_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        app.douyin_benefit_page(pid, w, h)
         # [x] 睡觉赚金币
         # 20:00-2:00为睡觉时间
         if datetime.now().hour.__eq__(20):
@@ -810,10 +797,7 @@ def douyin(pid, w, h):
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
             meal_allowance()
 
-        # [x] 抽奖两次
-        if hour.__eq__(14) or hour.__eq__(15):
-            game_lottery()
-
+    app.douyin_benefit_page(pid, w, h)
     # [x] 开宝箱得金币
     # 每20分钟一次
     open_treasure()
@@ -823,7 +807,6 @@ def douyin(pid, w, h):
     # 每20分钟一次
     limit_duty()
 
-    # 关闭抖音
     phone.stop_app(pid, info.packages['douyin'])
 
 
