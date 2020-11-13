@@ -81,6 +81,7 @@ def yingke(pid, w, h):
     # 3. 点击立即签到
     input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
     # 4. 播放30s广告
+    # [x] 签到成功
     time.sleep(30)
 
 
@@ -88,7 +89,7 @@ def kugou(pid, w, h):
     # 1. 点击右下角赚钱
     app.kugou_benefit_page(pid, w, h)
     # 2. 点击每日签到栏
-    # 显示签到成功
+    # [x] 签到成功
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT, gap=3)  # <== modify
     # 3. 返回到赚钱页面
     phone.go_back(pid, gap=1)
@@ -151,7 +152,6 @@ def jukandian(pid, w, h):
     input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
 
-# noinspection PyUnusedLocal
 def kuge(pid, w, h):
     # 1. 点击右上方赚钱
     input.tap(pid, 4.8 * w / WIDTH, 1.2 * h / HEIGHT)
@@ -258,13 +258,6 @@ def baidu(pid, w, h):
     # 1. 点击右下方去签到
     # [x] 签到成功
     app.baidu_benefit_page(pid, w, h)
-    # for i in range(0, 5):
-    #     # 2. 看视频再领金币
-    #     input.tap(pid, w / 2, 5.6 * h / HEIGHT)  # <== modify
-    #     # 3. 播放30s
-    #     time.sleep(30)
-    #     # 回退到悬浮窗页面
-    #     phone.go_back(pid, gap=4)
 
 
 # noinspection PyUnusedLocal
@@ -276,14 +269,6 @@ def ximalaya(pid, w, h):
     # 1. 点击右下方福利
     # [x] 签到成功
     app.ximalaya_benefit_page(pid, w, h)
-    # 2. 看视频再领金币
-    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
-    # 3. 播放30s
-    time.sleep(30)
-    # 4. 关闭返回广告页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
-    # 5. 返回到福利页面
-    phone.go_back(pid, gap=1)
 
 
 def wuba(pid, w, h):
@@ -314,7 +299,7 @@ def huitoutiao(pid, w, h):
     app.huitoutiao_benefit_page(pid, w, h)
     # 3. 点击今日签到
     # [x] 签到成功
-    input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=3)  # <= modify
+    input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=2)  # <= modify
 
 
 def chejia(pid, w, h):
@@ -377,6 +362,10 @@ def tangdou(pid, w, h):
     # 2. 点击签到领现金
     # [x] 签到成功
     input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)
+    # 3. 看视频
+    input.tap(pid, w / 2, 9.6 * h / HEIGHT)
+    # 4. 播放30s
+    time.sleep(30)
 
 
 # noinspection PyUnusedLocal
