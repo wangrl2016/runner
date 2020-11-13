@@ -183,6 +183,8 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=8)
 
+        # 书旗小说
+        # 五八同城
         while datetime.now().hour.__eq__(9):
             schedule_apps(pid, w, h)
 
@@ -195,11 +197,12 @@ def run(pid):
                 app.shuqi_video_coin(pid, w, h)
                 phone.stop_app(pid, info.packages['shuqi'])
 
-            checkin.wuba(pid)
-            app.wuba_benefit_page(pid, w, h)
-            # [x] 五八同城看视频赚金币
-            app.watch_wuba_video(pid, w, h, num=7)
-            phone.stop_app(pid, info.packages['wuba'])
+            for i in range(0, 2):
+                checkin.wuba(pid)
+                app.wuba_benefit_page(pid, w, h)
+                # [x] 五八同城看视频赚金币
+                app.watch_wuba_video(pid, w, h, num=4)
+                phone.stop_app(pid, info.packages['wuba'])
 
             checkin.shuqi(pid, w, h)
             # [x] 阅读书旗小说
