@@ -214,7 +214,7 @@ def kugou(pid, w, h):
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
-        if datetime.now().hour.__eq__(12) or datetime.now().hour.__eq__(13):
+        if (datetime.now().hour != 12) or (datetime.now().hour != 13):
             phone.stop_app(pid, info.packages['kugou'])
 
 
@@ -479,21 +479,24 @@ def jukandian(pid, w, h):
 def kuge(pid, w, h):
     def share_song():
         print('酷狗儿歌分享歌曲 ' + datetime.now().time().__str__())
-        # 1. 点击进入全屏播放页面
-        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-        # 2. 点击右上角分享
+        # 1. 确认在儿歌页面
+        input.tap(pid, 2.0 * h / HEIGHT, 1.2 * h / HEIGHT, gap=2)
+        # 2. 点击进入全屏播放页面
+        input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap=2)
+        # 3. 点击右上角分享
         input.tap(pid, (WIDTH - 0.6) * w / WIDTH, 0.9 * h / HEIGHT)
-        # 3. 点击微信
+        # 4. 点击微信
         input.tap(pid, w / 6, h * 6 / 7)
-        # 4. 返回
+        # 5. 返回
         phone.go_back(pid, gap=1)
 
-    if datetime.now().minute.__gt__(SCHEDULE_TIME) and datetime.now().hour.__eq__(22):
-        checkin.kuge(pid, w, h)
-        # [x] 分享歌曲
-        share_song()
-        # 随便关闭酷狗儿歌后台播放
-        phone.stop_app(pid, info.packages['kuge'])
+    if datetime.now().minute.__gt__(SCHEDULE_TIME):
+        if datetime.now().hour.__eq__(23):
+            checkin.kuge(pid, w, h)
+            # [x] 分享歌曲
+            share_song()
+            # 关闭酷狗儿歌后台播放
+            phone.stop_app(pid, info.packages['kuge'])
 
 
 def makan(pid, w, h):
