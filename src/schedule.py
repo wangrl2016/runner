@@ -251,37 +251,21 @@ def zhongqing(pid, w, h):
             phone.stop_app(pid, info.packages['weixin'])
 
 
+# noinspection PyUnusedLocal
 def pinduoduo(pid, w, h):
-    def timed_envelope():
-        print('拼多多签到领钱 ' + datetime.now().time().__str__())
-        # 1. 点击签到领钱
-        input.tap(pid, w / 2, 5.4 * h / HEIGHT)  # <= modify
-        # 2. 点击领取
-        input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
-        # 3. 点击定时领现金
-        input.tap(pid, 1.3 * w / WIDTH, (HEIGHT - 1.0) * h / HEIGHT, gap=3)  # <= modify
-        # 4. 点击开
-        input.tap(pid, w / 2, 1.0 * h / HEIGHT, gap=3)
-        # 5. 三选一
-        input.tap(pid, w / 2, h / 2, gap=2)
-
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if (datetime.now().hour % 5).__eq__(0):
-            checkin.pinduoduo(pid, w, h)
-            timed_envelope()
-            phone.stop_app(pid, 'pinduoduo')
+    return None
 
 
 def kuaiyin(pid, w, h):
     def drink_water(is_next):
         print('快音喝水赚钱 ' + datetime.now().__str__())
         # 1. 点击喝水赚钱
-        input.tap(pid, 2.6 * w / WIDTH, 4.5 * h / HEIGHT)
+        input.tap(pid, 2.6 * w / WIDTH, 4.4 * h / HEIGHT)
         # 2. 点击水杯
         for i in range(0, 4):
             input.tap(pid, (0.9 + i * 1.5) * w / WIDTH, (5.2 if is_next else 3.5) * h / HEIGHT, gap=1)
         # 3. 看视频
-        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
+        input.tap(pid, w / 2, 9.1 * h / HEIGHT, gap=10)
         # 4. 播放30s
         time.sleep(30)
 
@@ -295,26 +279,32 @@ def kuaiyin(pid, w, h):
     def offline_coin():
         print('快音离线收益 ' + datetime.now().__str__())
         # 1. 看视频领取100金币
-        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)  # <=== modify
+        input.tap(pid, w / 2, 8.0 * h / HEIGHT, gap=10)  # <=== modify
         # 2. 播放30s
         time.sleep(30)
 
     def open_treasure():
         print('快音开宝箱 ' + datetime.now().__str__())
         # 1. 点击宝箱
-        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.0 * h / HEIGHT)
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 11.5 * h / HEIGHT)  # <=== modify
         # 2. 点击看视频再领金币
-        input.tap(pid, w / 2, 9.3 * h / HEIGHT, gap=10)
+        input.tap(pid, w / 2, 7.8 * h / HEIGHT, gap=10)
         # 3. 播放30s
         time.sleep(30)
 
     def sleep_money(is_sleep):
         print('快音睡觉赚钱 ' + datetime.now().__str__())
-        # 1. 点击睡觉赚钱
-        input.tap(pid, 4.1 * w / WIDTH, 4.4 * h / HEIGHT)
+
+        for i in range(0, 2):
+            # 1. 点击睡觉赚钱
+            input.tap(pid, 4.1 * w / WIDTH, 4.4 * h / HEIGHT)
+            # 2. 消除可能存在的睡觉签到
+            if i != 0:
+                phone.go_back(pid)
+
         # 3. 点击我要睡觉/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT, gap=8)
+            input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
 
@@ -347,7 +337,7 @@ def kuaiyin(pid, w, h):
         elif hour.__eq__(6):
             sleep_money(True)
 
-        if (datetime.now().hour % 3).__eq__(0):
+        if (datetime.now().hour % 5).__eq__(0):
             checkin.kuaiyin(pid, w, h)
             app.kuaiyin_benefit_page(pid, w, h)
             # [x] 看视频赚钱
