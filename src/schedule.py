@@ -379,96 +379,6 @@ def jukandian(pid, w, h):
         phone.stop_app(pid, info.packages['jukandian'])
 
 
-# def taobao(pid, w, h):
-#     # [x] 天天赚特币
-#     if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 4).__eq__(0):
-#         # 1. 打开淘宝
-#         checkin.taobao(pid)
-#         # 2. 点击天天赚特币
-#         input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=10)  # <= modify
-#         # 3. 收取特币
-#         input.tap(pid, 4.3 * w / WIDTH, 6.9 * h / HEIGHT)  # <= modify
-#         # 4. 关闭淘宝
-#         phone.stop_app(pid, info.packages['taobao'])
-#
-#
-# def shuabao(pid, w, h):
-#     # 看福利视频
-#     def benefit_video():
-#         # 1. 点击去观看
-#         # 等待关闭按钮弹出
-#         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT, gap=10)  # <== modify
-#         # 2. 播放30s
-#         time.sleep(30)
-#         # 3. 点击关闭
-#         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
-#
-#     if datetime.now().minute < SCHEDULE_TIME and datetime.now().hour.__gt__(13):
-#         # 打开刷宝
-#         checkin.shuabao(pid)
-#         app.shuabao_benefit_page(pid, w, h)
-#         # [x] 看福利视频
-#         # 10次
-#         benefit_video()
-#         # 关闭刷宝
-#         phone.stop_app(pid, info.packages['shuabao'])
-#
-#
-# def qutoutiao(pid, w, h):
-#     # 看广告视频拿金币
-#     def video_coin():
-#         # 1. 点击看广告视频拿金币
-#         input.tap(pid, w / 2, (HEIGHT - 1.2) * h / HEIGHT)  # <=== modify
-#         # 2. 播放50s
-#         time.sleep(50)
-#         # 3. 回退到播放页面
-#         phone.go_back(pid, times=2, gap=1)
-#
-
-#
-#     # 睡觉赚钱
-#     def sleep_money(is_sleep):
-#         # 1. 点击睡觉赚金币
-#         input.tap(pid, w / 2, (HEIGHT - 1.7) * h / HEIGHT)  # <=== modify
-#         # 2. 点击我要睡了/我睡醒了
-#         for i in range(0, 2 if is_sleep else 1):
-#             input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
-#         # 3. 返回到福利页面
-#         phone.go_back(pid)
-#
-#     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-#         checkin.qutoutiao(pid)
-#         app.qutoutiao_benefit_page(pid, w, h)
-#
-#         # [x] 睡觉赚金币
-#         # 20:00-08:00为睡觉时间
-#         # 12:00-14:00为午休时间
-#         if datetime.now().hour.__eq__(20):
-#             sleep_money(False)
-#         elif datetime.now().hour.__eq__(9):
-#             sleep_money(True)
-#         elif datetime.now().hour.__eq__(12):
-#             sleep_money(False)
-#         elif datetime.now().hour.__eq__(15):
-#             sleep_money(True)
-#
-#         # [x] 时段奖励
-#         # 阶梯式时间分布
-#         time_reward()
-#
-#         phone.stop_app(pid, info.packages['qutoutiao'])
-#
-#
-#     if datetime.now().hour.__gt__(2) and datetime.now().hour.__lt__(9):
-#         # 进入趣头条
-#         checkin.qutoutiao(pid)
-#         app.qutoutiao_benefit_page(pid, w, h)
-#         # [x] 看广告视频拿金币
-#         # 每天可以看6次
-#         video_coin()
-#         phone.stop_app(pid, info.packages['qutoutiao'])
-
-
 def kuge(pid, w, h):
     def share_song():
         print('酷狗儿歌分享歌曲 ' + datetime.now().time().__str__())
@@ -820,8 +730,15 @@ def huoshan(pid, w, h):
 
 
 def qutoutiao(pid, w, h):
-    # 开宝箱
+    def time_reward():
+        print('趣头条时段奖励 ' + datetime.now().time().__str__())
+        # 1. 点击进入文章页面
+        input.tap(pid, 0.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+        # 2. 点击领取
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.0 * h / HEIGHT)
+
     def open_treasure():
+        print('趣头条开宝箱 ' + datetime.now().__str__())
         # 1. 点击宝箱
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 1.6) * h / HEIGHT)
         # 2. 播放广告50s
@@ -829,9 +746,40 @@ def qutoutiao(pid, w, h):
         # 3. 回退到程序主页
         phone.go_back(pid, times=2, gap=1)
 
+    # 睡觉赚钱
+    def sleep_money(is_sleep):
+        print('趣头条睡觉赚钱 ' + datetime.now().time().__str__())
+        # 1. 点击睡觉赚金币
+        input.tap(pid, w / 2, 9.3 * h / HEIGHT)  # <=== modify
+        # 2. 点击我要睡了/我睡醒了
+        for i in range(0, 2 if is_sleep else 1):
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
+        # 3. 返回到福利页面
+        phone.go_back(pid)
+
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        checkin.qutoutiao(pid)
+        app.qutoutiao_benefit_page(pid, w, h)
+
+        # [x] 睡觉赚金币
+        # 20:00-08:00为睡觉时间
+        # 12:00-14:00为午休时间
+        if datetime.now().hour.__eq__(20):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(9):
+            sleep_money(True)
+        elif datetime.now().hour.__eq__(12):
+            sleep_money(False)
+        elif datetime.now().hour.__eq__(15):
+            sleep_money(True)
+        phone.stop_app(pid, info.packages['qutoutiao'])
+
     if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.qutoutiao(pid)
+        # [x] 时段奖励
+        time_reward()
+
         app.qutoutiao_benefit_page(pid, w, h)
         # [x] 开宝箱
         # 每个小时一次
