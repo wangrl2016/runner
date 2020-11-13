@@ -134,7 +134,6 @@ def shuqi(pid, w, h):
 
 
 def yingke(pid, w, h):
-    # 看福利视频
     def benefit_video():
         print('映客福利视频 ' + datetime.now().__str__())
         # 1. 点击领金币
@@ -170,7 +169,7 @@ def yingke(pid, w, h):
 def kugou(pid, w, h):
     def creative_video():
         print('酷狗刷创意视频 ' + datetime.now().time().__str__())
-        # 1. 点击去赚钱
+
         # 获取创意视频的位置
         if '酷狗创意视频' not in info.contexts[pid]:
             video_location = utils.current_words_location(pid, '创')
@@ -179,13 +178,11 @@ def kugou(pid, w, h):
                 return
             height = video_location['y'] + video_location['h']
             info.contexts[pid]['酷狗创意视频'] = height
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=10)
 
+        # 1. 点击去赚钱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=10)
         # 2. 播放30s
         time.sleep(30)
-        # 3. 点击返回到福利页面
-        # 再次回退消除奖励页面
-        phone.go_back(pid, times=2, gap=1)
 
     def share_friend(is_song):
         print('酷狗分享视频或歌曲 ' + datetime.now().__str__())
@@ -206,21 +203,24 @@ def kugou(pid, w, h):
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
         checkin.kugou(pid, w, h)
+        if datetime.now().hour.__eq__(4):
+            # [x] 分享歌曲
+            share_friend(is_song=True)
+        elif datetime.now().hour.__eq__(5):
+            # [x] 分享视频
+            share_friend(is_song=False)
+
         app.kugou_benefit_page(pid, w, h)
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
+        if datetime.now().hour.__eq__(12) or datetime.now().hour.__eq__(13):
+            phone.stop_app(pid, info.packages['kugou'])
 
-        if datetime.now().hour.__eq__(4):
-            # [x] 分享歌曲
-            # 每天1次
-            share_friend(True)
-        elif datetime.now().hour.__eq__(5):
-            # [x] 分享视频
-            # 每天1次
-            share_friend(False)
-        # 关闭程序
-        phone.stop_app(pid, info.packages['kugou'])
+
+# noinspection PyUnusedLocal
+def qire(pid, w, h):
+    return None
 
 
 def zhongqing(pid, w, h):
@@ -942,11 +942,6 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def chejia(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
-def qire(pid, w, h):
     return None
 
 

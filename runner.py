@@ -189,7 +189,7 @@ def run(pid):
             # 无法确定关闭的位置所以强制关闭
             for i in range(0, 10):
                 checkin.shuqi(pid, w, h, gap=12)
-                app.shuqi_benefit_page(pid)
+                app.shuqi_benefit_page(pid, w, h)
                 # [x] 书旗小说看视频赚金币
                 # 10min赚0.3元
                 app.shuqi_video_coin(pid, w, h)
