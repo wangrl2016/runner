@@ -798,19 +798,6 @@ def watch_douyin_video(pid, w, h, hour=3):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
-def full_watch_douyin_video(pid, w, h, hour):
-    # [x] 看抖音视频
-    print('看抖音视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.douyin(pid)
-    # 2. 回退消除可能的悬浮窗
-    phone.go_back(pid)
-    # 3. 看抖音视频
-    watch_douyin_video(pid, w, h, hour)
-    # 4. 关闭程序
-    phone.stop_app(pid, info.packages['douyin'])
-
-
 # ~~~~~~~~~~火山极速版~~~~~~~~~~
 
 def huoshan_benefit_page(pid, w, h, gap=3):

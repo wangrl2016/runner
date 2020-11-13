@@ -32,21 +32,7 @@ def cycle(pid):
         if phone_packages.__contains__(info.packages[p]):
             run_apps.append(p)
 
-    while True:
-        hour = datetime.now().hour
-        while run_apps.__contains__('kuaishou') and datetime.now().hour.__eq__(hour):
-            # [x] 看快手视频
-            app.full_watch_kuaishou_video(pid, w, h, hour)
-
-        hour = datetime.now().hour
-        while run_apps.__contains__('douyin') and datetime.now().hour.__eq__(hour):
-            # [x] 看抖音视频
-            app.full_watch_kuaishou_video(pid, w, h, hour)
-
-        hour = datetime.now().hour
-        while run_apps.__contains__('huoshan') and datetime.now().hour.__eq__(hour):
-            # [x] 看火山视频
-            app.full_watch_huoshan_video(pid, w, h, hour)
+    # 执行相关任务
 
 
 def run(pid):
@@ -132,8 +118,11 @@ def run(pid):
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
+            checkin.douyin(pid)
+            phone.go_back(pid)
             # [x] 看抖音视频
-            app.full_watch_douyin_video(pid, w, h, hour=3)
+            app.watch_douyin_video(pid, w, h, hour=3)
+            phone.stop_app(pid, info.packages['douyin'])
 
             utils.tail_work(pid, w, h, hour=3)
 
