@@ -220,7 +220,7 @@ def run(pid):
 
             checkin.yingke(pid, w, h)
             # [x] 看映客直播
-            app.watch_yingke_live(pid, w, h, sec=1200)
+            app.watch_yingke_live(pid, w, h, sec=600)
             phone.stop_app(pid, info.packages['yingke'])
 
             utils.tail_work(pid, w, h, hour=10)

@@ -156,17 +156,13 @@ def watch_yingke_live(pid, w, h, sec):
             # 1. 换一个主播
             phone.swipe_down_to_up(pid, w / 2, h)
             # 2. 点击聊天文字
-            # [x] 和主播聊天
             input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT)
 
-    # 4. 和主播聊天
+    # [x] 和主播聊天
     chat_with_anchor(times=3)
 
 
 def share_yingke_live(pid, w, h, times):
-    """
-    分享映客直播间
-    """
     print('分享映客直播间 ' + datetime.now().__str__())
     # 1. 滑动到最下面
     phone.swipe_down_to_up(pid, w / 2, h, internal=100)
