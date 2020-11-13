@@ -132,6 +132,13 @@ def kuaiyin(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def quhongbao(pid, w, h):
+    # 进入福利页面
+    # [x] 签到成功
+    app.quhongbao_benefit_page(pid, w, h)
+
+
+# noinspection PyUnusedLocal
 def dongfang(pid, w, h):
     phone.go_back(pid)
     app.dongfang_benefit_page(pid, w, h)
@@ -312,11 +319,6 @@ def huitoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def chejia(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
-def quhongbao(pid, w, h):
     return None
 
 

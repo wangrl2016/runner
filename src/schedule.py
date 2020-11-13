@@ -347,8 +347,8 @@ def kuaiyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def quhongbao(pid, w, h):
-    
-    return None
+    if datetime.now().minute < SCHEDULE_TIME:
+        return None
 
 
 def dongfang(pid, w, h):

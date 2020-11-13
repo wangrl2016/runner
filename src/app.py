@@ -202,45 +202,6 @@ def kugou_background_music(pid, w, h):
     phone.go_home(pid)
 
 
-# ~~~~~~~~~~惠头条~~~~~~~~~~
-
-def huitoutiao_benefit_page(pid, w, h):
-    # 1. 点击中间下方的任务中心
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
-def read_huitoutiao_article(pid, w, h, num):
-    print('阅读惠头条文章 ' + datetime.now().__str__())
-    # 1. 消除可能存在的悬浮窗
-    phone.go_back(pid, gap=1)
-    for i in range(0, num):
-        # 2. 获取文章目录
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w / 2, randrange(h / 2, h))
-        # 3. 阅读中间文章
-        input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
-        # 4. 滑动阅读
-        for j in range(0, randrange(9, 12)):
-            phone.swipe_down_to_up(pid, w / 2, randrange(h / 2, h), randrange(2, 5), internal=300)
-        # 5. 返回上级目录
-        phone.go_back(pid)
-
-
-def watch_huitoutiao_video(pid, w, h, sec):
-    """
-    看惠头条视频
-    """
-    print('看惠头条视频 ' + datetime.now().__str__())
-    # 1. 点击惠头条视频
-    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击视频
-    input.tap(pid, w / 2, h / 4)
-    # 3. 播放
-    time.sleep(sec)
-    # 4. 返回到首页
-    phone.go_back(pid)
-
-
 # ~~~~~~~~~~中青看点~~~~~~~~~~
 
 def zhongqing_benefit_page(pid, w, h):
@@ -316,6 +277,12 @@ def watch_kuaiyin_video(pid, w, h):
     input.tap(pid, 1.1 * w / WIDTH, 4.4 * h / HEIGHT, gap=10)
     # 2. 播放30s
     time.sleep(30)
+
+
+# ~~~~~~~~~~趣红包~~~~~~~~~~
+
+def quhongbao_benefit_page(pid, w, h):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~
@@ -802,4 +769,43 @@ def yuetoutiao_benefit_page(pid, w, h):
     # 1. 点击任务
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
+
 # ~~~~~~~~~~米读极速版~~~~~~~~~~
+
+# ~~~~~~~~~~惠头条~~~~~~~~~~
+
+def huitoutiao_benefit_page(pid, w, h):
+    # 1. 点击中间下方的任务中心
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def read_huitoutiao_article(pid, w, h, num):
+    print('阅读惠头条文章 ' + datetime.now().__str__())
+    # 1. 消除可能存在的悬浮窗
+    phone.go_back(pid, gap=1)
+    for i in range(0, num):
+        # 2. 获取文章目录
+        if i.__ne__(0):
+            phone.swipe_up_to_down(pid, w / 2, randrange(h / 2, h))
+        # 3. 阅读中间文章
+        input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
+        # 4. 滑动阅读
+        for j in range(0, randrange(9, 12)):
+            phone.swipe_down_to_up(pid, w / 2, randrange(h / 2, h), randrange(2, 5), internal=300)
+        # 5. 返回上级目录
+        phone.go_back(pid)
+
+
+def watch_huitoutiao_video(pid, w, h, sec):
+    """
+    看惠头条视频
+    """
+    print('看惠头条视频 ' + datetime.now().__str__())
+    # 1. 点击惠头条视频
+    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击视频
+    input.tap(pid, w / 2, h / 4)
+    # 3. 播放
+    time.sleep(sec)
+    # 4. 返回到首页
+    phone.go_back(pid)
