@@ -630,7 +630,7 @@ def toutiao(pid, w, h):
 
         # 2. 点击我要睡了/我睡醒了
         for i in range(0, 2 if is_sleep else 1):
-            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=8)  # <= modify
+            input.tap(pid, w / 2, (HEIGHT - 1.0) * h / HEIGHT, gap=3)  # <= modify
         # 3. 返回到福利页面
         phone.go_back(pid)
 
@@ -652,9 +652,9 @@ def toutiao(pid, w, h):
         # [x] 睡觉赚钱
         # 20:00-2:00为睡觉时间
         if hour.__eq__(20):
-            sleep_money(False)
-        elif hour.__eq__(6):
-            sleep_money(True)
+            sleep_money(is_sleep=False)
+        elif hour.__eq__(3):
+            sleep_money(is_sleep=True)
 
     # [x] 开宝箱
     # 每10分钟一次
