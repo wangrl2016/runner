@@ -259,11 +259,6 @@ def run(pid):
             app.watch_huitoutiao_video(pid, w, h, sec=180)
             phone.stop_app(pid, info.packages['huitoutiao'])
 
-            checkin.hongshi(pid)
-            # [x] 看红包短视频
-            app.watch_hongbao_video(pid, w, h, sec=180)
-            phone.stop_app(pid, info.packages['hongshi'])
-
             utils.tail_work(pid, w, h, hour=12)
 
         # 中青看点
@@ -314,14 +309,14 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=15)
 
-        # 糖豆
+        # 红包短视频
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)
 
-            checkin.tangdou(pid)
-            app.tangdou_benefit_page(pid, w, h)
-            app.tangdou_funny_video(pid, w, h, num=30)
-            phone.stop_app(pid, info.packages['tangdou'])
+            checkin.hongshi(pid)
+            # [x] 看红包短视频
+            app.watch_hongbao_video(pid, w, h, sec=180)
+            phone.stop_app(pid, info.packages['hongshi'])
 
             utils.tail_work(pid, w, h, hour=16)
 
@@ -433,6 +428,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=22)
 
         # 点点新闻
+        # 糖豆
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
 
@@ -447,6 +443,12 @@ def run(pid):
             # 看完十几篇以后有倒计时
             app.read_diandian_article(pid, w, h, num=10)
             phone.stop_app(pid, info.packages['diandian'])
+
+            checkin.tangdou(pid)
+            app.tangdou_benefit_page(pid, w, h)
+            # [x] 糖豆有趣视频
+            app.tangdou_funny_video(pid, w, h, num=30)
+            phone.stop_app(pid, info.packages['tangdou'])
 
             utils.tail_work(pid, w, h, hour=23)
 

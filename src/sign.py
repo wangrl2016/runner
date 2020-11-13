@@ -1,6 +1,6 @@
 import time
 
-from src import input, phone, schedule, app
+from src import input, phone, app
 from src.info import WIDTH, HEIGHT
 
 
