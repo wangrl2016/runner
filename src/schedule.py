@@ -873,9 +873,14 @@ def chejia(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def hongshi(pid, w, h):
-    return None
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 5 == 0:
+            checkin.hongshi(pid)
+            for i in range(0, 2):
+                phone.swipe_down_to_up(pid, w / 2, h, 15)
+            input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
+            phone.stop_app(pid, 'hongshi')
 
 
 # noinspection PyUnusedLocal

@@ -629,7 +629,6 @@ def watch_baidu_svideo(pid, w, h, hour):
 
 
 # ~~~~~~~~~~微视~~~~~~~~~~
-
 def watch_weishi_video(pid, w, h, sec):
     print('看微视视频 ' + datetime.now().time().__str__())
     # 1. 消除可能存在的悬浮窗
@@ -727,6 +726,22 @@ def chejia_benefit_video(pid, w, h, num):
         time.sleep(30)
         # 3. 关闭返回福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
+
+
+# ~~~~~~~~~~红包短视频~~~~~~~~~~
+def watch_hongbao_video(pid, w, h, sec):
+    print('看红包短视频 ' + datetime.now().time().__str__())
+    # 2. 从下往上翻页
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
+    # 3. 收集金币
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
 # ~~~~~~~~~~悦头条~~~~~~~~~~

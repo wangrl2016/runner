@@ -259,6 +259,11 @@ def run(pid):
             app.watch_huitoutiao_video(pid, w, h, sec=180)
             phone.stop_app(pid, info.packages['huitoutiao'])
 
+            checkin.hongshi(pid)
+            # [x] 看红包短视频
+            app.watch_hongbao_video(pid, w, h, sec=180)
+            phone.stop_app(pid, info.packages['hongshi'])
+
             utils.tail_work(pid, w, h, hour=12)
 
         # 中青看点
