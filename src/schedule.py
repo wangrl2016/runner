@@ -229,14 +229,14 @@ def zhongqing(pid, w, h):
         # 1. 点击领取
         # 有时候没有广告视频
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.0 * h / HEIGHT, gap=8)
+        # 消除奖励提醒
+        phone.go_back(pid)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.zhongqing(pid, w, h)
         # [x] 时段奖励
         time_reward()
 
-        # 消除奖励提醒
-        phone.go_back(pid, gap=2)
         # [x] 阅读文章
         app.read_zhongqing_article(pid, w, h, num=1)
 
@@ -244,7 +244,7 @@ def zhongqing(pid, w, h):
         app.watch_zhongqing_video(pid, w, h, num=1)
         phone.stop_app(pid, info.packages['zhongqing'])
 
-        if (datetime.now().hour % 4).__eq__(0):
+        if (datetime.now().hour % 4) == 0:
             checkin.weixin(pid)
             # [x] 阅读微信文章
             app.zhongqing_weixin_article(pid, w, h, num=5)
