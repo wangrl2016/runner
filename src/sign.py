@@ -342,8 +342,11 @@ def yuetoutiao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kankuai(pid, w, h):
-    # [x] 签到成功
+    # 进入福利中心
     app.kankuai_benefit_page(pid, w, h)
+    # 点击立即签到
+    # [x] 签到成功
+    input.tap(pid, w / 2, 8.5 * h / HEIGHT, gap=2)
 
 
 def douhuo(pid, w, h):
