@@ -384,67 +384,6 @@ def watch_shuabao_video(pid, w, h, num):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
-#
-#
-# # noinspection PyUnusedLocal
-# def read_qutoutiao_article(pid, w, h, num):
-#     return None
-#
-#
-# # noinspection PyUnusedLocal
-# def watch_qutoutiao_video(pid, w, h, num):
-#     return None
-#
-#
-# def watch_qutoutiao_svideo(pid, w, h, hour):
-#     """
-#     看趣头条小视频
-#     """
-#     # 　1. 点击中间下方小视频
-#     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
-#     while datetime.now().hour.__eq__(hour):
-#         # TODO: 中途出现彩蛋需要点击
-#         phone.swipe_down_to_up(pid, w/2, h, randrange(5, 16))
-#
-#
-# def full_watch_qutoutiao_svideo(pid, w, h, hour):
-#     print('看趣头条小视频 ' + datetime.now().__str__())
-#     # 1. 打开程序
-#     checkin.qutoutiao(pid)
-#     # 2. 看趣头条小视频
-#     watch_qutoutiao_svideo(pid, w, h, hour)
-#     # 3. 关闭程序
-#     phone.stop_app(pid, packages['qutoutiao'])
-#
-
-#
-#
-# def baidu_haokan_video(pid, w, h, num):
-#     # 1. 点击好看视频
-#     input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
-#     for i in range(0, num):
-#         # 2. 刷新页面
-#         phone.swipe_up_to_down(pid, w / 2, h)
-#         # 3. 点击播放
-#         input.tap(pid, w / 2, h / 3)
-#         # ４. 播放35s
-#         time.sleep(35)
-#
-#
-# def watch_baidu_svideo(pid, w, h, hour):
-#     """
-#     看百度小视频
-#     """
-#     # 1. 点击banner栏目中小视频
-#     input.tap(pid, 3.3 * w / WIDTH, 3.8 * h / HEIGHT)  # <= modify
-#     # 2. 点击任意小视频
-#     input.tap(pid, w / 3, h / 3)
-#     # 3. 滑动小视频
-#     while datetime.now().hour.__eq__(hour):
-#         phone.swipe_down_to_up(pid, w/2, h, randrange(5, 16))
-#
-
-
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
 def watch_douhuo_video(pid, w, h, sec=300):
     print('看抖音火山视频 ' + datetime.now().__str__())
@@ -682,6 +621,30 @@ def qutoutiao_benefit_page(pid, w, h):
 # ~~~~~~~~~~百度极速版~~~~~~~~~~
 def baidu_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def baidu_haokan_video(pid, w, h, num):
+    print('看好看视频 ' + datetime.now().time().__str__())
+    # 1. 点击好看视频
+    input.tap(pid, 2.1 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+    for i in range(0, num):
+        # 2. 刷新页面
+        phone.swipe_up_to_down(pid, w / 2, h)
+        # 3. 点击播放
+        input.tap(pid, w / 2, h / 3)
+        # ４. 播放35s
+        time.sleep(35)
+
+
+def watch_baidu_svideo(pid, w, h, hour):
+    print('看百度小视频 ' + datetime.now().__str__())
+    # 1. 点击banner栏目中小视频
+    input.tap(pid, 3.3 * w / WIDTH, 3.8 * h / HEIGHT)  # <= modify
+    # 2. 点击任意小视频
+    input.tap(pid, w / 3, h / 3)
+    # 3. 滑动小视频
+    while datetime.now().hour.__eq__(hour):
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
 # ~~~~~~~~~~微视~~~~~~~~~~

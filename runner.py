@@ -337,42 +337,34 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=17)
 
         # 聚看点
+        # 百度极速版
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
 
+            checkin.baidu(pid)
+            # [x] 百度看好看视频
+            app.baidu_haokan_video(pid, w, h, num=10)
+            phone.stop_app(pid, info.packages['baidu'])
+
             checkin.jukandian(pid, w, h)
-            # [x] 阅读文章
+            # [x] 聚看点阅读文章
             app.read_jukandian_article(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
 
             checkin.jukandian(pid, w, h)
-            # [x] 视频
+            # [x] 聚看点视频
             app.watch_jukandian_video(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
 
             checkin.jukandian(pid, w, h)
-            # [x] 小视频
+            # [x] 聚看点小视频
             app.watch_jukandian_svideo(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
 
-            # # [x] 好看视频
-            # # 花费8分钟
-            # # 1. 打开程序
-            # checkin.baidu(pid)
-            # # 2. 看好看视频
-            # app.baidu_haokan_video(pid, w, h, num=10)
-            # # 3. 关闭程序
-            # phone.stop_app(pid, info.packages['baidu'])
-            #
-            # # [x] 看百度小视频
-            # # 十分钟左右
-            # print('看百度小视频 ' + datetime.now().__str__())
-            # # 1. 打开程序
-            # checkin.baidu(pid)
-            # # 2. 看百度小视频
-            # app.watch_baidu_svideo(pid, w, h, hour=18)
-            # # 3. 关闭程序
-            # phone.stop_app(pid, info.packages['baidu'])
+            checkin.baidu(pid)
+            # [x] 看百度小视频
+            app.watch_baidu_svideo(pid, w, h, hour=18)
+            phone.stop_app(pid, info.packages['baidu'])
 
             utils.tail_work(pid, w, h, hour=18)
 
