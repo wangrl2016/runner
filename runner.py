@@ -251,7 +251,7 @@ def run(pid):
 
             checkin.huitoutiao(pid)
             # [x] 阅读惠头条文章
-            app.read_huitoutiao_article(pid, w, h, num=20)
+            app.read_huitoutiao_article(pid, w, h, num=10)
             phone.stop_app(pid, info.packages['huitoutiao'])
 
             checkin.huitoutiao(pid)
