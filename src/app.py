@@ -23,7 +23,7 @@ def read_midu_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
     else:
         hour = datetime.now().hour
-        while datetime.now().hour.__eq__(hour):
+        while datetime.now().hour == hour:
             phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
 
 
@@ -86,11 +86,11 @@ def watch_weishi_video(pid, w, h, sec):
     # 2. 从下往上翻页
     minutes = sec / 60 + datetime.now().minute
     if minutes < 60:
-        while datetime.now().minute.__lt__(minutes):
+        while datetime.now().minute < minutes:
             phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     else:
         hour = datetime.now().hour
-        while datetime.now().hour.__eq__(hour):
+        while datetime.now().hour == hour:
             phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     # 3. 收集现金
     input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
@@ -119,7 +119,7 @@ def read_shuqi_novel(pid, w, h, sec=300):
             phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
     else:
         hour = datetime.now().hour
-        while datetime.now().hour.__eq__(hour):
+        while datetime.now().hour == hour:
             phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
 
 
