@@ -19,17 +19,15 @@ def lanmao(pid, w, h):
     def cat_food():
         print('懒猫赚猫粮 ' + datetime.now().__str__())
         # 1. 点击赚猫粮
-        input.tap(pid, w / 2, 8.0 * h / HEIGHT, gap=10)
+        input.tap(pid, w / 2, 8.2 * h / HEIGHT, gap=10)
         # 2. 播放30s
         time.sleep(30)
-        # 3. 返回到上级目录
-        phone.go_back(pid, gap=1)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if (datetime.now().hour % 3).__eq__(0):
-            checkin.lanmao(pid, w, h)
-            cat_food()
-            phone.stop_app(pid, info.packages['lanmao'])
+        checkin.lanmao(pid, w, h)
+        # [x] 领取猫粮
+        cat_food()
+        phone.stop_app(pid, info.packages['lanmao'])
 
 
 # noinspection PyUnusedLocal
