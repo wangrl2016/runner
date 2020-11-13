@@ -493,7 +493,7 @@ def makan_search_coin(pid, w, h, num):
     input.tap(pid, 2.6 * w / WIDTH, 6.4 * h / HEIGHT)
     for i in range(0, num):
         # 2. 点击搜索词
-        input.tap(pid, w / 3, 9.5 * h / HEIGHT)
+        input.tap(pid, w / 5, 9.5 * h / HEIGHT)
         # 3. 返回上级页面
         phone.go_back(pid, gap=3)
 
@@ -502,7 +502,7 @@ def makan_search_coin(pid, w, h, num):
 
 def diandian_benefit_page(pid, w, h, gap=3):
     # 进入福利页面
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def diandian_daily_packet(pid, w, h):
