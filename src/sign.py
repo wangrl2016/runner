@@ -317,9 +317,9 @@ def huitoutiao(pid, w, h):
     input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=3)  # <= modify
 
 
-# noinspection PyUnusedLocal
 def chejia(pid, w, h):
-    return None
+    # [x] 签到成功
+    app.chejia_benefit_page(pid, w, h)
 
 
 # noinspection PyUnusedLocal
