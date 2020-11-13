@@ -378,12 +378,11 @@ def jukandian(pid, w, h):
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         checkin.jukandian(pid, w, h)
-        # [x] 时段奖励
-        time_reward()
-
         # [x] 阅读文章
         app.read_jukandian_article(pid, w, h, num=1)
 
+        # [x] 时段奖励
+        time_reward()
         phone.stop_app(pid, info.packages['jukandian'])
 
 

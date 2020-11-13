@@ -285,35 +285,6 @@ def quhongbao_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-# ~~~~~~~~~~糖豆~~~~~~~~~~
-def tangdou_benefit_page(pid, w, h):
-    # 1. 点击右下角我的栏目
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击任务中心
-    input.tap(pid, w / 2, 9.6 * h / HEIGHT)
-
-
-def tangdou_funny_video(pid, w, h, num):
-    print('糖豆有趣短视频 ' + datetime.now().__str__())
-    # 1. 向上滑动
-    phone.swipe_down_to_up(pid, w / 2, h, gap=3)
-    # 2. 点击有趣短视频按钮
-    video_location = utils.current_words_location(pid, '有趣')
-    if video_location is None:
-        print('没有刷有趣短视频的位置')
-        return
-    height = video_location['y'] + video_location['h']
-    input.tap(pid, w / 2, height)
-    # 3. 刷视频
-    for i in range(0, num):
-        phone.swipe_down_to_up(pid, w / 2, h)
-        time.sleep(15)
-    # 4. 返回上级页面
-    phone.go_back(pid, gap=1)
-    # 5. 向下滑动
-    phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
-
-
 # ~~~~~~~~~~东方头条~~~~~~~~~~
 def dongfang_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
@@ -809,3 +780,32 @@ def watch_huitoutiao_video(pid, w, h, sec):
     time.sleep(sec)
     # 4. 返回到首页
     phone.go_back(pid)
+
+
+# ~~~~~~~~~~糖豆~~~~~~~~~~
+def tangdou_benefit_page(pid, w, h):
+    # 1. 点击右下角我的栏目
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击任务中心
+    input.tap(pid, w / 2, 9.6 * h / HEIGHT)
+
+
+def tangdou_funny_video(pid, w, h, num):
+    print('糖豆有趣短视频 ' + datetime.now().__str__())
+    # 1. 向上滑动
+    phone.swipe_down_to_up(pid, w / 2, h, gap=3)
+    # 2. 点击有趣短视频按钮
+    video_location = utils.current_words_location(pid, '有趣')
+    if video_location is None:
+        print('没有刷有趣短视频的位置')
+        return
+    height = video_location['y'] + video_location['h']
+    input.tap(pid, w / 2, height)
+    # 3. 刷视频
+    for i in range(0, num):
+        phone.swipe_down_to_up(pid, w / 2, h)
+        time.sleep(15)
+    # 4. 返回上级页面
+    phone.go_back(pid, gap=1)
+    # 5. 向下滑动
+    phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
