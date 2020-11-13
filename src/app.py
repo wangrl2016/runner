@@ -483,11 +483,8 @@ def read_makan_article(pid, w, h, num):
         for j in range(0, 10):
             # 2. 向上滑动
             phone.swipe_down_to_up(pid, w / 2, h, gap=3)
-        # TODO: 如何解决可能出现的彩蛋
-        # 3. 返回上级
+        # 3. 返回上级自动刷新
         phone.go_back(pid)
-        # 4. 刷新页面
-        phone.swipe_up_to_down(pid, w / 2, h)
 
 
 def makan_search_coin(pid, w, h, num):
@@ -496,9 +493,9 @@ def makan_search_coin(pid, w, h, num):
     input.tap(pid, 2.6 * w / WIDTH, 6.4 * h / HEIGHT)
     for i in range(0, num):
         # 2. 点击搜索词
-        input.tap(pid, w / 3, (HEIGHT - 1.2) * h / HEIGHT)
+        input.tap(pid, w / 3, 9.5 * h / HEIGHT)
         # 3. 返回上级页面
-        phone.go_back(pid, gap=5)
+        phone.go_back(pid, gap=3)
 
 
 # ~~~~~~~~~~点点新闻~~~~~~~~~~
