@@ -77,25 +77,6 @@ def kuchang_benefit_page(pid, w, h):
     input.tap(pid, 2.0 * w / WIDTH, 1.4 * h / HEIGHT)
 
 
-# ~~~~~~~~~~微视~~~~~~~~~~
-
-def watch_weishi_video(pid, w, h, sec):
-    print('看微视视频 ' + datetime.now().time().__str__())
-    # 1. 消除可能存在的悬浮窗
-    phone.go_back(pid, gap=1)
-    # 2. 从下往上翻页
-    minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
-        while datetime.now().minute < minutes:
-            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-    else:
-        hour = datetime.now().hour
-        while datetime.now().hour == hour:
-            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-    # 3. 收集现金
-    input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT)
-
-
 # ~~~~~~~~~~书旗小说~~~~~~~~~~
 def shuqi_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
@@ -648,6 +629,23 @@ def watch_baidu_svideo(pid, w, h, hour):
 
 
 # ~~~~~~~~~~微视~~~~~~~~~~
+
+def watch_weishi_video(pid, w, h, sec):
+    print('看微视视频 ' + datetime.now().time().__str__())
+    # 1. 消除可能存在的悬浮窗
+    phone.go_back(pid, gap=1)
+    # 2. 从下往上翻页
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
+    # 3. 收集现金
+    input.tap(pid, 5.3 * w / WIDTH, 0.9 * h / HEIGHT, gap=2)
+
 
 # ~~~~~~~~~~喜马拉雅极速版~~~~~~~~~~
 def ximalaya_benefit_page(pid, w, h):
