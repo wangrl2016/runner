@@ -218,11 +218,6 @@ def kugou(pid, w, h):
             phone.stop_app(pid, info.packages['kugou'])
 
 
-# noinspection PyUnusedLocal
-def qire(pid, w, h):
-    return None
-
-
 def zhongqing(pid, w, h):
     def time_reward():
         print('中青看点时段奖励 ' + datetime.now().time().__str__())

@@ -80,13 +80,6 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
-def qire(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
-
-
 def zhongqing(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)

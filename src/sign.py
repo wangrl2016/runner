@@ -95,11 +95,6 @@ def kugou(pid, w, h):
     phone.go_back(pid, gap=1)
 
 
-def qire(pid, w, h):
-    # [x] 签到成功
-    input.tap(pid, (WIDTH - 0.5) * w / WIDTH, 10.5 * h / HEIGHT)
-
-
 def zhongqing(pid, w, h):
     # 1. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
