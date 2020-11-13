@@ -42,38 +42,6 @@ def jingdong_benefit_page(pid, w, h):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-def jingdong_good(pid, w, h, num):
-    """
-    逛商品赚金币
-    """
-    print('京东逛商品赚金币 ' + datetime.now().__str__())
-    jingdong_benefit_page(pid, w, h)
-    # 1. 点击逛商品赚金币
-    input.tap(pid, w / 2, 8.4 * h / HEIGHT)  # <=== modify
-    for i in range(0, num):
-        # 2. 逛10s
-        for j in range(0, 2):
-            phone.swipe_down_to_up(pid, w / 2, h, gap=5)
-        # 3. 点击下一个商品
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.4 * h / HEIGHT)  # <=== modify
-
-
-def jingdong_activity(pid, w, h, num):
-    """
-    逛活动赚金币
-    """
-    print('京东逛活动赚金币 ' + datetime.now().__str__())
-    jingdong_benefit_page(pid, w, h)
-    # 1. 点击逛活动赚金币
-    input.tap(pid, w / 2, 9.7 * h / HEIGHT)  # <=== modify
-    for i in range(0, num):
-        # 2. 逛15s
-        for j in range(0, 3):
-            phone.swipe_down_to_up(pid, w / 2, h, 5)
-        # 3. 点击下一个商品
-        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 8.0 * h / HEIGHT)
-
-
 def jingdong_video_coin(pid, w, h, hour):
     """
     京东看视频赚金币
@@ -83,7 +51,7 @@ def jingdong_video_coin(pid, w, h, hour):
     input.tap(pid, w / 2, 11.0 * h / HEIGHT)  # <=== modify
     # 2. 消除可能存在的广告悬浮窗
     input.tap(pid, w / 3, h / 2)
-    phone.go_back(pid, gap=3)
+    phone.go_back(pid)
     # 3. 任意点击视频进入
     input.tap(pid, w / 3, h / 2)
     # 4. 滑动屏幕观看
@@ -814,31 +782,6 @@ def watch_huoshan_video(pid, w, h, hour=4):
     """
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-
-
-def full_watch_huoshan_video(pid, w, h, hour):
-    print('看火山视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.huoshan(pid)
-    # 2. 看火山视频
-    watch_huoshan_video(pid, w, h, hour)
-    # 3. 关闭程序
-    phone.stop_app(pid, info.packages['huoshan'])
-
-
-def huoshan_money_tree(pid, w, h):
-    """
-    摇钱树
-    """
-    print('火山摇钱树 ' + datetime.now().__str__())
-    # 1. 点击右下方红包
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击摇钱树
-    input.tap(pid, w / 3, 5.0 * h / HEIGHT)
-    # 3. 摇钱
-    input.tap(pid, w / 2, h / 2)
-    # 返回到任务页面
-    phone.go_back(pid)
 
 
 # ~~~~~~~~~~墨迹天气~~~~~~~~~~

@@ -104,14 +104,13 @@ def run(pid):
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
-            checkin.kuaishou(pid)
-            app.kuaishou_benefit_page(pid, w, h)
-            # [x] 1000金币悬赏任务
-            # 10次
-            # 6min赚0.1元
-            # 做完之后放置在最下面
-            app.kuaishou_reward_task(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['kuaishou'])
+            for i in range(0, 2):
+                checkin.kuaishou(pid)
+                phone.go_back(pid)
+                app.kuaishou_benefit_page(pid, w, h)
+                # [x] 快手1000金币悬赏任务
+                app.kuaishou_reward_task(pid, w, h, num=5)
+                phone.stop_app(pid, info.packages['kuaishou'])
 
             utils.tail_work(pid, w, h, hour=2)
 
@@ -129,37 +128,16 @@ def run(pid):
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 
-            # [x] 摇钱树
-            # 1. 打开程序
             checkin.huoshan(pid)
-            app.huoshan_money_tree(pid, w, h)
-            # 2. 退出程序
-            phone.stop_app(pid, info.packages['huoshan'])
-
+            phone.go_back(pid)
             # [x] 看火山视频
-            app.full_watch_huoshan_video(pid, w, h, hour=4)
+            app.watch_huoshan_video(pid, w, h, hour=4)
+            phone.stop_app(pid, info.packages['huoshan'])
 
             utils.tail_work(pid, w, h, hour=4)
 
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
-
-            # [x] 逛商品赚金币
-            # 1. 打开程序
-            checkin.jingdong(pid, w, h)
-            # 2. 逛商品赚金币
-            # 50次
-            app.jingdong_good(pid, w, h, num=20)
-            # 3. 关闭程序
-            phone.stop_app(pid, info.packages['jingdong'])
-
-            # [x] 逛活动赚金币
-            # 1. 打开程序
-            checkin.jingdong(pid, w, h)
-            # 2. 逛活动赚金币
-            app.jingdong_activity(pid, w, h, num=3)
-            # 3. 关闭程序
-            phone.stop_app(pid, info.packages['jingdong'])
 
             checkin.jingdong(pid, w, h)
             app.jingdong_benefit_page(pid, w, h)
@@ -172,13 +150,6 @@ def run(pid):
         # 番茄免费小说
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
-
-            # checkin.fanqie(pid, w, h)
-            # # [x] 看视频赚海量金币
-            # # 10次
-            # # 做完任务后放置到最底下
-            # app.fanqie_video_coin(pid, w, h, num=10)
-            # phone.stop_app(pid, info.packages['fanqie'])
 
             # 打开程序
             checkin.fanqie(pid, w, h)
