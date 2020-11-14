@@ -333,8 +333,18 @@ def kuaiyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def quhongbao(pid, w, h):
+    def offline_coin():
+        print('趣红包离线收益 ' + datetime.now().time().__str__())
+        # 1. 点击开心手下
+        input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+        # 2. 播放30s
+        time.sleep(30)
+
     if datetime.now().minute < SCHEDULE_TIME:
-        return None
+        if datetime.now().hour % 3 == 0:
+            checkin.quhongbao(pid, w, h)
+            offline_coin()
+            phone.stop_app(pid, info.packages['quhongbao'])
 
 
 def dongfang(pid, w, h):
@@ -834,6 +844,12 @@ def taobao(pid, w, h):
         input.tap(pid, w / 2, 2.6 * h / HEIGHT)
         # 2. 点击口袋
         input.tap(pid, w * 2 / 3, h / 2, gap=2)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 5 == 0:
+            checkin.taobao(pid)
+            everyday_coin()
+            phone.stop_app(pid, info.packages['taobao'])
 
 
 # noinspection PyUnusedLocal
