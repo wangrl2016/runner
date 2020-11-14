@@ -875,6 +875,39 @@ def chejia(pid, w, h):
     return None
 
 
+def uc(pid, w, h):
+    def collect_coin():
+        print('UC浏览器收集金币 ' + datetime.now().time().__str__())
+        # 1. 点击收集金币
+        for i in range(0, 2):
+            input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=2)
+        # 2. 回到程序主页
+        phone.go_back(pid, times=3, gap=1)
+
+    def video_coin():
+        print('UC浏览器看视频领元宝 ' + datetime.now().time().__str__())
+        # 1. 点击看视频领元宝
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, (HEIGHT - 1.4) * h / HEIGHT, gap=10)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 关闭视频
+        phone.stop_app(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+        # 4. 点击领取
+        input.tap(pid, 1.3 * w / WIDTH, 5.8 * h / HEIGHT, gap=2)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour > 7:
+            checkin.uc(pid)
+            app.uc_benefit_page(pid, w, h)
+            # [x] 收集金币
+            collect_coin()
+
+            app.uc_benefit_page(pid, w, h)
+            # [x] 看视频领元宝
+            video_coin()
+            phone.stop_app(pid, info.packages['uc'])
+
+
 def hongshi(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:

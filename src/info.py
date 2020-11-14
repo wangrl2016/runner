@@ -75,6 +75,7 @@ activities = {
 
     # 37-40
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
+    'uc': 'com.UCMobile/com.uc.browser.InnerUCMobile',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
 
     # 41-44

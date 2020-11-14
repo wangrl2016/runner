@@ -693,6 +693,11 @@ def chejia_benefit_video(pid, w, h, num):
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
+# ~~~~~~~~~~UC浏览器~~~~~~~~~~
+def uc_benefit_page(pid, w, h):
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.4 * h / HEIGHT)
+
+
 # ~~~~~~~~~~红包短视频~~~~~~~~~~
 def watch_hongbao_video(pid, w, h, sec):
     print('看红包短视频 ' + datetime.now().time().__str__())

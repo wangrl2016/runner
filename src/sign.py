@@ -303,6 +303,12 @@ def chejia(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def uc(pid, w, h):
+    # 没有签到
+    return None
+
+
+# noinspection PyUnusedLocal
 def hongshi(pid, w, h):
     return None
 

@@ -38,7 +38,7 @@ def jingdong(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-def fanqie(pid, w, h, gap=10):
+def fanqie(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
@@ -206,6 +206,11 @@ def huitoutiao(pid, gap=10):
 
 
 def chejia(pid, gap=10):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def uc(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
