@@ -80,6 +80,8 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=0)
 
+        # 米读小说
+        # 今日头条
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
@@ -101,6 +103,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=1)
 
+        # 快手极速版
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
 
@@ -114,6 +117,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=2)
 
+        # 抖音极速版
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
@@ -125,6 +129,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=3)
 
+        # 火山极速版
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 
@@ -136,6 +141,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=4)
 
+        # 京东极速版
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
 
@@ -148,8 +154,14 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=5)
 
         # 番茄免费小说
+        # 百度极速版
         while datetime.now().hour.__eq__(6):
             schedule_apps(pid, w, h)
+
+            checkin.baidu(pid)
+            # [x] 百度好看视频
+            app.baidu_haokan_video(pid, w, h, num=10)
+            phone.stop_app(pid, info.packages['baidu'])
 
             checkin.jingdong(pid, w, h)
             app.jingdong_benefit_page(pid, w, h)
@@ -180,6 +192,11 @@ def run(pid):
             # [x] 看微视视频
             app.watch_weishi_video(pid, w, h, sec=180)
             phone.stop_app(pid, info.packages['weishi'])
+
+            checkin.baidu(pid)
+            # [x] 看百度小视频
+            app.watch_baidu_svideo(pid, w, h, hour=8)
+            phone.stop_app(pid, info.packages['baidu'])
 
             utils.tail_work(pid, w, h, hour=8)
 
@@ -333,14 +350,8 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=17)
 
         # 聚看点
-        # 百度极速版
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
-
-            checkin.baidu(pid)
-            # [x] 百度看好看视频
-            app.baidu_haokan_video(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['baidu'])
 
             checkin.jukandian(pid, w, h)
             # [x] 聚看点阅读文章
@@ -356,11 +367,6 @@ def run(pid):
             # [x] 聚看点小视频
             app.watch_jukandian_svideo(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
-
-            checkin.baidu(pid)
-            # [x] 看百度小视频
-            app.watch_baidu_svideo(pid, w, h, hour=18)
-            phone.stop_app(pid, info.packages['baidu'])
 
             utils.tail_work(pid, w, h, hour=18)
 

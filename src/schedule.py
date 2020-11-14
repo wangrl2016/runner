@@ -889,11 +889,6 @@ def doudou(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def yuetoutiao(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
 def kankuai(pid, w, h):
     return None
 

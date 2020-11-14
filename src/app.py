@@ -766,12 +766,6 @@ def read_doudou_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
 
 
-# ~~~~~~~~~~悦头条~~~~~~~~~~
-def yuetoutiao_benefit_page(pid, w, h):
-    # 1. 点击任务
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
 # ~~~~~~~~~~糖豆~~~~~~~~~~
 def tangdou_benefit_page(pid, w, h):
     # 1. 点击右下角我的栏目
