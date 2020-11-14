@@ -436,6 +436,7 @@ def run(pid):
 
             for i in range(0, 10):
                 checkin.diandian(pid, w, h)
+                app.diandian_benefit_page(pid, w, h)
                 # [x] 天天领红包
                 app.diandian_daily_packet(pid, w, h)
                 phone.stop_app(pid, info.packages['diandian'])

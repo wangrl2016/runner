@@ -875,7 +875,7 @@ def qqyuedu(pid, w, h):
     def open_treasure():
         print('QQ阅读开宝箱 ' + datetime.now().time().__str__())
         # 1. 点击宝箱
-        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT, gap=2)
 
     # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
     # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
@@ -936,6 +936,7 @@ def hongshi(pid, w, h):
             phone.stop_app(pid, info.packages['hongshi'])
 
 
+# noinspection PyUnusedLocal
 def doudou(pid, w, h):
     def hour_benefit():
         print('豆豆小说整点福利 ' + datetime.now().time().__str__())

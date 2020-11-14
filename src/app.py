@@ -390,9 +390,7 @@ def diandian_daily_packet(pid, w, h):
     天天领红包
     """
     print('天天领红包 ' + datetime.now().__str__())
-    # 1. 进入福利页面
-    diandian_benefit_page(pid, w, h)
-    # 2. 获取今日红包的位置
+    # 1. 获取今日红包的位置
     if '点点今日红包' not in info.contexts[pid]:
         packet_location = utils.current_words_location(pid, '今日红包')
         if packet_location is None:
@@ -402,9 +400,9 @@ def diandian_daily_packet(pid, w, h):
         info.contexts[pid]['点点今日红包'] = height
     input.tap(pid, w / 2, info.contexts[pid]['点点今日红包'])
 
-    # 3. 播放30s
+    # 2. 播放30s
     time.sleep(30)
-    # 4. 必须返回到福利页面
+    # 3. 必须返回到福利页面
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 

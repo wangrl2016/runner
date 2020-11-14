@@ -129,14 +129,14 @@ def kuge(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def makan(pid, w, h, gap=20):
+def makan(pid, w, h, gap=18):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def diandian(pid, w, h, gap=15):
+def diandian(pid, w, h, gap=18):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
