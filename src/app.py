@@ -767,9 +767,23 @@ def moji_benefit_page(pid, w, h):
 
 
 # ~~~~~~~~~~2345浏览器~~~~~~~~~~
-
 def ersansi_benefit_page(pid, w, h):
     input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def read_ersansi_article(pid, w, h, num):
+    print('阅读2345浏览器文章 ' + datetime.now().time().__str__())
+    for i in range(0, num):
+        # 1. 获取文章目录
+        if i != 0:
+            phone.swipe_up_to_down(pid, w / 2, h)
+        # 2. 点击文章
+        input.tap(pid, w / 2, h * 2)
+        # 3. 滑动阅读30s
+        for j in range(0, 10):
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(2, 5))
+        # 4. 返回上级目录
+        phone.go_back(pid)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~

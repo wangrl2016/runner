@@ -880,7 +880,7 @@ def hongshi(pid, w, h):
             for i in range(0, 2):
                 phone.swipe_down_to_up(pid, w / 2, h, 15)
             input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
-            phone.stop_app(pid, 'hongshi')
+            phone.stop_app(pid, info.packages['hongshi'])
 
 
 # noinspection PyUnusedLocal
@@ -903,9 +903,21 @@ def moji(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def ersansi(pid, w, h):
-    return None
+    def time_reward():
+        print('2345浏览器时段奖励 ' + datetime.now().time().__str__())
+        phone.swipe_up_to_down(pid, w, h)
+        input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
+        phone.go_back(pid)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        checkin.ersansi(pid)
+        # [x] 时段奖励
+        time_reward()
+
+        # [x] 阅读文章
+        app.read_ersansi_article(pid, w, h, num=1)
+        phone.stop_app(pid, info.packages['ersansi'])
 
 
 # noinspection PyUnusedLocal
