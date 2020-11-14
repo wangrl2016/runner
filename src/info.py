@@ -58,7 +58,6 @@ activities = {
 
     # 25-28
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
-    # 'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     # 29-32
@@ -71,7 +70,6 @@ activities = {
     'wuba': 'com.wuba.town.client/com.wuba.town.TownCenterActivity',
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
-    'huitoutiao': 'com.cashtoutiao/.account.ui.main.MainTabActivity',
 
     # 37-40
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',

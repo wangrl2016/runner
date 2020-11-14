@@ -624,11 +624,6 @@ def watch_wuba_video(pid, w, h, num):
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
 
-# ~~~~~~~~~~惠头条~~~~~~~~~~
-def huitoutiao_benefit_page(pid, w, h):
-    # 1. 点击中间下方的任务中心
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
 
 def read_huitoutiao_article(pid, w, h, num):
     print('阅读惠头条文章 ' + datetime.now().__str__())

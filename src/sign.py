@@ -282,16 +282,6 @@ def shuabao(pid, w, h):
     return None
 
 
-def huitoutiao(pid, w, h):
-    # 1. 假装想要退出关闭可能的悬浮窗
-    phone.go_back(pid)
-    # 2. 进入福利页面
-    app.huitoutiao_benefit_page(pid, w, h)
-    # 3. 点击今日签到
-    # [x] 签到成功
-    input.tap(pid, w / 2, 2.4 * h / HEIGHT, gap=2)  # <= modify
-
-
 def chejia(pid, w, h):
     # [x] 签到成功
     app.chejia_benefit_page(pid, w, h)

@@ -858,32 +858,6 @@ def shuabao(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def huitoutiao(pid, w, h):
-    # 平台检测到作弊工具
-    return None
-
-    # # 时段奖励
-    # def time_reward():
-    #     # 1. 点击领取
-    #     # 有时候没有广告视频
-    #     input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 1.0 * h / HEIGHT, 2)
-    #
-    # if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
-    #         (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
-    #     checkin.huitoutiao(pid)
-    #     # [x] 阅读惠头条文章
-    #     app.read_huitoutiao_article(pid, w, h, num=1)
-    #
-    #     # [x] 时段奖励
-    #     # 每个小时一次
-    #     # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-    #     # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-    #     time_reward()
-    #
-    #     phone.stop_app(pid, info.packages['huitoutiao'])
-
-
-# noinspection PyUnusedLocal
 def chejia(pid, w, h):
     return None
 

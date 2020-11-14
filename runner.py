@@ -262,19 +262,8 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=11)
 
-        # 惠头条
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
-
-            checkin.huitoutiao(pid)
-            # [x] 阅读惠头条文章
-            app.read_huitoutiao_article(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['huitoutiao'])
-
-            checkin.huitoutiao(pid)
-            # [x] 看惠头条视频
-            app.watch_huitoutiao_video(pid, w, h, sec=180)
-            phone.stop_app(pid, info.packages['huitoutiao'])
 
             utils.tail_work(pid, w, h, hour=12)
 
