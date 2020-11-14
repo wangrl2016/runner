@@ -278,8 +278,11 @@ def wuba(pid, w, h):
 
 # noinspection PyUnusedLocal
 def taobao(pid, w, h):
-    # 有现金红包
-    return None
+    # 1. 消除可能存在的悬浮窗
+    phone.go_back(pid)
+    # 2. 点击签到拿红包
+    # [x] 签到成功
+    input.tap(pid, 0.7 * w / WIDTH, 2.6 * h / HEIGHT)
 
 
 def shuabao(pid, w, h):
