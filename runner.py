@@ -450,7 +450,7 @@ def run(pid):
             checkin.tangdou(pid)
             app.tangdou_benefit_page(pid, w, h)
             # [x] 糖豆有趣视频
-            app.tangdou_funny_video(pid, w, h, num=30)
+            app.tangdou_funny_video(pid, w, h, num=10)
             phone.stop_app(pid, info.packages['tangdou'])
 
             utils.tail_work(pid, w, h, hour=23)
