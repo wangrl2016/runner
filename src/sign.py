@@ -141,6 +141,7 @@ def jukandian(pid, w, h):
     # [x] 签到成功
     input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
+
 # noinspection PyUnusedLocal
 def qukankan(pid, w, h):
     return None
@@ -281,9 +282,16 @@ def taobao(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def shuabao(pid, w, h):
-    return None
+    # 1.点击签到
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 3.4 * h / HEIGHT, gap=3)
+    # 2. 看视频签到
+    input.tap(pid, w * 2 / 3, 9.5 * h / HEIGHT)
+    # 3. 播放30s
+    time.sleep(30)
+    # 4. 返回到福利页面
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal

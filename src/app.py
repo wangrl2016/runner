@@ -612,7 +612,15 @@ def watch_wuba_video(pid, w, h, num):
 
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
+
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
+def shuabao_benefit_page(pid, w, h):
+    # 1. 点击右下方任务
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+    # 2. 消除悬浮窗
+    phone.go_back(pid)
+
+
 def watch_shuabao_video(pid, w, h, num):
     """
     看刷宝视频
