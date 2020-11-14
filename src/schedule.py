@@ -877,7 +877,7 @@ def uc(pid, w, h):
         print('UC浏览器收集金币 ' + datetime.now().time().__str__())
         # 1. 点击收集金币
         for i in range(0, 2):
-            input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=2)
+            input.tap(pid, w / 2, 9.5 * h / HEIGHT)
         # 2. 回到程序主页
         phone.go_back(pid, times=3, gap=1)
 
@@ -938,7 +938,7 @@ def moji(pid, w, h):
 def ersansi(pid, w, h):
     def time_reward():
         print('2345浏览器时段奖励 ' + datetime.now().time().__str__())
-        phone.swipe_up_to_down(pid, w, h)
+        phone.swipe_down_to_up(pid, w, h)
         input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
         phone.go_back(pid)
 
