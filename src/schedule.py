@@ -382,9 +382,19 @@ def jukandian(pid, w, h):
         phone.stop_app(pid, info.packages['jukandian'])
 
 
-# noinspection PyUnusedLocal
 def qukankan(pid, w, h):
-    return None
+    def time_reward():
+        print('趣看看时段奖励 ' + datetime.now().time().__str__())
+        # 1. 点击领取
+        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 0.9 * h / HEIGHT, gap=2)
+        # 2. 消除奖励提醒
+        phone.go_back(pid, gap=1)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 7 == 0:
+            checkin.qukankan(pid, w, h)
+            time_reward()
+            phone.stop_app(pid, info.packages['qukankan'])
 
 
 def kuge(pid, w, h):
@@ -874,9 +884,7 @@ def qqyuedu(pid, w, h):
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.qqyuedu(pid)
         app.qqyuedu_benefit_page(pid, w, h)
-
         # [x] 开宝箱
-        # 每个小时一次
         open_treasure()
         phone.stop_app(pid, info.packages['qutoutiao'])
 
@@ -904,7 +912,7 @@ def uc(pid, w, h):
         # 3. 返回到领取页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
         # 4. 点击领取
-        input.tap(pid, 1.3 * w / WIDTH, 5.8 * h / HEIGHT, gap=2)
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.8 * h / HEIGHT, gap=2)
 
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour > 7:
