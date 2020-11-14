@@ -10,11 +10,6 @@ def midu(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
-def wukong(pid, w, h):
-    return None
-
-
 def lanmao(pid, w, h):
     def cat_food():
         print('懒猫赚猫粮 ' + datetime.now().__str__())
@@ -151,15 +146,13 @@ def yingke(pid, w, h):
         if datetime.now().hour.__gt__(9) and datetime.now().hour.__lt__(21):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
-            # [x] 看福利视频
-            # 10次
+            # [x] 看福利视频10次
             benefit_video()
             phone.stop_app(pid, info.packages['yingke'])
 
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
-            # [x] 开宝箱
-            # 10次
+            # [x] 开宝箱10次
             open_treasure()
             phone.stop_app(pid, info.packages['yingke'])
 
@@ -890,8 +883,8 @@ def uc(pid, w, h):
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, (HEIGHT - 1.4) * h / HEIGHT, gap=10)
         # 2. 播放30s
         time.sleep(30)
-        # 3. 关闭视频
-        phone.stop_app(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+        # 3. 返回到领取页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
         # 4. 点击领取
         input.tap(pid, 1.3 * w / WIDTH, 5.8 * h / HEIGHT, gap=2)
 

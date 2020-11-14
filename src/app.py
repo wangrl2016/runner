@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, checkin, utils, info
+from src import phone, input, utils, info
 from src.info import HEIGHT, WIDTH
 
 
@@ -484,22 +484,9 @@ def kuaishou_benefit_page(pid, w, h, gap=3):
 
 # 只包含看视频的过程
 def watch_kuaishou_video(pid, w, h, hour):
-    """
-    看快手视频
-    """
+    print('看快手视频 ' + datetime.now().time().__str__())
     while datetime.now().hour.__eq__(hour):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-
-
-# 从打开到关闭看快手视频的完整过程
-def full_watch_kuaishou_video(pid, w, h, hour):
-    print('看快手视频 ' + datetime.now().__str__())
-    # 1. 打开程序
-    checkin.kuaishou(pid)
-    # 2. 看快手视频
-    watch_kuaishou_video(pid, w, h, hour)
-    # 3. 关闭程序
-    phone.stop_app(pid, info.packages['kuaishou'])
 
 
 # noinspection PyUnusedLocal

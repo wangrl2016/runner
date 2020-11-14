@@ -17,13 +17,6 @@ def midu(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def wukong(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
-
-
 def lanmao(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)

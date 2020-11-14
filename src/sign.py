@@ -15,11 +15,6 @@ def midu(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def wukong(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
 def lanmao(pid, w, h):
     # [x] 签到成功
     return None

@@ -58,7 +58,7 @@ activities = {
 
     # 25-28
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
-    'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
+    # 'wukong': '#com.yshx.wukong/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     # 29-32
