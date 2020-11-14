@@ -754,7 +754,7 @@ def read_ersansi_article(pid, w, h, num):
         if i != 0:
             phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
-        input.tap(pid, w / 2, h * 2)
+        input.tap(pid, w / 2, h / 2)
         # 3. 滑动阅读30s
         for j in range(0, 10):
             phone.swipe_down_to_up(pid, w / 2, h, randrange(2, 5))
