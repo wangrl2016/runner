@@ -334,25 +334,6 @@ def watch_jukandian_svideo(pid, w, h, num):
     phone.go_back(pid, gap=1)
 
 
-# ~~~~~~~~~~看点快报~~~~~~~~~~
-def kankuai_benefit_page(pid, w, h):
-    # 1. 点击右下角我的栏目
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击福利红包
-    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
-
-
-def watch_kankuai_advert(pid, w, h, num):
-    print("看点快报广告 " + datetime.now().__str__())
-    for i in range(0, num):
-        # 1. 点击去观看
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=3)
-        # 2. 播放15s
-        time.sleep(15)
-        # 3. 点击关闭
-        input.tap(pid, 0.5 * w / WIDTH, 1.7 * h / HEIGHT, gap=2)  # <=== modify
-
-
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
@@ -363,17 +344,6 @@ def watch_shuabao_video(pid, w, h, num):
     print('看刷宝短视频 ' + datetime.now().time().__str__())
     for i in range(0, num):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-
-
-# ~~~~~~~~~~抖音火山版~~~~~~~~~~
-def watch_douhuo_video(pid, w, h, sec=300):
-    print('看抖音火山视频 ' + datetime.now().__str__())
-    start = datetime.now()
-    # 1. 点击进入视频播放界面
-    input.tap(pid, w / 3, h / 3)
-    # 2. 逐个看视频
-    while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w / 3, h * 2 / 3, randrange(5, 16))
 
 
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
@@ -588,11 +558,6 @@ def watch_huoshan_video(pid, w, h, hour=4):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
-# ~~~~~~~~~~墨迹天气~~~~~~~~~~
-def moji_benefit_page(pid, w, h):
-    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
 # ~~~~~~~~~~趣头条~~~~~~~~~~
 def qutoutiao_benefit_page(pid, w, h):
     # 1. 点击左下角任务
@@ -764,6 +729,47 @@ def read_doudou_novel(pid, w, h, sec):
         hour = datetime.now().hour
         while datetime.now().hour == hour:
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
+
+
+# ~~~~~~~~~~看点快报~~~~~~~~~~
+def kankuai_benefit_page(pid, w, h):
+    # 1. 点击右下角我的栏目
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击福利红包
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+
+
+def watch_kankuai_advert(pid, w, h, num):
+    print("看点快报广告 " + datetime.now().__str__())
+    for i in range(0, num):
+        # 1. 点击去观看
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=3)
+        # 2. 播放15s
+        time.sleep(15)
+        # 3. 点击关闭
+        input.tap(pid, 0.5 * w / WIDTH, 1.7 * h / HEIGHT, gap=2)  # <=== modify
+
+
+# ~~~~~~~~~~抖音火山版~~~~~~~~~~
+def watch_douhuo_video(pid, w, h, sec=300):
+    print('看抖音火山视频 ' + datetime.now().__str__())
+    start = datetime.now()
+    # 1. 点击进入视频播放界面
+    input.tap(pid, w / 3, h / 3)
+    # 2. 逐个看视频
+    while (datetime.now() - start).seconds < sec:
+        phone.swipe_down_to_up(pid, w / 3, h * 2 / 3, randrange(5, 16))
+
+
+# ~~~~~~~~~~墨迹天气~~~~~~~~~~
+def moji_benefit_page(pid, w, h):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+# ~~~~~~~~~~2345浏览器~~~~~~~~~~
+
+def ersansi_benefit_page(pid, w, h):
+    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~

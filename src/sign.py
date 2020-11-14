@@ -342,7 +342,11 @@ def moji(pid, w, h):
 
 # noinspection PyUnusedLocal
 def ersansi(pid, w, h):
-    return None
+    phone.go_back(pid)
+    app.ersansi_benefit_page(pid, w, h)
+    # 点击签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 3.0 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
