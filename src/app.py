@@ -776,20 +776,16 @@ def tangdou_benefit_page(pid, w, h):
 
 def tangdou_funny_video(pid, w, h, num):
     print('糖豆有趣短视频 ' + datetime.now().__str__())
-    # 1. 向上滑动
-    phone.swipe_down_to_up(pid, w / 2, h, gap=3)
-    # 2. 点击有趣短视频按钮
+    # 1. 点击有趣短视频按钮
     video_location = utils.current_words_location(pid, '有趣')
     if video_location is None:
         print('没有刷有趣短视频的位置')
         return
     height = video_location['y'] + video_location['h']
     input.tap(pid, w / 2, height)
-    # 3. 刷视频
+    # 2. 刷视频
     for i in range(0, num):
         phone.swipe_down_to_up(pid, w / 2, h)
         time.sleep(15)
-    # 4. 返回上级页面
+    # 3. 返回上级页面
     phone.go_back(pid, gap=1)
-    # 5. 向下滑动
-    phone.swipe_up_to_down(pid, w / 2, h, gap=1, internal=100)
