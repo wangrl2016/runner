@@ -650,9 +650,7 @@ def douyin(pid, w, h):
         input.tap(pid, w / 3, info.contexts[pid]['抖音吃饭'])
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=2)  # <= modify
-        # 4. 上滑到任务页最上面
-        phone.swipe_down_to_up(pid, w / 2, h)
-        # 5. 返回到播放页面
+        # 4. 返回到播放页面
         phone.go_back(pid, times=3, gap=1)
 
     checkin.douyin(pid)
@@ -672,6 +670,7 @@ def douyin(pid, w, h):
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
             meal_allowance()
             app.douyin_benefit_page(pid, w, h)
+            phone.swipe_up_to_down(pid, w / 2, h)
 
     # [x] 开宝箱得金币
     # 每20分钟一次
