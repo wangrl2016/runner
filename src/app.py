@@ -334,18 +334,6 @@ def watch_jukandian_svideo(pid, w, h, num):
     phone.go_back(pid, gap=1)
 
 
-# ~~~~~~~~~~淘宝特价版~~~~~~~~~~
-
-# ~~~~~~~~~~刷宝短视频~~~~~~~~~~
-def watch_shuabao_video(pid, w, h, num):
-    """
-    看刷宝视频
-    """
-    print('看刷宝短视频 ' + datetime.now().time().__str__())
-    for i in range(0, num):
-        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-
-
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
@@ -599,13 +587,13 @@ def watch_weishi_video(pid, w, h, sec):
 
 
 # ~~~~~~~~~~喜马拉雅极速版~~~~~~~~~~
-def ximalaya_benefit_page(pid, w, h):
-    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+def ximalaya_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~五八同城本地版~~~~~~~~~~
-def wuba_benefit_page(pid, w, h):
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+def wuba_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def watch_wuba_video(pid, w, h, num):
@@ -623,43 +611,23 @@ def watch_wuba_video(pid, w, h, num):
 # ~~~~~~~~~~淘宝特价版~~~~~~~~~~
 
 # ~~~~~~~~~~刷宝短视频~~~~~~~~~~
-
-
-def read_huitoutiao_article(pid, w, h, num):
-    print('阅读惠头条文章 ' + datetime.now().__str__())
-    # 1. 消除可能存在的悬浮窗
-    phone.go_back(pid, gap=1)
+def watch_shuabao_video(pid, w, h, num):
+    """
+    看刷宝视频
+    """
+    print('看刷宝短视频 ' + datetime.now().time().__str__())
     for i in range(0, num):
-        # 2. 获取文章目录
-        if i.__ne__(0):
-            phone.swipe_up_to_down(pid, w / 2, randrange(h / 2, h))
-        # 3. 阅读中间文章
-        input.tap(pid, randrange(w / 3, w * 2 / 3), h * 3 / 5)
-        # 4. 滑动阅读
-        for j in range(0, randrange(9, 12)):
-            phone.swipe_down_to_up(pid, w / 2, randrange(h / 2, h), randrange(2, 5), internal=300)
-        # 5. 返回上级目录
-        phone.go_back(pid)
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
-def watch_huitoutiao_video(pid, w, h, sec):
-    """
-    看惠头条视频
-    """
-    print('看惠头条视频 ' + datetime.now().__str__())
-    # 1. 点击惠头条视频
-    input.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-    # 2. 点击视频
-    input.tap(pid, w / 2, h / 4)
-    # 3. 播放
-    time.sleep(sec)
-    # 4. 返回到首页
-    phone.go_back(pid)
+# ~~~~~~~~~~QQ阅读~~~~~~~~~~
+def qqyuedu_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~汽车之家~~~~~~~~~~
-def chejia_benefit_page(pid, w, h):
-    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+def chejia_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def chejia_benefit_video(pid, w, h, num):

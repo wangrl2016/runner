@@ -70,6 +70,7 @@ activities = {
     'wuba': 'com.wuba.town.client/com.wuba.town.TownCenterActivity',
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
+    'qqyuedu': 'com.qq.reader/.activity.MainActivity',
 
     # 37-40
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
