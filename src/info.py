@@ -50,6 +50,7 @@ activities = {
     # 17-20
     'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
+    'qukankan': 'com.popnews2345/.main.activity.MainActivity',
 
     # 21-24
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',

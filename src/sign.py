@@ -141,6 +141,10 @@ def jukandian(pid, w, h):
     # [x] 签到成功
     input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
+# noinspection PyUnusedLocal
+def qukankan(pid, w, h):
+    return None
+
 
 def kuge(pid, w, h):
     # 1. 点击右上方赚钱

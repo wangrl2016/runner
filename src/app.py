@@ -334,6 +334,8 @@ def watch_jukandian_svideo(pid, w, h, num):
     phone.go_back(pid, gap=1)
 
 
+# ~~~~~~~~~~趣看看~~~~~~~~~~
+
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
