@@ -34,24 +34,12 @@ def fanqie(pid, w, h):
     # 2. 点击中间下方福利签到
     # [x] 签到成功
     app.fanqie_benefit_page(pid, w, h)
-    # 3. 点击看视频再领金币
-    input.tap(pid, w / 2, 10.1 * h / HEIGHT)  # <== modify
-    # 4. 播放视频30s
-    time.sleep(30)
-    # 5. 点击关闭回退到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
 
 
 def fanchang(pid, w, h):
     # 1. 进入福利页面
     # [x] 签到成功
     app.fanchang_benefit_page(pid, w, h)
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 10.0 * h / HEIGHT)  # <= modify
-    # 3. 播放视频30s
-    time.sleep(30)
-    # 4. 点击关闭回退到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)  # <== modify
 
 
 # noinspection PyUnusedLocal
@@ -195,7 +183,7 @@ def toutiao(pid, w, h):
 
 def kuaishou(pid, w, h):
     # 1. 假装后退解决弹出青少年模式悬浮窗的问题
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
     # 2. 进入快手福利页面
     app.kuaishou_benefit_page(pid, w, h)
     # 3. 显示签到页面点击立即签到
