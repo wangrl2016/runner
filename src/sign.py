@@ -126,6 +126,7 @@ def dongfang(pid, w, h):
 
 
 def jukandian(pid, w, h):
+    time.sleep(3)
     # [x] 签到成功
     input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
