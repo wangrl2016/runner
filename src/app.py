@@ -336,6 +336,10 @@ def watch_jukandian_svideo(pid, w, h, num):
 
 # ~~~~~~~~~~趣看看~~~~~~~~~~
 
+def qukankan_benefit_page(pid, w, h):
+    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
@@ -630,7 +634,10 @@ def watch_shuabao_video(pid, w, h, num):
 
 # ~~~~~~~~~~QQ阅读~~~~~~~~~~
 def qqyuedu_benefit_page(pid, w, h, gap=3):
+    # 1. 点击中间下方免费
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+    # 2. 点击福利
+    input.tap(pid, 1.7 * w / WIDTH, 1.0 * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~汽车之家~~~~~~~~~~

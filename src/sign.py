@@ -16,7 +16,7 @@ def midu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def lanmao(pid, w, h):
-    # [x] 签到成功
+    # 无签到
     return None
 
 
@@ -73,7 +73,7 @@ def kugou(pid, w, h):
     app.kugou_benefit_page(pid, w, h)
     # 2. 点击每日签到栏
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.4) * h / HEIGHT, gap=3)  # <== modify
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.9) * h / HEIGHT, gap=3)  # <== modify
     # 3. 返回到赚钱页面
     phone.go_back(pid, gap=1)
 
@@ -83,12 +83,10 @@ def zhongqing(pid, w, h):
     phone.go_back(pid)
     # 2. 点击任务待签到
     app.zhongqing_benefit_page(pid, w, h)
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
     # 3. 点击签到领现金
     # [x] 签到成功
-    input.tap(pid, w / 2, 4.9 * h / HEIGHT)  # <= modify
-    # 4. 回退到福利页面
-    phone.go_back(pid, gap=1)
+    input.tap(pid, w / 2, 4.9 * h / HEIGHT, gap=3)  # <= modify
 
 
 def pinduoduo(pid, w, h):
@@ -112,6 +110,7 @@ def kuaiyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def quhongbao(pid, w, h):
+    # 需要解决离线收益问题
     # 进入福利页面
     # [x] 签到成功
     app.quhongbao_benefit_page(pid, w, h)
@@ -133,7 +132,11 @@ def jukandian(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qukankan(pid, w, h):
-    return None
+    # 1. 进入福利页面
+    app.qukankan_benefit_page(pid, w, h)
+    # 2. 点击签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
 
 
 def kuge(pid, w, h):
@@ -155,7 +158,7 @@ def makan(pid, w, h):
     # 3. 返回到主页
     phone.go_back(pid)
     # 4. 获取时段奖励
-    input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT)  # <= modify
+    input.tap(pid, 0.8 * w / WIDTH, 1.0 * h / HEIGHT, gap=2)  # <= modify
 
 
 # noinspection PyUnusedLocal
@@ -229,19 +232,14 @@ def qutoutiao(pid, w, h):
     # 1. 点击右下方任务
     # [x] 签到成功
     app.qutoutiao_benefit_page(pid, w, h)
-    # 2. 点击看视频再领金币
-    input.tap(pid, w / 2, 6.8 * h / HEIGHT, gap=8)
-    # 3. 播放40s
-    # TODO: 播放时长
-    time.sleep(40)
-    # 4. 回退到未知页面
-    phone.go_back(pid, gap=1)
 
 
 def baidu(pid, w, h):
     # 1. 点击右下方去签到
-    # [x] 签到成功
     app.baidu_benefit_page(pid, w, h)
+    # 2. 回退悬浮窗然签到界面显示
+    # [x] 签到成功
+    phone.go_back(pid, gap=2)
 
 
 # noinspection PyUnusedLocal
@@ -269,26 +267,33 @@ def wuba(pid, w, h):
 def taobao(pid, w, h):
     # 1. 消除可能存在的悬浮窗
     phone.go_back(pid)
-    # 2. 点击签到拿红包
-    # [x] 签到成功
+    # 2. 点击签到
     input.tap(pid, 0.7 * w / WIDTH, 2.6 * h / HEIGHT)
+    # 3. 点击视频
+    input.tap(pid, w / 2, 6.7 * h / HEIGHT)
+    # 4. 播放30s
+    # [x] 签到成功
+    time.sleep(30)
 
 
 def shuabao(pid, w, h):
-    # 1.点击签到
+    # 1. 刷宝福利页面
+    app.shuabao_benefit_page(pid, w, h)
+    # 2.点击签到
     input.tap(pid, (WIDTH - 1.0) * w / WIDTH, 3.4 * h / HEIGHT, gap=3)
-    # 2. 看视频签到
+    # 3. 看视频签到
     input.tap(pid, w * 2 / 3, 9.5 * h / HEIGHT)
-    # 3. 播放30s
+    # 4. 播放30s
     time.sleep(30)
-    # 4. 返回到福利页面
+    # 5. 返回到福利页面
     # [x] 签到成功
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
 def qqyuedu(pid, w, h):
-    return None
+    # [x] 签到成功
+    app.qqyuedu_benefit_page(pid, w, h)
 
 
 def chejia(pid, w, h):
@@ -304,6 +309,7 @@ def uc(pid, w, h):
 
 # noinspection PyUnusedLocal
 def hongshi(pid, w, h):
+    # 没有签到
     return None
 
 
