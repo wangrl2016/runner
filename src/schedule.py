@@ -959,7 +959,7 @@ def moji(pid, w, h):
 def ersansi(pid, w, h):
     def time_reward():
         print('2345浏览器时段奖励 ' + datetime.now().time().__str__())
-        phone.swipe_down_to_up(pid, w, h)
+        phone.swipe_down_to_up(pid, w / 2, h)
         input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
         phone.go_back(pid)
 
