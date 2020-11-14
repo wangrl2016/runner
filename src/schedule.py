@@ -793,7 +793,7 @@ def baidu(pid, w, h):
         # 2. 返回到程序主页
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 3).__eq__(0):
+    if datetime.now().minute.__lt__(SCHEDULE_TIME) and (datetime.now().hour % 7).__eq__(0):
         checkin.baidu(pid)
         # [x] 时段奖励
         time_reward()
@@ -827,9 +827,13 @@ def wuba(pid, w, h):
             phone.stop_app(pid, info.packages['wuba'])
 
 
-# noinspection PyUnusedLocal
 def taobao(pid, w, h):
-    return None
+    def everyday_coin():
+        print('淘宝天天赚特币 ' + datetime.now().time().__str__())
+        # 1. 点击天天赚特币
+        input.tap(pid, w / 2, 2.6 * h / HEIGHT)
+        # 2. 点击口袋
+        input.tap(pid, w * 2 / 3, h / 2, gap=2)
 
 
 # noinspection PyUnusedLocal
