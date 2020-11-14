@@ -632,7 +632,9 @@ def douyin(pid, w, h):
         input.tap(pid, w / 3, info.contexts[pid]['抖音吃饭'])
         # 3. 领取补贴
         input.tap(pid, w / 2, (HEIGHT - 1.3) * h / HEIGHT, gap=2)  # <= modify
-        # 4. 返回到播放页面
+        # 4. 上滑到任务页最上面
+        phone.swipe_down_to_up(pid, w / 2, h)
+        # 5. 返回到播放页面
         phone.go_back(pid, times=3, gap=1)
 
     checkin.douyin(pid)
