@@ -309,7 +309,10 @@ def hongshi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def doudou(pid, w, h):
-    return None
+    app.doudou_benefit_page(pid, w, h)
+    for i in range(0, 7):
+        # [x] 签到成功
+        input.tap(pid, (0.8 + i * 0.9) * w / WIDTH, 3.4 * h / HEIGHT, gap=0.5)
 
 
 # noinspection PyUnusedLocal

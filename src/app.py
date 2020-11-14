@@ -744,6 +744,15 @@ def watch_hongbao_video(pid, w, h, sec):
     input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT)
 
 
+# ~~~~~~~~~~豆豆免费小说~~~~~~~~~~
+def doudou_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def read_doudou_novel(pid, w, h):
+    return None
+
+
 # ~~~~~~~~~~悦头条~~~~~~~~~~
 def yuetoutiao_benefit_page(pid, w, h):
     # 1. 点击任务
