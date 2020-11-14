@@ -646,9 +646,9 @@ def douyin(pid, w, h):
         phone.go_back(pid, times=3, gap=1)
 
     checkin.douyin(pid)
+    app.douyin_benefit_page(pid, w, h)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        app.douyin_benefit_page(pid, w, h)
         # [x] 睡觉赚金币
         # 20:00-2:00为睡觉时间
         if datetime.now().hour.__eq__(20):
@@ -661,8 +661,8 @@ def douyin(pid, w, h):
         hour = datetime.now().hour
         if hour.__eq__(6) or hour.__eq__(12) or hour.__eq__(18) or hour.__eq__(22):
             meal_allowance()
+            app.douyin_benefit_page(pid, w, h)
 
-    app.douyin_benefit_page(pid, w, h)
     # [x] 开宝箱得金币
     # 每20分钟一次
     open_treasure()
@@ -862,9 +862,23 @@ def shuabao(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
 def qqyuedu(pid, w, h):
-    return None
+    def open_treasure():
+        print('QQ阅读开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
+
+    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+        checkin.qqyuedu(pid)
+        app.qqyuedu_benefit_page(pid, w, h)
+
+        # [x] 开宝箱
+        # 每个小时一次
+        open_treasure()
+        phone.stop_app(pid, info.packages['qutoutiao'])
 
 
 # noinspection PyUnusedLocal
