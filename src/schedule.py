@@ -936,9 +936,16 @@ def hongshi(pid, w, h):
             phone.stop_app(pid, info.packages['hongshi'])
 
 
-# noinspection PyUnusedLocal
 def doudou(pid, w, h):
-    return None
+    def hour_benefit():
+        print('豆豆小说整点福利 ' + datetime.now().time().__str__())
+        checkin.doudou(pid)
+        phone.stop_app(pid, info.packages['doudou'])
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        # 12-14或者17-19点两次
+        if datetime.now().hour == 13 or datetime.now().hour == 17:
+            hour_benefit()
 
 
 # noinspection PyUnusedLocal
