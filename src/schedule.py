@@ -858,6 +858,11 @@ def shuabao(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def qqyuedu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
 def chejia(pid, w, h):
     return None
 

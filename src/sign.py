@@ -282,6 +282,11 @@ def shuabao(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
+def qqyuedu(pid, w, h):
+    return None
+
+
 def chejia(pid, w, h):
     # [x] 签到成功
     app.chejia_benefit_page(pid, w, h)

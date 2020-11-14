@@ -262,6 +262,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=11)
 
+        # QQ阅读
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
