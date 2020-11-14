@@ -749,8 +749,21 @@ def doudou_benefit_page(pid, w, h):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-def read_doudou_novel(pid, w, h):
-    return None
+def read_doudou_novel(pid, w, h, sec):
+    print('阅读豆豆小说 ' + datetime.now().time().__str__())
+    # 1. 点击书架
+    input.tap(pid, 0.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击任意一本书
+    input.tap(pid, w / 3, h * 3 / 5)
+    # 3. 开始阅读
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
 
 
 # ~~~~~~~~~~悦头条~~~~~~~~~~

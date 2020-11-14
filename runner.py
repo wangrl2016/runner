@@ -321,21 +321,14 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=16)
 
         # 东方头条
+        # 豆豆免费小说
         while datetime.now().hour.__eq__(17):
             schedule_apps(pid, w, h)
 
-            # # [x] 看头条文章
-            # checkin.qutoutiao(pid)
-            # app.read_qutoutiao_article(pid, w, h, num=10)
-            # phone.stop_app(pid, info.packages['qutoutiao'])
-            #
-            # # [x] 看头条视频
-            # checkin.qutoutiao(pid)
-            # app.watch_qutoutiao_video(pid, w, h, num=10)
-            # phone.stop_app(pid, info.packages['qutoutiao'])
-            #
-            # # [x] 看趣头条小视频
-            # app.full_watch_qutoutiao_svideo(pid, w, h, hour=17)
+            checkin.doudou(pid)
+            # [x] 阅读豆豆小说
+            app.read_doudou_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['doudou'])
 
             utils.tail_work(pid, w, h, hour=17)
 
