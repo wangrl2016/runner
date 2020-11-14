@@ -689,11 +689,11 @@ def read_doudou_novel(pid, w, h, sec):
 
 
 # ~~~~~~~~~~看点快报~~~~~~~~~~
-def kankuai_benefit_page(pid, w, h):
+def kankuai_benefit_page(pid, w, h, gap=3):
     # 1. 点击右下角我的栏目
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
     # 2. 点击福利红包
-    input.tap(pid, w / 2, 9.5 * h / HEIGHT)
+    input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap)
 
 
 def watch_kankuai_advert(pid, w, h, num):

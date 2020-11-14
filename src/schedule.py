@@ -481,7 +481,7 @@ def toutiao(pid, w, h):
         print('今日头条睡觉赚钱 ' + datetime.now().time().__str__())
         # 1. 获取睡觉赚钱的位置
         if '今日头条睡觉' not in info.contexts[pid]:
-            sleep_location = utils.current_words_location(pid, '觉')
+            sleep_location = utils.current_words_location(pid, '睡')
             if sleep_location is None:
                 print('没有获取到睡觉赚钱的位置')
                 return

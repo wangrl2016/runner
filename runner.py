@@ -364,11 +364,11 @@ def run(pid):
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
-            for i in range(0, 3):
-                checkin.kankuai(pid)
+            for i in range(0, 5):
+                checkin.kankuai(pid, gap=8)
                 app.kankuai_benefit_page(pid, w, h)
                 # [x] 看广告领金币
-                app.watch_kankuai_advert(pid, w, h, num=10)
+                app.watch_kankuai_advert(pid, w, h, num=3)
                 phone.stop_app(pid, info.packages['kankuai'])
 
             utils.tail_work(pid, w, h, hour=19)
