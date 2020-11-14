@@ -61,9 +61,9 @@ def jingdong_video_coin(pid, w, h, hour):
 
 # ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
-def fanqie_benefit_page(pid, w, h):
+def fanqie_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
-    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
@@ -729,6 +729,17 @@ def watch_douhuo_video(pid, w, h, sec=300):
 # ~~~~~~~~~~墨迹天气~~~~~~~~~~
 def moji_benefit_page(pid, w, h):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
+def moji_benefit_video(pid, w, h, num):
+    print('墨迹福利视频 ' + datetime.now().time().__str__())
+    for i in (0, num):
+        # 1. 点击看视频
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 10.8 * h / HEIGHT)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 关闭返回福利页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
 
 
 # ~~~~~~~~~~2345浏览器~~~~~~~~~~

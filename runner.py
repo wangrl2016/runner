@@ -386,6 +386,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=20)
 
         # 酷狗儿歌
+        # 墨迹天气
         while datetime.now().hour.__eq__(21):
             checkin.kuge(pid, w, h)
             # [x] 后台播放酷狗儿歌
@@ -393,6 +394,12 @@ def run(pid):
             app.kuge_play_background(pid, w, h)
 
             schedule_apps(pid, w, h)
+
+            for i in range(0, 2):
+                checkin.moji(pid)
+                app.moji_benefit_page(pid, w, h)
+                app.moji_benefit_video(pid, w, h, num=5)
+                phone.stop_app(pid, info.packages['moji'])
 
             utils.tail_work(pid, w, h, hour=21)
 
