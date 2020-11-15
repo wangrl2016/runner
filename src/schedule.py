@@ -476,7 +476,7 @@ def diandian(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def xiuqiu(pid, w, h):
+def xingqiu(pid, w, h):
     return None
 
 

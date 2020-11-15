@@ -15,6 +15,16 @@ def midu(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def changdou(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def kulingyin(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
 def lanmao(pid, w, h):
     # 无签到
     return None
@@ -78,6 +88,11 @@ def kugou(pid, w, h):
     phone.go_back(pid, gap=1)
 
 
+# noinspection PyUnusedLocal
+def youliao(pid, w, h):
+    return None
+
+
 def zhongqing(pid, w, h):
     # 1. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
@@ -139,6 +154,11 @@ def qukankan(pid, w, h):
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
 
 
+# noinspection PyUnusedLocal
+def miaokan(pid, w, h):
+    return None
+
+
 def kuge(pid, w, h):
     # 1. 点击右上方赚钱
     input.tap(pid, 4.8 * w / WIDTH, 1.2 * h / HEIGHT)
@@ -168,6 +188,11 @@ def diandian(pid, w, h):
     # 2. 点击任务
     # [x] 签到成功
     app.diandian_benefit_page(pid, w, h)
+
+
+# noinspection PyUnusedLocal
+def xingqiu(pid, w, h):
+    return None
 
 
 # 25-28
@@ -308,6 +333,12 @@ def uc(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def kuaikandian(pid, w, h):
+    # 没有签到
+    return None
+
+
+# noinspection PyUnusedLocal
 def hongshi(pid, w, h):
     # 没有签到
     return None
@@ -319,6 +350,11 @@ def doudou(pid, w, h):
     for i in range(0, 7):
         # [x] 签到成功
         input.tap(pid, (0.8 + i * 0.9) * w / WIDTH, 3.4 * h / HEIGHT, gap=0.5)
+
+
+# noinspection PyUnusedLocal
+def qimao(pid, w, h):
+    return None
 
 
 # noinspection PyUnusedLocal
@@ -369,5 +405,26 @@ def tangdou(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def yangchong(pid, w, h):
+    return None
+
+
+# 49 - 72
+# noinspection PyUnusedLocal
 def weixin(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def sougou(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhuanshi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def qizhu(pid, w, h):
     return None
