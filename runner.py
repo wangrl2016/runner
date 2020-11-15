@@ -386,6 +386,8 @@ def run(pid):
                 app.watch_kankuai_advert(pid, w, h, num=3)
                 phone.stop_app(pid, info.packages['kankuai'])
 
+
+
             utils.tail_work(pid, w, h, hour=19)
 
         # 抖音火山
