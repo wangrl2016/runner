@@ -349,7 +349,7 @@ def qukankan_benefit_page(pid, w, h):
     input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
-# ~~~~~~~~~~趣看看~~~~~~~~~~
+# ~~~~~~~~~~妙看短视频~~~~~~~~~~
 def miaokan_benefit_page(pid, w, h):
     input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
@@ -652,6 +652,23 @@ def qqyuedu_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
     # 2. 点击福利
     input.tap(pid, 1.7 * w / WIDTH, 1.0 * h / HEIGHT, gap)
+
+
+def read_qqyuedu_novel(pid, w, h, sec):
+    print('QQ阅读小说 ' + datetime.now().time().__str__())
+    # 1. 点击书架
+    input.tap(pid, 0.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+    # 2. 点击任意书
+    input.tap(pid, w / 6, h * 2 / 5, gap=3)
+    # 3. 开始阅读
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            phone.swipe_right_to_left(pid, w, h * 7 / 8, randrange(2, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_right_to_left(pid, w, h * 7 / 8, randrange(2, 5))
 
 
 # ~~~~~~~~~~汽车之家~~~~~~~~~~

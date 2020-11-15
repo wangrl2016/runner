@@ -266,6 +266,10 @@ def run(pid):
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
+            checkin.qqyuedu(pid)
+            app.read_qqyuedu_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['qqyuedu'])
+
             utils.tail_work(pid, w, h, hour=12)
 
         # 中青看点

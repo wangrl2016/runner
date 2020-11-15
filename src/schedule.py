@@ -1,5 +1,6 @@
 import time
 from datetime import datetime
+from random import randrange
 
 from src import checkin, phone, input, app, utils, info
 from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
@@ -953,8 +954,8 @@ def hongshi(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:
             checkin.hongshi(pid)
-            for i in range(0, 2):
-                phone.swipe_down_to_up(pid, w / 2, h, 15)
+            for i in range(0, randrange(2, 5)):
+                phone.swipe_down_to_up(pid, w / 2, h - randrange(50, 100), randrange(5, 16))
             input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
             phone.stop_app(pid, info.packages['hongshi'])
 
