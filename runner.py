@@ -477,9 +477,9 @@ def run(pid):
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
 
-            for i in range(0, 10):
+            for i in range(0, 8):
                 checkin.diandian(pid, w, h)
-                app.diandian_benefit_page(pid, w, h)
+                app.diandian_benefit_page(pid, w, h, gap=5)
                 # [x] 天天领红包
                 app.diandian_daily_packet(pid, w, h)
                 phone.stop_app(pid, info.packages['diandian'])
@@ -487,7 +487,7 @@ def run(pid):
             checkin.diandian(pid, w, h)
             # [x] 看新闻
             # 看完十几篇以后有倒计时
-            app.read_diandian_article(pid, w, h, num=10)
+            app.read_diandian_article(pid, w, h, num=8)
             phone.stop_app(pid, info.packages['diandian'])
 
             checkin.tangdou(pid)

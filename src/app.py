@@ -437,12 +437,12 @@ def diandian_daily_packet(pid, w, h):
             return
         height = packet_location['y'] + packet_location['h']
         info.contexts[pid]['点点今日红包'] = height
-    input.tap(pid, w / 2, info.contexts[pid]['点点今日红包'])
+    input.tap(pid, w / 2, info.contexts[pid]['点点今日红包'], gap=10)
 
     # 2. 播放30s
     time.sleep(30)
     # 3. 必须返回到福利页面
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
 
 
 def read_diandian_article(pid, w, h, num):
