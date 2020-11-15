@@ -48,7 +48,7 @@ def schedule_apps(pid, w, h):
         for a in info.apps:
             getattr(schedule, a)(pid, w, h)
 
-        if (datetime.now().hour % 4).__eq__(1):
+        if (datetime.now().hour % 3).__eq__(1):
             # 手机休息180s
             phone.sleep_to_weak(pid, w, h, gap=180)
 

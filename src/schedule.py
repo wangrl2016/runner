@@ -351,11 +351,26 @@ def quhongbao(pid, w, h):
         # 2. 播放30s
         time.sleep(30)
 
+    def drink_water():
+        print('趣红包喝水赚钱 ' + datetime.now().time().__str__())
+        # 1. 点击喝水赚钱
+        input.tap(pid, 4.2 * w / WIDTH, 7.7 * h / HEIGHT, gap=3)
+        # 2. 打卡
+        input.tap(pid, w / 2, 11.3 * h / HEIGHT, gap=2)
+
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:
             checkin.quhongbao(pid, w, h)
+            # [x] 离线收益
             offline_coin()
             phone.stop_app(pid, info.packages['quhongbao'])
+
+            if 6 <= datetime.now().hour <= 22:
+                checkin.quhongbao(pid, w, h)
+                # [x] 喝水赚钱
+                # 每两个小时一次
+                drink_water()
+                phone.stop_app(pid, info.packages['quhongbao'])
 
 
 def dongfang(pid, w, h):
