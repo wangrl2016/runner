@@ -157,7 +157,7 @@ def qukankan(pid, w, h):
 
 # noinspection PyUnusedLocal
 def miaokan(pid, w, h):
-    return None
+    app.miaokan_benefit_page(pid, w, h)
 
 
 def kuge(pid, w, h):

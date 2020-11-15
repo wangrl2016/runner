@@ -349,6 +349,11 @@ def qukankan_benefit_page(pid, w, h):
     input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+# ~~~~~~~~~~趣看看~~~~~~~~~~
+def miaokan_benefit_page(pid, w, h):
+    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
