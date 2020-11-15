@@ -349,6 +349,18 @@ def qukankan_benefit_page(pid, w, h):
     input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
+def read_qukankan_article(pid, w, h, num):
+    print('阅读趣看看文章 ' + datetime.now().time().__str__())
+    for i in range(0, num):
+        # 1. 点击文章
+        input.tap(pid, w / 2, h / 2)
+        # 2. 阅读30s
+        for j in range(0, randrange(9, 11)):
+            phone.swipe_down_to_up(pid, w / 2, h, gap=randrange(2, 5), internal=400)
+        # 3. 返回上级页面
+        phone.go_back(pid)
+
+
 # ~~~~~~~~~~妙看短视频~~~~~~~~~~
 def miaokan_benefit_page(pid, w, h):
     input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
@@ -804,7 +816,7 @@ def moji_benefit_page(pid, w, h):
 
 def moji_benefit_video(pid, w, h, num):
     print('墨迹福利视频 ' + datetime.now().time().__str__())
-    for i in (0, num):
+    for i in range(0, num):
         # 1. 点击看视频
         input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 10.8 * h / HEIGHT)
         # 2. 播放30s

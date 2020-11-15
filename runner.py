@@ -386,7 +386,9 @@ def run(pid):
                 app.watch_kankuai_advert(pid, w, h, num=3)
                 phone.stop_app(pid, info.packages['kankuai'])
 
-
+            checkin.qukankan(pid, w, h)
+            app.read_qukankan_article(pid, w, h, num=5)
+            phone.stop_app(pid, w)
 
             utils.tail_work(pid, w, h, hour=19)
 

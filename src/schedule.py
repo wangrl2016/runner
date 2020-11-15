@@ -404,7 +404,11 @@ def qukankan(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 7 == 0:
             checkin.qukankan(pid, w, h)
+            # [x] 时段奖励
             time_reward()
+
+            # [x] 阅读文章
+            app.read_qukankan_article(pid, w, h, num=2)
             phone.stop_app(pid, info.packages['qukankan'])
 
 
