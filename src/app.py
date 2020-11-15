@@ -32,6 +32,12 @@ def changdou_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
+# ~~~~~~~~~~长豆短视频~~~~~~~~~~
+
+def kulingyin_benefit_page(pid, w, h):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+
+
 # ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
 def lanmao_benefit_page(pid, w, h):
     # 1. 点击中间下方懒猫

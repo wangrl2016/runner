@@ -23,7 +23,11 @@ def changdou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kulingyin(pid, w, h):
-    return None
+    # 1. 进入福利页面
+    app.kulingyin_benefit_page(pid, w, h)
+    # 2. 点击签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.7 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
