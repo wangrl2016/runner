@@ -402,6 +402,11 @@ def run(pid):
             app.watch_douhuo_video(pid, w, h, sec=300)
             phone.stop_app(pid, info.packages['douhuo'])
 
+            checkin.miaokan(pid, w, h)
+            # [x] 看妙看短视频
+            app.watch_miaokan_video(pid, w, h, num=10)
+            phone.stop_app(pid, info.packages['miaokan'])
+
             utils.tail_work(pid, w, h, hour=20)
 
         # 酷狗儿歌
