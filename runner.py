@@ -247,7 +247,7 @@ def run(pid):
 
         # 酷狗大字版
         # 刷宝短视频
-        # 洋葱免费小说
+        # 星球庄园
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
@@ -261,19 +261,20 @@ def run(pid):
             app.watch_shuabao_video(pid, w, h, num=30)
             phone.stop_app(pid, info.packages['shuabao'])
 
-            checkin.yangcong(pid)
-            app.read_yangcong_novel(pid, w, h, sec=300)
-            phone.stop_app(pid, info.packages['yangcong'])
-
             utils.tail_work(pid, w, h, hour=11)
 
         # QQ阅读
+        # 洋葱免费小说
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
             checkin.qqyuedu(pid)
             app.read_qqyuedu_novel(pid, w, h, sec=300)
             phone.stop_app(pid, info.packages['qqyuedu'])
+
+            checkin.yangcong(pid)
+            app.read_yangcong_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['yangcong'])
 
             utils.tail_work(pid, w, h, hour=12)
 
@@ -303,8 +304,13 @@ def run(pid):
 
         # 拼多多
         # UC浏览器
+        # 搜狗浏览器
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
+
+            checkin.sougou(pid)
+            app.read_sougou_article(pid, w, h, num=2)
+            phone.stop_app(pid, info.packages['sougou'])
 
             checkin.jingdong(pid, w, h)
             app.jingdong_benefit_page(pid, w, h)

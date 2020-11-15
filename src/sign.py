@@ -421,7 +421,11 @@ def yangcong(pid, w, h):
 
 # noinspection PyUnusedLocal
 def sougou(pid, w, h):
-    return None
+    app.sougou_benefit_page(pid, w, h)
+    for i in range(0, 4):
+        input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, 3.5 * h / HEIGHT, gap=1)
+    for i in range(0, 3):
+        input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, 5.5 * h / HEIGHT, gap=1)
 
 
 # noinspection PyUnusedLocal

@@ -905,3 +905,8 @@ def read_yangcong_novel(pid, w, h, sec):
 # ~~~~~~~~~~搜狗浏览器极速版~~~~~~~~~~
 def sougou_benefit_page(pid, w, h, gap=3):
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT, gap)
+
+
+def read_sougou_article(pid, w, h, num):
+    print('阅读搜狗浏览器文章 ' + datetime.now().time().__str__())
+
