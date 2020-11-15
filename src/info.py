@@ -86,6 +86,7 @@ activities = {
 
     # 41-44
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
+    'qimao': 'com.kmxs.reader/.home.ui.HomeActivity',
     'kankuai': 'com.tencent.reading/.activity.SplashActivity',
     'douhuo': 'com.ss.android.ugc.live/.main.MainActivity',
 
@@ -93,6 +94,7 @@ activities = {
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
     'ersansi': 'com.browser2345/.BrowserActivity',
     'tangdou': 'com.bokecc.dance/.activity.MainActivity',
+    'yangchong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
 
     # 49-52
     'weixin': 'com.tencent.mm/.ui.LauncherUI',

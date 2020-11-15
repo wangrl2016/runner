@@ -17,6 +17,20 @@ def midu(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
+def changdou(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
+def kulingyin(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
 def lanmao(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -73,6 +87,13 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
+def youliao(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
+
+
 def zhongqing(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -115,11 +136,18 @@ def jukandian(pid, w, h, gap=20):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
-def qukankan(pid, w, h, gap=20):
+def qukankan(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
-    input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
+    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
+
+
+def miaokan(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
 def kuge(pid, w, h, gap=15):
@@ -141,6 +169,13 @@ def diandian(pid, w, h, gap=18):
     phone.go_home(pid)
     # 2. 启动程序
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
+
+
+def xiuqiu(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 启动程序
+    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
 # 25-48
@@ -215,12 +250,22 @@ def uc(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
+def kuaikandian(pid, gap=10):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
 def hongshi(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def doudou(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def qimao(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
@@ -250,8 +295,28 @@ def tangdou(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
+def yangchong(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
 # 49-72
 
 def weixin(pid, gap=10):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def sougou(pid, gap=10):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def zhuanshi(pid, gap=10):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def qizhu(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
