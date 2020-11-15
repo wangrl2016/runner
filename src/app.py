@@ -121,7 +121,7 @@ def shuqi_video_coin(pid, w, h):
     time.sleep(30)
 
 
-# ~~~~~~~~~~映客直播极速版~~~~~~~~~~
+# 10~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
 def yingke_benefit_page(pid, w, h, gap=5):
     # 1. 点击下面的横幅
@@ -169,7 +169,7 @@ def share_yingke_live(pid, w, h, times):
     phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
 
-# ~~~~~~~~~~酷狗大字版~~~~~~~~~~
+# 11~~~~~~~~~~酷狗大字版~~~~~~~~~~
 
 # 进入福利页面
 def kugou_benefit_page(pid, w, h, gap=3):
@@ -192,7 +192,7 @@ def kugou_background_music(pid, w, h):
     phone.go_home(pid)
 
 
-# ~~~~~~~~~~中青看点~~~~~~~~~~
+# 13~~~~~~~~~~中青看点~~~~~~~~~~
 
 def zhongqing_benefit_page(pid, w, h):
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
@@ -818,5 +818,9 @@ def tangdou_funny_video(pid, w, h, num):
 
 # ~~~~~~~~~~洋葱免费小说~~~~~~~~~~
 def yangcong_benefit_page(pid, w, h, gap=3):
-    # [x] 签到成功
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+# ~~~~~~~~~~搜狗浏览器极速版~~~~~~~~~~
+def sougou_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT, gap)

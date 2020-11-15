@@ -94,11 +94,6 @@ def kugou(pid, w, h):
     phone.go_back(pid, gap=1)
 
 
-# noinspection PyUnusedLocal
-def youliao(pid, w, h):
-    return None
-
-
 def zhongqing(pid, w, h):
     # 1. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
@@ -422,9 +417,6 @@ def yangcong(pid, w, h):
 
 
 # 49 - 72
-# noinspection PyUnusedLocal
-def weixin(pid, w, h):
-    return None
 
 
 # noinspection PyUnusedLocal
@@ -439,4 +431,9 @@ def zhuanshi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qizhu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def weixin(pid, w, h):
     return None

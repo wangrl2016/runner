@@ -40,7 +40,6 @@ activities = {
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
-    'youliao': '#com.youliao.topic/.TrueMainActivity',
 
     # 13-16
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
