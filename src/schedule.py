@@ -10,6 +10,16 @@ def midu(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
+def changdou(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def kulingyin(pid, w, h):
+    return None
+
+
 def lanmao(pid, w, h):
     def cat_food():
         print('懒猫赚猫粮 ' + datetime.now().__str__())
@@ -209,6 +219,11 @@ def kugou(pid, w, h):
             phone.stop_app(pid, info.packages['kugou'])
 
 
+# noinspection PyUnusedLocal
+def youliao(pid, w, h):
+    return None
+
+
 def zhongqing(pid, w, h):
     def time_reward():
         print('中青看点时段奖励 ' + datetime.now().time().__str__())
@@ -397,6 +412,11 @@ def qukankan(pid, w, h):
             phone.stop_app(pid, info.packages['qukankan'])
 
 
+# noinspection PyUnusedLocal
+def miaokan(pid, w, h):
+    return None
+
+
 def kuge(pid, w, h):
     def share_song():
         print('酷狗儿歌分享歌曲 ' + datetime.now().time().__str__())
@@ -455,6 +475,12 @@ def diandian(pid, w, h):
             phone.stop_app(pid, info.packages['diandian'])
 
 
+# noinspection PyUnusedLocal
+def xiuqiu(pid, w, h):
+    return None
+
+
+# 25-48
 def toutiao(pid, w, h):
     def open_treasure():
         print('今日头条开宝箱 ' + datetime.now().time().__str__())
@@ -926,6 +952,11 @@ def uc(pid, w, h):
             phone.stop_app(pid, info.packages['uc'])
 
 
+# noinspection PyUnusedLocal
+def kuaikandian(pid, w, h):
+    return None
+
+
 def hongshi(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:
@@ -947,6 +978,11 @@ def doudou(pid, w, h):
         # 12-14或者17-19点两次
         if datetime.now().hour == 13 or datetime.now().hour == 17:
             hour_benefit()
+
+
+# noinspection PyUnusedLocal
+def qimao(pid, w, h):
+    return None
 
 
 # noinspection PyUnusedLocal
@@ -987,5 +1023,26 @@ def tangdou(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def yangchong(pid, w, h):
+    return None
+
+
+# 49-72
+# noinspection PyUnusedLocal
 def weixin(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def sougou(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhuanshi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def qizhu(pid, w, h):
     return None
