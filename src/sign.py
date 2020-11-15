@@ -27,7 +27,7 @@ def kulingyin(pid, w, h):
     app.kulingyin_benefit_page(pid, w, h)
     # 2. 点击签到
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.7 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.7 * h / HEIGHT, gap=10)
 
 
 # noinspection PyUnusedLocal
@@ -340,8 +340,13 @@ def uc(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaikandian(pid, w, h):
-    # 没有签到
-    return None
+    # 1. 进入福利页面
+    # [x] 签到成功
+    app.kuaikandian_benefit_page(pid, w, h)
+    # 2. 看视频再领金币
+    input.tap(pid, w / 2, 9.8 * h / HEIGHT)
+    # 3. 播放30s
+    time.sleep(30)
 
 
 # noinspection PyUnusedLocal

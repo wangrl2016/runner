@@ -668,8 +668,13 @@ def chejia_benefit_video(pid, w, h, num):
 
 
 # ~~~~~~~~~~UC浏览器~~~~~~~~~~
-def uc_benefit_page(pid, w, h):
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.4 * h / HEIGHT)
+def uc_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.4 * h / HEIGHT, gap)
+
+
+# ~~~~~~~~~~快看点~~~~~~~~~~
+def kuaikandian_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~红包短视频~~~~~~~~~~
