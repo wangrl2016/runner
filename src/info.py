@@ -40,6 +40,7 @@ activities = {
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
+    'youliao': '#com.youliao.topic/.TrueMainActivity',
 
     # 13-16
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
@@ -51,14 +52,18 @@ activities = {
     'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
     'qukankan': '#com.popnews2345/.main.activity.MainActivity',
+    'miaokan': '#com.taige.mygold/.MainActivityV2',
 
     # 21-24
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',
     'makan': '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     'diandian': '#com.yingliang.clicknews/.MainActivity',
+    'xiuqiu': '#com.planet.light2345/.main.activity.MainActivity',
 
     # 25-28
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
+    'changdou': '#com.zf.shuashua/.MainActivity',
+    'kulingyin': '#com.hot.war/.MainActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     # 29-32
@@ -76,6 +81,7 @@ activities = {
     # 37-40
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
     'uc': 'com.UCMobile/com.uc.browser.InnerUCMobile',
+    'kuaikandian': 'com.yuncheapp.android.pearl/com.kuaishou.athena.MainActivity',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
 
     # 41-44
@@ -90,6 +96,12 @@ activities = {
 
     # 49-52
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
+    'sougou': 'sogou.mobile.explorer.speed/sogou.mobile.explorer.BrowserActivity',
+    'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
+    'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',
+
+    # 'zqya': 'com.xuniu.zqya/.ui.MainActivity',
+    # 'zhuanbao':'com.yujin.zhuanbao/.activity.ZbMainActivity',
 }
 
 # 程序的定时任务为30分钟
