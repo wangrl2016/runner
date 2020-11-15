@@ -898,13 +898,10 @@ def qqyuedu(pid, w, h):
         # 1. 点击宝箱
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT, gap=2)
 
-    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
-    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
-            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+    if (datetime.now().hour % 4) == 0:
         checkin.qqyuedu(pid)
         app.qqyuedu_benefit_page(pid, w, h)
-        # [x] 开宝箱
+        # [x] 开宝箱5次
         open_treasure()
         phone.stop_app(pid, info.packages['qutoutiao'])
 
