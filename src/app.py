@@ -747,6 +747,26 @@ def read_doudou_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
 
 
+# ~~~~~~~~~~七猫免费小说~~~~~~~~~~
+def qimao_benefit_page(pid, w, h, sec=3):
+    input.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, sec)
+
+
+def read_qimao_novel(pid, w, h, sec):
+    print('阅读七猫免费小说 ' + datetime.now().time().__str__())
+    # 1. 点击任意一本书
+    input.tap(pid, w / 2, h / 2, gap=3)
+    # 2. 开始阅读
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
+
+
 # ~~~~~~~~~~看点快报~~~~~~~~~~
 def kankuai_benefit_page(pid, w, h, gap=3):
     # 1. 点击右下角我的栏目

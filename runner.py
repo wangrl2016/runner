@@ -348,6 +348,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=17)
 
+        # 七猫免费小说
         # 聚看点
         while datetime.now().hour.__eq__(18):
             schedule_apps(pid, w, h)
@@ -366,6 +367,11 @@ def run(pid):
             # [x] 聚看点小视频
             app.watch_jukandian_svideo(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['jukandian'])
+
+            checkin.qimao(pid)
+            # [x] 阅读七猫免费小说
+            app.read_qimao_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['qimao'])
 
             utils.tail_work(pid, w, h, hour=18)
 
