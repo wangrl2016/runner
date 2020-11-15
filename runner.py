@@ -308,8 +308,14 @@ def run(pid):
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
 
+            for i in range(0, 4):
+                checkin.sougou(pid)
+                # [x] 阅读搜狗文章
+                app.read_sougou_article(pid, w, h, num=2)
+                phone.stop_app(pid, info.packages['sougou'])
+
             checkin.sougou(pid)
-            app.read_sougou_article(pid, w, h, num=2)
+            app.collect_read_coin(pid, w, h)
             phone.stop_app(pid, info.packages['sougou'])
 
             checkin.jingdong(pid, w, h)
