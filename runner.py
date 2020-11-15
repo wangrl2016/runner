@@ -296,6 +296,8 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=13)
 
+        # 拼多多
+        # UC浏览器
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
 
@@ -404,7 +406,7 @@ def run(pid):
 
             checkin.miaokan(pid, w, h)
             # [x] 看妙看短视频
-            app.watch_miaokan_video(pid, w, h, num=10)
+            app.watch_miaokan_video(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['miaokan'])
 
             utils.tail_work(pid, w, h, hour=20)

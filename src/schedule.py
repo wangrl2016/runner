@@ -352,7 +352,7 @@ def quhongbao(pid, w, h):
         time.sleep(30)
 
     if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 3 == 0:
+        if datetime.now().hour % 5 == 0:
             checkin.quhongbao(pid, w, h)
             offline_coin()
             phone.stop_app(pid, info.packages['quhongbao'])
@@ -1037,7 +1037,16 @@ def sougou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhuanshi(pid, w, h):
-    return None
+    def time_reward():
+        # 1. 点击领取
+        input.tap(pid, 1.1 * w / WIDTH, 1.1 * h / HEIGHT, gap=3)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 4 == 0:
+            checkin.zhuanshi(pid)
+            # [x] 时段奖励
+            time_reward()
+            phone.stop_app(pid, info.packages['zhuanshi'])
 
 
 # noinspection PyUnusedLocal

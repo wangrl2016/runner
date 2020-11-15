@@ -557,19 +557,16 @@ def watch_douyin_video(pid, w, h, hour=3):
 # ~~~~~~~~~~火山极速版~~~~~~~~~~
 
 def huoshan_benefit_page(pid, w, h, gap=3):
-    """
-    进入火山福利页面
-    """
     # 1. 点击火山右下方红包
     input.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
 
 
 def watch_huoshan_video(pid, w, h, hour=4):
-    """
-    看火山视频
-    """
+    print('看火山视频 ' + datetime.now().time().__str__())
+    # 消除可能的悬浮窗
+    phone.go_back(pid, gap=1)
     while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w * 2 / 3, h * 3 / 4, randrange(5, 16))
 
 
 # ~~~~~~~~~~趣头条~~~~~~~~~~

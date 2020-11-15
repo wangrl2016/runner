@@ -63,10 +63,17 @@ def schedule_apps(pid, w, h):
 
 # 每个小时的收尾工作
 def tail_work(pid, w, h, hour):
-    checkin.kuaishou(pid)
-    # [x] 看快手视频
-    app.watch_kuaishou_video(pid, w, h, hour)
-    phone.stop_app(pid, info.packages['kuaishou'])
+    if datetime.now().hour.__lt__(12):
+        checkin.jingdong(pid, w, h)
+        app.jingdong_benefit_page(pid, w, h)
+        # [x] 京东看视频赚金币
+        app.jingdong_video_coin(pid, w, h, hour=14)
+        phone.stop_app(pid, info.packages['jingdong'])
+    else:
+        checkin.kuaishou(pid)
+        # [x] 看快手视频
+        app.watch_kuaishou_video(pid, w, h, hour)
+        phone.stop_app(pid, info.packages['kuaishou'])
 
 
 def get_photos(path):
