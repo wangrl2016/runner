@@ -27,7 +27,10 @@ def read_midu_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
 
 
-# ~~~~~~~~~~悟空赚钱~~~~~~~~~~
+# ~~~~~~~~~~长豆短视频~~~~~~~~~~
+def changdou_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
 
 # ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
 def lanmao_benefit_page(pid, w, h):

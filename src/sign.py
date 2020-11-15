@@ -16,7 +16,9 @@ def midu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def changdou(pid, w, h):
-    return None
+    app.changdou_benefit_page(pid, w, h)
+    # [x] 签到成功
+    input.tap(pid, w / 2, 9.8 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
