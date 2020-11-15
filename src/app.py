@@ -814,3 +814,9 @@ def tangdou_funny_video(pid, w, h, num):
         time.sleep(15)
     # 3. 返回上级页面
     phone.go_back(pid, gap=1)
+
+
+# ~~~~~~~~~~洋葱免费小说~~~~~~~~~~
+def yangcong_benefit_page(pid, w, h, gap=3):
+    # [x] 签到成功
+    input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)

@@ -417,7 +417,8 @@ def tangdou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yangcong(pid, w, h):
-    return None
+    # [x] 签到成功
+    app.yangcong_benefit_page(pid, w, h)
 
 
 # 49 - 72
