@@ -94,7 +94,7 @@ activities = {
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
     'ersansi': 'com.browser2345/.BrowserActivity',
     'tangdou': 'com.bokecc.dance/.activity.MainActivity',
-    'yangchong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
+    'yangcong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
 
     # 49-52
     'weixin': 'com.tencent.mm/.ui.LauncherUI',

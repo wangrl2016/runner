@@ -295,7 +295,7 @@ def tangdou(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def yangchong(pid, gap=15):
+def yangcong(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
