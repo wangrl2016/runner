@@ -304,6 +304,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=14)
 
         # 快音
+        # 快看点
         while datetime.now().hour.__eq__(15):
             schedule_apps(pid, w, h)
 
@@ -313,6 +314,10 @@ def run(pid):
                 # [x] 快音看视频赚钱
                 app.watch_kuaiyin_video(pid, w, h)
                 phone.stop_app(pid, info.packages['kuaiyin'])
+
+            checkin.kuaikandian(pid)
+            app.watch_kuaikandian_video(pid, w, h, sec=180)
+            phone.stop_app(pid, info.packages['kuaikandian'])
 
             utils.tail_work(pid, w, h, hour=15)
 

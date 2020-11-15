@@ -677,6 +677,16 @@ def kuaikandian_benefit_page(pid, w, h, gap=3):
     input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
+def watch_kuaikandian_video(pid, w, h, sec):
+    print('快看点视频播放 ' + datetime.now().time().__str__())
+    # 1. 点击左下角视频
+    input.tap(pid, 2.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击播放
+    input.tap(pid, w / 2, h / 5)
+    # 3. 自动播放
+    time.sleep(sec)
+
+
 # ~~~~~~~~~~红包短视频~~~~~~~~~~
 def watch_hongbao_video(pid, w, h, sec):
     print('看红包短视频 ' + datetime.now().time().__str__())
