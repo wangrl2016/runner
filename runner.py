@@ -247,6 +247,7 @@ def run(pid):
 
         # 酷狗大字版
         # 刷宝短视频
+        # 洋葱免费小说
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 
@@ -259,6 +260,10 @@ def run(pid):
             # [x] 看刷宝视频
             app.watch_shuabao_video(pid, w, h, num=30)
             phone.stop_app(pid, info.packages['shuabao'])
+
+            checkin.yangcong(pid)
+            app.read_yangcong_novel(pid, w, h, sec=300)
+            phone.stop_app(pid, info.packages['yangcong'])
 
             utils.tail_work(pid, w, h, hour=11)
 

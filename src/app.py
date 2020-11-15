@@ -881,6 +881,27 @@ def yangcong_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
+def read_yangcong_novel(pid, w, h, sec):
+    print('阅读洋葱免费小说 ' + datetime.now().time().__str__())
+    phone.go_back(pid, gap=1)
+    # 1. 点击书城
+    input.tap(pid, 0.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=2)
+    # 2. 点击任意一本书
+    input.tap(pid, w / 2, h * 2 / 3, gap=3)
+    # 3. 点击阅读
+    input.tap(pid, w * 2 / 3, (HEIGHT - 0.5) * h / HEIGHT)
+    minutes = sec / 60 + datetime.now().minute
+    if minutes < 60:
+        while datetime.now().minute < minutes:
+            # 3. 滑动阅读小说
+            # 防止点击广告
+            phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
+    else:
+        hour = datetime.now().hour
+        while datetime.now().hour == hour:
+            phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
+
+
 # ~~~~~~~~~~搜狗浏览器极速版~~~~~~~~~~
 def sougou_benefit_page(pid, w, h, gap=3):
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT, gap)
