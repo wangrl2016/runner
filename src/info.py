@@ -96,10 +96,11 @@ activities = {
     'yangcong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
 
     # 49-52
-    'weixin': 'com.tencent.mm/.ui.LauncherUI',
     'sougou': 'sogou.mobile.explorer.speed/sogou.mobile.explorer.BrowserActivity',
     'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
     'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',
+
+    'weixin': 'com.tencent.mm/.ui.LauncherUI',
 
     # 'zqya': 'com.xuniu.zqya/.ui.MainActivity',
     # 'zhuanbao':'com.yujin.zhuanbao/.activity.ZbMainActivity',

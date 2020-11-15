@@ -11,12 +11,12 @@ def midu(pid, w, h):
     app.midu_benefit_page(pid, w, h)
     # 3. 点击立即签到
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.3 * h / HEIGHT)
+    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal
 def changdou(pid, w, h):
-    app.changdou_benefit_page(pid, w, h)
+    app.changdou_benefit_page(pid, w, h, gap=5)
     # [x] 签到成功
     input.tap(pid, w / 2, 9.8 * h / HEIGHT, gap=3)
 
@@ -158,6 +158,7 @@ def qukankan(pid, w, h):
 # noinspection PyUnusedLocal
 def miaokan(pid, w, h):
     app.miaokan_benefit_page(pid, w, h)
+    # [ ] 签到成功
 
 
 def kuge(pid, w, h):
@@ -193,7 +194,9 @@ def diandian(pid, w, h):
 
 # noinspection PyUnusedLocal
 def xingqiu(pid, w, h):
-    return None
+    # 1. 点击右侧签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 5.8 * h / HEIGHT)
 
 
 # 25-28
@@ -319,7 +322,7 @@ def shuabao(pid, w, h):
 # noinspection PyUnusedLocal
 def qqyuedu(pid, w, h):
     # [x] 签到成功
-    app.qqyuedu_benefit_page(pid, w, h)
+    app.qqyuedu_benefit_page(pid, w, h, gap=5)
 
 
 def chejia(pid, w, h):

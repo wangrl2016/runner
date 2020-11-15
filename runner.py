@@ -348,11 +348,6 @@ def run(pid):
         while datetime.now().hour.__eq__(16):
             schedule_apps(pid, w, h)
 
-            checkin.hongshi(pid)
-            # [x] 看红包短视频
-            app.watch_hongbao_video(pid, w, h, sec=180)
-            phone.stop_app(pid, info.packages['hongshi'])
-
             utils.tail_work(pid, w, h, hour=16)
 
         # 东方头条

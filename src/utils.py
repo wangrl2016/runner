@@ -67,7 +67,7 @@ def tail_work(pid, w, h, hour):
         checkin.jingdong(pid, w, h)
         app.jingdong_benefit_page(pid, w, h)
         # [x] 京东看视频赚金币
-        app.jingdong_video_coin(pid, w, h, hour=14)
+        app.jingdong_video_coin(pid, w, h, hour)
         phone.stop_app(pid, info.packages['jingdong'])
     else:
         checkin.kuaishou(pid)
