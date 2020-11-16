@@ -223,7 +223,7 @@ def run(pid):
 
             checkin.shuqi(pid, w, h)
             # [x] 阅读书旗小说
-            app.read_shuqi_novel(pid, w, h, sec=400)
+            app.read_shuqi_novel(pid, w, h, sec=480)
             phone.stop_app(pid, info.packages['shuqi'])
 
             utils.tail_work(pid, w, h, hour=9)

@@ -17,7 +17,7 @@ def read_midu_novel(pid, w, h, sec):
     input.tap(pid, w / 2, h / 2, gap=3)
     # 2. 向左滑动开始阅读
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             # 防止点击广告
             phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
@@ -102,7 +102,7 @@ def read_shuqi_novel(pid, w, h, sec=300):
     # 2. 点击开始阅读
     input.tap(pid, w * 2 / 3, (HEIGHT - 0.5) * h / HEIGHT)
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             # 3. 滑动阅读小说
             # 防止点击广告
@@ -611,7 +611,7 @@ def watch_weishi_video(pid, w, h, sec):
     phone.go_back(pid, gap=1)
     # 2. 从下往上翻页
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     else:
@@ -680,7 +680,7 @@ def read_qqyuedu_novel(pid, w, h, sec):
     input.tap(pid, w / 6, h * 2 / 5, gap=3)
     # 3. 开始阅读
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             phone.swipe_right_to_left(pid, w, h * 7 / 8, randrange(2, 5))
     else:
@@ -732,7 +732,7 @@ def watch_hongbao_video(pid, w, h, sec):
     print('看红包短视频 ' + datetime.now().time().__str__())
     # 2. 从下往上翻页
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
     else:
@@ -756,7 +756,7 @@ def read_doudou_novel(pid, w, h, sec):
     input.tap(pid, w / 3, h * 3 / 5)
     # 3. 开始阅读
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
     else:
@@ -776,7 +776,7 @@ def read_qimao_novel(pid, w, h, sec):
     input.tap(pid, w / 2, h / 2, gap=3)
     # 2. 开始阅读
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
     else:
@@ -891,7 +891,7 @@ def read_yangcong_novel(pid, w, h, sec):
     # 3. 点击阅读
     input.tap(pid, w * 2 / 3, (HEIGHT - 0.5) * h / HEIGHT)
     minutes = sec / 60 + datetime.now().minute
-    if minutes < 60:
+    if minutes < 59:
         while datetime.now().minute < minutes:
             # 3. 滑动阅读小说
             # 防止点击广告
