@@ -1,4 +1,5 @@
 import time
+from random import randrange
 
 from src import input, phone, app
 from src.info import WIDTH, HEIGHT
@@ -215,8 +216,10 @@ def toutiao(pid, w, h):
 
 
 def kuaishou(pid, w, h):
-    # 1. 假装后退解决弹出青少年模式悬浮窗的问题
-    phone.go_back(pid, gap=1)
+    # 1. 解决弹出青少年模式悬浮窗的问题
+    for i in range(0, 5):
+        phone.go_back(pid, gap=1)
+        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 进入快手福利页面
     app.kuaishou_benefit_page(pid, w, h)
     # 3. 显示签到页面点击立即签到
@@ -227,8 +230,10 @@ def kuaishou(pid, w, h):
 
 
 def douyin(pid, w, h):
-    # 1. 假装退出解决弹出的青少年模式悬浮窗问题
-    phone.go_back(pid)
+    # 1. 解决弹出青少年模式悬浮窗的问题
+    for i in range(0, 5):
+        phone.go_back(pid, gap=1)
+        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 点击下方的福袋
     # 等待10s签到界面出现
     app.douyin_benefit_page(pid, w, h, gap=10)
@@ -244,8 +249,10 @@ def douyin(pid, w, h):
 
 
 def huoshan(pid, w, h):
-    # 1. 假装想要退出解决弹出青少年模式悬浮窗的问题
-    phone.go_back(pid)
+    # 1. 解决弹出青少年模式悬浮窗的问题
+    for i in range(0, 5):
+        phone.go_back(pid, gap=1)
+        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 进入福利页面
     # [x] 签到成功
     app.huoshan_benefit_page(pid, w, h)
