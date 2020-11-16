@@ -909,13 +909,14 @@ def sougou_benefit_page(pid, w, h, gap=3):
 
 def read_sougou_article(pid, w, h, num):
     print('阅读搜狗浏览器文章 ' + datetime.now().time().__str__())
+    phone.swipe_down_to_up(pid, w / 2, h / 2, internal=500)
     for i in range(0, num):
         # 1. 刷新页面
         phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
-        input.tap(pid, w / 2, h / 2)
-        for i in range(0, randrange(2, 5)):
-            phone.swipe_down_to_up(pid, w / 2, h, randrange(2, 4))
+        input.tap(pid, w / 2, h / 2, gap=10)
+        for j in range(0, 10):
+            phone.swipe_down_to_up(pid, w / 2, h, gap=3)
         # 3. 返回上级目录
         phone.go_back(pid)
 
