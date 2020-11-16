@@ -6,7 +6,7 @@ from src.info import activities, WIDTH, HEIGHT
 # 对于无法通过Activity进行启动的图标需要定位
 # 不同手机位置不同
 # 设置成为4x6的图标布局模式
-ROWS = [1.4, 3.4, 5.4, 7.4, 9.4, 11.4]
+ROWS = [1.5, 3.4, 5.3, 7.2, 9.1, 11.0]
 COLUMNS = [1.0, 2.6, 4.2, 5.8]
 
 
