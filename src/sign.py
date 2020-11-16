@@ -1,7 +1,7 @@
 import time
 from random import randrange
 
-from src import input, phone, app
+from src import input, phone, app, info, checkin
 from src.info import WIDTH, HEIGHT
 
 
@@ -17,6 +17,7 @@ def midu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def changdou(pid, w, h):
+    phone.go_back(pid, gap=1)
     app.changdou_benefit_page(pid, w, h, gap=5)
     # [x] 签到成功
     input.tap(pid, w / 2, 9.8 * h / HEIGHT, gap=3)
@@ -68,6 +69,8 @@ def kuchang(pid, w, h):
 def shuqi(pid, w, h):
     # 后退会弹出提示框
     # 不后退有时会有广告悬浮窗
+    phone.stop_app(pid, info.packages['shuqi'])
+    checkin.shuqi(pid, w, h)
     # [x] 签到成功
     app.shuqi_benefit_page(pid, w, h, gap=5)
 
@@ -159,12 +162,15 @@ def qukankan(pid, w, h):
 # noinspection PyUnusedLocal
 def miaokan(pid, w, h):
     app.miaokan_benefit_page(pid, w, h)
-    # [ ] 签到成功
+    # 点击签到
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 6.7 * h / HEIGHT, gap=2)
 
 
 def kuge(pid, w, h):
+    phone.go_back(pid, gap=1)
     # 1. 点击右上方赚钱
-    input.tap(pid, 4.8 * w / WIDTH, 1.2 * h / HEIGHT)
+    input.tap(pid, 4.8 * w / WIDTH, 1.2 * h / HEIGHT, gap=10)
     # 点击签到
     # 位置未知
     # [x] 签到成功
@@ -217,9 +223,9 @@ def toutiao(pid, w, h):
 
 def kuaishou(pid, w, h):
     # 1. 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
+    for i in range(0, 6):
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(4, 9))
         phone.go_back(pid, gap=1)
-        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 进入快手福利页面
     app.kuaishou_benefit_page(pid, w, h)
     # 3. 显示签到页面点击立即签到
@@ -231,9 +237,9 @@ def kuaishou(pid, w, h):
 
 def douyin(pid, w, h):
     # 1. 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
+    for i in range(0, 6):
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(4, 9))
         phone.go_back(pid, gap=1)
-        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 点击下方的福袋
     # 等待10s签到界面出现
     app.douyin_benefit_page(pid, w, h, gap=10)
@@ -250,9 +256,9 @@ def douyin(pid, w, h):
 
 def huoshan(pid, w, h):
     # 1. 解决弹出青少年模式悬浮窗的问题
-    for i in range(0, 5):
+    for i in range(0, 6):
+        phone.swipe_down_to_up(pid, w / 2, h, randrange(4, 9))
         phone.go_back(pid, gap=1)
-        phone.swipe_up_to_down(pid, w / 2, h, randrange(5, 9))
     # 2. 进入福利页面
     # [x] 签到成功
     app.huoshan_benefit_page(pid, w, h)
@@ -370,6 +376,7 @@ def doudou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qimao(pid, w, h):
+    input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
     return None
 
 
@@ -440,6 +447,7 @@ def sougou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhuanshi(pid, w, h):
+    # 没有签到
     return None
 
 

@@ -64,7 +64,7 @@ def schedule_apps(pid, w, h):
 # 每个小时的收尾工作
 def tail_work(pid, w, h, hour):
     if datetime.now().hour.__lt__(6):
-        checkin.doudou(pid)
+        checkin.douyin(pid)
         # [x] 看抖音视频
         app.watch_douyin_video(pid, w, h, hour)
         phone.stop_app(pid, info.packages['douyin'])
