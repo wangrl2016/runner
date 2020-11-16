@@ -477,7 +477,7 @@ def run(pid):
                 app.diandian_benefit_page(pid, w, h, gap=5)
                 # [x] 天天领红包
                 app.diandian_daily_packet(pid, w, h)
-                phone.stop_app(pid, info.packages['diandian'])
+                phone.stop_app(pid, info.packages['diandian'], gap=3)
 
             checkin.diandian(pid, w, h)
             # [x] 看新闻

@@ -691,6 +691,7 @@ def read_qqyuedu_novel(pid, w, h, sec):
 
 # ~~~~~~~~~~汽车之家~~~~~~~~~~
 def chejia_benefit_page(pid, w, h, gap=3):
+    phone.go_back(pid, gap=1)
     input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
