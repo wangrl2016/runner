@@ -402,7 +402,7 @@ def run(pid):
 
             checkin.qukankan(pid, w, h)
             app.read_qukankan_article(pid, w, h, num=5)
-            phone.stop_app(pid, w)
+            phone.stop_app(pid, info.packages['qukankan'])
 
             utils.tail_work(pid, w, h, hour=19)
 
