@@ -909,7 +909,24 @@ def taobao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def shuabao(pid, w, h):
-    return None
+    def open_treasure():
+        print('刷宝开宝箱 ' + datetime.now().time().__str__())
+        # 1. 点击宝箱
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, 10.8 * h / HEIGHT, gap=3)
+        # 2. 额外领取88元宝
+        input.tap(pid, w / 2, 10.0 * h / HEIGHT)
+        # 3. 播放30s
+        time.sleep(30)
+        # 4. 返回上级页面
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 5 == 0:
+            checkin.shuabao(pid)
+            app.shuabao_benefit_page(pid, w, h)
+            # [x] 开宝箱
+            open_treasure()
+            phone.stop_app(pid, info.packages['shuabao'])
 
 
 def qqyuedu(pid, w, h):
