@@ -285,11 +285,11 @@ def ximalaya(pid, w, h):
 def wuba(pid, w, h):
     # 1. 点击福利页面
     app.wuba_benefit_page(pid, w, h)
-    # 2. 分享到朋友圈
-    input.tap(pid, w / 2, 8.3 * h / HEIGHT, gap=10)
-    # 3. 返回到主页
+    # 2. 看视频
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=10)
+    # 3. 播放30s
     # [x] 签到成功
-    phone.go_back(pid, gap=1)
+    time.sleep(30)
 
 
 # noinspection PyUnusedLocal

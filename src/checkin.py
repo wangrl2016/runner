@@ -301,7 +301,7 @@ def sougou(pid, gap=10):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def zhuanshi(pid, gap=10):
+def zhuanshi(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
@@ -309,6 +309,7 @@ def zhuanshi(pid, gap=10):
 def qizhu(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
 
 def weixin(pid, gap=10):
     phone.start_app(pid, activities[

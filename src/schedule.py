@@ -1,6 +1,5 @@
 import time
 from datetime import datetime
-from random import randrange
 
 from src import checkin, phone, input, app, utils, info
 from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
@@ -969,6 +968,7 @@ def kuaikandian(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
 def hongshi(pid, w, h):
     return None
 
