@@ -917,9 +917,9 @@ def read_sougou_article(pid, w, h, num):
         # 1. 刷新页面
         phone.swipe_up_to_down(pid, w / 2, h)
         # 2. 点击文章
-        input.tap(pid, w / 2, h / 2, gap=10)
+        input.tap(pid, w / 2, h / 2)
         for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w / 2, h, gap=3)
+            phone.swipe_down_to_up(pid, w / 2, h / 2, gap=3, internal=300)
         # 3. 返回上级目录
         phone.go_back(pid)
 
