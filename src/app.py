@@ -193,6 +193,8 @@ def kugou_background_music(pid, w, h):
     # 4. 后台播放
     phone.go_home(pid)
 
+# 12~~~~~~~~~~趣看天下~~~~~~~~~~
+
 
 # 13~~~~~~~~~~中青看点~~~~~~~~~~
 
@@ -932,4 +934,4 @@ def collect_read_coin(pid, w, h):
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~
 def zhuanshi_benefit_page(pid, w, h, gap=3):
     print('看赚钱小视频 ' + datetime.now().time().__str__())
-
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)

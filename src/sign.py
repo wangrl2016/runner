@@ -99,6 +99,14 @@ def kugou(pid, w, h):
     phone.go_back(pid, gap=1)
 
 
+def qukan(pid, w, h):
+    # 1. 直接点击中间的悬浮框
+    input.tap(pid, w / 2, h / 2)
+    # 2. 点击签到
+    # [x] 签到成功
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=2)
+
+
 def zhongqing(pid, w, h):
     # 1. 假装想要退出关闭可能的悬浮窗
     phone.go_back(pid)
