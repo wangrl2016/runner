@@ -40,6 +40,7 @@ activities = {
     'shuqi': '#com.shuqi.controller/com.shuqi.activity.MainActivity',
     'yingke': '#com.ingkee.lite/com.meelive.ingkee.business.main.entry.legacy.MainActivity',
     'kugou': '#com.kugou.android.elder/com.kugou.android.app.MediaActivity',
+    # 'qukan': '#com.yanhui.qktx/.activity.NewSplashActivity',
 
     # 13-16
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
@@ -98,12 +99,20 @@ activities = {
     # 49-52
     'sougou': 'sogou.mobile.explorer.speed/sogou.mobile.explorer.BrowserActivity',
     'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
-    'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',
+    # 'guangying': 'com.oppo.cameracom.android.ctsxinwen/net.guangying.xinwen.MainActivity',
+    # 'tenzhi': 'com.tencent.map/.framework.launch.MapActivityReal',
+
+    # 53-56
+    # 'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',
+
+    # 'tentu': '#com.tencent.map/.framework.launch.MapActivityReal',
+    # 'jitou': '#com.yanhui.qktx/.activity.NewSplashActivity',
+    # 'yueyouqian': '#com.yj.yueyouqian/com.jifen.qukan.ui.activity.HomeActivity',
 
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
 
-    # 'zqya': 'com.xuniu.zqya/.ui.MainActivity',
-    # 'zhuanbao':'com.yujin.zhuanbao/.activity.ZbMainActivity',
+    # 'zqya': '#com.xuniu.zqya/.ui.MainActivity',
+    # 'zhuanbao':'#com.yujin.zhuanbao/.activity.ZbMainActivity',
 }
 
 # 程序的定时任务为30分钟
