@@ -15,7 +15,9 @@ def read_midu_novel(pid, w, h, sec):
     print('阅读米读小说 ' + datetime.now().__str__())
     # 1. 点击中间的小说
     input.tap(pid, w / 2, h / 2, gap=3)
-    # 2. 向左滑动开始阅读
+    # 2. 点击可能存在的立即阅读
+    input.tap(pid, w / 2, h / 7)
+    # 3. 向左滑动开始阅读
     minutes = sec / 60 + datetime.now().minute
     if minutes < 59:
         while datetime.now().minute < minutes:

@@ -940,7 +940,7 @@ def qqyuedu(pid, w, h):
         app.qqyuedu_benefit_page(pid, w, h)
         # [x] 开宝箱5次
         open_treasure()
-        phone.stop_app(pid, info.packages['qutoutiao'])
+        phone.stop_app(pid, info.packages['qqyuedu'])
 
 
 # noinspection PyUnusedLocal
