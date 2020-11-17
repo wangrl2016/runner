@@ -34,10 +34,23 @@ def changdou_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
-# ~~~~~~~~~~长豆短视频~~~~~~~~~~
+# ~~~~~~~~~~酷铃音~~~~~~~~~~
 
 def kulingyin_benefit_page(pid, w, h, gap=3):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+def kulingyin_benefit_video(pid, w, h, num):
+    print('看酷铃音福利视频 ' + datetime.now().time().__str__())
+    for i in range(0, num):
+        # 1. 点击观看视频
+        input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 11.0 * h / HEIGHT, gap=10)
+        # 2. 播放30s
+        time.sleep(30)
+        # 3. 点击关闭
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
+        # 4. 消除悬浮窗
+        phone.go_back(pid)
 
 
 # ~~~~~~~~~~懒猫赚钱~~~~~~~~~~

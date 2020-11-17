@@ -118,8 +118,15 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=2)
 
         # 抖音极速版
+        # 酷铃音
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
+
+            for i in range(0, 3):
+                checkin.kulingyin(pid, w, h)
+                app.kulingyin_benefit_page(pid, w, h)
+                app.kulingyin_benefit_video(pid, w, h, num=2)
+                phone.stop_app(pid, info.packages['kulingyin'])
 
             checkin.douyin(pid)
             phone.go_back(pid)
