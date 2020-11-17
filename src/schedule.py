@@ -983,6 +983,18 @@ def uc(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kuaikandian(pid, w, h):
+    def time_reward():
+        print('快看点时段奖励 ' + datetime.now().time().__str__())
+        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 6.8 * h / HEIGHT, gap=2)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 3 == 0:
+            checkin.kuaikandian(pid)
+            app.kuaikandian_benefit_page(pid, w, h)
+            # [x] 快看点时段奖励
+            time_reward()
+            phone.stop_app(pid, info.packages['kuaikandian'])
+
     return None
 
 
