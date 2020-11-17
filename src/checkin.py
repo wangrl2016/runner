@@ -87,7 +87,7 @@ def kugou(pid, w, h, gap=15):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
-def kugou(pid, w, h, gap=15):
+def qukan(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

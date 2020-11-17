@@ -431,7 +431,7 @@ def tangdou(pid, w, h):
     # [x] 签到成功
     input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)
     # 3. 看视频
-    input.tap(pid, w / 2, 9.6 * h / HEIGHT)
+    input.tap(pid, w / 2, 10.6 * h / HEIGHT, gap=10)
     # 4. 播放30s
     time.sleep(30)
 
