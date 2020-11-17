@@ -927,3 +927,9 @@ def read_sougou_article(pid, w, h, num):
 def collect_read_coin(pid, w, h):
     print('收集搜狗阅读收益 ' + datetime.now().time().__str__())
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 8.8 * h / HEIGHT, gap=2)
+
+
+# ~~~~~~~~~~赚钱小视频~~~~~~~~~~
+def zhuanshi_benefit_page(pid, w, h, gap=3):
+    print('看赚钱小视频 ' + datetime.now().time().__str__())
+

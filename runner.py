@@ -390,6 +390,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=18)
 
         # 看点快报
+        # 趣看看
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
@@ -401,6 +402,7 @@ def run(pid):
                 phone.stop_app(pid, info.packages['kankuai'])
 
             checkin.qukankan(pid, w, h)
+            # [x] 阅读趣看看文章
             app.read_qukankan_article(pid, w, h, num=5)
             phone.stop_app(pid, info.packages['qukankan'])
 
@@ -436,6 +438,7 @@ def run(pid):
             for i in range(0, 2):
                 checkin.moji(pid)
                 app.moji_benefit_page(pid, w, h)
+                # [x] 墨迹福利视频
                 app.moji_benefit_video(pid, w, h, num=5)
                 phone.stop_app(pid, info.packages['moji'])
 
