@@ -30,7 +30,7 @@ def kulingyin(pid, w, h):
     app.kulingyin_benefit_page(pid, w, h)
     # 2. 点击签到
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.7 * h / HEIGHT, gap=10)
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7. * h / HEIGHT, gap=10)
 
 
 # noinspection PyUnusedLocal

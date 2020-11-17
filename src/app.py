@@ -36,8 +36,8 @@ def changdou_benefit_page(pid, w, h, gap=3):
 
 # ~~~~~~~~~~长豆短视频~~~~~~~~~~
 
-def kulingyin_benefit_page(pid, w, h):
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+def kulingyin_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
@@ -192,6 +192,7 @@ def kugou_background_music(pid, w, h):
     phone.go_back(pid)
     # 4. 后台播放
     phone.go_home(pid)
+
 
 # 12~~~~~~~~~~趣看天下~~~~~~~~~~
 
