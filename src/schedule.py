@@ -409,17 +409,27 @@ def quhongbao(pid, w, h):
 def jukandian(pid, w, h):
     def time_reward():
         print('聚看点时段奖励 ' + datetime.now().time().__str__())
-        input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT)
+        input.tap(pid, 0.8 * w / WIDTH, 0.9 * h / HEIGHT, gap=3)
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.jukandian(pid, w, h)
-        # [x] 阅读文章
-        app.read_jukandian_article(pid, w, h, num=1)
+    def coin_saving():
+        print('聚看点金币积蓄 ' + datetime.now().time().__str__())
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 3.5) * h / HEIGHT, gap=3)
+        phone.go_back(pid, gap=1)
 
-        # [x] 时段奖励
-        time_reward()
-        phone.stop_app(pid, info.packages['jukandian'])
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
+        if datetime.now().hour % 5 == 0:
+            checkin.jukandian(pid, w, h)
+            # [x] 阅读文章
+            app.read_jukandian_article(pid, w, h, num=1)
+
+            # [x] 时段奖励
+            time_reward()
+
+            app.jukandian_benefit_page(pid, w, h)
+            # [x] 金币积蓄
+            coin_saving()
+            phone.stop_app(pid, info.packages['jukandian'])
 
 
 def qukankan(pid, w, h):

@@ -316,7 +316,7 @@ def read_jukandian_article(pid, w, h, num):
             # 3. 浏览文章
             phone.swipe_down_to_up(pid, w / 2, h / 3, gap=2, internal=300)
         # 4. 返回上级目录
-        phone.go_back(pid, gap=1)
+        phone.go_back(pid)
 
 
 def watch_jukandian_video(pid, w, h, num):
