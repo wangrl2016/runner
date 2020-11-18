@@ -58,7 +58,7 @@ activities = {
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',
     'makan': '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     'diandian': '#com.yingliang.clicknews/.MainActivity',
-    'xingqiu': '#com.planet.light2345/.main.activity.MainActivity',
+    # 'xingqiu': '#com.planet.light2345/.main.activity.MainActivity',
 
     # 25-28
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',

@@ -260,7 +260,6 @@ def run(pid):
 
         # 酷狗大字版
         # 刷宝短视频
-        # 星球庄园
         while datetime.now().hour.__eq__(11):
             schedule_apps(pid, w, h)
 

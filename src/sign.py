@@ -217,13 +217,6 @@ def diandian(pid, w, h):
     app.diandian_benefit_page(pid, w, h)
 
 
-# noinspection PyUnusedLocal
-def xingqiu(pid, w, h):
-    # 1. 点击右侧签到
-    # [x] 签到成功
-    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 5.8 * h / HEIGHT)
-
-
 # 25-28
 
 def toutiao(pid, w, h):

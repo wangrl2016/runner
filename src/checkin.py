@@ -164,13 +164,6 @@ def diandian(pid, w, h, gap=20):
     input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
 
 
-def xingqiu(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    input.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[5] * h / HEIGHT, gap)
-
-
 # 25-48
 
 def toutiao(pid, gap=10):
