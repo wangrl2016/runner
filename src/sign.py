@@ -138,7 +138,7 @@ def pinduoduo(pid, w, h):
     input.tap(pid, w / 2, 5.5 * h / HEIGHT)  # <= modify
     # 3. 点击签到领现金
     # [x] 签到成功
-    input.tap(pid, w / 2, 3.0 * h / HEIGHT)  # <= modify
+    input.tap(pid, w / 2, 3.0 * h / HEIGHT, gap=2)  # <= modify
     # 3. 返回到程序主页
     phone.go_back(pid, gap=1)
 

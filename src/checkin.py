@@ -108,7 +108,7 @@ def pinduoduo(pid, w, h, gap=10):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
-def kuaiyin(pid, w, h, gap=15):
+def kuaiyin(pid, w, h, gap=12):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序

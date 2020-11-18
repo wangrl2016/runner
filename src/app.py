@@ -277,9 +277,9 @@ def zhongqing_weixin_article(pid, w, h, num):
 
 
 # ~~~~~~~~~~快音~~~~~~~~~~
-def kuaiyin_benefit_page(pid, w, h):
+def kuaiyin_benefit_page(pid, w, h, gap=3):
     # 点击右下方福利按钮
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def watch_kuaiyin_video(pid, w, h):

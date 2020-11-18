@@ -348,9 +348,15 @@ def run(pid):
             for i in range(0, 5):
                 checkin.kuaiyin(pid, w, h)
                 app.kuaiyin_benefit_page(pid, w, h)
+                # 关闭可能的悬浮窗
+                phone.go_back(pid, gap=1)
                 # [x] 快音看视频赚钱
                 app.watch_kuaiyin_video(pid, w, h)
                 phone.stop_app(pid, info.packages['kuaiyin'])
+
+            checkin.kuaiyin(pid, w, h)
+            # [x] 后台播放快音
+            phone.go_home(pid)
 
             checkin.kuaikandian(pid)
             app.watch_kuaikandian_video(pid, w, h, sec=180)
