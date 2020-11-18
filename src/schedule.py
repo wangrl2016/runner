@@ -215,6 +215,10 @@ def kugou(pid, w, h):
         input.tap(pid, (WIDTH - 1.0) * w / WIDTH, info.contexts[pid]['酷狗创意视频'], gap=10)
         # 2. 播放30s
         time.sleep(30)
+        # 3. 必须点击关闭
+        input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 1.2 * h / HEIGHT, gap=2)
+        # 4. 回到福利页面
+        phone.go_back(pid)
 
     def share_friend(is_song):
         print('酷狗分享视频或歌曲 ' + datetime.now().__str__())
@@ -233,7 +237,7 @@ def kugou(pid, w, h):
         # 4. 回到酷狗程序主页
         phone.go_back(pid, gap=1)
 
-    if datetime.now().minute < SCHEDULE_TIME:
+    if datetime.now().minute > SCHEDULE_TIME:
         checkin.kugou(pid, w, h)
         if datetime.now().hour.__eq__(4):
             # [x] 分享歌曲
@@ -246,7 +250,9 @@ def kugou(pid, w, h):
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
-        if (datetime.now().hour != 12) or (datetime.now().hour != 13):
+        if 11 < datetime.now().hour < 15:
+            phone.go_home(pid)
+        else:
             phone.stop_app(pid, info.packages['kugou'])
 
 

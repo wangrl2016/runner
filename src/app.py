@@ -205,9 +205,9 @@ def kugou_background_music(pid, w, h):
     # 1. 点击下方图标进入播放页面
     input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
     # 2. 点击播放
-    input.tap(pid, w / 2, (HEIGHT - 1.4) * h / HEIGHT)
+    input.tap(pid, w / 2, (HEIGHT - 1.4) * h / HEIGHT, gap=3)
     # 3. 回到主页
-    phone.go_back(pid)
+    phone.go_back(pid, gap=1)
     # 4. 后台播放
     phone.go_home(pid)
 
