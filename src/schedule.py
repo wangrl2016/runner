@@ -971,8 +971,8 @@ def uc(pid, w, h):
     def collect_coin():
         print('UC浏览器收集金币 ' + datetime.now().time().__str__())
         # 1. 点击收集金币
-        for i in range(0, 2):
-            input.tap(pid, w / 2, 9.5 * h / HEIGHT, gap=8)
+        for i in range(0, 3):
+            input.tap(pid, w / 2, 9.5 * h / HEIGHT)
         # 2. 回到程序主页
         phone.go_back(pid, times=3, gap=1)
 
@@ -990,7 +990,7 @@ def uc(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour > 7:
             checkin.uc(pid)
-            app.uc_benefit_page(pid, w, h, gap=5)
+            app.uc_benefit_page(pid, w, h, gap=10)
             # [x] 收集金币
             collect_coin()
 
