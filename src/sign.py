@@ -162,14 +162,6 @@ def quhongbao(pid, w, h):
     time.sleep(30)
 
 
-# noinspection PyUnusedLocal
-def dongfang(pid, w, h):
-    phone.go_back(pid)
-    app.dongfang_benefit_page(pid, w, h)
-    # [x] 签到成功
-    input.tap(pid, w / 2, 3.7 * h / HEIGHT)
-
-
 def jukandian(pid, w, h):
     time.sleep(3)
     # [x] 签到成功

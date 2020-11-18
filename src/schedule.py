@@ -406,25 +406,6 @@ def quhongbao(pid, w, h):
                 phone.stop_app(pid, info.packages['quhongbao'])
 
 
-def dongfang(pid, w, h):
-    def time_reward():
-        print('东方头条时段奖励 ' + datetime.now().time().__str__())
-        # 1. 点击领取奖励
-        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=3)
-        # 2. 消除奖励页面
-        phone.go_back(pid)
-
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.dongfang(pid, w, h)
-        # [x] 时段奖励
-        time_reward()
-
-        # [x] 阅读文章
-        app.read_dongfang_article(pid, w, h, num=1)
-
-        phone.stop_app(pid, info.packages['dongfang'])
-
-
 def jukandian(pid, w, h):
     def time_reward():
         print('聚看点时段奖励 ' + datetime.now().time().__str__())

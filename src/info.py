@@ -49,7 +49,7 @@ activities = {
     'quhongbao': '#com.chenglie.hongbao/com.bytedance.sdk.openadsdk.activity.base.TTDelegateActivity',
 
     # 17-20
-    'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
+    # 'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
     'qukankan': '#com.popnews2345/.main.activity.MainActivity',
     'miaokan': '#com.taige.mygold/.MainActivityV2',

@@ -370,7 +370,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=16)
 
-        # 东方头条
         # 豆豆免费小说
         while datetime.now().hour.__eq__(17):
             schedule_apps(pid, w, h)
