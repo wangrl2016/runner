@@ -142,6 +142,7 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=3)
 
         # 火山极速版
+        # 懒猫赚钱
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
 

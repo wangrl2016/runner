@@ -67,6 +67,7 @@ def fanqie(pid, w, h):
 
 
 def fanchang(pid, w, h):
+    phone.go_back(pid, gap=1)
     # 1. 进入福利页面
     # [x] 签到成功
     app.fanchang_benefit_page(pid, w, h)

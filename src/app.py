@@ -97,8 +97,8 @@ def fanqie_benefit_page(pid, w, h, gap=3):
 
 # ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
-def fanchang_benefit_page(pid, w, h):
-    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)  # <= modify
+def fanchang_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
 
 # ~~~~~~~~~~酷狗唱唱斗歌版~~~~~~~~~~
