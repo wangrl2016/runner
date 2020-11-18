@@ -477,6 +477,7 @@ def kuge(pid, w, h):
             share_song()
             # 关闭酷狗儿歌后台播放
             phone.stop_app(pid, info.packages['kuge'])
+            print('关闭酷狗儿歌 ' + datetime.now().time().__str__())
 
 
 def makan(pid, w, h):
