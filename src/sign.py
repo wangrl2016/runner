@@ -182,7 +182,7 @@ def miaokan(pid, w, h):
     app.miaokan_benefit_page(pid, w, h)
     # 点击签到
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 6.7 * h / HEIGHT, gap=2)
+    input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 4.6 * h / HEIGHT, gap=2)
 
 
 def kuge(pid, w, h):
