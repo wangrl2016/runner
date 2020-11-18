@@ -7,8 +7,8 @@ from src.info import HEIGHT, WIDTH
 
 # ~~~~~~~~~~米读极速版~~~~~~~~~~
 
-def midu_benefit_page(pid, w, h):
-    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+def midu_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 def read_midu_novel(pid, w, h, sec):
@@ -16,17 +16,21 @@ def read_midu_novel(pid, w, h, sec):
     # 1. 点击中间的小说
     input.tap(pid, w / 2, h / 2, gap=3)
     # 2. 点击可能存在的立即阅读
-    input.tap(pid, w / 2, h / 7)
-    # 3. 向左滑动开始阅读
+    input.tap(pid, w / 2, h / 7, gap=2)
+    # 3. 点击退出可能的设置调用
+    input.tap(pid, w / 2, h / 2, gap=2)
+    # 4. 向左滑动开始阅读
     minutes = sec / 60 + datetime.now().minute
     if minutes < 59:
         while datetime.now().minute < minutes:
             # 防止点击广告
-            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(2, 5))
     else:
         hour = datetime.now().hour
         while datetime.now().hour == hour:
-            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(3, 5))
+            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(2, 5))
+    # 5. 退出阅读模式
+    phone.go_back(pid)
 
 
 # ~~~~~~~~~~长豆短视频~~~~~~~~~~

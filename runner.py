@@ -85,11 +85,14 @@ def run(pid):
         while datetime.now().hour.__eq__(1):
             schedule_apps(pid, w, h)
 
-            checkin.midu(pid, w, h)
-            app.midu_benefit_page(pid, w, h)
-            # [x] 阅读米读小说
-            app.read_midu_novel(pid, w, h, sec=300)
-            phone.stop_app(pid, info.packages['midu'])
+            for i in range(0, 2):
+                checkin.midu(pid, w, h)
+                # 存在直接进入阅读模式
+                phone.go_back(pid)
+                app.midu_benefit_page(pid, w, h)
+                # [x] 阅读米读小说6分钟
+                app.read_midu_novel(pid, w, h, sec=360)
+                phone.stop_app(pid, info.packages['midu'])
 
             checkin.toutiao(pid)
             # [x] 阅读今日头条文章
