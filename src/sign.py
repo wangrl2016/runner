@@ -85,7 +85,7 @@ def shuqi(pid, w, h):
     phone.stop_app(pid, info.packages['shuqi'])
     checkin.shuqi(pid, w, h)
     # [x] 签到成功
-    app.shuqi_benefit_page(pid, w, h, gap=5)
+    app.shuqi_benefit_page(pid, w, h)
 
 
 def yingke(pid, w, h):
