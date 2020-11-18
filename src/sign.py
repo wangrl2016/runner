@@ -28,6 +28,7 @@ def changdou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def kulingyin(pid, w, h):
+    phone.go_back(pid, gap=1)
     # 1. 进入福利页面
     app.kulingyin_benefit_page(pid, w, h)
     # 2. 点击签到
@@ -37,8 +38,15 @@ def kulingyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def lanmao(pid, w, h):
-    # 无签到
-    return None
+    # 忽略悬浮窗
+    # 如果没有悬浮窗会出现问题
+    phone.go_back(pid, gap=1)
+    # 1. 点击我的
+    input.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+    # 2. 点击签到
+    # TODO: 需要验证确认
+    # [x] 签到成功
+    input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.4 * h / HEIGHT)
 
 
 def jingdong(pid, w, h):
