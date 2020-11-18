@@ -982,7 +982,7 @@ def uc(pid, w, h):
         input.tap(pid, (WIDTH - 1.3) * w / WIDTH, 5.8 * h / HEIGHT, gap=2)
 
     if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour > 7:
+        if datetime.now().hour > 5:
             checkin.uc(pid)
             app.uc_benefit_page(pid, w, h, gap=10)
             # [x] 收集金币

@@ -9,11 +9,10 @@ def midu(pid, w, h):
     # 1. 消除可能的悬浮窗
     phone.go_back(pid, gap=1)
     # 2. 进入福利页面
-    app.midu_benefit_page(pid, w, h)
+    app.midu_benefit_page(pid, w, h, gap=5)
     # 3. 点击立即签到
     # [x] 签到成功
     input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT, gap=2)
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
