@@ -274,19 +274,11 @@ def zhongqing(pid, w, h):
         checkin.zhongqing(pid, w, h)
         # [x] 时段奖励
         time_reward()
-
         # [x] 阅读文章
         app.read_zhongqing_article(pid, w, h, num=1)
-
         # [x] 看中青看点视频
         app.watch_zhongqing_video(pid, w, h, num=1)
         phone.stop_app(pid, info.packages['zhongqing'])
-
-        if (datetime.now().hour % 4) == 0:
-            checkin.weixin(pid)
-            # [x] 阅读微信文章
-            app.zhongqing_weixin_article(pid, w, h, num=5)
-            phone.stop_app(pid, info.packages['weixin'])
 
 
 # noinspection PyUnusedLocal
