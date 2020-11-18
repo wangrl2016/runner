@@ -152,10 +152,14 @@ def kuaiyin(pid, w, h):
 
 # noinspection PyUnusedLocal
 def quhongbao(pid, w, h):
-    # 需要解决离线收益问题
-    # 进入福利页面
+    phone.stop_app(pid, info.packages['quhongbao'])
+    checkin.quhongbao(pid, w, h)
     # [x] 签到成功
-    app.quhongbao_benefit_page(pid, w, h)
+    app.quhongbao_benefit_page(pid, w, h, gap=5)
+    # 签到翻倍
+    input.tap(pid, w / 2, 7.7 * h / HEIGHT, gap=10)
+    # 播放30s
+    time.sleep(30)
 
 
 # noinspection PyUnusedLocal

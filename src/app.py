@@ -294,8 +294,8 @@ def watch_kuaiyin_video(pid, w, h):
 
 # ~~~~~~~~~~趣红包~~~~~~~~~~
 
-def quhongbao_benefit_page(pid, w, h):
-    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+def quhongbao_benefit_page(pid, w, h, gap=3):
+    input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~东方头条~~~~~~~~~~
