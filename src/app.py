@@ -5,7 +5,7 @@ from src import phone, input, utils, info
 from src.info import HEIGHT, WIDTH
 
 
-# ~~~~~~~~~~米读极速版~~~~~~~~~~
+# 01 ~~~~~~~~~~米读极速版~~~~~~~~~~
 
 def midu_benefit_page(pid, w, h, gap=3):
     input.tap(pid, 4.2 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
@@ -34,12 +34,12 @@ def read_midu_novel(pid, w, h, sec):
     phone.go_back(pid)
 
 
-# ~~~~~~~~~~长豆短视频~~~~~~~~~~
+# 02 ~~~~~~~~~~长豆短视频~~~~~~~~~~
 def changdou_benefit_page(pid, w, h, gap=3):
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
-# ~~~~~~~~~~酷铃音~~~~~~~~~~
+# 03 ~~~~~~~~~~酷铃音~~~~~~~~~~
 
 def kulingyin_benefit_page(pid, w, h, gap=3):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
@@ -58,13 +58,13 @@ def kulingyin_benefit_video(pid, w, h, num):
         phone.go_back(pid)
 
 
-# ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
+# 04 ~~~~~~~~~~懒猫赚钱~~~~~~~~~~
 def lanmao_benefit_page(pid, w, h):
     # 1. 点击中间下方懒猫
     input.tap(pid, w / 2, (HEIGHT - 0.7) * h / HEIGHT)
 
 
-# ~~~~~~~~~~京东极速版~~~~~~~~~~
+# 05 ~~~~~~~~~~京东极速版~~~~~~~~~~
 
 def jingdong_benefit_page(pid, w, h):
     # 1. 点击赚钱
@@ -88,25 +88,25 @@ def jingdong_video_coin(pid, w, h, hour):
         phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
 
 
-# ~~~~~~~~~~番茄免费小说~~~~~~~~~~
+# 06 ~~~~~~~~~~番茄免费小说~~~~~~~~~~
 
 def fanqie_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
-# ~~~~~~~~~~番茄畅听~~~~~~~~~~
+# 07 ~~~~~~~~~~番茄畅听~~~~~~~~~~
 
 def fanchang_benefit_page(pid, w, h, gap=3):
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
 
-# ~~~~~~~~~~酷狗唱唱斗歌版~~~~~~~~~~
+# 08 ~~~~~~~~~~酷狗唱唱斗歌版~~~~~~~~~~
 def kuchang_benefit_page(pid, w, h):
     input.tap(pid, 2.0 * w / WIDTH, 1.4 * h / HEIGHT)
 
 
-# ~~~~~~~~~~书旗小说~~~~~~~~~~
+# 09 ~~~~~~~~~~书旗小说~~~~~~~~~~
 def shuqi_benefit_page(pid, w, h, gap=3):
     # 1. 点击中间下方的福利
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
@@ -141,7 +141,7 @@ def shuqi_video_coin(pid, w, h):
     time.sleep(30)
 
 
-# 10~~~~~~~~~~映客直播极速版~~~~~~~~~~
+# 10 ~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
 def yingke_benefit_page(pid, w, h, gap=3):
     # 1. 点击下面的横幅
@@ -189,7 +189,7 @@ def share_yingke_live(pid, w, h, times):
     phone.swipe_up_to_down(pid, w / 2, h, internal=100)
 
 
-# 11~~~~~~~~~~酷狗大字版~~~~~~~~~~
+# 11 ~~~~~~~~~~酷狗大字版~~~~~~~~~~
 
 # 进入福利页面
 def kugou_benefit_page(pid, w, h, gap=3):
