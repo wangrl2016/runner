@@ -50,11 +50,12 @@ def lanmao(pid, w, h):
 
 
 def jingdong(pid, w, h):
+    phone.go_back(pid, gap=1)
     # 1. 点击中间的现金签到
     input.tap(pid, w / 2, 7.6 * h / HEIGHT, gap=3)  # <=== modify
     # 2. 点击立即签到
     # [x] 签到成功
-    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=3)  # <= modify
+    input.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=2)  # <= modify
 
 
 def fanqie(pid, w, h):
