@@ -474,14 +474,6 @@ def run(pid):
             phone.stop_app(pid, info.packages['ersansi'])
 
             checkin.makan(pid, w, h)
-            phone.go_back(pid, gap=2)
-            # [x] 阅读蚂蚁看点文章
-            # 需要提前解决彩蛋问题
-            app.read_makan_article(pid, w, h, num=5)
-            phone.stop_app(pid, info.packages['makan'])
-
-            checkin.makan(pid, w, h)
-            phone.go_back(pid)
             app.makan_benefit_page(pid, w, h)
             # [x] 蚂蚁看点搜索赚钱
             app.makan_search_coin(pid, w, h, num=12)

@@ -390,23 +390,25 @@ def kuge_play_background(pid, w, h):
     phone.go_home(pid)
 
 
-# ~~~~~~~~~~抖音火山版~~~~~~~~~~
-
 # ~~~~~~~~~~蚂蚁看点~~~~~~~~~~
 
 def makan_benefit_page(pid, w, h):
+    # 消除可能的悬浮窗
+    phone.go_back(pid, gap=1)
     input.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
 
 
 def read_makan_article(pid, w, h, num):
     print('看蚂蚁看点文章 ' + datetime.now().__str__())
     for i in range(0, num):
-        # 1. 点击文章
+        # 1. 刷新文章
+        phone.swipe_up_to_down(pid, w / 2, h)
+        # 2. 点击文章
         input.tap(pid, w / 2, h / 3)
         for j in range(0, 10):
-            # 2. 向上滑动
+            # 3. 向上滑动
             phone.swipe_down_to_up(pid, w / 2, h, gap=3)
-        # 3. 返回上级自动刷新
+        # 4. 返回上级自动刷新
         phone.go_back(pid)
 
 

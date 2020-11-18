@@ -489,7 +489,6 @@ def makan(pid, w, h):
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
         if datetime.now().hour % 5 == 0:
             checkin.makan(pid, w, h)
-            # 消除悬浮窗
             phone.go_back(pid, gap=1)
 
             # [x] 时段奖励
@@ -498,7 +497,7 @@ def makan(pid, w, h):
 
         if datetime.now().hour.__eq__(21):
             checkin.makan(pid, w, h)
-            phone.go_back(pid, gap=2)
+            phone.go_back(pid, gap=1)
             # [x] 阅读蚂蚁看点文章
             app.read_makan_article(pid, w, h, num=1)
             # 解决彩蛋问题
