@@ -102,11 +102,12 @@ def yingke(pid, w, h):
 
 
 def kugou(pid, w, h):
+    phone.go_back(pid, gap=1)
     # 1. 点击右下角赚钱
     app.kugou_benefit_page(pid, w, h)
     # 2. 点击每日签到栏
     # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 2.9) * h / HEIGHT, gap=3)  # <== modify
+    input.tap(pid, (WIDTH - 1.0) * w / WIDTH, (HEIGHT - 3.1) * h / HEIGHT, gap=2)  # <=== modify
     # 3. 返回到赚钱页面
     phone.go_back(pid, gap=1)
 

@@ -233,7 +233,7 @@ def kugou(pid, w, h):
         # 4. 回到酷狗程序主页
         phone.go_back(pid, gap=1)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME) and datetime.now().hour.__gt__(3):
+    if datetime.now().minute < SCHEDULE_TIME:
         checkin.kugou(pid, w, h)
         if datetime.now().hour.__eq__(4):
             # [x] 分享歌曲
