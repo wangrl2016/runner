@@ -18,7 +18,9 @@ def midu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def changdou(pid, w, h):
-    phone.go_back(pid, gap=1)
+    # 可能存在悬浮窗
+    phone.stop_app(pid, info.packages['changdou'])
+    checkin.changdou(pid, w, h)
     app.changdou_benefit_page(pid, w, h, gap=5)
     # [x] 签到成功
     input.tap(pid, w / 2, 9.8 * h / HEIGHT, gap=3)

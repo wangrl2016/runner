@@ -107,6 +107,7 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=1)
 
+        # 长豆短视频
         # 快手极速版
         while datetime.now().hour.__eq__(2):
             schedule_apps(pid, w, h)
