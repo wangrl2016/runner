@@ -836,34 +836,28 @@ def qutoutiao(pid, w, h):
         # 3. 返回到福利页面
         phone.go_back(pid)
 
-    if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.qutoutiao(pid)
-        app.qutoutiao_benefit_page(pid, w, h)
+    hour = datetime.now().hour
 
-        # [x] 睡觉赚金币
+    if datetime.now().minute.__lt__(SCHEDULE_TIME):
         # 20:00-08:00为睡觉时间
         # 12:00-14:00为午休时间
-        if datetime.now().hour.__eq__(20):
-            sleep_money(False)
-        elif datetime.now().hour.__eq__(9):
-            sleep_money(True)
-        elif datetime.now().hour.__eq__(12):
-            sleep_money(False)
-        elif datetime.now().hour.__eq__(15):
-            sleep_money(True)
-        phone.stop_app(pid, info.packages['qutoutiao'])
+        if hour == 20 or hour == 9 or hour == 12 or hour == 15:
+            checkin.qutoutiao(pid)
+            app.qutoutiao_benefit_page(pid, w, h)
+            # [x] 睡觉赚金币
+            sleep_money((hour % 2 != 0))
+            phone.stop_app(pid, info.packages['qutoutiao'])
 
-    if ((datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
-            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+    # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
+    # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
+    if ((hour % 3 == 1) and datetime.now().minute.__lt__(SCHEDULE_TIME)) or (
+            (hour % 3 == 2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.qutoutiao(pid)
         # [x] 时段奖励
         time_reward()
-
         app.qutoutiao_benefit_page(pid, w, h)
         # [x] 开宝箱
         # 每个小时一次
-        # 1, 4, 7, 10, 13, 16, 19, 22开上半时段
-        # 2, 5, 8, 11, 14, 17, 20, 23开下半时段
         open_treasure()
         phone.stop_app(pid, info.packages['qutoutiao'])
 
