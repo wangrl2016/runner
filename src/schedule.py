@@ -59,10 +59,11 @@ def lanmao(pid, w, h):
         time.sleep(30)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        checkin.lanmao(pid, w, h)
-        # [x] 领取猫粮
-        cat_food()
-        phone.stop_app(pid, info.packages['lanmao'])
+        if datetime.now().hour % 3 == 0:
+            checkin.lanmao(pid, w, h)
+            # [x] 领取猫粮10次
+            cat_food()
+            phone.stop_app(pid, info.packages['lanmao'])
 
 
 # noinspection PyUnusedLocal
