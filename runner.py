@@ -498,11 +498,12 @@ def run(pid):
             app.read_diandian_article(pid, w, h, num=8)
             phone.stop_app(pid, info.packages['diandian'])
 
-            checkin.tangdou(pid)
-            app.tangdou_benefit_page(pid, w, h)
-            # [x] 糖豆有趣视频
-            app.tangdou_funny_video(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['tangdou'])
+            if datetime.now().hour == 23:
+                checkin.tangdou(pid)
+                app.tangdou_benefit_page(pid, w, h)
+                # [x] 糖豆有趣视频
+                app.tangdou_funny_video(pid, w, h, num=10)
+                phone.stop_app(pid, info.packages['tangdou'])
 
             utils.tail_work(pid, w, h, hour=23)
 

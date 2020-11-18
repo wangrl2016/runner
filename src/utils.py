@@ -106,6 +106,9 @@ def current_words_location(pid, words, output_dir='out'):
         if data['text'][i].__eq__(words[0]):
             is_found = True
             for j, word in enumerate(words):
+                # 保证数组不越界
+                if i + j >= len(data['text']):
+                    return None
                 if not word.__eq__(data['text'][i + j]):
                     is_found = False
                     break
