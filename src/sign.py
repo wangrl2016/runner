@@ -95,7 +95,7 @@ def yingke(pid, w, h):
     # 2. 点击下方红包
     app.yingke_benefit_page(pid, w, h)
     # 3. 点击立即签到
-    input.tap(pid, w / 2, 10.4 * h / HEIGHT)  # <=== modify
+    input.tap(pid, w / 2, 10.4 * h / HEIGHT, gap=10)  # <=== modify
     # 4. 播放30s广告
     # [x] 签到成功
     time.sleep(30)

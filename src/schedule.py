@@ -184,7 +184,7 @@ def yingke(pid, w, h):
         time.sleep(30)
 
     if datetime.now().minute.__lt__(SCHEDULE_TIME):
-        if datetime.now().hour.__gt__(9) and datetime.now().hour.__lt__(21):
+        if datetime.now().hour.__gt__(9):
             checkin.yingke(pid, w, h)
             app.yingke_benefit_page(pid, w, h)
             # [x] 看福利视频10次

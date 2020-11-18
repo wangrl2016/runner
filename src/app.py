@@ -143,7 +143,7 @@ def shuqi_video_coin(pid, w, h):
 
 # 10~~~~~~~~~~映客直播极速版~~~~~~~~~~
 
-def yingke_benefit_page(pid, w, h, gap=5):
+def yingke_benefit_page(pid, w, h, gap=3):
     # 1. 点击下面的横幅
     input.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <= modify
 
