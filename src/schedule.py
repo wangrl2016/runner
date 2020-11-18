@@ -6,6 +6,15 @@ from src import checkin, phone, input, app, utils, info
 from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
 
 
+def test(pid, name=None, w=0, h=0):
+    """
+    调用相关任务进行测试
+    """
+    if name:
+        print('任务测试 ' + datetime.now().time().__str__())
+        eval(name)(pid, w, h)
+
+
 # noinspection PyUnusedLocal
 def midu(pid, w, h):
     def benefit_video(num):
@@ -20,13 +29,14 @@ def midu(pid, w, h):
             # 2. 播放30s
             time.sleep(30)
             # 3. 返回到点击页面
-            phone.go_back(pid, times=2, gap=1)
+            # 可能返回2次
+            phone.go_back(pid)
 
     if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 5 == 0:
+        if datetime.now().hour % 10 == 0:
             checkin.midu(pid, w, h)
             # [x] 米读福利视频
-            benefit_video(num=3)
+            benefit_video(num=1)
             phone.stop_app(pid, info.packages['midu'])
 
 

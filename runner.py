@@ -7,7 +7,7 @@ import sys
 import threading
 from datetime import datetime
 
-from src import phone, checkin, sign, app, utils, info
+from src import phone, checkin, sign, app, utils, info, schedule
 from src.info import high_serials, activities
 from src.utils import schedule_apps
 
@@ -65,6 +65,7 @@ def run(pid):
     phone.go_home(pid)
 
     # 代码测试位置
+    schedule.test(pid)
 
     while True:
         while datetime.now().hour.__eq__(0):
