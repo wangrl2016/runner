@@ -278,6 +278,7 @@ def run(pid):
 
         # QQ阅读
         # 洋葱免费小说
+        # 趣看天下
         while datetime.now().hour.__eq__(12):
             schedule_apps(pid, w, h)
 
