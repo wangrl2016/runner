@@ -24,11 +24,11 @@ def read_midu_novel(pid, w, h, sec):
     if minutes < 59:
         while datetime.now().minute < minutes:
             # 防止点击广告
-            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(2, 5))
+            phone.swipe_right_to_left(pid, w, h / 10, randrange(2, 5))
     else:
         hour = datetime.now().hour
         while datetime.now().hour == hour:
-            phone.swipe_right_to_left(pid, w, h * 4 / 5, randrange(2, 5))
+            phone.swipe_right_to_left(pid, w, h / 10, randrange(2, 5))
     # 5. 退出阅读模式
     phone.go_back(pid)
 

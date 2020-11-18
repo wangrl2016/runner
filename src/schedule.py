@@ -8,7 +8,26 @@ from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
 
 # noinspection PyUnusedLocal
 def midu(pid, w, h):
-    return None
+    def benefit_video(num):
+        print('看米读福利视频 ' + datetime.now().time().__str__())
+        # 1. 点击我的栏目
+        input.tap(pid, (WIDTH - 0.9) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=3)
+        # 2. 点击福利中心栏目
+        input.tap(pid, 1.0 * w / WIDTH, 8.9 * h / HEIGHT, gap=3)
+        for i in range(0, num):
+            # 1. 点击播放
+            input.tap(pid, (1.2 + i * 1.5) * w / WIDTH, 7.1 * h / HEIGHT, gap=10)
+            # 2. 播放30s
+            time.sleep(30)
+            # 3. 返回到点击页面
+            phone.go_back(pid, times=2, gap=1)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 5 == 0:
+            checkin.midu(pid, w, h)
+            # [x] 米读福利视频
+            benefit_video(num=3)
+            phone.stop_app(pid, info.packages['midu'])
 
 
 # noinspection PyUnusedLocal
