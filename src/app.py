@@ -798,7 +798,7 @@ def watch_kankuai_advert(pid, w, h, num):
     print("看点快报广告 " + datetime.now().__str__())
     for i in range(0, num):
         # 1. 点击去观看
-        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT, gap=3)
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)
         # 2. 播放15s
         time.sleep(15)
         # 3. 点击关闭

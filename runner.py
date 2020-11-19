@@ -406,8 +406,8 @@ def run(pid):
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 
-            for i in range(0, 5):
-                checkin.kankuai(pid, gap=8)
+            for i in range(0, 2):
+                checkin.kankuai(pid, gap=10)
                 app.kankuai_benefit_page(pid, w, h)
                 # [x] 看广告领金币
                 app.watch_kankuai_advert(pid, w, h, num=3)
