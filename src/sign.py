@@ -62,7 +62,7 @@ def fanqie(pid, w, h):
     phone.go_back(pid, gap=1)
     # 2. 点击中间下方福利签到
     # [x] 签到成功
-    app.fanqie_benefit_page(pid, w, h)
+    app.fanqie_benefit_page(pid, w, h, gap=5)
 
 
 def fanchang(pid, w, h):
