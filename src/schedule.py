@@ -958,7 +958,16 @@ def qqyuedu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def chejia(pid, w, h):
-    return None
+    def time_reward():
+        print('汽车之家时段奖励 ' + datetime.now().time().__str__())
+        input.tap(pid, (WIDTH - 1.1) * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
+        phone.go_back(pid, gap=1)
+
+    if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME) or (
+            (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
+        checkin.chejia(pid, gap=10)
+        time_reward()
+        phone.stop_app(pid, info.packages['chejia'])
 
 
 def uc(pid, w, h):
