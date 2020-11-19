@@ -129,13 +129,6 @@ def jukandian(pid, w, h, gap=20):
     input.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
-def qukankan(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    input.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
-
-
 def miaokan(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -267,11 +260,6 @@ def douhuo(pid, gap=10):
 
 
 def moji(pid, gap=10):
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
-def ersansi(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 

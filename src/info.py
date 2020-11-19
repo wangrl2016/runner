@@ -51,7 +51,7 @@ activities = {
     # 17-20
     # 'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
-    'qukankan': '#com.popnews2345/.main.activity.MainActivity',
+    # 账号异常 'qukankan': '#com.popnews2345/.main.activity.MainActivity',
     'miaokan': '#com.taige.mygold/.MainActivityV2',
 
     # 21-24
@@ -92,7 +92,7 @@ activities = {
 
     # 45-48
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
-    'ersansi': 'com.browser2345/.BrowserActivity',
+    # 账号异常 'ersansi': 'com.browser2345/.BrowserActivity',
     'tangdou': 'com.bokecc.dance/.activity.MainActivity',
     'yangcong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
 

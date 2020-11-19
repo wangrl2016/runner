@@ -168,15 +168,6 @@ def jukandian(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def qukankan(pid, w, h):
-    # 1. 进入福利页面
-    app.qukankan_benefit_page(pid, w, h)
-    # 2. 点击签到
-    # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
-
-
-# noinspection PyUnusedLocal
 def miaokan(pid, w, h):
     app.miaokan_benefit_page(pid, w, h)
     # 点击签到
@@ -414,15 +405,6 @@ def douhuo(pid, w, h):
 def moji(pid, w, h):
     # [x] 签到成功
     app.moji_benefit_page(pid, w, h)
-
-
-# noinspection PyUnusedLocal
-def ersansi(pid, w, h):
-    phone.go_back(pid)
-    app.ersansi_benefit_page(pid, w, h)
-    # 点击签到
-    # [x] 签到成功
-    input.tap(pid, (WIDTH - 1.2) * w / WIDTH, 3.0 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal

@@ -432,25 +432,6 @@ def jukandian(pid, w, h):
             phone.stop_app(pid, info.packages['jukandian'])
 
 
-def qukankan(pid, w, h):
-    def time_reward():
-        print('趣看看时段奖励 ' + datetime.now().time().__str__())
-        # 1. 点击领取
-        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 0.9 * h / HEIGHT, gap=2)
-        # 2. 消除奖励提醒
-        phone.go_back(pid, gap=1)
-
-    if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 7 == 0:
-            checkin.qukankan(pid, w, h)
-            # [x] 时段奖励
-            time_reward()
-
-            # [x] 阅读文章
-            app.read_qukankan_article(pid, w, h, num=2)
-            phone.stop_app(pid, info.packages['qukankan'])
-
-
 # noinspection PyUnusedLocal
 def miaokan(pid, w, h):
     return None
@@ -909,7 +890,7 @@ def taobao(pid, w, h):
     def everyday_coin():
         print('淘宝天天赚特币 ' + datetime.now().time().__str__())
         # 1. 点击天天赚特币
-        input.tap(pid, w / 2, 2.6 * h / HEIGHT)
+        input.tap(pid, w / 2, 2.6 * h / HEIGHT, gap=8)
         # 2. 点击口袋
         input.tap(pid, w * 2 / 3, h / 2, gap=2)
 
@@ -1049,23 +1030,6 @@ def douhuo(pid, w, h):
 # noinspection PyUnusedLocal
 def moji(pid, w, h):
     return None
-
-
-def ersansi(pid, w, h):
-    def time_reward():
-        print('2345浏览器时段奖励 ' + datetime.now().time().__str__())
-        phone.swipe_down_to_up(pid, w / 2, h)
-        input.tap(pid, (WIDTH - 0.8) * w / WIDTH, 1.0 * h / HEIGHT, gap=2)
-        phone.go_back(pid)
-
-    if datetime.now().minute < SCHEDULE_TIME:
-        checkin.ersansi(pid)
-        # [x] 时段奖励
-        time_reward()
-
-        # [x] 阅读文章
-        app.read_ersansi_article(pid, w, h, num=1)
-        phone.stop_app(pid, info.packages['ersansi'])
 
 
 # noinspection PyUnusedLocal

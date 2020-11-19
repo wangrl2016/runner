@@ -413,11 +413,6 @@ def run(pid):
                 app.watch_kankuai_advert(pid, w, h, num=3)
                 phone.stop_app(pid, info.packages['kankuai'])
 
-            checkin.qukankan(pid, w, h)
-            # [x] 阅读趣看看文章
-            app.read_qukankan_article(pid, w, h, num=5)
-            phone.stop_app(pid, info.packages['qukankan'])
-
             utils.tail_work(pid, w, h, hour=19)
 
         # 抖音火山
@@ -457,14 +452,8 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=21)
 
         # 蚂蚁看点
-        # 2345浏览器
         while datetime.now().hour.__eq__(22):
             schedule_apps(pid, w, h)
-
-            checkin.ersansi(pid)
-            # [x] 阅读文章
-            app.read_ersansi_article(pid, w, h, num=10)
-            phone.stop_app(pid, info.packages['ersansi'])
 
             checkin.makan(pid, w, h)
             app.makan_benefit_page(pid, w, h)

@@ -347,24 +347,6 @@ def watch_jukandian_svideo(pid, w, h, num):
     phone.go_back(pid, gap=1)
 
 
-# ~~~~~~~~~~趣看看~~~~~~~~~~
-
-def qukankan_benefit_page(pid, w, h):
-    input.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
-def read_qukankan_article(pid, w, h, num):
-    print('阅读趣看看文章 ' + datetime.now().time().__str__())
-    for i in range(0, num):
-        # 1. 点击文章
-        input.tap(pid, w / 2, h / 2)
-        # 2. 阅读30s
-        for j in range(0, randrange(9, 11)):
-            phone.swipe_down_to_up(pid, w / 2, h, gap=randrange(2, 5), internal=400)
-        # 3. 返回上级页面
-        phone.go_back(pid)
-
-
 # ~~~~~~~~~~妙看短视频~~~~~~~~~~
 def miaokan_benefit_page(pid, w, h):
     input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
@@ -830,26 +812,6 @@ def moji_benefit_video(pid, w, h, num):
         time.sleep(30)
         # 3. 关闭返回福利页面
         input.tap(pid, (WIDTH - 0.7) * w / WIDTH, 0.7 * h / HEIGHT, gap=2)
-
-
-# ~~~~~~~~~~2345浏览器~~~~~~~~~~
-def ersansi_benefit_page(pid, w, h):
-    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
-def read_ersansi_article(pid, w, h, num):
-    print('阅读2345浏览器文章 ' + datetime.now().time().__str__())
-    for i in range(0, num):
-        # 1. 获取文章目录
-        if i != 0:
-            phone.swipe_up_to_down(pid, w / 2, h)
-        # 2. 点击文章
-        input.tap(pid, w / 2, h / 2)
-        # 3. 滑动阅读30s
-        for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w / 2, h, randrange(2, 5))
-        # 4. 返回上级目录
-        phone.go_back(pid)
 
 
 # ~~~~~~~~~~糖豆~~~~~~~~~~
