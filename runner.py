@@ -447,11 +447,11 @@ def run(pid):
 
             schedule_apps(pid, w, h)
 
-            for i in range(0, 2):
+            for i in range(0, 3):
                 checkin.moji(pid)
                 app.moji_benefit_page(pid, w, h)
                 # [x] 墨迹福利视频
-                app.moji_benefit_video(pid, w, h, num=5)
+                app.moji_benefit_video(pid, w, h, num=4)
                 phone.stop_app(pid, info.packages['moji'])
 
             utils.tail_work(pid, w, h, hour=21)

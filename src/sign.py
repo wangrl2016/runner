@@ -401,12 +401,13 @@ def kankuai(pid, w, h):
 
 def douhuo(pid, w, h):
     # 1. 假装回退关闭可能的悬浮窗
-    phone.go_back(pid, times=1, gap=1)
+    time.sleep(5)
+    phone.go_back(pid, gap=1)
     # 2. 点击个人中心图标
-    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)
+    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT, gap=3)
     # 3. 点击火苗管理
     # [x] 签到成功
-    input.tap(pid, w / 2, 7.9 * h / HEIGHT)
+    input.tap(pid, w / 2, 7.9 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal
