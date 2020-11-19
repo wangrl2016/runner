@@ -155,10 +155,6 @@ def quhongbao(pid, w, h):
     checkin.quhongbao(pid, w, h)
     # [x] 签到成功
     app.quhongbao_benefit_page(pid, w, h, gap=5)
-    # 签到翻倍
-    input.tap(pid, w / 2, 7.7 * h / HEIGHT, gap=10)
-    # 播放30s
-    time.sleep(30)
 
 
 def jukandian(pid, w, h):
