@@ -729,7 +729,7 @@ def watch_kuaikandian_video(pid, w, h, sec):
 
 
 # ~~~~~~~~~~红包短视频~~~~~~~~~~
-def watch_hongbao_video(pid, w, h, sec):
+def watch_hongshi_video(pid, w, h, sec):
     print('看红包短视频 ' + datetime.now().time().__str__())
     # 2. 从下往上翻页
     minutes = sec / 60 + datetime.now().minute

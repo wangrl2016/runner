@@ -351,6 +351,7 @@ def run(pid):
             phone.go_home(pid)
 
             checkin.kuaikandian(pid)
+            # [x] 看快看点视频
             app.watch_kuaikandian_video(pid, w, h, sec=180)
             phone.stop_app(pid, info.packages['kuaikandian'])
 
