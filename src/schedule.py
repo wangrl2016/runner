@@ -993,9 +993,10 @@ def uc(pid, w, h):
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour > 5:
             checkin.uc(pid)
-            app.uc_benefit_page(pid, w, h, gap=10)
-            # [x] 收集金币
-            collect_coin()
+            if datetime.now().hour % 2 == 0:
+                app.uc_benefit_page(pid, w, h, gap=10)
+                # [x] 收集金币
+                collect_coin()
 
             app.uc_benefit_page(pid, w, h)
             # [x] 看视频领元宝
