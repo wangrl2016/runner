@@ -1,7 +1,4 @@
-import threading
 import tkinter as tk
-
-import src.phone
 from src import phone
 
 
@@ -22,7 +19,6 @@ class Application(tk.Frame):
         self.home["text"] = "主页"
         self.home["command"] = go_home
         self.home.pack(side="left")
-
         self.back.pack(side="right")
 
 
