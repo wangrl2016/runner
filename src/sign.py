@@ -158,7 +158,7 @@ def quhongbao(pid, w, h):
 
 
 def jukandian(pid, w, h):
-    time.sleep(3)
+    # TODO: 解决悬浮窗问题
     # [x] 签到成功
     input.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
@@ -307,12 +307,8 @@ def taobao(pid, w, h):
     # 1. 消除可能存在的悬浮窗
     phone.go_back(pid)
     # 2. 点击签到
-    input.tap(pid, 0.7 * w / WIDTH, 2.6 * h / HEIGHT)
-    # 3. 点击视频
-    input.tap(pid, w / 2, 6.7 * h / HEIGHT)
-    # 4. 播放30s
     # [x] 签到成功
-    time.sleep(30)
+    input.tap(pid, 0.7 * w / WIDTH, 2.6 * h / HEIGHT, gap=3)
 
 
 def shuabao(pid, w, h):
@@ -391,7 +387,7 @@ def douhuo(pid, w, h):
     time.sleep(5)
     phone.go_back(pid, gap=1)
     # 2. 点击个人中心图标
-    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT, gap=3)
+    input.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)
     # 3. 点击火苗管理
     # [x] 签到成功
     input.tap(pid, w / 2, 7.9 * h / HEIGHT, gap=2)
@@ -419,7 +415,7 @@ def tangdou(pid, w, h):
 # noinspection PyUnusedLocal
 def yangcong(pid, w, h):
     # [x] 签到成功
-    app.yangcong_benefit_page(pid, w, h)
+    app.yangcong_benefit_page(pid, w, h, gap=5)
 
 
 # 49 - 72
