@@ -246,7 +246,7 @@ def kugou(pid, w, h):
             # [x] 分享视频
             share_friend(is_song=False)
 
-        app.kugou_benefit_page(pid, w, h)
+        app.kugou_benefit_page(pid, w, h, gap=5)
         # [x] 刷创意视频
         # 总共20次定时任务
         creative_video()
