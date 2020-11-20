@@ -2,9 +2,6 @@ import subprocess
 import time
 from random import randrange
 
-LANDSCAPE_OFFSET = 15
-VERTICAL_OFFSET = 5
-
 """
 The commands and default sources are:
     text <string> (Default: touchscreen)
@@ -49,8 +46,6 @@ def tap(pid, w, h, gap=5):
     :param h: 竖直方向像素坐标
     :param gap: 时间间隔
     """
-    w = w + randrange(-LANDSCAPE_OFFSET, VERTICAL_OFFSET)
-    h = h + randrange(-VERTICAL_OFFSET, VERTICAL_OFFSET)
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'tap', str(int(w)), str(int(h))])
     time.sleep(gap)
 

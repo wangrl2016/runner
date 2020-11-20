@@ -3,14 +3,14 @@ import subprocess
 import time
 from datetime import datetime
 from random import randrange
+from src import input
 
 
 def go_home(pid, gap=1):
     """
     回到手机主页
     """
-    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_HOME'])
-    time.sleep(gap)
+    input.keyevent(pid, 'KEYCODE_HOME', gap)
 
 
 def go_back(pid, times=1, gap=2):
@@ -18,8 +18,16 @@ def go_back(pid, times=1, gap=2):
     回退到上级页面
     """
     for i in range(0, times):
-        subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_BACK'])
-        time.sleep(gap)
+        input.keyevent(pid, 'KEYCODE_BACK', gap)
+
+
+def tap(pid, w, h, gap=5):
+    """
+    点击屏幕
+    """
+    w = w + randrange(-15, 15)
+    h = h + randrange(-5, 5)
+    input.tap(pid, w, h, gap)
 
 
 def swipe_down_to_up(pid, w, h, gap=3, internal=200):
@@ -28,6 +36,7 @@ def swipe_down_to_up(pid, w, h, gap=3, internal=200):
     """
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
+    internal = internal + randrange(-30, 30)
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'swipe',
                     str(int(w)), str(int(h * 3 / 4)),
                     str(int(w)), str(int(h * 1 / 4)),
@@ -41,6 +50,7 @@ def swipe_up_to_down(pid, w, h, gap=3, internal=200):
     """
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
+    internal = internal + randrange(-30, 30)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w)), str(int(h * 1 / 4)),
                      str(int(w)), str(int(h * 3 / 4)),
@@ -54,6 +64,7 @@ def swipe_right_to_left(pid, w, h, gap=3, internal=200):
     """
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
+    internal = internal + randrange(-30, 30)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w * 3 / 4)), str(int(h)),
                      str(int(w * 1 / 4)), str(int(h)),
@@ -67,6 +78,7 @@ def swipe_left_to_right(pid, w, h, gap=3, internal=200):
     """
     w = w + randrange(-25, 25)
     h = h + randrange(-50, 50)
+    internal = internal + randrange(-30, 30)
     subprocess.call(['adb', '-s', pid, 'shell', 'input', 'swipe',
                      str(int(w * 1 / 4)), str(int(h)),
                      str(int(w * 3 / 4)), str(int(h)),
