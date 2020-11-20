@@ -115,6 +115,8 @@ def current_words_location(pid, words, output_dir='out'):
             if is_found:
                 # 4. 返回处理结果
                 os.remove(os.path.join(output_dir, photo_name))
+                if data['width'][i] == 0 or data['height'][i] == 0:
+                    return None
                 return {'x': data['left'][i], 'y': data['top'][i],
                         'w': data['width'][i], 'h': data['height'][i]}
     os.remove(os.path.join(output_dir, photo_name))
