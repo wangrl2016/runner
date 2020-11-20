@@ -1,7 +1,7 @@
 import time
 from random import randrange
 
-from src import input, phone, app, info, checkin
+from src import phone, app, info, checkin
 from src.info import WIDTH, HEIGHT
 
 
@@ -12,7 +12,7 @@ def midu(pid, w, h):
     app.midu_benefit_page(pid, w, h, gap=5)
     # 3. 点击立即签到
     # [x] 签到成功
-    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT, gap=2)
+    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.3 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal
