@@ -320,9 +320,9 @@ def ximalaya(pid, w, h):
 
 def wuba(pid, w, h):
     # 1. 点击福利页面
-    app.wuba_benefit_page(pid, w, h)
+    app.wuba_benefit_page(pid, w, h, gap=5)
     # 2. 看视频
-    phone.tap(pid, w / 2, 8.3 * h / HEIGHT, gap=10)
+    phone.tap(pid, w / 2, 8.3 * h / HEIGHT, gap=8)
     # 3. 返回到签到页面
     # [x] 签到成功
     phone.go_back(pid)
@@ -395,8 +395,8 @@ def doudou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def qimao(pid, w, h):
+    # [x] 签到成功
     phone.tap(pid, (WIDTH - 1.1) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
-    return None
 
 
 # noinspection PyUnusedLocal
@@ -444,7 +444,7 @@ def yangcong(pid, w, h):
     app.yangcong_benefit_page(pid, w, h, gap=5)
 
 
-# 49-72
+# 73-96
 
 
 # noinspection PyUnusedLocal
