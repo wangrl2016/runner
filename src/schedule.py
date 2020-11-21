@@ -1112,5 +1112,10 @@ def buduoduo(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def duokan(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
 def weixin(pid, w, h):
     return None

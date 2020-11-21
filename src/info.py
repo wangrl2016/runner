@@ -111,6 +111,7 @@ activities = {
     'gudong': 'com.codoon.gps/.ui.SlideActivity',
     'xiongmao': 'com.nd.android.pandareader/com.baidu.shucheng.ui.main.MainActivity',
     'buduoduo': 'com.qsmy.walkmonkey/com.qsmy.busniess.welcome.WelcomeActivity',
+    'duokan': 'com.tengu.duokan/com.tengu.duoduo.main.MainActivity',
 
     # last
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
