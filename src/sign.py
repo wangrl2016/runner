@@ -221,6 +221,11 @@ def jitou(pid, w, h):
     phone.tap(pid, 5.1 * w / WIDTH, 5.8 * h / HEIGHT, gap=3)
 
 
+# noinspection PyUnusedLocal
+def sanliuling(pid, w, h):
+    return None
+
+
 def toutiao(pid, w, h):
     # 1. 点击右下方任务栏目
     # 显示签到界面

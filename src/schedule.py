@@ -506,6 +506,11 @@ def jitou(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
+def sanliuling(pid, w, h):
+    return None
+
+
 # 25-48
 def toutiao(pid, w, h):
     def open_treasure():

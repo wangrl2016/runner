@@ -60,6 +60,7 @@ activities = {
     'tengtu': '#com.tencent.map/.framework.launch.MapActivityReal',
     'momo': '#com.immomo.young/com.immomo.momo.maintab.MaintabActivity',
     'jitou': '#com.sanmiao.news/.activity.MainActivity',
+    'sanliuling': 'com.qihoo.browser/.BrowserActivity',
 
     # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
