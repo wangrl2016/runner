@@ -434,11 +434,15 @@ def yangcong(pid, w, h):
     app.yangcong_benefit_page(pid, w, h, gap=5)
 
 
-# 49 - 72
+# 49-72
 
 
 # noinspection PyUnusedLocal
 def qqliulan(pid, w, h):
+    app.qqliulan_benefit_page(pid, w, h)
+    # 点击福利中心
+    # [x] 签到成功
+    phone.tap(pid, w / 3, h * 11 / 14)
     return None
 
 

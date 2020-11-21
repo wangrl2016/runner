@@ -871,6 +871,12 @@ def read_yangcong_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
 
 
+# ~~~~~~~~~~QQ浏览器~~~~~~~~~~
+
+def qqliulan_benefit_page(pid, w, h, gap=5):
+    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~
 def zhuanshi_benefit_page(pid, w, h, gap=3):
     print('看赚钱小视频 ' + datetime.now().time().__str__())
