@@ -169,7 +169,7 @@ def kuge(pid, w, h):
     # 位置未知
     # [x] 签到成功
     for i in range(0, 7):
-        phone.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=1)
+        phone.tap(pid, (1.0 + 0.8 * i) * w / WIDTH, 6.9 * h / HEIGHT, gap=(3 if (i == 6) else 1))
 
 
 def makan(pid, w, h):
@@ -205,7 +205,11 @@ def tengtu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def momo(pid, w, h):
-    return None
+    # 1. 点击红包
+    phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
+    # 2. 点击签到
+    for i in range(0, 7):
+        phone.tap(pid, (0.7 + 0.9 * i) * w / WIDTH, 7.1 * h / HEIGHT, gap=(3 if (i == 6) else 1))
 
 
 # noinspection PyUnusedLocal
