@@ -33,6 +33,12 @@ def cycle(pid):
             run_apps.append(p)
 
     # 执行相关任务
+    while True:
+        hour = datetime.now().hour
+        while run_apps.__contains__('kuaishou'):
+            checkin.kuaishou(pid)
+            app.watch_kuaishou_video(pid, w, h, hour)
+            phone.stop_app(pid, info.packages['kuaishou'])
 
 
 def run(pid):
