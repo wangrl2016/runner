@@ -108,7 +108,7 @@ def fanchang(pid, w, h):
     if (datetime.now().hour % 3).__eq__(1) and datetime.now().minute.__lt__(SCHEDULE_TIME) or (
             (datetime.now().hour % 3).__eq__(2) and datetime.now().minute.__ge__(SCHEDULE_TIME)):
         checkin.fanchang(pid, w, h)
-        app.fanchang_benefit_page(pid, w, h)
+        app.fanchang_benefit_page(pid, w, h, gap=5)
         # [x] 番茄畅听开宝箱
         open_treasure()
         phone.stop_app(pid, info.packages['fanchang'])
