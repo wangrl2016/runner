@@ -885,5 +885,8 @@ def lingshenghui_benefit_page(pid, w, h, gap=5):
 
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~
 def zhuanshi_benefit_page(pid, w, h, gap=3):
-    print('看赚钱小视频 ' + datetime.now().time().__str__())
     phone.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+def xiongmao_benefit_page(pid, w, h, gap=5):
+    phone.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)

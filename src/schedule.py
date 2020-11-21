@@ -1090,7 +1090,15 @@ def gudong(pid, w, h):
 
 # noinspection PyUnusedLocal
 def xiongmao(pid, w, h):
-    return None
+    def open_treasure():
+        print('熊猫小说开宝箱 ' + datetime.now().time().__str__())
+        phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, (HEIGHT - 2.2) * h / HEIGHT, gap=2)
+
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 9 == 0:
+            app.xiongmao_benefit_page(pid, w, h)
+            open_treasure()
+            phone.stop_app(pid, info.packages['xiongmao'])
 
 
 # noinspection PyUnusedLocal
