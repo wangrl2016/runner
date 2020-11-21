@@ -1,6 +1,6 @@
 import inspect
 
-from src import phone, input
+from src import phone
 from src.info import activities, WIDTH, HEIGHT
 
 # 对于无法通过Activity进行启动的图标需要定位
@@ -332,6 +332,11 @@ def zhaoshang(pid, gap=15):
 
 
 def gudong(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def xiongmao(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 

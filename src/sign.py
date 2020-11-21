@@ -478,5 +478,10 @@ def gudong(pid, w, h):
 
 
 # noinspection PyUnusedLocal
+def xiongmao(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
 def weixin(pid, w, h):
     return None

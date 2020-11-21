@@ -106,6 +106,7 @@ activities = {
     # 77-80
     'zhaoshang': 'cmb.pb/.app.mainframe.container.PBMainActivity',
     'gudong': 'com.codoon.gps/.ui.SlideActivity',
+    'xiongmao': 'com.nd.android.pandareader/com.baidu.shucheng.ui.main.MainActivity',
 
     # last
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
