@@ -801,7 +801,7 @@ def watch_douhuo_video(pid, w, h, sec=300):
     phone.tap(pid, w / 3, h / 3)
     # 2. 逐个看视频
     while (datetime.now() - start).seconds < sec:
-        phone.swipe_down_to_up(pid, w / 3, h * 2 / 3, randrange(5, 16))
+        phone.swipe_down_to_up(pid, w * 2 / 3, h * 2 / 3, randrange(5, 16))
 
 
 # ~~~~~~~~~~墨迹天气~~~~~~~~~~
@@ -880,7 +880,7 @@ def qqliulan_benefit_page(pid, w, h, gap=5):
 # ~~~~~~~~~~QQ浏览器~~~~~~~~~~
 
 def lingshenghui_benefit_page(pid, w, h, gap=5):
-    phone.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=5)
+    phone.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~
