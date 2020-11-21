@@ -451,6 +451,12 @@ def read_diandian_article(pid, w, h, num):
         phone.go_back(pid, gap=2)
 
 
+# ~~~~~~~~~~极速头条~~~~~~~~~~
+
+def jitou_benefit_page(pid, w, h, gap=3):
+    phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
 def toutiao_benefit_page(pid, w, h, gap=3):

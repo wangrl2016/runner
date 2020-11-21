@@ -200,6 +200,7 @@ def tengtu(pid, w, h):
     # 2. 点击天天领现金
     phone.tap(pid, w / 2, h / 5)
     # 3. 马上签到领现金
+    # [x] 签到成功
     phone.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=3)
 
 
@@ -208,13 +209,16 @@ def momo(pid, w, h):
     # 1. 点击红包
     phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
     # 2. 点击签到
+    # [x] 签到成功
     for i in range(0, 7):
         phone.tap(pid, (0.7 + 0.9 * i) * w / WIDTH, 7.1 * h / HEIGHT, gap=(3 if (i == 6) else 1))
 
 
 # noinspection PyUnusedLocal
 def jitou(pid, w, h):
-    return None
+    app.jitou_benefit_page(pid, w, h)
+    # [x] 签到成功
+    phone.tap(pid, 5.1 * w / WIDTH, 5.8 * h / HEIGHT, gap=3)
 
 
 def toutiao(pid, w, h):
