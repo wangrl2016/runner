@@ -210,8 +210,7 @@ def momo(pid, w, h):
     phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
     # 2. 点击签到
     # [x] 签到成功
-    for i in range(0, 7):
-        phone.tap(pid, (0.7 + 0.9 * i) * w / WIDTH, 7.1 * h / HEIGHT, gap=(3 if (i == 6) else 1))
+    phone.tap(pid, w / 2, 9.1 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
