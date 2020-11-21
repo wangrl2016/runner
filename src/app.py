@@ -1,7 +1,7 @@
 from datetime import datetime
 from random import randrange
 import time
-from src import phone, input, utils, info
+from src import phone, utils, info
 from src.info import HEIGHT, WIDTH
 
 
@@ -874,7 +874,13 @@ def read_yangcong_novel(pid, w, h, sec):
 # ~~~~~~~~~~QQ浏览器~~~~~~~~~~
 
 def qqliulan_benefit_page(pid, w, h, gap=5):
-    input.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+    phone.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+# ~~~~~~~~~~QQ浏览器~~~~~~~~~~
+
+def lingshenghui_benefit_page(pid, w, h, gap=5):
+    phone.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap=5)
 
 
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~

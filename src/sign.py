@@ -448,7 +448,7 @@ def qqliulan(pid, w, h):
 
 # noinspection PyUnusedLocal
 def lingshenghui(pid, w, h):
-    return None
+    app.lingshenghui_benefit_page(pid, w, h)
 
 
 # noinspection PyUnusedLocal
