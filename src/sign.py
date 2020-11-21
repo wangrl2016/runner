@@ -458,6 +458,7 @@ def zhuanshi(pid, w, h):
 
 # noinspection PyUnusedLocal
 def tengzhi(pid, w, h):
+    phone.tap(pid, (WIDTH - 0.6) * w / WIDTH, h / 2)
     return None
 
 
