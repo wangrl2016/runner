@@ -156,7 +156,7 @@ def tengtu(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 滑动到第二页
-    phone.swipe_right_to_left(pid, w / 2, h / 2)
+    phone.swipe_right_to_left(pid, w, h / 2)
     # 3. 启动程序
     phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
@@ -165,7 +165,7 @@ def momo(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 滑动到第二页
-    phone.swipe_right_to_left(pid, w / 2, h / 2)
+    phone.swipe_right_to_left(pid, w, h / 2)
     # 3. 启动程序
     phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
@@ -174,18 +174,27 @@ def jitou(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 滑动到第二页
-    phone.swipe_right_to_left(pid, w / 2, h / 2)
+    phone.swipe_right_to_left(pid, w, h / 2)
     # 3. 启动程序
-    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+    phone.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
 def sanliuling(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 滑动到第二页
-    phone.swipe_right_to_left(pid, w / 2, h / 2)
+    phone.swipe_right_to_left(pid, w, h / 2)
     # 3. 启动程序
-    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+    phone.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
+def yunshanfu(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
 # 49-72

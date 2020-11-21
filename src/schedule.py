@@ -511,7 +511,12 @@ def sanliuling(pid, w, h):
     return None
 
 
-# 25-48
+# noinspection PyUnusedLocal
+def yunshanfu(pid, w, h):
+    return None
+
+
+# 49-72
 def toutiao(pid, w, h):
     def open_treasure():
         print('今日头条开宝箱 ' + datetime.now().time().__str__())
