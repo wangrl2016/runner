@@ -48,19 +48,18 @@ activities = {
     'quhongbao': '#com.chenglie.hongbao/com.bytedance.sdk.openadsdk.activity.base.TTDelegateActivity',
 
     # 17-20
-    # 'dongfang': '#com.songheng.eastnews/com.songheng.eastfirst.common.view.activity.MainActivity',
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
-    # 账号异常 'qukankan': '#com.popnews2345/.main.activity.MainActivity',
     'miaokan': '#com.taige.mygold/.MainActivityV2',
 
     # 21-24
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',
     'makan': '#com.ldzs.zhangxin/com.weishang.wxrd.activity.MainActivity',
     'diandian': '#com.yingliang.clicknews/.MainActivity',
-    # 'xingqiu': '#com.planet.light2345/.main.activity.MainActivity',
 
-    'tengtu': 'com.tencent.map/.framework.launch.MapActivityReal',
-    'mono': 'com.immomo.young/com.immomo.momo.maintab.MaintabActivity',
+    # 25-28
+    'tengtu': '#com.tencent.map/.framework.launch.MapActivityReal',
+    'momo': '#com.immomo.young/com.immomo.momo.maintab.MaintabActivity',
+    'jitou': '#com.sanmiao.news/.activity.MainActivity',
 
     # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
@@ -94,29 +93,21 @@ activities = {
 
     # 69-72
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
-    # 账号异常 'ersansi': 'com.browser2345/.BrowserActivity',
     'tangdou': 'com.bokecc.dance/.activity.MainActivity',
     'yangcong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
-
-    # 'guangying': 'com.oppo.cameracom.android.ctsxinwen/net.guangying.xinwen.MainActivity',
-    # 'tenzhi': 'com.tencent.map/.framework.launch.MapActivityReal',
 
     # 73-76
     'qqliulan': 'com.tencent.mtt/.MainActivity',
     'lingshenghui': 'com.mars.ring.caller.show/com.play.music.moudle.home.MainActivity',
     'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
+    'tengzhi': 'com.tencent.now/.mainpage.activity.LiveMainActivity',
 
-    # 53-56
-    # 'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',
+    # 77-80
+    'zhaoshang': 'cmb.pb/.app.mainframe.container.PBMainActivity',
+    'gudong': 'com.codoon.gps/.ui.SlideActivity',
 
-    # 'tentu': '#com.tencent.map/.framework.launch.MapActivityReal',
-    # 'jitou': '#com.yanhui.qktx/.activity.NewSplashActivity',
-    # 'yueyouqian': '#com.yj.yueyouqian/com.jifen.qukan.ui.activity.HomeActivity',
-
+    # last
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
-
-    # 'zqya': '#com.xuniu.zqya/.ui.MainActivity',
-    # 'zhuanbao':'#com.yujin.zhuanbao/.activity.ZbMainActivity',
 }
 
 # 程序的定时任务为30分钟

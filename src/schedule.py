@@ -1,8 +1,7 @@
 import time
 from datetime import datetime
-from random import randrange
 
-from src import checkin, phone, input, app, utils, info
+from src import checkin, phone, app, utils, info
 from src.info import WIDTH, HEIGHT, SCHEDULE_TIME
 
 
@@ -488,6 +487,23 @@ def diandian(pid, w, h):
             # [x] 阅读点点文章
             app.read_diandian_article(pid, w, h, num=3)
             phone.stop_app(pid, info.packages['diandian'])
+
+
+# 25-28
+
+# noinspection PyUnusedLocal
+def tengtu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def momo(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def jitou(pid, w, h):
+    return None
 
 
 # 25-48
@@ -1037,9 +1053,13 @@ def yangcong(pid, w, h):
     return None
 
 
-# 49-72
 # noinspection PyUnusedLocal
-def weixin(pid, w, h):
+def qqliulan(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def lingshenghui(pid, w, h):
     return None
 
 
@@ -1049,5 +1069,20 @@ def zhuanshi(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def qizhu(pid, w, h):
+def tengzhi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhaoshang(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def gudong(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def weixin(pid, w, h):
     return None

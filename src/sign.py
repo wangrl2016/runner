@@ -193,7 +193,20 @@ def diandian(pid, w, h):
     app.diandian_benefit_page(pid, w, h)
 
 
-# 25-28
+# noinspection PyUnusedLocal
+def tengtu(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def momo(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def jitou(pid, w, h):
+    return None
+
 
 def toutiao(pid, w, h):
     # 1. 点击右下方任务栏目
@@ -412,13 +425,32 @@ def yangcong(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def zhuanshi(pid, w, h):
-    # 没有签到
+def qqliulan(pid, w, h):
     return None
 
 
 # noinspection PyUnusedLocal
-def qizhu(pid, w, h):
+def lingshenghui(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhuanshi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def tengzhi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhaoshang(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def gudong(pid, w, h):
     return None
 
 

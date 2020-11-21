@@ -152,6 +152,34 @@ def diandian(pid, w, h, gap=20):
 
 # 25-48
 
+def tengtu(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w / 2, h)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
+def momo(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w / 2, h)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
+def jitou(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w / 2, h)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
+
+
+# 49-72
 def toutiao(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
@@ -267,7 +295,16 @@ def yangcong(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-# 49-72
+# 73-96
+
+def qqliulan(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def lingshenghui(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def zhuanshi(pid, gap=15):
@@ -275,11 +312,22 @@ def zhuanshi(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def qizhu(pid, gap=10):
+def tengzhi(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
+def zhaoshang(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def gudong(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+# last
 def weixin(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
