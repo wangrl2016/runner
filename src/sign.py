@@ -195,7 +195,12 @@ def diandian(pid, w, h):
 
 # noinspection PyUnusedLocal
 def tengtu(pid, w, h):
-    return None
+    # 1. 点击活动专区
+    phone.tap(pid, w / 2, (HEIGHT - 2.8) * h / HEIGHT)
+    # 2. 点击天天领现金
+    phone.tap(pid, w / 2, h / 5)
+    # 3. 马上签到领现金
+    phone.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
