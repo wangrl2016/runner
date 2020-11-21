@@ -1055,16 +1055,7 @@ def sougou(pid, w, h):
 
 # noinspection PyUnusedLocal
 def zhuanshi(pid, w, h):
-    def time_reward():
-        # 1. 点击领取
-        phone.tap(pid, 1.1 * (w - randrange(-50, 50)) / WIDTH, 1.1 * h / HEIGHT, gap=3)
-
-    if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 8 == 0:
-            checkin.zhuanshi(pid)
-            # [x] 时段奖励
-            time_reward()
-            phone.stop_app(pid, info.packages['zhuanshi'])
+    return None
 
 
 # noinspection PyUnusedLocal

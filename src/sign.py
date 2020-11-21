@@ -12,14 +12,17 @@ def midu(pid, w, h):
     app.midu_benefit_page(pid, w, h, gap=5)
     # 3. 点击立即签到
     # [x] 签到成功
-    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.3 * h / HEIGHT, gap=2)
+    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT)
+    # 4. 看视频领金币
+    phone.tap(pid, w / 2, 7.5 * h / HEIGHT, gap=10)
+    # 5. 播放30s
+    time.sleep(30)
+    # 6. 返回到福利页面
+    phone.go_back(pid, times=2, gap=1)
 
 
 # noinspection PyUnusedLocal
 def changdou(pid, w, h):
-    # 可能存在悬浮窗
-    phone.stop_app(pid, info.packages['changdou'])
-    checkin.changdou(pid, w, h)
     app.changdou_benefit_page(pid, w, h, gap=5)
     # [x] 签到成功
     phone.tap(pid, w / 2, 9.8 * h / HEIGHT, gap=3)
@@ -158,7 +161,6 @@ def quhongbao(pid, w, h):
 
 
 def jukandian(pid, w, h):
-    # TODO: 解决悬浮窗问题
     # [x] 签到成功
     phone.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
@@ -346,7 +348,7 @@ def uc(pid, w, h):
 def kuaikandian(pid, w, h):
     # 1. 进入福利页面
     # [x] 签到成功
-    app.kuaikandian_benefit_page(pid, w, h)
+    app.kuaikandian_benefit_page(pid, w, h, gap=5)
     # 2. 看视频再领金币
     phone.tap(pid, w / 2, 9.8 * h / HEIGHT)
     # 3. 播放30s
@@ -387,10 +389,10 @@ def douhuo(pid, w, h):
     time.sleep(5)
     phone.go_back(pid, gap=1)
     # 2. 点击个人中心图标
-    phone.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT)
+    phone.tap(pid, 0.5 * w / WIDTH, 0.9 * h / HEIGHT, gap=3)
     # 3. 点击火苗管理
     # [x] 签到成功
-    phone.tap(pid, w / 2, 7.9 * h / HEIGHT, gap=2)
+    phone.tap(pid, w / 2, 7.9 * h / HEIGHT)
 
 
 # noinspection PyUnusedLocal

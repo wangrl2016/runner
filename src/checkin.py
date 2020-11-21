@@ -10,7 +10,7 @@ ROWS = [1.5, 3.4, 5.3, 7.2, 9.1, 11.0]
 COLUMNS = [1.0, 2.6, 4.2, 5.8]
 
 
-def midu(pid, w, h, gap=12):
+def midu(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 启动程序
