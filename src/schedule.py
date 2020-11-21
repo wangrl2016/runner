@@ -281,11 +281,6 @@ def zhongqing(pid, w, h):
         phone.stop_app(pid, info.packages['zhongqing'])
 
 
-# noinspection PyUnusedLocal
-def pinduoduo(pid, w, h):
-    return None
-
-
 def kuaiyin(pid, w, h):
     def drink_water(is_next):
         print('快音喝水赚钱 ' + datetime.now().__str__())
@@ -1045,11 +1040,6 @@ def yangcong(pid, w, h):
 # 49-72
 # noinspection PyUnusedLocal
 def weixin(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
-def sougou(pid, w, h):
     return None
 
 

@@ -133,18 +133,6 @@ def zhongqing(pid, w, h):
     phone.tap(pid, w / 2, 4.9 * h / HEIGHT, gap=3)  # <= modify
 
 
-def pinduoduo(pid, w, h):
-    # 1. 回退消除可能出现的悬浮窗
-    phone.go_back(pid)
-    # 2. 点击中间的现金签到
-    phone.tap(pid, w / 2, 5.5 * h / HEIGHT)  # <= modify
-    # 3. 点击签到领现金
-    # [x] 签到成功
-    phone.tap(pid, w / 2, 3.0 * h / HEIGHT, gap=2)  # <= modify
-    # 3. 返回到程序主页
-    phone.go_back(pid, gap=1)
-
-
 # noinspection PyUnusedLocal
 def kuaiyin(pid, w, h):
     # 进入福利页面
@@ -421,15 +409,6 @@ def yangcong(pid, w, h):
 
 
 # 49 - 72
-
-
-# noinspection PyUnusedLocal
-def sougou(pid, w, h):
-    app.sougou_benefit_page(pid, w, h)
-    for i in range(0, 4):
-        phone.tap(pid, (1.2 + i * 1.5) * w / WIDTH, 3.5 * h / HEIGHT, gap=1)
-    for i in range(0, 3):
-        phone.tap(pid, (1.2 + i * 1.5) * w / WIDTH, 5.5 * h / HEIGHT, gap=1)
 
 
 # noinspection PyUnusedLocal

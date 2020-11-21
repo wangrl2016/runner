@@ -865,30 +865,6 @@ def read_yangcong_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h / 8, randrange(3, 5))
 
 
-# ~~~~~~~~~~搜狗浏览器极速版~~~~~~~~~~
-def sougou_benefit_page(pid, w, h, gap=3):
-    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT, gap)
-
-
-def read_sougou_article(pid, w, h, num):
-    print('阅读搜狗浏览器文章 ' + datetime.now().time().__str__())
-    phone.swipe_down_to_up(pid, w / 2, h / 2, internal=500)
-    for i in range(0, num):
-        # 1. 刷新页面
-        phone.swipe_up_to_down(pid, w / 2, h)
-        # 2. 点击文章
-        phone.tap(pid, w / 2, h / 2)
-        for j in range(0, 10):
-            phone.swipe_down_to_up(pid, w / 2, h / 2, gap=3, internal=300)
-        # 3. 返回上级目录
-        phone.go_back(pid)
-
-
-def collect_read_coin(pid, w, h):
-    print('收集搜狗阅读收益 ' + datetime.now().time().__str__())
-    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 8.8 * h / HEIGHT, gap=2)
-
-
 # ~~~~~~~~~~赚钱小视频~~~~~~~~~~
 def zhuanshi_benefit_page(pid, w, h, gap=3):
     print('看赚钱小视频 ' + datetime.now().time().__str__())

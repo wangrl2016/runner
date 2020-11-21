@@ -44,7 +44,6 @@ activities = {
 
     # 13-16
     'zhongqing': '#cn.youth.news/.ui.splash.SplashAdActivity',
-    'pinduoduo': '#com.xunmeng.pinduoduo/.ui.activity.HomeActivity',
     'kuaiyin': '#com.kuaiyin.player/.v2.ui.main.MainActivity',
     'quhongbao': '#com.chenglie.hongbao/com.bytedance.sdk.openadsdk.activity.base.TTDelegateActivity',
 
@@ -60,47 +59,52 @@ activities = {
     'diandian': '#com.yingliang.clicknews/.MainActivity',
     # 'xingqiu': '#com.planet.light2345/.main.activity.MainActivity',
 
-    # 25-28
+    'tengtu': 'com.tencent.map/.framework.launch.MapActivityReal',
+    'mono': 'com.immomo.young/com.immomo.momo.maintab.MaintabActivity',
+
+    # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
     'changdou': '#com.zf.shuashua/.MainActivity',
     'kulingyin': '#com.hot.war/.MainActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
-    # 29-32
+    # 53-56
     'qutoutiao': 'com.jifen.qukan/com.jifen.qkbase.main.MainActivity',
     'baidu': 'com.baidu.searchbox.lite/com.baidu.searchbox.MainActivity',
     'weishi': 'com.tencent.weishi/com.tencent.oscar.module.splash.SplashActivity',
     'ximalaya': 'com.ximalaya.ting.lite/com.ximalaya.ting.android.host.activity.MainActivity',
 
-    # 33-36
+    # 57-60
     'wuba': 'com.wuba.town.client/com.wuba.town.TownCenterActivity',
     'taobao': 'com.taobao.litetao/com.taobao.ltao.maintab.MainFrameActivity',
     'shuabao': 'com.jm.video/.ui.main.MainActivity',
     'qqyuedu': 'com.qq.reader/.activity.MainActivity',
 
-    # 37-40
+    # 61-64
     'chejia': 'com.autohome.speed/com.cubic.autohome.MainActivity',
     'uc': 'com.UCMobile/com.uc.browser.InnerUCMobile',
     'kuaikandian': 'com.yuncheapp.android.pearl/com.kuaishou.athena.MainActivity',
     'hongshi': 'com.jxbz.hbdsp/com.cy.browser.BrowserActivity',
 
-    # 41-44
+    # 65-68
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
     'qimao': 'com.kmxs.reader/.home.ui.HomeActivity',
     'kankuai': 'com.tencent.reading/.activity.SplashActivity',
     'douhuo': 'com.ss.android.ugc.live/.main.MainActivity',
 
-    # 45-48
+    # 69-72
     'moji': 'com.moji.mjweather.light/com.moji.mjweather.MainActivity',
     # 账号异常 'ersansi': 'com.browser2345/.BrowserActivity',
     'tangdou': 'com.bokecc.dance/.activity.MainActivity',
     'yangcong': 'com.bikann.mfxssk/com.lwby.breader.view.BKHomeActivity',
 
-    # 49-52
-    'sougou': 'sogou.mobile.explorer.speed/sogou.mobile.explorer.BrowserActivity',
-    'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
     # 'guangying': 'com.oppo.cameracom.android.ctsxinwen/net.guangying.xinwen.MainActivity',
     # 'tenzhi': 'com.tencent.map/.framework.launch.MapActivityReal',
+
+    # 73-76
+    'qqliulan': 'com.tencent.mtt/.MainActivity',
+    'lingshenghui': 'com.mars.ring.caller.show/com.play.music.moudle.home.MainActivity',
+    'zhuanshi': 'com.sljh.zqxsp/com.cy.browser.BrowserActivity',
 
     # 53-56
     # 'qizhu': 'com.wetimetech.pig/net.guangying.pig.MainActivity',

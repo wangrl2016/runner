@@ -101,13 +101,6 @@ def zhongqing(pid, w, h, gap=15):
     phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
 
 
-def pinduoduo(pid, w, h, gap=10):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[3] * h / HEIGHT, gap)
-
-
 def kuaiyin(pid, w, h, gap=12):
     # 1. 回到手机主界面
     phone.go_home(pid)
@@ -275,11 +268,6 @@ def yangcong(pid, gap=15):
 
 
 # 49-72
-
-
-def sougou(pid, gap=10):
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
 def zhuanshi(pid, gap=15):

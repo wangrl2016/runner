@@ -310,19 +310,8 @@ def run(pid):
 
         # 拼多多
         # UC浏览器
-        # 搜狗浏览器
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
-
-            for i in range(0, 4):
-                checkin.sougou(pid)
-                # [x] 阅读搜狗文章
-                app.read_sougou_article(pid, w, h, num=2)
-                phone.stop_app(pid, info.packages['sougou'])
-
-            checkin.sougou(pid)
-            app.collect_read_coin(pid, w, h)
-            phone.stop_app(pid, info.packages['sougou'])
 
             checkin.jingdong(pid, w, h)
             app.jingdong_benefit_page(pid, w, h)
