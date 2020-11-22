@@ -200,14 +200,14 @@ def tengtu(pid, w, h):
     # 2. 点击天天领现金
     phone.tap(pid, w / 2, h / 5)
     # 3. 马上签到领现金
-    # [x] 签到成功
+    # TODO
     phone.tap(pid, w / 2, 9.0 * h / HEIGHT, gap=3)
 
 
 # noinspection PyUnusedLocal
 def momo(pid, w, h):
     # 1. 点击红包
-    phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT)
+    phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 2.4) * h / HEIGHT, gap=8)
     # 2. 点击签到
     # [x] 签到成功
     phone.tap(pid, w / 2, 9.1 * h / HEIGHT, gap=3)
