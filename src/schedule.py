@@ -667,7 +667,7 @@ def douyin(pid, w, h):
         # 3. 播放30s
         time.sleep(30)
         # 4. 返回到播放页面
-        phone.go_back(pid, times=3, gap=1)
+        phone.go_back(pid, times=3, gap=2)
 
     def limit_duty():
         print('抖音限时任务赚金币 ' + datetime.now().__str__())
@@ -1125,6 +1125,7 @@ def buduoduo(pid, w, h):
 # noinspection PyUnusedLocal
 def duokan(pid, w, h):
     return None
+
 
 # noinspection PyUnusedLocal
 def shandian(pid, w, h):
