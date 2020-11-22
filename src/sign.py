@@ -12,7 +12,7 @@ def midu(pid, w, h):
     app.midu_benefit_page(pid, w, h, gap=5)
     # 3. 点击立即签到
     # [x] 签到成功
-    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 2.3 * h / HEIGHT)
+    phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT)
     # 4. 看视频领金币
     phone.tap(pid, w / 2, 7.5 * h / HEIGHT, gap=10)
     # 5. 播放30s
