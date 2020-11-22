@@ -152,6 +152,10 @@ def quhongbao(pid, w, h):
 
 
 def jukandian(pid, w, h):
+    # 进入文章详情
+    phone.tap(pid, w * 2 / 3, 8.8 * h / HEIGHT, gap=3)
+    # 退出
+    phone.go_back(pid)
     # [x] 签到成功
     phone.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
