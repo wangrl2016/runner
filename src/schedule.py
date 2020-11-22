@@ -381,9 +381,11 @@ def quhongbao(pid, w, h):
     def drink_water():
         print('趣红包喝水赚钱 ' + datetime.now().time().__str__())
         # 1. 点击喝水赚钱
-        phone.tap(pid, 4.2 * w / WIDTH, 7.7 * h / HEIGHT, gap=3)
+        phone.tap(pid, 4.2 * w / WIDTH, 7.7 * h / HEIGHT)
         # 2. 打卡
-        phone.tap(pid, w / 2, 11.3 * h / HEIGHT, gap=2)
+        phone.tap(pid, w / 2, 11.3 * h / HEIGHT)
+        # 3. 点击领取金币
+        phone.tap(pid, w / 2, 9.1 * h / HEIGHT, gap=2)
 
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:
