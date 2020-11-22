@@ -518,7 +518,13 @@ def yunshanfu(pid, w, h):
 
 # noinspection PyUnusedLocal
 def xijian(pid, w, h):
-    return None
+    if datetime.now().minute < SCHEDULE_TIME:
+        if datetime.now().hour % 6 == 0:
+            checkin.xijian(pid, w, h)
+            app.xijian_benefit_page(pid, w, h)
+            # [x] 今日红包
+            app.xijian_daily_packet(pid, w, h)
+            phone.stop_app(pid, info.packages['xijian'])
 
 
 # 49-72

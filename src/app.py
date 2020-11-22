@@ -457,6 +457,19 @@ def jitou_benefit_page(pid, w, h, gap=3):
     phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
+# ~~~~~~~~~~西瓜兼职多多版~~~~~~~~~~
+
+def xijian_benefit_page(pid, w, h, gap=5):
+    phone.tap(pid, w / 2, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+def xijian_daily_packet(pid, w, h):
+    # 点击领取今日红包
+    phone.tap(pid, w / 2, 5.2 * h / HEIGHT, gap=10)
+    # 播放30s
+    time.sleep(30)
+
+
 # ~~~~~~~~~~今日头条极速版~~~~~~~~~~
 
 def toutiao_benefit_page(pid, w, h, gap=3):

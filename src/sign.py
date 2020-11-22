@@ -227,12 +227,21 @@ def sanliuling(pid, w, h):
 
 # noinspection PyUnusedLocal
 def yunshanfu(pid, w, h):
-    return None
+    # 1. 点击签到
+    phone.tap(pid, (WIDTH - 0.5) * w / WIDTH, 11.4 * h / HEIGHT)
+    # 2. 点击签到
+    # [x] 云闪付签到
+    phone.tap(pid, w / 2, 11.0 * h / HEIGHT, gap=2)
 
 
 # noinspection PyUnusedLocal
 def xijian(pid, w, h):
-    return None
+    app.xijian_benefit_page(pid, w, h)
+    phone.tap(pid, w / 2, 5.2 * h / HEIGHT, gap=10)
+    # 播放30s
+    # [x] 签到成功
+    time.sleep(30)
+
 
 
 def toutiao(pid, w, h):
