@@ -214,6 +214,9 @@ def kugou_background_music(pid, w, h):
 
 # 12~~~~~~~~~~趣看天下~~~~~~~~~~
 
+def qukan_benefit_page(pid, w, h, gap=5):
+    phone.tap(pid, 4.7 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
 
 # 13~~~~~~~~~~中青看点~~~~~~~~~~
 

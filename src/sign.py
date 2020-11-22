@@ -116,10 +116,13 @@ def kugou(pid, w, h):
 
 def qukan(pid, w, h):
     # 1. 直接点击中间的悬浮框
-    phone.tap(pid, w / 2, h / 2)
-    # 2. 点击签到
+    phone.tap(pid, w / 2, h / 2, gap=3)
+    # 2. 返回退出悬浮窗
+    phone.go_back(pid)
+    app.qukan_benefit_page(pid, w, h)
+    # 3. 点击签到
     # [x] 签到成功
-    phone.tap(pid, w / 2, 5.8 * h / HEIGHT, gap=2)
+    phone.tap(pid, w / 2, 4.9 * h / HEIGHT, gap=2)
 
 
 def zhongqing(pid, w, h):
