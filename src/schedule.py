@@ -516,6 +516,11 @@ def yunshanfu(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
+def xijian(pid, w, h):
+    return None
+
+
 # 49-72
 def toutiao(pid, w, h):
     def open_treasure():

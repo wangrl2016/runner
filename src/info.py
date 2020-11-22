@@ -64,6 +64,7 @@ activities = {
 
     # 29-32
     'yunshanfu': '#com.unionpay/.activity.UPActivityMain',
+    'xijian': '#com.watermelon.more/com.qts.customer.MainFragmentActivity',
 
     # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',

@@ -230,6 +230,11 @@ def yunshanfu(pid, w, h):
     return None
 
 
+# noinspection PyUnusedLocal
+def xijian(pid, w, h):
+    return None
+
+
 def toutiao(pid, w, h):
     # 1. 点击右下方任务栏目
     # 显示签到界面
