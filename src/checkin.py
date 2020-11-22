@@ -369,6 +369,11 @@ def duokan(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
+def shandian(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
 # last
 def weixin(pid, gap=10):
     phone.start_app(pid, activities[

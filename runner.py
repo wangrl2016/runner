@@ -73,7 +73,7 @@ def run(pid):
     phone.go_home(pid)
 
     # 代码测试位置
-    schedule.test(pid, 'xijian', w, h)
+    schedule.test(pid)
 
     while True:
         while datetime.now().hour.__eq__(0):

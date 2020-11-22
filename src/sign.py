@@ -243,7 +243,6 @@ def xijian(pid, w, h):
     time.sleep(30)
 
 
-
 def toutiao(pid, w, h):
     # 1. 点击右下方任务栏目
     # 显示签到界面
@@ -507,6 +506,11 @@ def buduoduo(pid, w, h):
 
 # noinspection PyUnusedLocal
 def duokan(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def shandian(pid, w, h):
     return None
 
 
