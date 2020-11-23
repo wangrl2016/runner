@@ -926,7 +926,7 @@ def taobao(pid, w, h):
         # 1. 点击天天赚特币
         phone.tap(pid, w / 2, 2.6 * h / HEIGHT, gap=8)
         # 2. 点击口袋
-        phone.tap(pid, w * 2 / 3, h / 2, gap=2)
+        phone.tap(pid, w * 2 / 3, h * 3 / 5, gap=2)
 
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 5 == 0:

@@ -904,5 +904,38 @@ def zhuanshi_benefit_page(pid, w, h, gap=3):
     phone.tap(pid, 4.8 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 
+# # ~~~~~~~~~~招商银行~~~~~~~~~~
+def zhaoshang_benefit_page(pid, w, h, gap=5):
+    # 1. 点击社区
+    phone.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    # 2. 点击立即查看
+    phone.tap(pid, w / 2, 8.7 * h / HEIGHT)
+    # 3. 返回上级页面
+    phone.go_back(pid)
+
+
+def zhaoshang_grow_plan(pid, w, h, num):
+    print('招商银行成长计划 ' + datetime.now().time().__str__())
+    for i in range(0, num):
+        # 1. 刷新
+        phone.swipe_up_to_down(pid, w / 2, h)
+        # 2. 点击进入文章
+        phone.tap(pid, w / 2, h / 4)
+        # 3. 点击关注
+        for j in range(0, 2):
+            phone.tap(pid, (WIDTH - 0.9) * w / WIDTH, 1.2 * h / HEIGHT)
+        # 4. 分享
+        phone.tap(pid, 3.5 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+        # 5. 点击微信好友
+        phone.tap(pid, 0.9 * w / WIDTH, (HEIGHT - 1.3) * h / HEIGHT)
+        # 6. 返回
+        phone.go_back(pid)
+        # 7. 滑动到最末尾
+        for k in range(0, 10):
+            phone.swipe_down_to_up(pid, w / 2, h, randrange(4, 6))
+
+
+# ~~~~~~~~~~熊猫看书~~~~~~~~~~
+
 def xiongmao_benefit_page(pid, w, h, gap=5):
     phone.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)

@@ -165,8 +165,16 @@ def run(pid):
             utils.tail_work(pid, w, h, hour=4)
 
         # 京东极速版
+        # 招商银行
         while datetime.now().hour.__eq__(5):
             schedule_apps(pid, w, h)
+
+            for i in range(0, 2):
+                checkin.zhaoshang(pid)
+                app.zhaoshang_benefit_page(pid, w, h)
+                # [x] 招商银行成长计划
+                app.zhaoshang_grow_plan(pid, w, h, num=1)
+                phone.stop_app(pid, info.packages['zhaoshang'])
 
             checkin.jingdong(pid, w, h)
             app.jingdong_benefit_page(pid, w, h)
