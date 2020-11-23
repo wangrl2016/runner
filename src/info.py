@@ -93,7 +93,6 @@ activities = {
     # 65-68
     'doudou': 'com.kanshu.ksgb.fastread.doudou/com.kanshu.home.fastread.doudou.module.activity.AdSplashActivity',
     'qimao': 'com.kmxs.reader/.home.ui.HomeActivity',
-    'kankuai': 'com.tencent.reading/.activity.SplashActivity',
     'douhuo': 'com.ss.android.ugc.live/.main.MainActivity',
 
     # 69-72

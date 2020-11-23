@@ -297,11 +297,6 @@ def qimao(pid, gap=15):
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 
 
-def kankuai(pid, gap=10):
-    phone.start_app(pid, activities[
-        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
-
-
 def douhuo(pid, gap=10):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)

@@ -418,15 +418,6 @@ def qimao(pid, w, h):
     phone.tap(pid, (WIDTH - 1.1) * w / WIDTH, 2.9 * h / HEIGHT, gap=2)
 
 
-# noinspection PyUnusedLocal
-def kankuai(pid, w, h):
-    # 进入福利中心
-    app.kankuai_benefit_page(pid, w, h)
-    # 点击立即签到
-    # [x] 签到成功
-    phone.tap(pid, w / 2, 8.5 * h / HEIGHT, gap=2)
-
-
 def douhuo(pid, w, h):
     # 1. 假装回退关闭可能的悬浮窗
     time.sleep(5)

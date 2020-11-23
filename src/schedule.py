@@ -1052,11 +1052,6 @@ def qimao(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def kankuai(pid, w, h):
-    return None
-
-
-# noinspection PyUnusedLocal
 def douhuo(pid, w, h):
     return None
 

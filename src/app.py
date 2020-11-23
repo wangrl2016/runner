@@ -790,25 +790,6 @@ def read_qimao_novel(pid, w, h, sec):
             phone.swipe_right_to_left(pid, w, h / 7, randrange(2, 5))
 
 
-# ~~~~~~~~~~看点快报~~~~~~~~~~
-def kankuai_benefit_page(pid, w, h, gap=3):
-    # 1. 点击右下角我的栏目
-    phone.tap(pid, (WIDTH - 0.7) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
-    # 2. 点击福利红包
-    phone.tap(pid, w / 2, 9.5 * h / HEIGHT, gap)
-
-
-def watch_kankuai_advert(pid, w, h, num):
-    print("看点快报广告 " + datetime.now().__str__())
-    for i in range(0, num):
-        # 1. 点击去观看
-        phone.tap(pid, (WIDTH - 1.1) * w / WIDTH, (HEIGHT - 2.5) * h / HEIGHT)
-        # 2. 播放15s
-        time.sleep(15)
-        # 3. 点击关闭
-        phone.tap(pid, 0.5 * w / WIDTH, 1.7 * h / HEIGHT, gap=2)  # <=== modify
-
-
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
 def watch_douhuo_video(pid, w, h, sec=300):
     print('看抖音火山视频 ' + datetime.now().__str__())

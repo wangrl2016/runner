@@ -408,17 +408,9 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=18)
 
-        # 看点快报
         # 趣看看
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
-
-            for i in range(0, 2):
-                checkin.kankuai(pid, gap=10)
-                app.kankuai_benefit_page(pid, w, h)
-                # [x] 看广告领金币
-                app.watch_kankuai_advert(pid, w, h, num=3)
-                phone.stop_app(pid, info.packages['kankuai'])
 
             utils.tail_work(pid, w, h, hour=19)
 
