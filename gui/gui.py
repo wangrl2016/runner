@@ -10,7 +10,7 @@ def go_home():
 
 
 def callback(event):
-    print('当前位置 ' + event.x, event.y)
+    print('当前位置 ' + str(event.x) + 'x' + str(event.y))
 
 
 class Application(tk.Frame):
@@ -43,7 +43,10 @@ class Application(tk.Frame):
         self.home['command'] = go_home
 
         self.frame.pack()
+
+        self.label.bind('<Button-1>', callback)
         self.label.pack()
+
         self.home.pack(side='left')
         self.change.pack(side='left')
         self.back.pack(side='left')
