@@ -9,15 +9,21 @@ def go_home():
     print('回到主页')
 
 
+def callback(event):
+    print('当前位置 ' + event.x, event.y)
+
+
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
+
+        self.frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
 
         img = Image.open('../out/2020-11-12_15:38:48.630062.png') \
             .resize((int(w * scale), int(h * scale)))
         img = ImageTk.PhotoImage(image=img)
 
-        self.label = tk.Label(self)
+        self.label = tk.Label(self.frame)
 
         self.label.config(image=img)
         self.label.image = img
@@ -30,11 +36,13 @@ class Application(tk.Frame):
 
         self.master = master
         self.pack()
+
         self.create_widgets()
 
     def create_widgets(self):
         self.home['command'] = go_home
 
+        self.frame.pack()
         self.label.pack()
         self.home.pack(side='left')
         self.change.pack(side='left')
@@ -64,9 +72,6 @@ if __name__ == '__main__':
     (w, h) = phone.get_size(devices[0])
 
     scale = 0.5
-
-    # frame = tk.Frame(root, width=w * scale, height=h * scale, bg='white')
-    # frame.pack()
 
     app = Application(master=root)
     app.mainloop()
