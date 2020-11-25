@@ -13,7 +13,17 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
+        img = Image.open('../out/2020-11-12_15:38:48.630062.png') \
+            .resize((int(w * scale), int(h * scale)))
+        img = ImageTk.PhotoImage(image=img)
+
+        self.label = tk.Label(self)
+
+        self.label.config(image=img)
+        self.label.image = img
+
         self.home = tk.Button(self, text='主页')
+        self.change = tk.Button(self, text='更换', command=self.change_image)
         self.back = tk.Button(self, text='返回')
         self.reboot = tk.Button(self, text='重启')
         self.exit = tk.Button(self, text='退出', command=self.master.destroy)
@@ -24,10 +34,22 @@ class Application(tk.Frame):
 
     def create_widgets(self):
         self.home['command'] = go_home
+
+        self.label.pack()
         self.home.pack(side='left')
+        self.change.pack(side='left')
         self.back.pack(side='left')
         self.reboot.pack(side='left')
         self.exit.pack(side='right')
+
+    def change_image(self):
+        print('更换图片')
+
+        img = Image.open('../out/2020-10-26_17:02:55.074631.png') \
+            .resize((int(w * scale), int(h * scale)))
+        img = ImageTk.PhotoImage(image=img)
+        self.label.config(image=img)
+        self.label.image = img
 
 
 if __name__ == '__main__':
@@ -45,12 +67,6 @@ if __name__ == '__main__':
 
     # frame = tk.Frame(root, width=w * scale, height=h * scale, bg='white')
     # frame.pack()
-
-    image = Image.open('../out/2020-11-12_15:38:48.630062.png') \
-        .resize((int(w * scale), int(h * scale)))
-    image = ImageTk.PhotoImage(image=image)
-    label = tk.Label(root, image=image)
-    label.pack()
 
     app = Application(master=root)
     app.mainloop()
