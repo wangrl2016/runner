@@ -1,12 +1,10 @@
+import os
 import tkinter as tk
+from datetime import datetime
 
 from PIL import Image, ImageTk
 
 from src import phone
-
-
-def go_home():
-    print('回到主页')
 
 
 def callback(event):
@@ -19,8 +17,7 @@ class Application(tk.Frame):
 
         self.frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
 
-        img = Image.open('../out/2020-11-12_15:38:48.630062.png') \
-            .resize((int(w * scale), int(h * scale)))
+        img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='yellow')
         img = ImageTk.PhotoImage(image=img)
 
         self.label = tk.Label(self.frame)
@@ -29,8 +26,7 @@ class Application(tk.Frame):
         self.label.image = img
 
         self.home = tk.Button(self, text='主页')
-        self.change = tk.Button(self, text='更换', command=self.change_image)
-        self.back = tk.Button(self, text='返回')
+        self.back = tk.Button(self, text='返回', command=self.go_back)
         self.reboot = tk.Button(self, text='重启')
         self.exit = tk.Button(self, text='退出', command=self.master.destroy)
 
@@ -39,28 +35,51 @@ class Application(tk.Frame):
 
         self.create_widgets()
 
+        self.prev_img = None
+        self.curr_img = None
+
     def create_widgets(self):
-        self.home['command'] = go_home
+        self.home['command'] = self.go_home
 
         self.frame.pack()
 
-        self.label.bind('<Button-1>', callback)
+        self.label.bind('<Button-1>', self.left_click)
         self.label.pack()
 
         self.home.pack(side='left')
-        self.change.pack(side='left')
         self.back.pack(side='left')
         self.reboot.pack(side='left')
         self.exit.pack(side='right')
 
-    def change_image(self):
-        print('更换图片')
+    @staticmethod
+    def left_click(event):
+        phone.tap(devices[0], int(event.x / scale), int(event.y / scale))
 
-        img = Image.open('../out/2020-10-26_17:02:55.074631.png') \
-            .resize((int(w * scale), int(h * scale)))
+    @staticmethod
+    def go_home():
+        print('回到主页 ' + datetime.now().time().__str__())
+        phone.go_home(devices[0])
+
+    @staticmethod
+    def go_back():
+        print('返回上级页面 ' + datetime.now().time().__str__())
+        phone.go_back(devices[0])
+
+    def update_page(self):
+        print('更新页面 ' + datetime.now().time().__str__())
+        file_path = phone.get_page_photo(devices[0], '../out/')
+        self.curr_img = file_path
+        img = Image.open('../out/' + file_path).resize((int(w * scale), int(h * scale)))
         img = ImageTk.PhotoImage(image=img)
         self.label.config(image=img)
         self.label.image = img
+
+        if self.prev_img:
+            os.remove('../out/' + file_path)
+
+        self.prev_img = file_path
+
+        root.after(3000, self.update_page)
 
 
 if __name__ == '__main__':
@@ -70,6 +89,7 @@ if __name__ == '__main__':
 
     devices = phone.get_devices()
     if not devices:
+        print('没有发现手机设备')
         exit(0)
 
     (w, h) = phone.get_size(devices[0])
@@ -77,4 +97,7 @@ if __name__ == '__main__':
     scale = 0.5
 
     app = Application(master=root)
+
+    root.after(3000, app.update_page)
+
     app.mainloop()

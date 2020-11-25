@@ -113,14 +113,13 @@ def remove_screenshot(pid, filename, gap=1):
     time.sleep(gap)
 
 
-def get_page_photo(pid, output, gap=2):
+def get_page_photo(pid, output):
     """
     获取手机的页面
     """
     filename = datetime.now().date().__str__() + '_' + datetime.now().time().__str__() + '.png'
     path = os.path.join('/sdcard', filename)
     subprocess.run(['adb', '-s', pid, 'shell', 'screencap', '-p', path])
-    time.sleep(gap)
     try:
         subprocess.run(['adb', '-s', pid, 'pull', path, output],
                        check=True, stdout=subprocess.PIPE,
@@ -128,7 +127,6 @@ def get_page_photo(pid, output, gap=2):
     except Exception as e:
         print('获取照片失败 ' + str(e))
         return None
-    time.sleep(gap * 2)
     subprocess.run(['adb', '-s', pid, 'shell', 'rm', path])
     return filename
 
