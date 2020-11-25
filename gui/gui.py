@@ -7,10 +7,6 @@ from PIL import Image, ImageTk
 from src import phone
 
 
-def callback(event):
-    print('当前位置 ' + str(event.x) + 'x' + str(event.y))
-
-
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -25,9 +21,9 @@ class Application(tk.Frame):
         self.label.config(image=img)
         self.label.image = img
 
-        self.home = tk.Button(self, text='主页')
+        self.home = tk.Button(self, text='主页', command=self.go_home)
         self.back = tk.Button(self, text='返回', command=self.go_back)
-        self.reboot = tk.Button(self, text='重启')
+        self.reboot = tk.Button(self, text='重启', command=self.reboot)
         self.exit = tk.Button(self, text='退出', command=self.master.destroy)
 
         self.master = master
@@ -39,11 +35,10 @@ class Application(tk.Frame):
         self.curr_img = None
 
     def create_widgets(self):
-        self.home['command'] = self.go_home
-
         self.frame.pack()
 
         self.label.bind('<Button-1>', self.left_click)
+        self.label.bind('<MouseWheel>', self.vertical_swipe)
         self.label.pack()
 
         self.home.pack(side='left')
@@ -53,17 +48,37 @@ class Application(tk.Frame):
 
     @staticmethod
     def left_click(event):
-        phone.tap(devices[0], int(event.x / scale), int(event.y / scale))
+        for pid in devices:
+            phone.tap(pid, int(event.x / scale), int(event.y / scale))
+
+    @staticmethod
+    def vertical_swipe(event):
+        print('上下滑动手机　' + datetime.now().time().__str__())
+        for pid in devices:
+            if event.delta > 0:
+                # 往上滚动
+                phone.swipe_down_to_up(pid, event.x, h)
+            else:
+                # 往下滚动
+                phone.swipe_up_to_down(pid, event.x, h)
+
+    @staticmethod
+    def reboot():
+        print('手机重启 ' + datetime.now().time().__str__())
+        for pid in devices:
+            phone.reboot(pid)
 
     @staticmethod
     def go_home():
         print('回到主页 ' + datetime.now().time().__str__())
-        phone.go_home(devices[0])
+        for pid in devices:
+            phone.go_home(pid)
 
     @staticmethod
     def go_back():
         print('返回上级页面 ' + datetime.now().time().__str__())
-        phone.go_back(devices[0])
+        for pid in devices:
+            phone.go_back(pid)
 
     def update_page(self):
         print('更新页面 ' + datetime.now().time().__str__())
