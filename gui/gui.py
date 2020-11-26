@@ -25,7 +25,7 @@ class Application(tk.Frame):
         self.back = tk.Button(self, text='返回', command=self.go_back)
         self.reboot = tk.Button(self, text='重启', command=self.reboot)
         self.update = tk.Button(self, text='更新', command=self.update_code)
-        self.exit = tk.Button(self, text='退出', command=self.master.destroy)
+        self.exit = tk.Button(self, text='退出', command=self.destroy)
 
         self.master = master
         self.pack()
@@ -34,6 +34,10 @@ class Application(tk.Frame):
 
         self.prev_img = None
         self.curr_img = None
+
+    def destroy(self):
+        self.master.destroy()
+        os.remove('../out/' + self.curr_img)
 
     def create_widgets(self):
         self.frame.pack()
