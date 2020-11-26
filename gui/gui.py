@@ -24,6 +24,7 @@ class Application(tk.Frame):
         self.home = tk.Button(self, text='主页', command=self.go_home)
         self.back = tk.Button(self, text='返回', command=self.go_back)
         self.reboot = tk.Button(self, text='重启', command=self.reboot)
+        self.update = tk.Button(self, text='更新', command=self.update_code)
         self.exit = tk.Button(self, text='退出', command=self.master.destroy)
 
         self.master = master
@@ -95,6 +96,10 @@ class Application(tk.Frame):
         self.prev_img = file_path
 
         root.after(3000, self.update_page)
+
+    @staticmethod
+    def update_code():
+        print('更新代码 ' + datetime.now().time().__str__())
 
 
 if __name__ == '__main__':
