@@ -64,10 +64,9 @@ def schedule_apps(pid, w, h):
 # 每个小时的收尾工作
 def tail_work(pid, w, h, hour):
     if datetime.now().hour.__lt__(6):
-        checkin.douyin(pid)
-        # [x] 看抖音视频
-        app.watch_douyin_video(pid, w, h, hour)
-        phone.stop_app(pid, info.packages['douyin'])
+        checkin.taozhi(pid)
+        app.watch_taobao_live(pid, w, h, hour)
+        phone.stop_app(pid, info.packages['taozhi'])
     elif datetime.now().hour.__lt__(12):
         checkin.jingdong(pid, w, h)
         app.jingdong_benefit_page(pid, w, h)

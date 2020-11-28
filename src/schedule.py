@@ -1128,6 +1128,9 @@ def duokan(pid, w, h):
 def shandian(pid, w, h):
     return None
 
+# noinspection PyUnusedLocal
+def taozhi(pid, w, h):
+    return None
 
 # noinspection PyUnusedLocal
 def weixin(pid, w, h):

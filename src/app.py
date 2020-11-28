@@ -888,9 +888,9 @@ def zhuanshi_benefit_page(pid, w, h, gap=3):
 # # ~~~~~~~~~~招商银行~~~~~~~~~~
 def zhaoshang_benefit_page(pid, w, h, gap=5):
     # 1. 点击社区
-    phone.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
+    phone.tap(pid, 2.0 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
     # 2. 点击立即查看
-    phone.tap(pid, w / 2, 8.7 * h / HEIGHT)
+    phone.tap(pid, w / 2, 8.7 * h / HEIGHT, gap)
     # 3. 返回上级页面
     phone.go_back(pid)
 
@@ -920,3 +920,14 @@ def zhaoshang_grow_plan(pid, w, h, num):
 
 def xiongmao_benefit_page(pid, w, h, gap=5):
     phone.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
+
+
+# ~~~~~~~~~~淘宝直播~~~~~~~~~~
+def watch_taobao_live(pid, w, h, hour):
+    print('看淘宝直播 ' + datetime.now().time().__str__())
+    phone.tap(pid, w / 3, h / 3)
+    while datetime.now().hour == hour:
+        # 1. 播放
+        time.sleep(randrange(30, 90))
+        # 2. 滑动
+        phone.swipe_down_to_up(pid, w * 2 / 3, h * 2 / 3)

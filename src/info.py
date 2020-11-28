@@ -115,6 +115,7 @@ activities = {
     # 81-84
     'duokan': 'com.tengu.duokan/com.tengu.duoduo.main.MainActivity',
     'shandian': 'c.l.a/.views.AppBoxHomeActivity',
+    'taozhi': 'com.taobao.live/.home.activity.TaoLiveHomeActivity',
 
     # last
     'weixin': 'com.tencent.mm/.ui.LauncherUI',
