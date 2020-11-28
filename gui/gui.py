@@ -1,4 +1,5 @@
 import os
+import threading
 import tkinter as tk
 from datetime import datetime
 
@@ -53,8 +54,14 @@ class Application(tk.Frame):
 
     @staticmethod
     def left_click(event):
+        threads = []
         for pid in devices:
-            phone.tap(pid, int(event.x / scale), int(event.y / scale))
+            t = threading.Thread(target=phone.tap, args=(pid, int(event.x / scale), int(event.y / scale)))
+            threads.append(t)
+            t.start()
+        # 等待每个任务结束
+        for t in threads:
+            t.join()
 
     @staticmethod
     def vertical_swipe(event):
