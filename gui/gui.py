@@ -70,8 +70,7 @@ class Application(tk.Frame):
     @staticmethod
     def reboot():
         print('手机重启 ' + datetime.now().time().__str__())
-        for pid in devices:
-            phone.reboot(pid)
+        phone.reboot(devices)
 
     @staticmethod
     def go_home():
