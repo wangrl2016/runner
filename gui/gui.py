@@ -4,7 +4,6 @@ import tkinter as tk
 from datetime import datetime
 
 from PIL import Image, ImageTk
-
 from src import phone
 
 
@@ -66,6 +65,7 @@ class Application(tk.Frame):
     @staticmethod
     def vertical_swipe(event):
         print('上下滑动手机　' + datetime.now().time().__str__())
+        threads = []
         for pid in devices:
             if event.delta > 0:
                 # 往上滚动
@@ -105,7 +105,7 @@ class Application(tk.Frame):
 
         self.prev_img = file_path
 
-        root.after(3000, self.update_page)
+        root.after(1000, self.update_page)
 
     @staticmethod
     def update_code():
@@ -128,6 +128,6 @@ if __name__ == '__main__':
 
     app = Application(master=root)
 
-    root.after(3000, app.update_page)
+    root.after(1000, app.update_page)
 
     app.mainloop()
