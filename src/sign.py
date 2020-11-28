@@ -7,10 +7,10 @@ from src.info import WIDTH, HEIGHT
 
 def midu(pid, w, h):
     # 1. 消除可能的悬浮窗
-    phone.go_back(pid, gap=1)
+    phone.go_back(pid)
     # 2. 进入福利页面
     app.midu_benefit_page(pid, w, h, gap=5)
-    # 3. 点击立即签到
+    # 3. TODO: 点击立即签到
     # [x] 签到成功
     phone.tap(pid, (WIDTH - 1.2) * w / WIDTH, 1.2 * h / HEIGHT)
     # 4. 看视频领金币
