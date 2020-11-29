@@ -197,13 +197,58 @@ def yunshanfu(pid, w, h, gap=15):
     phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
 
 
-def xijian(pid, w, h, gap=15):
+def shengqian(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)
     # 2. 滑动到第二页
     phone.swipe_right_to_left(pid, w, h / 2)
     # 3. 启动程序
     phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
+
+
+def qingtuanshe(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
+
+
+def aijian(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[1] * h / HEIGHT, gap)
+
+
+def eleme(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[0] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
+
+
+def zhebabai(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
+
+
+def rong(pid, w, h, gap=15):
+    # 1. 回到手机主界面
+    phone.go_home(pid)
+    # 2. 滑动到第二页
+    phone.swipe_right_to_left(pid, w, h / 2)
+    # 3. 启动程序
+    phone.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[2] * h / HEIGHT, gap)
 
 
 # 49-72
@@ -370,6 +415,11 @@ def shandian(pid, gap=15):
 
 
 def taozhi(pid, gap=15):
+    phone.start_app(pid, activities[
+        inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
+
+
+def cainiao(pid, gap=15):
     phone.start_app(pid, activities[
         inspect.getframeinfo(inspect.currentframe()).function.__str__()], gap)
 

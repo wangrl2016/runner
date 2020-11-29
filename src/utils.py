@@ -73,6 +73,10 @@ def tail_work(pid, w, h, hour):
         # [x] 京东看视频赚金币
         app.jingdong_video_coin(pid, w, h, hour)
         phone.stop_app(pid, info.packages['jingdong'])
+    elif datetime.now().hour < 16:
+        checkin.taozhi(pid)
+        app.watch_taobao_live(pid, w, h, hour)
+        phone.stop_app(pid, info.packages['taozhi'])
     else:
         checkin.kuaishou(pid)
         # [x] 看快手视频

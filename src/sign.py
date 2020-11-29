@@ -244,12 +244,33 @@ def yunshanfu(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def xijian(pid, w, h):
-    app.xijian_benefit_page(pid, w, h)
-    phone.tap(pid, w / 2, 5.2 * h / HEIGHT, gap=10)
-    # 播放30s
-    # [x] 签到成功
-    time.sleep(30)
+def shengqian(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def qingtuanshe(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def aijian(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def eleme(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhebabai(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def rong(pid, w, h):
+    return None
 
 
 def toutiao(pid, w, h):
@@ -516,6 +537,11 @@ def shandian(pid, w, h):
 
 # noinspection PyUnusedLocal
 def taozhi(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def cainiao(pid, w, h):
     return None
 
 

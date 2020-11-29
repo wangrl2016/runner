@@ -64,7 +64,14 @@ activities = {
 
     # 29-32
     'yunshanfu': '#com.unionpay/.activity.UPActivityMain',
-    'xijian': '#com.watermelon.more/com.qts.customer.MainFragmentActivity',
+    'shengqian': '#com.jzyd.coupon/.page.web.BrowserActivity',
+    'qingtuanshe': '#com.qts.customer/com.qts.point.DailyEarnMoneyActivity',
+    'aijian': '#com.ttxmzq.pandamakemoney.asjz/com.ttads.farmland.HomeActivity',
+
+    # 33-36
+    'eleme': '#me.ele/.application.ui.splash.SplashActivity',
+    'zhebabai': '#com.tuan800.tao800/.bll.MainActivity',
+    'rong': '#com.rong360.app/.activity.MainActivity',
 
     # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
@@ -116,6 +123,7 @@ activities = {
     'duokan': 'com.tengu.duokan/com.tengu.duoduo.main.MainActivity',
     'shandian': 'c.l.a/.views.AppBoxHomeActivity',
     'taozhi': 'com.taobao.live/.home.activity.TaoLiveHomeActivity',
+    'cainiao': 'com.cainiao.wireless/.homepage.view.activity.HomePageActivity',
 
     # last
     'weixin': 'com.tencent.mm/.ui.LauncherUI',

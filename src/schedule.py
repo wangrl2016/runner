@@ -519,14 +519,33 @@ def yunshanfu(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def xijian(pid, w, h):
-    if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 6 == 0:
-            checkin.xijian(pid, w, h)
-            app.xijian_benefit_page(pid, w, h)
-            # [x] 今日红包
-            app.xijian_daily_packet(pid, w, h)
-            phone.stop_app(pid, info.packages['xijian'])
+def shengqian(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def qingtuanshe(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def aijian(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def eleme(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def zhebabai(pid, w, h):
+    return None
+
+
+# noinspection PyUnusedLocal
+def rong(pid, w, h):
+    return None
 
 
 # 49-72
@@ -1128,9 +1147,16 @@ def duokan(pid, w, h):
 def shandian(pid, w, h):
     return None
 
+
 # noinspection PyUnusedLocal
 def taozhi(pid, w, h):
     return None
+
+
+# noinspection PyUnusedLocal
+def cainiao(pid, w, h):
+    return None
+
 
 # noinspection PyUnusedLocal
 def weixin(pid, w, h):
