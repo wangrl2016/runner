@@ -565,14 +565,6 @@ def huoshan_benefit_page(pid, w, h, gap=3):
     phone.tap(pid, 4.3 * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)  # <== modify
 
 
-def watch_huoshan_video(pid, w, h, hour=4):
-    print('看火山视频 ' + datetime.now().time().__str__())
-    # 消除可能的悬浮窗
-    phone.go_back(pid, gap=1)
-    while datetime.now().hour.__eq__(hour):
-        phone.swipe_down_to_up(pid, w * 2 / 3, h * 3 / 4, randrange(5, 16))
-
-
 # ~~~~~~~~~~趣头条~~~~~~~~~~
 def qutoutiao_benefit_page(pid, w, h):
     # 1. 点击左下角任务

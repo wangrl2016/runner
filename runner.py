@@ -151,16 +151,9 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=3)
 
-        # 火山极速版
         # 懒猫赚钱
         while datetime.now().hour.__eq__(4):
             schedule_apps(pid, w, h)
-
-            checkin.huoshan(pid)
-            phone.go_back(pid)
-            # [x] 看火山视频
-            app.watch_huoshan_video(pid, w, h, hour=4)
-            phone.stop_app(pid, info.packages['huoshan'])
 
             utils.tail_work(pid, w, h, hour=4)
 
