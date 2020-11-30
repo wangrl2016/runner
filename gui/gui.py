@@ -13,12 +13,12 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
-        self.frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
+        self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
 
         img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='yellow')
         img = ImageTk.PhotoImage(image=img)
 
-        self.label = tk.Label(self.frame)
+        self.label = tk.Label(self.image_frame)
 
         self.label.config(image=img)
         self.label.image = img
@@ -29,13 +29,19 @@ class Application(tk.Frame):
         self.update = tk.Button(self, text='更新', command=self.update_code)
         self.exit = tk.Button(self, text='退出', command=self.destroy)
 
+        self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
+
         mem = BytesIO()
         cairosvg.svg2png(url='res/forward.svg', write_to=mem)
         img = Image.open(mem, 'r')
         img = ImageTk.PhotoImage(image=img)
-        self.forward = tk.Label(self)
+        self.forward = tk.Label(self.operate_frame)
         self.forward.config(image=img)
         self.forward.image = img
+
+        self.backward = tk.Label(self.operate_frame)
+        self.up = tk.Label(self.operate_frame)
+        self.down = tk.Label(self.operate_frame)
 
         self.master = master
         self.pack()
@@ -50,7 +56,8 @@ class Application(tk.Frame):
         os.remove('../out/' + self.curr_img)
 
     def create_widgets(self):
-        self.frame.pack()
+        self.image_frame.pack(side='left')
+        self.operate_frame.pack(side='right')
 
         self.label.bind('<Button-1>', self.left_click)
         self.label.bind('<MouseWheel>', self.vertical_swipe)

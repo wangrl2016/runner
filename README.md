@@ -399,3 +399,9 @@ sudo mv chi_sim.traineddata /usr/share/tesseract-ocr/4.00/tessdata/
 ```
 apt install python3-tk
 ```
+
+3. 切换国内源
+
+```
+sudo pip3 install -i https://pypi.tuna.tsinghua.edu.cn/simple  cairosvg
+```
