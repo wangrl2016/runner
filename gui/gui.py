@@ -5,6 +5,8 @@ from datetime import datetime
 
 from PIL import Image, ImageTk
 from src import phone
+import cairosvg
+from io import BytesIO, StringIO
 
 
 class Application(tk.Frame):
@@ -26,6 +28,14 @@ class Application(tk.Frame):
         self.reboot = tk.Button(self, text='重启', command=self.reboot)
         self.update = tk.Button(self, text='更新', command=self.update_code)
         self.exit = tk.Button(self, text='退出', command=self.destroy)
+
+        mem = BytesIO()
+        cairosvg.svg2png(url='res/forward.svg', write_to=mem)
+        img = Image.open(mem, 'r')
+        img = ImageTk.PhotoImage(image=img)
+        self.forward = tk.Label(self)
+        self.forward.config(image=img)
+        self.forward.image = img
 
         self.master = master
         self.pack()
@@ -49,6 +59,9 @@ class Application(tk.Frame):
         self.home.pack(side='left')
         self.back.pack(side='left')
         self.reboot.pack(side='left')
+
+        self.forward.pack(side='left')
+
         self.exit.pack(side='right')
 
     @staticmethod
