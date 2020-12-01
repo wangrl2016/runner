@@ -5,6 +5,7 @@ import os
 import signal
 import sys
 import threading
+import time
 from datetime import datetime
 
 from src import phone, checkin, sign, app, utils, info, schedule
@@ -35,14 +36,17 @@ def cycle(pid):
     # 执行相关任务
     while True:
         hour = datetime.now().hour
-        if run_apps.__contains__('kuaishou') and (hour == 1 or hour == 2 or hour == 13 or hour == 14 or hour == 17):
+        if run_apps.__contains__('kuaishou') and (hour == 1 or hour == 2 or
+                                                  hour == 13 or hour == 14 or hour == 17):
+            phone.wakeup(pid)
+            phone.swipe_down_to_up(pid, w / 2, h, internal=100)
             checkin.kuaishou(pid, gap=20)
             # 回退可能出现的悬浮窗
             phone.go_back(pid)
             app.watch_kuaishou_video(pid, w, h, hour)
             phone.stop_app(pid, info.packages['kuaishou'])
-        else:
-            phone.sleep_to_weak(pid, w, h, gap=3600)
+            phone.sleep(pid)
+        time.sleep(1200)
 
 
 def run(pid):
