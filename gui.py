@@ -35,6 +35,12 @@ class Application(tk.Frame):
         self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
         self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
         self.exit = tk.Button(self.operate_frame, text='退出', command=self.master.destroy)
+        self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序')
+
+        self.start_hand_system = tk.Button(self.operate_frame, text='开启手动系统')
+        self.stop_hand_system = tk.Button(self.operate_frame, text='停止手动系统')
+        self.start_auto_system = tk.Button(self.operate_frame, text='开启自动系统')
+        self.stop_auto_system = tk.Button(self.operate_frame, text='停止自动系统')
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
         img = Image.open(BytesIO(img))
@@ -88,6 +94,11 @@ class Application(tk.Frame):
         self.update.pack(side='bottom')
         self.reboot.pack(side='bottom')
         self.exit.pack(side='bottom')
+        self.close_top_app.pack(side='bottom')
+        self.start_hand_system.pack(side='bottom')
+        self.stop_hand_system.pack(side='bottom')
+        self.start_auto_system.pack(side='bottom')
+        self.stop_auto_system.pack(side='bottom')
 
         self.arrow_forward.pack(side='left')
         self.arrow_back.pack(side='left')
