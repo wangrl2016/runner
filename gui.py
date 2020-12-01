@@ -162,7 +162,7 @@ if __name__ == '__main__':
         print('没有发现手机设备')
         exit(0)
 
-    out_dir = '../out/'
+    out_dir = 'out/'
 
     (w, h) = phone.get_size(devices[0])
 
