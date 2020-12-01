@@ -6,7 +6,7 @@ from datetime import datetime
 from PIL import Image, ImageTk
 from src import phone
 import cairosvg
-from io import BytesIO, StringIO
+from io import BytesIO
 
 
 class Application(tk.Frame):
@@ -28,7 +28,7 @@ class Application(tk.Frame):
         self.back = tk.Button(self.operate_frame, text='返回', command=self.go_back)
         self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
         self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
-        self.exit = tk.Button(self.operate_frame, text='退出', command=self.destroy)
+        self.exit = tk.Button(self.operate_frame, text='退出', command=self.master.destroy)
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
         img = Image.open(BytesIO(img))
@@ -66,9 +66,9 @@ class Application(tk.Frame):
         self.prev_img = None
         self.curr_img = None
 
-    def destroy(self):
-        self.master.destroy()
-        os.remove('../out/' + self.curr_img)
+    # def destroy(self):
+    #     self.master.destroy()
+    #     os.remove('../out/' + self.curr_img)
 
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
@@ -105,7 +105,6 @@ class Application(tk.Frame):
     @staticmethod
     def vertical_swipe(event):
         print('上下滑动手机　' + datetime.now().time().__str__())
-        threads = []
         for pid in devices:
             if event.delta > 0:
                 # 往上滚动
