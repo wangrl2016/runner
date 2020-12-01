@@ -17,6 +17,11 @@ class Application(tk.Frame):
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
 
+        self.phone_list = tk.Listbox(self.operate_frame)
+
+        for i in range(0, 10):
+            self.phone_list.insert(tk.END, i)
+
         img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='white')
         img = ImageTk.PhotoImage(image=img)
 
@@ -76,11 +81,13 @@ class Application(tk.Frame):
         self.image_label.bind('<MouseWheel>', self.vertical_swipe)
         self.image_label.pack()
 
-        self.home.pack(side='left')
-        self.back.pack(side='left')
-        self.update.pack(side='left')
-        self.reboot.pack(side='left')
-        self.exit.pack(side='left')
+        self.phone_list.pack(side='left')
+
+        self.home.pack(side='bottom')
+        self.back.pack(side='bottom')
+        self.update.pack(side='bottom')
+        self.reboot.pack(side='bottom')
+        self.exit.pack(side='bottom')
 
         self.arrow_forward.pack(side='left')
         self.arrow_back.pack(side='left')
