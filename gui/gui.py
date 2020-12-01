@@ -14,34 +14,49 @@ class Application(tk.Frame):
         super().__init__(master)
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
+        self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
 
-        img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='yellow')
+        img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='white')
         img = ImageTk.PhotoImage(image=img)
 
-        self.label = tk.Label(self.image_frame)
+        self.image_label = tk.Label(self.image_frame)
 
-        self.label.config(image=img)
-        self.label.image = img
+        self.image_label.config(image=img)
+        self.image_label.image = img
 
-        self.home = tk.Button(self, text='主页', command=self.go_home)
-        self.back = tk.Button(self, text='返回', command=self.go_back)
-        self.reboot = tk.Button(self, text='重启', command=self.reboot)
-        self.update = tk.Button(self, text='更新', command=self.update_code)
-        self.exit = tk.Button(self, text='退出', command=self.destroy)
+        self.home = tk.Button(self.operate_frame, text='主页', command=self.go_home)
+        self.back = tk.Button(self.operate_frame, text='返回', command=self.go_back)
+        self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
+        self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
+        self.exit = tk.Button(self.operate_frame, text='退出', command=self.destroy)
 
-        self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
-
-        mem = BytesIO()
-        cairosvg.svg2png(url='res/forward.svg', write_to=mem)
-        img = Image.open(mem, 'r')
+        img = cairosvg.svg2png(url='res/arrow_forward.svg')
+        img = Image.open(BytesIO(img))
         img = ImageTk.PhotoImage(image=img)
-        self.forward = tk.Label(self.operate_frame)
-        self.forward.config(image=img)
-        self.forward.image = img
+        self.arrow_forward = tk.Label(self.operate_frame)
+        self.arrow_forward.config(image=img)
+        self.arrow_forward.image = img
 
-        self.backward = tk.Label(self.operate_frame)
-        self.up = tk.Label(self.operate_frame)
-        self.down = tk.Label(self.operate_frame)
+        img = cairosvg.svg2png(url='res/arrow_back.svg')
+        img = Image.open(BytesIO(img))
+        img = ImageTk.PhotoImage(image=img)
+        self.arrow_back = tk.Label(self.operate_frame)
+        self.arrow_back.config(image=img)
+        self.arrow_back.image = img
+
+        img = cairosvg.svg2png(url='res/arrow_upward.svg')
+        img = Image.open(BytesIO(img))
+        img = ImageTk.PhotoImage(image=img)
+        self.arrow_upward = tk.Label(self.operate_frame)
+        self.arrow_upward.config(image=img)
+        self.arrow_upward.image = img
+
+        img = cairosvg.svg2png(url='res/arrow_downward.svg')
+        img = Image.open(BytesIO(img))
+        img = ImageTk.PhotoImage(image=img)
+        self.arrow_downward = tk.Label(self.operate_frame)
+        self.arrow_downward.config(image=img)
+        self.arrow_downward.image = img
 
         self.master = master
         self.pack()
@@ -56,20 +71,25 @@ class Application(tk.Frame):
         os.remove('../out/' + self.curr_img)
 
     def create_widgets(self):
+        self.image_frame.pack_propagate(0)  # 固定frame的大小
         self.image_frame.pack(side='left')
-        self.operate_frame.pack(side='right')
+        self.operate_frame.pack_propagate(0)
+        self.operate_frame.pack(side='left')
 
-        self.label.bind('<Button-1>', self.left_click)
-        self.label.bind('<MouseWheel>', self.vertical_swipe)
-        self.label.pack()
+        self.image_label.bind('<Button-1>', self.left_click)
+        self.image_label.bind('<MouseWheel>', self.vertical_swipe)
+        self.image_label.pack()
 
         self.home.pack(side='left')
         self.back.pack(side='left')
+        self.update.pack(side='left')
         self.reboot.pack(side='left')
+        self.exit.pack(side='left')
 
-        self.forward.pack(side='left')
-
-        self.exit.pack(side='right')
+        self.arrow_forward.pack(side='left')
+        self.arrow_back.pack(side='left')
+        self.arrow_upward.pack(side='left')
+        self.arrow_downward.pack(side='left')
 
     @staticmethod
     def left_click(event):
@@ -117,8 +137,8 @@ class Application(tk.Frame):
         self.curr_img = file_path
         img = Image.open('../out/' + file_path).resize((int(w * scale), int(h * scale)))
         img = ImageTk.PhotoImage(image=img)
-        self.label.config(image=img)
-        self.label.image = img
+        self.image_label.config(image=img)
+        self.image_label.image = img
 
         if self.prev_img:
             os.remove('../out/' + file_path)
