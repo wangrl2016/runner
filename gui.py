@@ -14,6 +14,8 @@ class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
+        self.continue_update_image = False
+
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
 
@@ -37,8 +39,8 @@ class Application(tk.Frame):
         self.exit = tk.Button(self.operate_frame, text='退出', command=self.master.destroy)
         self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序')
 
-        self.start_hand_system = tk.Button(self.operate_frame, text='开启手动系统')
-        self.stop_hand_system = tk.Button(self.operate_frame, text='停止手动系统')
+        self.hand_system = tk.Button(self.operate_frame, text='开启手动系统', command=self.hand_system)
+
         self.start_auto_system = tk.Button(self.operate_frame, text='开启自动系统')
         self.stop_auto_system = tk.Button(self.operate_frame, text='停止自动系统')
 
@@ -77,6 +79,15 @@ class Application(tk.Frame):
 
         self.prev_img = None
 
+    def hand_system(self):
+        # 是否停止更新图片
+        self.continue_update_image = not self.continue_update_image
+        if self.continue_update_image:
+            self.hand_system['text'] = '关闭手动系统'
+            self.update_page()
+        else:
+            self.hand_system['text'] = '开启手动系统'
+
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
         self.image_frame.pack(side='left')
@@ -95,8 +106,7 @@ class Application(tk.Frame):
         self.reboot.pack(side='bottom')
         self.exit.pack(side='bottom')
         self.close_top_app.pack(side='bottom')
-        self.start_hand_system.pack(side='bottom')
-        self.stop_hand_system.pack(side='bottom')
+        self.hand_system.pack(side='bottom')
         self.start_auto_system.pack(side='bottom')
         self.stop_auto_system.pack(side='bottom')
 
@@ -156,7 +166,8 @@ class Application(tk.Frame):
 
         self.prev_img = file_path
 
-        root.after(1000, self.update_page)
+        if self.continue_update_image:
+            root.after(1000, self.update_page)
 
     @staticmethod
     def update_code():
