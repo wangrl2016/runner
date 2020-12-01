@@ -9,6 +9,8 @@
 
 [程序排行榜](https://www.qimai.cn/rank/marketRank)
 
+[手机屏幕尺寸](https://uiiiuiii.com/screen/)
+
 1. 米读极速版
 
 - [x] 签到
