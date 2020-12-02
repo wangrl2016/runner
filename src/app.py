@@ -783,6 +783,12 @@ def read_qimao_novel(pid, w, h, sec):
 
 
 # ~~~~~~~~~~抖音火山版~~~~~~~~~~
+
+def douhuo_benefit_page(pid, w, h, gap=3):
+    phone.tap(pid, 0.6 * w / WIDTH, 0.9 * h / HEIGHT, gap)
+    phone.tap(pid, w / 2, 7.9 * h / HEIGHT)
+
+
 def watch_douhuo_video(pid, w, h, sec=300):
     print('看抖音火山视频 ' + datetime.now().__str__())
     start = datetime.now()

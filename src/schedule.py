@@ -1056,7 +1056,7 @@ def kuaikandian(pid, w, h):
         phone.go_back(pid)
 
     if datetime.now().minute < SCHEDULE_TIME:
-        if datetime.now().hour % 3 == 0:
+        if datetime.now().hour % 4 == 0:
             checkin.kuaikandian(pid)
             app.kuaikandian_benefit_page(pid, w, h)
             # [x] 快看点时段奖励
@@ -1083,7 +1083,17 @@ def qimao(pid, w, h):
 
 # noinspection PyUnusedLocal
 def douhuo(pid, w, h):
-    return None
+    def limit_duty():
+        phone.tap(pid, (WIDTH - 0.9) * w / WIDTH, 5.1 * h / HEIGHT)
+        time.sleep(30)
+        phone.go_back(pid)
+
+    if datetime.now().hour % 3 == 0:
+        checkin.douhuo(pid)
+        app.douhuo_benefit_page(pid, w, h)
+        # 限时任务赚金币
+        limit_duty()
+        phone.stop_app(pid, info.packages['douhuo'])
 
 
 # noinspection PyUnusedLocal
