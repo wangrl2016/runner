@@ -710,7 +710,7 @@ def uc_benefit_page(pid, w, h, gap=3):
 
 
 # ~~~~~~~~~~快看点~~~~~~~~~~
-def kuaikandian_benefit_page(pid, w, h, gap=3):
+def kuaikandian_benefit_page(pid, w, h, gap=5):
     phone.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT, gap)
 
 

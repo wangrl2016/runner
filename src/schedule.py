@@ -1042,7 +1042,18 @@ def uc(pid, w, h):
 def kuaikandian(pid, w, h):
     def time_reward():
         print('快看点时段奖励 ' + datetime.now().time().__str__())
-        phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, 6.8 * h / HEIGHT, gap=2)
+        phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, 2.1 * h / HEIGHT, gap=2)
+        phone.go_back(pid)
+
+    def bank_inspect():
+        # 点击赚钱
+        phone.tap(pid, (WIDTH - 0.8) * w / WIDTH, (HEIGHT - 1.7) * h / HEIGHT)
+        # 点击视察
+        phone.tap(pid, 1.1 * w / WIDTH, 1.0 * h / HEIGHT)
+        # 点击支付
+        phone.tap(pid, w / 2, 8.0 * h / HEIGHT, gap=3)
+        # 返回到福利页面
+        phone.go_back(pid)
 
     if datetime.now().minute < SCHEDULE_TIME:
         if datetime.now().hour % 3 == 0:
@@ -1050,9 +1061,9 @@ def kuaikandian(pid, w, h):
             app.kuaikandian_benefit_page(pid, w, h)
             # [x] 快看点时段奖励
             time_reward()
+            # [x] 赚钱银行
+            bank_inspect()
             phone.stop_app(pid, info.packages['kuaikandian'])
-
-    return None
 
 
 # noinspection PyUnusedLocal
