@@ -152,14 +152,6 @@ def jukandian(pid, w, h):
     phone.tap(pid, (WIDTH - 1.7) * w / WIDTH, 6.0 * h / HEIGHT, gap=2)
 
 
-# noinspection PyUnusedLocal
-def miaokan(pid, w, h):
-    app.miaokan_benefit_page(pid, w, h)
-    # 点击签到
-    # [x] 签到成功
-    phone.tap(pid, (WIDTH - 1.3) * w / WIDTH, 4.6 * h / HEIGHT, gap=2)
-
-
 def kuge(pid, w, h):
     phone.go_back(pid, gap=1)
     # 1. 点击右上方赚钱

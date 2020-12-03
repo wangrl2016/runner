@@ -423,11 +423,6 @@ def jukandian(pid, w, h):
             phone.stop_app(pid, info.packages['jukandian'])
 
 
-# noinspection PyUnusedLocal
-def miaokan(pid, w, h):
-    return None
-
-
 def kuge(pid, w, h):
     def share_song():
         print('酷狗儿歌分享歌曲 ' + datetime.now().time().__str__())

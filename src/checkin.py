@@ -115,13 +115,6 @@ def jukandian(pid, w, h, gap=20):
     phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
 
 
-def miaokan(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.tap(pid, COLUMNS[3] * w / WIDTH, ROWS[4] * h / HEIGHT, gap)
-
-
 def kuge(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)

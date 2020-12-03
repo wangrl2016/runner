@@ -49,7 +49,6 @@ activities = {
 
     # 17-20
     'jukandian': '#com.xiangzi.jukandian/.activity.MainActivity',
-    'miaokan': '#com.taige.mygold/.MainActivityV2',
 
     # 21-24
     'kuge': '#com.kugou.android.child/com.kugou.android.app.MediaActivity',

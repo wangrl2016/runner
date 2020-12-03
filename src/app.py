@@ -331,20 +331,6 @@ def watch_jukandian_svideo(pid, w, h, num):
     phone.go_back(pid, gap=1)
 
 
-# ~~~~~~~~~~妙看短视频~~~~~~~~~~
-def miaokan_benefit_page(pid, w, h):
-    phone.tap(pid, (WIDTH - 0.6) * w / WIDTH, (HEIGHT - 0.5) * h / HEIGHT)
-
-
-def watch_miaokan_video(pid, w, h, num):
-    print('看妙看视频 ' + datetime.now().time().__str__())
-    for i in range(0, num):
-        phone.swipe_down_to_up(pid, w / 2, h, randrange(5, 16))
-    # 需要点开红包圈圈
-    for i in range(0, 3):
-        phone.tap(pid, 0.7 * w / WIDTH, h / 2 + i * h / 15, gap=1)
-
-
 # ~~~~~~~~~~酷狗儿歌~~~~~~~~~~
 def kuge_play_background(pid, w, h):
     print('后台播放酷狗儿歌 ' + datetime.now().__str__())
