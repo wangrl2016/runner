@@ -76,7 +76,6 @@ activities = {
     # 49-52
     'midu': '#com.lechuan.mdwz/.ui.activity.NovelMainActivity',
     'changdou': '#com.zf.shuashua/.MainActivity',
-    'kulingyin': '#com.hot.war/.MainActivity',
     'lanmao': '#com.yuri.lazycat/com.yuruisoft.desktop.mvp.view.activity.HomeActivity',
 
     # 53-56

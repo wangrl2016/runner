@@ -31,16 +31,6 @@ def changdou(pid, w, h):
 
 
 # noinspection PyUnusedLocal
-def kulingyin(pid, w, h):
-    phone.go_back(pid, gap=1)
-    # 1. 进入福利页面
-    app.kulingyin_benefit_page(pid, w, h)
-    # 2. 点击签到
-    # [x] 签到成功
-    phone.tap(pid, (WIDTH - 1.3) * w / WIDTH, 7.5 * h / HEIGHT, gap=12)
-
-
-# noinspection PyUnusedLocal
 def lanmao(pid, w, h):
     # 忽略悬浮窗
     # 如果没有悬浮窗会出现问题

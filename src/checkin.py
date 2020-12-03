@@ -24,13 +24,6 @@ def changdou(pid, w, h, gap=15):
     phone.tap(pid, COLUMNS[1] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
 
 
-def kulingyin(pid, w, h, gap=15):
-    # 1. 回到手机主界面
-    phone.go_home(pid)
-    # 2. 启动程序
-    phone.tap(pid, COLUMNS[2] * w / WIDTH, ROWS[0] * h / HEIGHT, gap)
-
-
 def lanmao(pid, w, h, gap=15):
     # 1. 回到手机主界面
     phone.go_home(pid)

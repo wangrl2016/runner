@@ -136,16 +136,17 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=2)
 
+        # 点点新闻
         # 抖音极速版
-        # 酷铃音
         while datetime.now().hour.__eq__(3):
             schedule_apps(pid, w, h)
 
-            for i in range(0, 3):
-                checkin.kulingyin(pid, w, h)
-                app.kulingyin_benefit_page(pid, w, h)
-                app.kulingyin_benefit_video(pid, w, h, num=2)
-                phone.stop_app(pid, info.packages['kulingyin'])
+            for i in range(0, 8):
+                checkin.diandian(pid, w, h)
+                app.diandian_benefit_page(pid, w, h, gap=5)
+                # [x] 天天领红包
+                app.diandian_daily_packet(pid, w, h)
+                phone.stop_app(pid, info.packages['diandian'], gap=3)
 
             checkin.douyin(pid)
             phone.go_back(pid)
@@ -463,13 +464,6 @@ def run(pid):
         # 糖豆
         while datetime.now().hour.__eq__(23):
             schedule_apps(pid, w, h)
-
-            for i in range(0, 8):
-                checkin.diandian(pid, w, h)
-                app.diandian_benefit_page(pid, w, h, gap=5)
-                # [x] 天天领红包
-                app.diandian_daily_packet(pid, w, h)
-                phone.stop_app(pid, info.packages['diandian'], gap=3)
 
             checkin.diandian(pid, w, h)
             # [x] 看新闻

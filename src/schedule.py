@@ -44,11 +44,6 @@ def changdou(pid, w, h):
     return None
 
 
-# noinspection PyUnusedLocal
-def kulingyin(pid, w, h):
-    return None
-
-
 def lanmao(pid, w, h):
     def cat_food():
         print('懒猫赚猫粮 ' + datetime.now().__str__())
