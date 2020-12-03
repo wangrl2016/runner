@@ -4,17 +4,26 @@ import tkinter as tk
 from datetime import datetime
 
 from PIL import Image, ImageTk
-from src import phone
+from src import phone, info
 import cairosvg
 from io import BytesIO
 import shutil
+
+
+def close_top_app(pid):
+    activities = phone.get_top_activities(pid)
+    if activities is None:
+        return
+    for a in info.apps:
+        if activities.__contains__(info.packages[a]):
+            phone.stop_app(pid, info.packages[a], 0.1)
 
 
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
-        self.continue_update_image = False
+        self.continue_update_image = True
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
@@ -144,6 +153,10 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_click(event):
         print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
+        threads = []
+        for pid in devices:
+            close_top_app(pid)
+
         return None
 
     @staticmethod
