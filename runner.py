@@ -476,6 +476,12 @@ def run(pid):
 
 
 def main(args):
+    init()
+
+    # 初始化全局变量
+    info.apps = list(activities.keys())
+    info.packages = utils.get_packages_dict(activities)
+
     # 获取设备号
     devices = []
     if args.serial:
@@ -541,11 +547,5 @@ def init():
 if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
     parser.add_argument('-s', '--serial', help='phone serial number')
-
-    init()
-
-    # 初始化全局变量
-    info.apps = list(activities.keys())
-    info.packages = utils.get_packages_dict(activities)
 
     main(parser.parse_args())
