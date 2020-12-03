@@ -406,7 +406,6 @@ def run(pid):
 
             utils.tail_work(pid, w, h, hour=18)
 
-        # 趣看看
         while datetime.now().hour.__eq__(19):
             schedule_apps(pid, w, h)
 

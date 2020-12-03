@@ -94,8 +94,16 @@ class Application(tk.Frame):
         self.operate_frame.pack_propagate(0)
         self.operate_frame.pack(side='left')
 
-        self.image_label.bind('<Button-1>', self.left_click)
-        self.image_label.bind('<MouseWheel>', self.vertical_swipe)
+        self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
+        self.image_label.bind('<Button-2>', self.mouse_center_click)  # 鼠标中键单击
+        self.image_label.bind('<Button-3>', self.mouse_right_click)  # 鼠标右键单击
+        self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
+        self.image_label.bind('<B2-Motion>', self.mouse_center_drag)
+        self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
+
+        self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
+        self.image_label.bind('<Key>', self.keyboard_press)  # 键盘事件
+
         self.image_label.pack()
 
         self.phone_list.pack(side='left')
@@ -116,7 +124,8 @@ class Application(tk.Frame):
         self.arrow_downward.pack(side='left')
 
     @staticmethod
-    def left_click(event):
+    def mouse_left_click(event):
+        print('点击鼠标左键 (' + str(event.x) + ', ' + str(event.y) + ')')
         threads = []
         for pid in devices:
             t = threading.Thread(target=phone.tap, args=(pid, int(event.x / scale), int(event.y / scale)))
@@ -127,15 +136,41 @@ class Application(tk.Frame):
             t.join()
 
     @staticmethod
+    def mouse_center_click(event):
+        print('点击鼠标中键 (' + str(event.x) + ', ' + str(event.y) + ')')
+        return None
+
+    @staticmethod
+    def mouse_right_click(event):
+        print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
+        return None
+
+    @staticmethod
+    def mouse_left_drag(event):
+        return None
+
+    @staticmethod
+    def mouse_center_drag(event):
+        return None
+
+    @staticmethod
+    def mouse_right_drag(event):
+        return None
+
+    @staticmethod
     def vertical_swipe(event):
         print('上下滑动手机　' + datetime.now().time().__str__())
         for pid in devices:
             if event.delta > 0:
                 # 往上滚动
-                phone.swipe_down_to_up(pid, event.x, h)
+                phone.swipe_down_to_up(pid, event.x, h, event.delta)
             else:
                 # 往下滚动
-                phone.swipe_up_to_down(pid, event.x, h)
+                phone.swipe_up_to_down(pid, event.x, h, -event.delta)
+
+    @staticmethod
+    def keyboard_press(event):
+        print('键盘事件 ' + event.char)
 
     @staticmethod
     def reboot():
