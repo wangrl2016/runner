@@ -102,8 +102,9 @@ class Application(tk.Frame):
         self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
 
         self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
-        self.image_label.bind('<Key>', self.keyboard_press)  # 键盘事件
+        self.image_label.bind('<KeyPress>', self.keyboard_press)
 
+        self.image_label.focus_set()
         self.image_label.pack()
 
         self.phone_list.pack(side='left')
@@ -170,7 +171,18 @@ class Application(tk.Frame):
 
     @staticmethod
     def keyboard_press(event):
-        print('键盘事件 ' + event.char)
+        print('按键事件 ' + event.keysym)
+        for pid in devices:
+            if event.keysym == 'Up':
+                phone.swipe_down_to_up(pid, w / 2, h)
+            elif event.keysym == 'Down':
+                phone.swipe_up_to_down(pid, w / 2, h)
+            elif event.keysym == 'Left':
+                phone.swipe_right_to_left(pid, w, h / 2)
+            elif event.keysym == 'Right':
+                phone.swipe_left_to_right(pid, w, h / 2)
+            else:
+                pass
 
     @staticmethod
     def reboot():
