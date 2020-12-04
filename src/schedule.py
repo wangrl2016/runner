@@ -1078,12 +1078,11 @@ def douhuo(pid, w, h):
         time.sleep(30)
         phone.go_back(pid)
 
-    if datetime.now().hour % 3 == 0:
-        checkin.douhuo(pid)
-        app.douhuo_benefit_page(pid, w, h)
-        # 限时任务赚金币
-        limit_duty()
-        phone.stop_app(pid, info.packages['douhuo'])
+    checkin.douhuo(pid)
+    app.douhuo_benefit_page(pid, w, h)
+    # 限时任务赚金币
+    limit_duty()
+    phone.stop_app(pid, info.packages['douhuo'])
 
 
 # noinspection PyUnusedLocal
