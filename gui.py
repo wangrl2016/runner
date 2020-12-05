@@ -106,6 +106,9 @@ class Application(tk.Frame):
         self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
         self.image_label.bind('<Button-2>', self.mouse_center_click)  # 鼠标中键单击
         self.image_label.bind('<Button-3>', self.mouse_right_click)  # 鼠标右键单击
+        self.image_label.bind('<ButtonRelease-1>', self.mouse_left_release)  # 鼠标左键释放
+        self.image_label.bind('<ButtonRelease-2>', self.mouse_center_release)  # 鼠标中键释放
+        self.image_label.bind('<ButtonRelease-3>', self.mouse_right_release)  # 鼠标右键释放
         self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
         self.image_label.bind('<B2-Motion>', self.mouse_center_drag)
         self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
@@ -160,7 +163,21 @@ class Application(tk.Frame):
         return None
 
     @staticmethod
+    def mouse_left_release(event):
+        print('mouse left release ' + str(event.x) + ', ' + str(event.y))
+        return None
+
+    @staticmethod
+    def mouse_center_release(event):
+        return None
+
+    @staticmethod
+    def mouse_right_release(event):
+        return None
+
+    @staticmethod
     def mouse_left_drag(event):
+        print('mouse left drag ' + str(event.x) + ', ' + str(event.y))
         return None
 
     @staticmethod
