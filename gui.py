@@ -1,13 +1,37 @@
+import argparse
+import ctypes
+import inspect
 import os
 import threading
 import tkinter as tk
 from datetime import datetime
 
 from PIL import Image, ImageTk
+
+import runner
 from src import phone, info
 import cairosvg
 from io import BytesIO
 import shutil
+
+
+def _async_raise(tid, exctype):
+    """raises the exception, performs cleanup if needed"""
+    tid = ctypes.c_long(tid)
+    if not inspect.isclass(exctype):
+        exctype = type(exctype)
+    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))
+    if res == 0:
+        raise ValueError("invalid thread id")
+    elif res != 1:
+        # """if it returns a number greater than one, you're in trouble,
+        # and you should call it again with exc=NULL to revert the effect"""
+        ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, None)
+        raise SystemError("PyThreadState_SetAsyncExc failed")
+
+
+def stop_thread(thread):
+    _async_raise(thread.ident, SystemExit)
 
 
 def close_top_app(pid):
@@ -45,7 +69,7 @@ class Application(tk.Frame):
         self.back = tk.Button(self.operate_frame, text='返回', command=self.go_back)
         self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
         self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
-        self.exit = tk.Button(self.operate_frame, text='退出', command=self.master.destroy)
+        self.exit = tk.Button(self.operate_frame, text='退出', command=self.exit_system)
         self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序')
 
         self.hand_system = tk.Button(self.operate_frame, text='开启手动系统', command=self.hand_system)
@@ -87,6 +111,16 @@ class Application(tk.Frame):
         self.create_widgets()
 
         self.prev_img = None
+
+    # def destroy(self):
+    #     print('退出程序 ' + datetime.now().__str__())
+    #     stop_thread(auto_thread)
+    #     super().destroy()
+
+    def exit_system(self):
+        print('退出程序 ' + datetime.now().__str__())
+        stop_thread(auto_thread)
+        self.master.destroy()
 
     def hand_system(self):
         # 是否停止更新图片
@@ -141,12 +175,12 @@ class Application(tk.Frame):
         print('点击鼠标左键 (' + str(event.x) + ', ' + str(event.y) + ')')
         threads = []
         for pid in devices:
-            t = threading.Thread(target=phone.tap, args=(pid, int(event.x / scale), int(event.y / scale)))
-            threads.append(t)
-            t.start()
+            tid = threading.Thread(target=phone.tap, args=(pid, int(event.x / scale), int(event.y / scale)))
+            threads.append(tid)
+            tid.start()
         # 等待每个任务结束
-        for t in threads:
-            t.join()
+        for tid in threads:
+            tid.join()
 
     @staticmethod
     def mouse_center_click(event):
@@ -231,7 +265,13 @@ class Application(tk.Frame):
 
     def update_page(self):
         file_path = phone.get_page_photo(devices[0], out_dir)
-        img = Image.open(out_dir + file_path).resize((int(w * scale), int(h * scale)))
+        try:
+            # 可能中途拔掉手机
+            img = Image.open(out_dir + file_path).resize((int(w * scale), int(h * scale)))
+        except Exception as e:
+            print(e)
+            return None
+
         img = ImageTk.PhotoImage(image=img)
         self.image_label.config(image=img)
         self.image_label.image = img
@@ -250,6 +290,12 @@ class Application(tk.Frame):
 
 
 if __name__ == '__main__':
+    parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
+    parser.add_argument('-s', '--serial', help='phone serial number')
+
+    auto_thread = threading.Thread(target=runner.main, args=(parser.parse_args(),), daemon=True)
+    auto_thread.start()
+
     root = tk.Tk()
 
     root.title('手机手动控制系统')
