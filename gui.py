@@ -156,7 +156,6 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_click(event):
         print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        threads = []
         for pid in devices:
             close_top_app(pid)
 
@@ -169,24 +168,23 @@ class Application(tk.Frame):
 
     @staticmethod
     def mouse_center_release(event):
-        return None
+        print('mouse center release ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def mouse_right_release(event):
-        return None
+        print('mouse right release ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def mouse_left_drag(event):
         print('mouse left drag ' + str(event.x) + ', ' + str(event.y))
-        return None
 
     @staticmethod
     def mouse_center_drag(event):
-        return None
+        print('mouse center drag ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def mouse_right_drag(event):
-        return None
+        print('mouse right drag ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def vertical_swipe(event):
