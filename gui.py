@@ -5,11 +5,13 @@ import os
 import threading
 import tkinter as tk
 from datetime import datetime
+from random import randrange
 
 from PIL import Image, ImageTk
 
 import runner
 from src import phone, info, utils
+from src import input
 import cairosvg
 from io import BytesIO
 import shutil
@@ -59,6 +61,28 @@ def stop_auto_running():
         stop_thread(t)
 
 
+class Point(object):
+    """
+    Creates a point on a coordinate with values x and y.
+    """
+
+    def __init__(self, x, y):
+        self.x = x
+        self.y = y
+
+    def get_x(self):
+        return self.x
+
+    def get_y(self):
+        return self.y
+
+    def set_x(self, x):
+        self.x = x
+
+    def set_y(self, y):
+        self.y = y
+
+
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
@@ -68,6 +92,9 @@ class Application(tk.Frame):
 
         # self.auto_thread = AutoRunThread()
         # self.auto_thread.start()
+
+        self.point0 = Point(0, 0)
+        self.point1 = Point(0, 0)
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
@@ -220,10 +247,10 @@ class Application(tk.Frame):
         for tid in threads:
             tid.join()
 
-    @staticmethod
-    def mouse_center_click(event):
-        print('点击鼠标中键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        return None
+    def mouse_center_click(self, event):
+        print('mouse center click (' + str(event.x) + ', ' + str(event.y) + ')')
+        self.point0.set_x(event.x)
+        self.point0.set_y(event.y)
 
     @staticmethod
     def mouse_right_click(event):
@@ -237,13 +264,30 @@ class Application(tk.Frame):
         print('mouse left release ' + str(event.x) + ', ' + str(event.y))
         return None
 
-    @staticmethod
-    def mouse_center_release(event):
-        print('mouse center release ' + str(event.x) + ', ' + str(event.y))
+    def mouse_center_release(self, event):
+        print('mouse center release (' + str(event.x) + ', ' + str(event.y) + ')')
+        self.point1.set_x(event.x)
+        self.point1.set_y(event.y)
+        self.hand_swipe()
 
     @staticmethod
     def mouse_right_release(event):
         print('mouse right release ' + str(event.x) + ', ' + str(event.y))
+
+    def hand_swipe(self):
+        threads = []
+        for pid in devices:
+            tid = threading.Thread(target=input.swipe,
+                                   args=(pid, self.point0.get_x() / scale,
+                                         self.point0.get_y() / scale,
+                                         self.point1.get_x() / scale,
+                                         self.point1.get_y() / scale,
+                                         randrange(190, 230)))
+            threads.append(tid)
+            tid.start()
+
+        for tid in threads:
+            tid.join()
 
     @staticmethod
     def mouse_left_drag(event):
