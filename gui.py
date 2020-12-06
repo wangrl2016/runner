@@ -9,10 +9,12 @@ from datetime import datetime
 from PIL import Image, ImageTk
 
 import runner
-from src import phone, info
+from src import phone, info, utils
 import cairosvg
 from io import BytesIO
 import shutil
+
+from src.info import activities
 
 
 def _async_raise(tid, exctype):
@@ -34,13 +36,15 @@ def stop_thread(thread):
     _async_raise(thread.ident, SystemExit)
 
 
-def close_top_app(pid):
-    activities = phone.get_top_activities(pid)
-    if activities is None:
-        return
-    for a in info.apps:
-        if activities.__contains__(info.packages[a]):
-            phone.stop_app(pid, info.packages[a], 0.1)
+def close_top_app():
+    print('关闭当前程序 ' + datetime.now().time().__str__())
+    for pid in devices:
+        top_activities = phone.get_top_activities(pid)
+        if top_activities is None:
+            return
+        for a in info.apps:
+            if top_activities.__contains__(info.packages[a]):
+                phone.stop_app(pid, info.packages[a], 0.1)
 
 
 class Application(tk.Frame):
@@ -72,9 +76,9 @@ class Application(tk.Frame):
         self.exit = tk.Button(self.operate_frame, text='退出', command=self.exit_system)
         self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序', command=close_top_app)
 
-        self.hand_system = tk.Button(self.operate_frame, text='开启手动系统', command=self.hand_system)
+        self.hand_system = tk.Button(self.operate_frame, text='关闭手动系统', command=self.hand_system)
 
-        self.start_auto_system = tk.Button(self.operate_frame, text='开启自动系统', command=self.auto_system)
+        self.auto_system = tk.Button(self.operate_frame, text='开启自动系统', command=self.auto_system)
         self.stop_auto_system = tk.Button(self.operate_frame, text='停止自动系统')
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
@@ -158,16 +162,19 @@ class Application(tk.Frame):
         self.image_label.focus_set()
         self.image_label.pack()
 
-        self.phone_list.pack(side='left')
+        # self.phone_list.pack(side='left')
 
         self.home.pack(side='bottom')
         self.back.pack(side='bottom')
         self.update.pack(side='bottom')
         self.reboot.pack(side='bottom')
         self.exit.pack(side='bottom')
-        self.close_top_app.pack(side='left')
-        self.hand_system.pack(side='bottom')
-        self.start_auto_system.pack(side='bottom')
+
+        # self.close_top_app.pack(side='left')
+        self.close_top_app.grid(row=0, column=0)
+        self.hand_system.grid(row=0, column=1)
+        self.auto_system.grid(row=0, column=2)
+
         self.stop_auto_system.pack(side='bottom')
 
         self.arrow_forward.pack(side='left')
@@ -195,8 +202,7 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_click(event):
         print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        for pid in devices:
-            close_top_app(pid)
+        close_top_app()
 
         return None
 
@@ -298,6 +304,10 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
     parser.add_argument('-s', '--serial', help='phone serial number')
 
+    # 初始化全局变量
+    info.apps = list(activities.keys())
+    info.packages = utils.get_packages_dict(activities)
+
     auto_thread = threading.Thread(target=runner.main, args=(parser.parse_args(),), daemon=True)
     # auto_thread.start()
 
@@ -306,8 +316,8 @@ if __name__ == '__main__':
     root.title('手机手动控制系统')
 
     devices = phone.get_devices()
-    devices.remove('13bfd6e6')
-    devices.remove('8aa89ae87d94')
+    # devices.remove('13bfd6e6')
+    # devices.remove('8aa89ae87d94')
     if not devices:
         print('没有发现手机设备')
         exit(0)
