@@ -9,6 +9,7 @@ from datetime import datetime
 
 from PIL import Image, ImageTk
 
+import runner
 from src import phone, info, utils
 import cairosvg
 from io import BytesIO
@@ -49,9 +50,8 @@ class AutoRunThread(threading.Thread):
         self.setDaemon(True)
 
     def run(self):
-        while True:
-            print(1)
-            time.sleep(2)
+        for pid in devices:
+            runner.run(pid)
 
 
 class Application(tk.Frame):
