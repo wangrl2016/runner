@@ -510,22 +510,22 @@ def main(args):
             pts[pid] = t.ident
             t.start()
 
-    # # noinspection PyUnusedLocal
-    # def signal_handler(sig, frame):
-    #     # 结束前关闭所有程序
-    #     for d in devices:
-    #         ats = phone.get_top_activities(d)
-    #         if ats is None:
-    #             sys.exit(0)
-    #         for a in info.apps:
-    #             if ats.__contains__(info.packages[a]):
-    #                 print('关闭运行的程序 ' + info.packages[a])
-    #                 phone.stop_app(d, info.packages[a], 0.2)
-    #     sys.exit(0)
-    #
-    # # 处理中断情况
-    # signal.signal(signal.SIGINT, signal_handler)
-    # signal.pause()
+    # noinspection PyUnusedLocal
+    def signal_handler(sig, frame):
+        # 结束前关闭所有程序
+        for d in devices:
+            ats = phone.get_top_activities(d)
+            if ats is None:
+                sys.exit(0)
+            for a in info.apps:
+                if ats.__contains__(info.packages[a]):
+                    print('关闭运行的程序 ' + info.packages[a])
+                    phone.stop_app(d, info.packages[a], 0.2)
+        sys.exit(0)
+
+    # 处理中断情况
+    signal.signal(signal.SIGINT, signal_handler)
+    signal.pause()
 
     # 等待所有线程退出
     for t in threads:

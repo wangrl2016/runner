@@ -3,12 +3,12 @@ import ctypes
 import inspect
 import os
 import threading
+import time
 import tkinter as tk
 from datetime import datetime
 
 from PIL import Image, ImageTk
 
-import runner
 from src import phone, info, utils
 import cairosvg
 from io import BytesIO
@@ -18,16 +18,12 @@ from src.info import activities
 
 
 def _async_raise(tid, exctype):
-    """raises the exception, performs cleanup if needed"""
-    tid = ctypes.c_long(tid)
     if not inspect.isclass(exctype):
-        exctype = type(exctype)
-    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, ctypes.py_object(exctype))
+        raise TypeError("Only types can be raised (not instances)")
+    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(tid), ctypes.py_object(exctype))
     if res == 0:
         raise ValueError("invalid thread id")
     elif res != 1:
-        # """if it returns a number greater than one, you're in trouble,
-        # and you should call it again with exc=NULL to revert the effect"""
         ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, None)
         raise SystemError("PyThreadState_SetAsyncExc failed")
 
@@ -47,11 +43,26 @@ def close_top_app():
                 phone.stop_app(pid, info.packages[a], 0.1)
 
 
+class AutoRunThread(threading.Thread):
+    def __init__(self):
+        super().__init__()
+        self.setDaemon(True)
+
+    def run(self):
+        while True:
+            print(1)
+            time.sleep(2)
+
+
 class Application(tk.Frame):
     def __init__(self, master=None):
         super().__init__(master)
 
         self.continue_update_image = True
+        self.auto_system_start = True
+
+        self.auto_thread = AutoRunThread()
+        self.auto_thread.start()
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
@@ -78,8 +89,7 @@ class Application(tk.Frame):
 
         self.hand_system = tk.Button(self.operate_frame, text='关闭手动系统', command=self.hand_system)
 
-        self.auto_system = tk.Button(self.operate_frame, text='开启自动系统', command=self.auto_system)
-        self.stop_auto_system = tk.Button(self.operate_frame, text='停止自动系统')
+        self.auto_system = tk.Button(self.operate_frame, text='关闭自动系统', bg='green', command=self.auto_system)
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
         img = Image.open(BytesIO(img))
@@ -123,7 +133,8 @@ class Application(tk.Frame):
 
     def exit_system(self):
         print('退出程序 ' + datetime.now().__str__())
-        stop_thread(auto_thread)
+        if self.auto_system_start:
+            stop_thread(self.auto_thread)
         self.master.destroy()
 
     def hand_system(self):
@@ -135,10 +146,21 @@ class Application(tk.Frame):
         else:
             self.hand_system['text'] = '开启手动系统'
 
-    @staticmethod
-    def auto_system():
-        print('开启自动系统 ' + datetime.now().__str__())
-        auto_thread.run()
+    def auto_system(self):
+        print('自动系统 ' + datetime.now().__str__())
+        if self.auto_system_start:
+            print('关闭自动系统')
+            # self.auto_thread._flag = True
+            stop_thread(self.auto_thread)
+            self.auto_system['text'] = '开启自动系统'
+            self.auto_system['bg'] = 'red'
+        else:
+            if not self.auto_thread.isAlive():
+                self.auto_thread = AutoRunThread()
+                self.auto_thread.start()
+                self.auto_system['text'] = '关闭自动系统'
+                self.auto_system['bg'] = 'green'
+        self.auto_system_start = not self.auto_system_start
 
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
@@ -174,8 +196,6 @@ class Application(tk.Frame):
         self.close_top_app.grid(row=0, column=0)
         self.hand_system.grid(row=0, column=1)
         self.auto_system.grid(row=0, column=2)
-
-        self.stop_auto_system.pack(side='bottom')
 
         self.arrow_forward.pack(side='left')
         self.arrow_back.pack(side='left')
@@ -308,9 +328,6 @@ if __name__ == '__main__':
     info.apps = list(activities.keys())
     info.packages = utils.get_packages_dict(activities)
 
-    auto_thread = threading.Thread(target=runner.main, args=(parser.parse_args(),), daemon=True)
-    # auto_thread.start()
-
     root = tk.Tk()
 
     root.title('手机手动控制系统')
@@ -330,7 +347,8 @@ if __name__ == '__main__':
 
     app = Application(master=root)
 
-    root.after(1000, app.update_page)
+    hand_thread = threading.Thread(target=root.after, args=(1000, app.update_page), daemon=True)
+    hand_thread.start()
 
     app.mainloop()
 
