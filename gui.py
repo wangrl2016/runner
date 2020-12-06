@@ -217,9 +217,9 @@ class Application(tk.Frame):
 
         # self.phone_list.pack(side='left')
 
-        # self.home.pack(side='bottom')
+        self.home.grid(row=1, column=0)
         # self.back.pack(side='bottom')
-        # self.update.pack(side='bottom')
+        self.update.grid(row=1, column=1)
         # self.reboot.pack(side='bottom')
         # self.exit.pack(side='bottom')
 
@@ -307,36 +307,39 @@ class Application(tk.Frame):
     @staticmethod
     def keyboard_press(event):
         print('按键事件 ' + event.keysym)
-        for pid in devices:
-            if event.keysym == 'Up':
-                phone.swipe_down_to_up(pid, w / 2, h)
-            elif event.keysym == 'Down':
-                phone.swipe_up_to_down(pid, w / 2, h)
-            elif event.keysym == 'Left':
-                phone.swipe_right_to_left(pid, w, h / 2)
-            elif event.keysym == 'Right':
-                phone.swipe_left_to_right(pid, w, h / 2)
-            else:
-                pass
 
     @staticmethod
     def reboot():
         print('手机重启 ' + datetime.now().time().__str__())
-        phone.reboot(devices)
+        threads = []
+        for pid in devices:
+            tid = threading.Thread(target=phone.reboot, args=(pid,))
+            threads.append(tid)
+            tid.start()
 
     @staticmethod
     def go_home():
         print('回到主页 ' + datetime.now().time().__str__())
+        threads = []
         for pid in devices:
-            phone.go_home(pid)
+            tid = threading.Thread(target=phone.go_home, args=(pid,))
+            threads.append(tid)
+            tid.start()
 
     @staticmethod
     def go_back():
         print('返回上级页面 ' + datetime.now().time().__str__())
+        threads = []
         for pid in devices:
-            phone.go_back(pid)
+            tid = threading.Thread(target=phone.go_back, args=(pid,))
+            threads.append(tid)
+            tid.start()
 
     def update_page(self):
+        # tid = threading.Thread(target=phone.get_page_photo, args=(devices[0], out_dir))
+        # tid.start()
+        # tid.join()
+
         file_path = phone.get_page_photo(devices[0], out_dir)
         try:
             # 可能中途拔掉手机
@@ -355,7 +358,7 @@ class Application(tk.Frame):
         self.prev_img = file_path
 
         if self.continue_update_image:
-            root.after(1000, self.update_page)
+            root.after(500, self.update_page)
 
     @staticmethod
     def update_code():
@@ -393,7 +396,7 @@ if __name__ == '__main__':
 
     app = Application(master=root)
 
-    hand_thread = threading.Thread(target=root.after, args=(1000, app.update_page), daemon=True)
+    hand_thread = threading.Thread(target=root.after, args=(500, app.update_page), daemon=True)
     hand_thread.start()
 
     app.mainloop()
