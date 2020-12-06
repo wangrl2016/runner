@@ -3,7 +3,6 @@ import ctypes
 import inspect
 import os
 import threading
-import time
 import tkinter as tk
 from datetime import datetime
 
@@ -44,14 +43,20 @@ def close_top_app():
                 phone.stop_app(pid, info.packages[a], 0.1)
 
 
-class AutoRunThread(threading.Thread):
-    def __init__(self):
-        super().__init__()
-        self.setDaemon(True)
+def running():
+    pts = {}
+    runner_threads.clear()
+    for pid in devices:
+        info.contexts.update({pid: {}})
+        t = threading.Thread(target=runner.run, args=(pid,), daemon=True)
+        runner_threads.append(t)
+        pts[pid] = t.ident
+        t.start()
 
-    def run(self):
-        for pid in devices:
-            runner.run(pid)
+
+def stop_auto_running():
+    for t in runner_threads:
+        stop_thread(t)
 
 
 class Application(tk.Frame):
@@ -61,8 +66,8 @@ class Application(tk.Frame):
         self.continue_update_image = True
         self.auto_system_start = True
 
-        self.auto_thread = AutoRunThread()
-        self.auto_thread.start()
+        # self.auto_thread = AutoRunThread()
+        # self.auto_thread.start()
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
@@ -87,9 +92,9 @@ class Application(tk.Frame):
         self.exit = tk.Button(self.operate_frame, text='退出', command=self.exit_system)
         self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序', command=close_top_app)
 
-        self.hand_system = tk.Button(self.operate_frame, text='关闭手动系统', command=self.hand_system)
+        self.hand_system = tk.Button(self.operate_frame, text='手动系统已开启', bg='green', command=self.hand_system)
 
-        self.auto_system = tk.Button(self.operate_frame, text='关闭自动系统', bg='green', command=self.auto_system)
+        self.auto_system = tk.Button(self.operate_frame, text='自动系统已开启', bg='green', command=self.auto_system)
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
         img = Image.open(BytesIO(img))
@@ -134,38 +139,39 @@ class Application(tk.Frame):
     def exit_system(self):
         print('退出程序 ' + datetime.now().__str__())
         if self.auto_system_start:
-            stop_thread(self.auto_thread)
+            stop_auto_running()
         self.master.destroy()
 
     def hand_system(self):
         # 是否停止更新图片
         self.continue_update_image = not self.continue_update_image
         if self.continue_update_image:
-            self.hand_system['text'] = '关闭手动系统'
+            self.hand_system['text'] = '手动系统已开启'
+            self.hand_system['bg'] = 'green'
             self.update_page()
         else:
-            self.hand_system['text'] = '开启手动系统'
+            self.hand_system['text'] = '开启手动已关闭'
+            self.hand_system['bg'] = 'red'
 
     def auto_system(self):
-        print('自动系统 ' + datetime.now().__str__())
+        print(('关闭' if self.auto_system_start else '开启') + '自动系统 ' + datetime.now().__str__())
         if self.auto_system_start:
-            print('关闭自动系统')
             # self.auto_thread._flag = True
-            stop_thread(self.auto_thread)
-            self.auto_system['text'] = '开启自动系统'
+            stop_auto_running()
+            self.auto_system['text'] = '自动系统已关闭'
             self.auto_system['bg'] = 'red'
         else:
-            if not self.auto_thread.isAlive():
-                self.auto_thread = AutoRunThread()
-                self.auto_thread.start()
-                self.auto_system['text'] = '关闭自动系统'
-                self.auto_system['bg'] = 'green'
+            # self.auto_thread = AutoRunThread()
+            # self.auto_thread.start()
+            running()
+            self.auto_system['text'] = '自动系统已开启'
+            self.auto_system['bg'] = 'green'
         self.auto_system_start = not self.auto_system_start
 
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
         self.image_frame.pack(side='left')
-        self.operate_frame.pack_propagate(0)
+        self.operate_frame.grid_propagate(0)
         self.operate_frame.pack(side='left')
 
         self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
@@ -186,21 +192,21 @@ class Application(tk.Frame):
 
         # self.phone_list.pack(side='left')
 
-        self.home.pack(side='bottom')
-        self.back.pack(side='bottom')
-        self.update.pack(side='bottom')
-        self.reboot.pack(side='bottom')
-        self.exit.pack(side='bottom')
+        # self.home.pack(side='bottom')
+        # self.back.pack(side='bottom')
+        # self.update.pack(side='bottom')
+        # self.reboot.pack(side='bottom')
+        # self.exit.pack(side='bottom')
 
         # self.close_top_app.pack(side='left')
         self.close_top_app.grid(row=0, column=0)
         self.hand_system.grid(row=0, column=1)
         self.auto_system.grid(row=0, column=2)
 
-        self.arrow_forward.pack(side='left')
-        self.arrow_back.pack(side='left')
-        self.arrow_upward.pack(side='left')
-        self.arrow_downward.pack(side='left')
+        # self.arrow_forward.pack(side='left')
+        # self.arrow_back.pack(side='left')
+        # self.arrow_upward.pack(side='left')
+        # self.arrow_downward.pack(side='left')
 
     @staticmethod
     def mouse_left_click(event):
@@ -324,6 +330,8 @@ if __name__ == '__main__':
     parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
     parser.add_argument('-s', '--serial', help='phone serial number')
 
+    runner_threads = []
+
     # 初始化全局变量
     info.apps = list(activities.keys())
     info.packages = utils.get_packages_dict(activities)
@@ -338,6 +346,8 @@ if __name__ == '__main__':
     if not devices:
         print('没有发现手机设备')
         exit(0)
+
+    running()
 
     out_dir = 'out/'
 
