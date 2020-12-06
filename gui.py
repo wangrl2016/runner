@@ -45,7 +45,7 @@ def close_top_app():
                 phone.stop_app(pid, info.packages[a], 0.1)
 
 
-def running():
+def start_auto_running():
     pts = {}
     runner_threads.clear()
     for pid in devices:
@@ -188,9 +188,7 @@ class Application(tk.Frame):
             self.auto_system['text'] = '自动系统已关闭'
             self.auto_system['bg'] = 'red'
         else:
-            # self.auto_thread = AutoRunThread()
-            # self.auto_thread.start()
-            running()
+            start_auto_running()
             self.auto_system['text'] = '自动系统已开启'
             self.auto_system['bg'] = 'green'
         self.auto_system_start = not self.auto_system_start
@@ -207,11 +205,11 @@ class Application(tk.Frame):
         self.image_label.bind('<ButtonRelease-1>', self.mouse_left_release)  # 鼠标左键释放
         self.image_label.bind('<ButtonRelease-2>', self.mouse_center_release)  # 鼠标中键释放
         self.image_label.bind('<ButtonRelease-3>', self.mouse_right_release)  # 鼠标右键释放
-        self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
-        self.image_label.bind('<B2-Motion>', self.mouse_center_drag)
-        self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
+        # self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
+        # self.image_label.bind('<B2-Motion>', self.mouse_center_drag)
+        # self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
 
-        self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
+        # self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
         self.image_label.bind('<KeyPress>', self.keyboard_press)
 
         self.image_label.focus_set()
@@ -244,8 +242,8 @@ class Application(tk.Frame):
             threads.append(tid)
             tid.start()
         # 等待每个任务结束
-        for tid in threads:
-            tid.join()
+        # for tid in threads:
+        #     tid.join()
 
     def mouse_center_click(self, event):
         print('mouse center click (' + str(event.x) + ', ' + str(event.y) + ')')
@@ -255,9 +253,14 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_click(event):
         print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        close_top_app()
-
-        return None
+        threads = []
+        for pid in devices:
+            tid = threading.Thread(target=phone.go_back, args=(pid,))
+            threads.append(tid)
+            tid.start()
+        #
+        # for tid in threads:
+        #     tid.join()
 
     @staticmethod
     def mouse_left_release(event):
@@ -286,8 +289,8 @@ class Application(tk.Frame):
             threads.append(tid)
             tid.start()
 
-        for tid in threads:
-            tid.join()
+        # for tid in threads:
+        #     tid.join()
 
     @staticmethod
     def mouse_left_drag(event):
@@ -300,17 +303,6 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_drag(event):
         print('mouse right drag ' + str(event.x) + ', ' + str(event.y))
-
-    @staticmethod
-    def vertical_swipe(event):
-        print('上下滑动手机　' + datetime.now().time().__str__())
-        for pid in devices:
-            if event.delta > 0:
-                # 往上滚动
-                phone.swipe_down_to_up(pid, event.x, h, event.delta)
-            else:
-                # 往下滚动
-                phone.swipe_up_to_down(pid, event.x, h, -event.delta)
 
     @staticmethod
     def keyboard_press(event):
@@ -391,7 +383,7 @@ if __name__ == '__main__':
         print('没有发现手机设备')
         exit(0)
 
-    running()
+    start_auto_running()
 
     out_dir = 'out/'
 
