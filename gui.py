@@ -70,11 +70,11 @@ class Application(tk.Frame):
         self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
         self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
         self.exit = tk.Button(self.operate_frame, text='退出', command=self.exit_system)
-        self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序')
+        self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序', command=close_top_app)
 
         self.hand_system = tk.Button(self.operate_frame, text='开启手动系统', command=self.hand_system)
 
-        self.start_auto_system = tk.Button(self.operate_frame, text='开启自动系统')
+        self.start_auto_system = tk.Button(self.operate_frame, text='开启自动系统', command=self.auto_system)
         self.stop_auto_system = tk.Button(self.operate_frame, text='停止自动系统')
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
@@ -131,6 +131,11 @@ class Application(tk.Frame):
         else:
             self.hand_system['text'] = '开启手动系统'
 
+    @staticmethod
+    def auto_system():
+        print('开启自动系统 ' + datetime.now().__str__())
+        auto_thread.run()
+
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
         self.image_frame.pack(side='left')
@@ -160,7 +165,7 @@ class Application(tk.Frame):
         self.update.pack(side='bottom')
         self.reboot.pack(side='bottom')
         self.exit.pack(side='bottom')
-        self.close_top_app.pack(side='bottom')
+        self.close_top_app.pack(side='left')
         self.hand_system.pack(side='bottom')
         self.start_auto_system.pack(side='bottom')
         self.stop_auto_system.pack(side='bottom')
@@ -294,13 +299,15 @@ if __name__ == '__main__':
     parser.add_argument('-s', '--serial', help='phone serial number')
 
     auto_thread = threading.Thread(target=runner.main, args=(parser.parse_args(),), daemon=True)
-    auto_thread.start()
+    # auto_thread.start()
 
     root = tk.Tk()
 
     root.title('手机手动控制系统')
 
     devices = phone.get_devices()
+    devices.remove('13bfd6e6')
+    devices.remove('8aa89ae87d94')
     if not devices:
         print('没有发现手机设备')
         exit(0)
