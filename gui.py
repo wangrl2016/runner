@@ -2,6 +2,7 @@ import argparse
 import ctypes
 import inspect
 import os
+import subprocess
 import threading
 import tkinter as tk
 from datetime import datetime
@@ -336,11 +337,12 @@ class Application(tk.Frame):
             tid.start()
 
     def update_page(self):
-        # tid = threading.Thread(target=phone.get_page_photo, args=(devices[0], out_dir))
-        # tid.start()
-        # tid.join()
+        # print('update page start ' + datetime.now().time().__str__())
+        update_page_thread = UpdatePageThread(devices[0], out_dir)
+        update_page_thread.start()
+        update_page_thread.join()
 
-        file_path = phone.get_page_photo(devices[0], out_dir)
+        file_path = update_page_thread.get_file_path()
         try:
             # 可能中途拔掉手机
             img = Image.open(out_dir + file_path).resize((int(w * scale), int(h * scale)))
@@ -357,12 +359,28 @@ class Application(tk.Frame):
 
         self.prev_img = file_path
 
+        # print('update page end ' + datetime.now().time().__str__())
         if self.continue_update_image:
-            root.after(500, self.update_page)
+            root.after(50, self.update_page)
 
     @staticmethod
     def update_code():
         print('更新代码 ' + datetime.now().time().__str__())
+        subprocess.run(['git', 'checkout', 'https://username:password@github.com/wangrl2016/runner'])
+
+
+class UpdatePageThread(threading.Thread):
+    def __init__(self, pid, od):
+        threading.Thread.__init__(self)
+        self.pid = pid
+        self.out_dir = od
+        self.file_path = ''
+
+    def run(self):
+        self.file_path = phone.get_page_photo(devices[0], out_dir)
+
+    def get_file_path(self):
+        return self.file_path
 
 
 if __name__ == '__main__':
@@ -396,7 +414,7 @@ if __name__ == '__main__':
 
     app = Application(master=root)
 
-    hand_thread = threading.Thread(target=root.after, args=(500, app.update_page), daemon=True)
+    hand_thread = threading.Thread(target=root.after, args=(50, app.update_page), daemon=True)
     hand_thread.start()
 
     app.mainloop()
