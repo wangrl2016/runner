@@ -92,19 +92,18 @@ class Application(tk.Frame):
         self.continue_update_image = True
         self.auto_system_start = True
 
-        # self.auto_thread = AutoRunThread()
-        # self.auto_thread.start()
-
         self.point0 = Point(0, 0)
         self.point1 = Point(0, 0)
 
         self.image_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='white')
         self.operate_frame = tk.Frame(self, width=w * scale, height=h * scale, bg='beige')
 
+        self.button_frame = tk.Frame(self.operate_frame)
+
         self.phone_list = tk.Listbox(self.operate_frame)
 
-        for i in range(0, 10):
-            self.phone_list.insert(tk.END, i)
+        for pid in devices:
+            self.phone_list.insert(tk.END, pid)
 
         img = Image.new(mode='RGB', size=(int(w * scale), int(h * scale)), color='white')
         img = ImageTk.PhotoImage(image=img)
@@ -114,16 +113,12 @@ class Application(tk.Frame):
         self.image_label.config(image=img)
         self.image_label.image = img
 
-        self.home = tk.Button(self.operate_frame, text='主页', command=self.go_home)
-        self.back = tk.Button(self.operate_frame, text='返回', command=self.go_back)
-        self.reboot = tk.Button(self.operate_frame, text='重启', command=self.reboot)
-        self.update = tk.Button(self.operate_frame, text='更新', command=self.update_code)
-        self.exit = tk.Button(self.operate_frame, text='退出', command=self.exit_system)
-        self.close_top_app = tk.Button(self.operate_frame, text='关闭当前程序', command=close_top_app)
-
-        self.hand_system = tk.Button(self.operate_frame, text='手动系统已开启', bg='green', command=self.hand_system)
-
-        self.auto_system = tk.Button(self.operate_frame, text='自动系统已开启', bg='green', command=self.auto_system)
+        self.home = tk.Button(self.button_frame, text='回到主页', command=self.go_home)
+        self.reboot = tk.Button(self.button_frame, text='重启手机', command=self.reboot)
+        self.update = tk.Button(self.button_frame, text='更新代码', command=self.update_code)
+        self.close_top_app = tk.Button(self.button_frame, text='关闭当前程序', command=close_top_app)
+        self.hand_system = tk.Button(self.button_frame, text='手动系统已开启', bg='green', command=self.hand_system)
+        self.auto_system = tk.Button(self.button_frame, text='自动系统已开启', bg='green', command=self.auto_system)
 
         img = cairosvg.svg2png(url='res/arrow_forward.svg')
         img = Image.open(BytesIO(img))
@@ -160,11 +155,6 @@ class Application(tk.Frame):
 
         self.prev_img = None
 
-    # def destroy(self):
-    #     print('退出程序 ' + datetime.now().__str__())
-    #     stop_thread(auto_thread)
-    #     super().destroy()
-
     def exit_system(self):
         print('退出程序 ' + datetime.now().__str__())
         if self.auto_system_start:
@@ -185,7 +175,6 @@ class Application(tk.Frame):
     def auto_system(self):
         print(('关闭' if self.auto_system_start else '开启') + '自动系统 ' + datetime.now().__str__())
         if self.auto_system_start:
-            # self.auto_thread._flag = True
             stop_auto_running()
             self.auto_system['text'] = '自动系统已关闭'
             self.auto_system['bg'] = 'red'
@@ -198,17 +187,17 @@ class Application(tk.Frame):
     def create_widgets(self):
         self.image_frame.pack_propagate(0)  # 固定frame的大小
         self.image_frame.pack(side='left')
-        self.operate_frame.grid_propagate(0)
+        self.operate_frame.pack_propagate(0)
         self.operate_frame.pack(side='left')
+
+        self.button_frame.pack(side='top')
 
         self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
         self.image_label.bind('<Button-2>', self.mouse_center_click)  # 鼠标中键单击
         self.image_label.bind('<Button-3>', self.mouse_right_click)  # 鼠标右键单击
         self.image_label.bind('<ButtonRelease-1>', self.mouse_left_release)  # 鼠标左键释放
         self.image_label.bind('<ButtonRelease-2>', self.mouse_center_release)  # 鼠标中键释放
-        self.image_label.bind('<ButtonRelease-3>', self.mouse_right_release)  # 鼠标右键释放
         # self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
-        # self.image_label.bind('<B2-Motion>', self.mouse_center_drag)
         # self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
 
         # self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
@@ -217,23 +206,22 @@ class Application(tk.Frame):
         self.image_label.focus_set()
         self.image_label.pack()
 
-        # self.phone_list.pack(side='left')
+        self.phone_list.pack(side='top')
 
-        self.home.grid(row=1, column=0)
-        # self.back.pack(side='bottom')
-        self.update.grid(row=1, column=1)
-        # self.reboot.pack(side='bottom')
-        # self.exit.pack(side='bottom')
-
-        # self.close_top_app.pack(side='left')
+        # 第0排按钮
         self.close_top_app.grid(row=0, column=0)
         self.hand_system.grid(row=0, column=1)
         self.auto_system.grid(row=0, column=2)
 
-        # self.arrow_forward.pack(side='left')
-        # self.arrow_back.pack(side='left')
-        # self.arrow_upward.pack(side='left')
-        # self.arrow_downward.pack(side='left')
+        # 第1排按钮
+        self.home.grid(row=1, column=0)
+        self.update.grid(row=1, column=1)
+        self.reboot.grid(row=1, column=2)
+
+        self.arrow_forward.pack(side='left')
+        self.arrow_back.pack(side='left')
+        self.arrow_upward.pack(side='left')
+        self.arrow_downward.pack(side='left')
 
     @staticmethod
     def mouse_left_click(event):
@@ -248,7 +236,7 @@ class Application(tk.Frame):
         #     tid.join()
 
     def mouse_center_click(self, event):
-        print('mouse center click (' + str(event.x) + ', ' + str(event.y) + ')')
+        print('点击鼠标中键 (' + str(event.x) + ', ' + str(event.y) + ')')
         self.point0.set_x(event.x)
         self.point0.set_y(event.y)
 
@@ -270,14 +258,10 @@ class Application(tk.Frame):
         return None
 
     def mouse_center_release(self, event):
-        print('mouse center release (' + str(event.x) + ', ' + str(event.y) + ')')
+        # print('mouse center release (' + str(event.x) + ', ' + str(event.y) + ')')
         self.point1.set_x(event.x)
         self.point1.set_y(event.y)
         self.hand_swipe()
-
-    @staticmethod
-    def mouse_right_release(event):
-        print('mouse right release ' + str(event.x) + ', ' + str(event.y))
 
     def hand_swipe(self):
         threads = []
@@ -297,10 +281,6 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_left_drag(event):
         print('mouse left drag ' + str(event.x) + ', ' + str(event.y))
-
-    @staticmethod
-    def mouse_center_drag(event):
-        print('mouse center drag ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def mouse_right_drag(event):
