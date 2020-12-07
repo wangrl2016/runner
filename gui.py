@@ -59,7 +59,8 @@ def start_auto_running():
 
 def stop_auto_running():
     for t in runner_threads:
-        stop_thread(t)
+        if t.is_alive():
+            stop_thread(t)
 
 
 class Point(object):

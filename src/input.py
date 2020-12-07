@@ -33,7 +33,11 @@ def keyevent(pid, event, gap=3):
     :param event: 事件
     :param gap: 时间间隔
     """
-    subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', event])
+    try:
+        subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', event])
+    except Exception as e:
+        print(e)
+        return None
     time.sleep(gap)
 
 

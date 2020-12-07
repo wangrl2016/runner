@@ -46,7 +46,8 @@ def cycle(pid):
             app.watch_kuaishou_video(pid, w, h, hour)
             phone.stop_app(pid, info.packages['kuaishou'])
             phone.sleep(pid)
-        time.sleep(1200)
+        else:
+            time.sleep(1200)
 
 
 def run(pid):
