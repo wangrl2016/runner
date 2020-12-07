@@ -398,8 +398,10 @@ if __name__ == '__main__':
     root.title('手机手动控制系统')
 
     devices = phone.get_devices()
-    # devices.remove('13bfd6e6')
-    # devices.remove('8aa89ae87d94')
+    if devices.__contains__('13bfd6e6'):
+        devices.remove('13bfd6e6')
+    if devices.__contains__('8aa89ae87d94'):
+        devices.remove('8aa89ae87d94')
     if not devices:
         print('没有发现手机设备')
         exit(0)
