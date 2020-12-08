@@ -195,7 +195,6 @@ class Application(tk.Frame):
         self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
         self.image_label.bind('<Button-2>', self.mouse_center_click)  # 鼠标中键单击
         self.image_label.bind('<Button-3>', self.mouse_right_click)  # 鼠标右键单击
-        self.image_label.bind('<ButtonRelease-1>', self.mouse_left_release)  # 鼠标左键释放
         self.image_label.bind('<ButtonRelease-2>', self.mouse_center_release)  # 鼠标中键释放
         # self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
         # self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
@@ -218,25 +217,19 @@ class Application(tk.Frame):
         self.update.grid(row=1, column=1)
         self.reboot.grid(row=1, column=2)
 
-        self.arrow_forward.pack(side='left')
-        self.arrow_back.pack(side='left')
-        self.arrow_upward.pack(side='left')
-        self.arrow_downward.pack(side='left')
+        # self.arrow_forward.pack(side='left')
+        # self.arrow_back.pack(side='left')
+        # self.arrow_upward.pack(side='left')
+        # self.arrow_downward.pack(side='left')
 
     @staticmethod
     def mouse_left_click(event):
         print('点击鼠标左键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        threads = []
         for pid in devices:
             tid = threading.Thread(target=phone.tap, args=(pid, int(event.x / scale), int(event.y / scale)))
-            threads.append(tid)
             tid.start()
-        # 等待每个任务结束
-        # for tid in threads:
-        #     tid.join()
 
     def mouse_center_click(self, event):
-        print('点击鼠标中键 (' + str(event.x) + ', ' + str(event.y) + ')')
         self.point0.set_x(event.x)
         self.point0.set_y(event.y)
 
@@ -248,23 +241,14 @@ class Application(tk.Frame):
             tid = threading.Thread(target=phone.go_back, args=(pid,))
             threads.append(tid)
             tid.start()
-        #
-        # for tid in threads:
-        #     tid.join()
-
-    @staticmethod
-    def mouse_left_release(event):
-        print('mouse left release ' + str(event.x) + ', ' + str(event.y))
-        return None
 
     def mouse_center_release(self, event):
-        # print('mouse center release (' + str(event.x) + ', ' + str(event.y) + ')')
         self.point1.set_x(event.x)
         self.point1.set_y(event.y)
         self.hand_swipe()
 
     def hand_swipe(self):
-        threads = []
+        print('滑动屏幕 ' + datetime.now().time().__str__())
         for pid in devices:
             tid = threading.Thread(target=input.swipe,
                                    args=(pid, self.point0.get_x() / scale,
@@ -272,15 +256,7 @@ class Application(tk.Frame):
                                          self.point1.get_x() / scale,
                                          self.point1.get_y() / scale,
                                          randrange(190, 230)))
-            threads.append(tid)
             tid.start()
-
-        # for tid in threads:
-        #     tid.join()
-
-    @staticmethod
-    def mouse_left_drag(event):
-        print('mouse left drag ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def mouse_right_drag(event):
@@ -340,7 +316,6 @@ class Application(tk.Frame):
 
         self.prev_img = file_path
 
-        # print('update page end ' + datetime.now().time().__str__())
         if self.continue_update_image:
             root.after(50, self.update_page)
 
