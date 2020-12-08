@@ -100,7 +100,8 @@ class Application(tk.Frame):
 
         self.button_frame = tk.Frame(self.operate_frame)
 
-        self.phone_list = tk.Listbox(self.operate_frame)
+        self.phone_list = tk.Listbox(self.operate_frame, selectmode=tk.SINGLE)
+        self.phone_list.bind('<<ListboxSelect>>', self.phone_list_click)
 
         for pid in devices:
             self.phone_list.insert(tk.END, pid)
@@ -160,6 +161,9 @@ class Application(tk.Frame):
         if self.auto_system_start:
             stop_auto_running()
         self.master.destroy()
+
+    def phone_list_click(*args):
+        print(*args)
 
     def hand_system(self):
         # 是否停止更新图片
