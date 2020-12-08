@@ -330,12 +330,6 @@ def run(pid):
         while datetime.now().hour.__eq__(14):
             schedule_apps(pid, w, h)
 
-            checkin.jingdong(pid, w, h)
-            app.jingdong_benefit_page(pid, w, h)
-            # [x] 京东看视频赚金币
-            app.jingdong_video_coin(pid, w, h, hour=14)
-            phone.stop_app(pid, info.packages['jingdong'])
-
             utils.tail_work(pid, w, h, hour=14)
 
         # 快音
