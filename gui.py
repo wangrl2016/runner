@@ -102,7 +102,7 @@ class Application(tk.Frame):
 
         self.button_frame = tk.Frame(self.operate_frame)
 
-        self.phone_list = tk.Listbox(self.operate_frame, width=w * scale, selectmode=tk.SINGLE)
+        self.phone_list = tk.Listbox(self.operate_frame, width=int(w * scale), selectmode=tk.SINGLE)
         self.phone_list.bind('<<ListboxSelect>>', self.phone_list_click)
 
         for pid in devices:
