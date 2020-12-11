@@ -1,4 +1,3 @@
-import argparse
 import ctypes
 import inspect
 import os
@@ -13,19 +12,17 @@ from PIL import Image, ImageTk
 import runner
 from src import phone, info, utils
 from src import input
-import cairosvg
-from io import BytesIO
 import shutil
 
 from src.info import activities
 
 
-def _async_raise(tid, exctype):
-    if not inspect.isclass(exctype):
+def _async_raise(tid, exc_type):
+    if not inspect.isclass(exc_type):
         raise TypeError("Only types can be raised (not instances)")
-    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(tid), ctypes.py_object(exctype))
+    res = ctypes.pythonapi.PyThreadState_SetAsyncExc(ctypes.c_long(tid), ctypes.py_object(exc_type))
     if res == 0:
-        raise ValueError("invalid thread id")
+        raise ValueError("Invalid thread id")
     elif res != 1:
         ctypes.pythonapi.PyThreadState_SetAsyncExc(tid, None)
         raise SystemError("PyThreadState_SetAsyncExc failed")
@@ -43,21 +40,25 @@ def close_top_app():
             return
         for a in info.apps:
             if top_activities.__contains__(info.packages[a]):
-                phone.stop_app(pid, info.packages[a], 0.1)
+                phone.stop_app(pid, info.packages[a], 0)
 
 
 def start_auto_running():
-    pts = {}
+    """
+    开启自动运行系统
+    """
     runner_threads.clear()
     for pid in devices:
         info.contexts.update({pid: {}})
         t = threading.Thread(target=runner.run, args=(pid,), daemon=True)
         runner_threads.append(t)
-        pts[pid] = t.ident
         t.start()
 
 
 def stop_auto_running():
+    """
+    关闭自动运行系统
+    """
     for t in runner_threads:
         if t.is_alive():
             stop_thread(t)
@@ -92,6 +93,7 @@ class Application(tk.Frame):
         self.continue_update_image = True
         self.auto_system_start = True
 
+        # 鼠标的开始点和释放点
         self.point0 = Point(0, 0)
         self.point1 = Point(0, 0)
 
@@ -100,7 +102,7 @@ class Application(tk.Frame):
 
         self.button_frame = tk.Frame(self.operate_frame)
 
-        self.phone_list = tk.Listbox(self.operate_frame, selectmode=tk.SINGLE)
+        self.phone_list = tk.Listbox(self.operate_frame, width=w * scale, selectmode=tk.SINGLE)
         self.phone_list.bind('<<ListboxSelect>>', self.phone_list_click)
 
         for pid in devices:
@@ -114,59 +116,28 @@ class Application(tk.Frame):
         self.image_label.config(image=img)
         self.image_label.image = img
 
-        self.home = tk.Button(self.button_frame, text='回到主页', command=self.go_home)
-        self.reboot = tk.Button(self.button_frame, text='重启手机', command=self.reboot)
-        self.update = tk.Button(self.button_frame, text='更新代码', command=self.update_code)
         self.close_top_app = tk.Button(self.button_frame, text='关闭当前程序', command=close_top_app)
         self.hand_system = tk.Button(self.button_frame, text='手动系统已开启', bg='green', command=self.hand_system)
         self.auto_system = tk.Button(self.button_frame, text='自动系统已开启', bg='green', command=self.auto_system)
 
-        img = cairosvg.svg2png(url='res/arrow_forward.svg')
-        img = Image.open(BytesIO(img))
-        img = ImageTk.PhotoImage(image=img)
-        self.arrow_forward = tk.Label(self.operate_frame)
-        self.arrow_forward.config(image=img)
-        self.arrow_forward.image = img
-
-        img = cairosvg.svg2png(url='res/arrow_back.svg')
-        img = Image.open(BytesIO(img))
-        img = ImageTk.PhotoImage(image=img)
-        self.arrow_back = tk.Label(self.operate_frame)
-        self.arrow_back.config(image=img)
-        self.arrow_back.image = img
-
-        img = cairosvg.svg2png(url='res/arrow_upward.svg')
-        img = Image.open(BytesIO(img))
-        img = ImageTk.PhotoImage(image=img)
-        self.arrow_upward = tk.Label(self.operate_frame)
-        self.arrow_upward.config(image=img)
-        self.arrow_upward.image = img
-
-        img = cairosvg.svg2png(url='res/arrow_downward.svg')
-        img = Image.open(BytesIO(img))
-        img = ImageTk.PhotoImage(image=img)
-        self.arrow_downward = tk.Label(self.operate_frame)
-        self.arrow_downward.config(image=img)
-        self.arrow_downward.image = img
+        self.home = tk.Button(self.button_frame, text='回到主页', command=self.go_home)
+        self.reboot = tk.Button(self.button_frame, text='重启手机', command=self.reboot)
+        self.update = tk.Button(self.button_frame, text='更新代码', command=self.update_code)
 
         self.master = master
         self.pack()
 
         self.create_widgets()
 
+        # 指向之前显示的图片
         self.prev_img = None
 
-    def exit_system(self):
-        print('退出程序 ' + datetime.now().__str__())
-        if self.auto_system_start:
-            stop_auto_running()
-        self.master.destroy()
-
     def phone_list_click(*args):
+        # TODO: 完善函数功能
         print(*args)
 
     def hand_system(self):
-        # 是否停止更新图片
+        print(('关闭 ' if self.continue_update_image else '开启') + '手动系统 ' + datetime.now().__str__())
         self.continue_update_image = not self.continue_update_image
         if self.continue_update_image:
             self.hand_system['text'] = '手动系统已开启'
@@ -194,21 +165,17 @@ class Application(tk.Frame):
         self.operate_frame.pack_propagate(0)
         self.operate_frame.pack(side='left')
 
-        self.button_frame.pack(side='top')
-
         self.image_label.bind('<Button-1>', self.mouse_left_click)  # 鼠标左键单击
         self.image_label.bind('<Button-2>', self.mouse_center_click)  # 鼠标中键单击
         self.image_label.bind('<Button-3>', self.mouse_right_click)  # 鼠标右键单击
         self.image_label.bind('<ButtonRelease-2>', self.mouse_center_release)  # 鼠标中键释放
-        # self.image_label.bind('<B1-Motion>', self.mouse_left_drag)
-        # self.image_label.bind('<B3-Motion>', self.mouse_right_drag)
 
-        # self.image_label.bind('<MouseWheel>', self.vertical_swipe)  # 鼠标滚轮上下滚动
         self.image_label.bind('<KeyPress>', self.keyboard_press)
 
         self.image_label.focus_set()
         self.image_label.pack()
 
+        self.button_frame.pack(side='top')
         self.phone_list.pack(side='top')
 
         # 第0排按钮
@@ -220,11 +187,6 @@ class Application(tk.Frame):
         self.home.grid(row=1, column=0)
         self.update.grid(row=1, column=1)
         self.reboot.grid(row=1, column=2)
-
-        # self.arrow_forward.pack(side='left')
-        # self.arrow_back.pack(side='left')
-        # self.arrow_upward.pack(side='left')
-        # self.arrow_downward.pack(side='left')
 
     @staticmethod
     def mouse_left_click(event):
@@ -240,10 +202,8 @@ class Application(tk.Frame):
     @staticmethod
     def mouse_right_click(event):
         print('点击鼠标右键 (' + str(event.x) + ', ' + str(event.y) + ')')
-        threads = []
         for pid in devices:
             tid = threading.Thread(target=phone.go_back, args=(pid,))
-            threads.append(tid)
             tid.start()
 
     def mouse_center_release(self, event):
@@ -255,16 +215,13 @@ class Application(tk.Frame):
         print('滑动屏幕 ' + datetime.now().time().__str__())
         for pid in devices:
             tid = threading.Thread(target=input.swipe,
-                                   args=(pid, self.point0.get_x() / scale,
-                                         self.point0.get_y() / scale,
-                                         self.point1.get_x() / scale,
-                                         self.point1.get_y() / scale,
+                                   args=(pid,
+                                         int(self.point0.get_x() / scale),
+                                         int(self.point0.get_y() / scale),
+                                         int(self.point1.get_x() / scale),
+                                         int(self.point1.get_y() / scale),
                                          randrange(190, 230)))
             tid.start()
-
-    @staticmethod
-    def mouse_right_drag(event):
-        print('mouse right drag ' + str(event.x) + ', ' + str(event.y))
 
     @staticmethod
     def keyboard_press(event):
@@ -273,32 +230,18 @@ class Application(tk.Frame):
     @staticmethod
     def reboot():
         print('手机重启 ' + datetime.now().time().__str__())
-        threads = []
         for pid in devices:
             tid = threading.Thread(target=phone.reboot, args=(pid,))
-            threads.append(tid)
             tid.start()
 
     @staticmethod
     def go_home():
         print('回到主页 ' + datetime.now().time().__str__())
-        threads = []
         for pid in devices:
             tid = threading.Thread(target=phone.go_home, args=(pid,))
-            threads.append(tid)
-            tid.start()
-
-    @staticmethod
-    def go_back():
-        print('返回上级页面 ' + datetime.now().time().__str__())
-        threads = []
-        for pid in devices:
-            tid = threading.Thread(target=phone.go_back, args=(pid,))
-            threads.append(tid)
             tid.start()
 
     def update_page(self):
-        # print('update page start ' + datetime.now().time().__str__())
         update_page_thread = UpdatePageThread(devices[0], out_dir)
         update_page_thread.start()
         update_page_thread.join()
@@ -321,7 +264,7 @@ class Application(tk.Frame):
         self.prev_img = file_path
 
         if self.continue_update_image:
-            root.after(50, self.update_page)
+            root.after(10, self.update_page)
 
     @staticmethod
     def update_code():
@@ -344,9 +287,6 @@ class UpdatePageThread(threading.Thread):
 
 
 if __name__ == '__main__':
-    parser = argparse.ArgumentParser(prog='PROG', conflict_handler='resolve')
-    parser.add_argument('-s', '--serial', help='phone serial number')
-
     runner_threads = []
 
     # 初始化全局变量
@@ -366,6 +306,7 @@ if __name__ == '__main__':
         print('没有发现手机设备')
         exit(0)
 
+    # 开启自动运行系统
     start_auto_running()
 
     out_dir = 'out/'
@@ -381,5 +322,6 @@ if __name__ == '__main__':
 
     app.mainloop()
 
+    # 清理可能存在的文件
     shutil.rmtree(out_dir)
     os.mkdir(out_dir)
