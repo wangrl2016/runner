@@ -1,6 +1,5 @@
 import subprocess
 import time
-from random import randrange
 
 """
 The commands and default sources are:

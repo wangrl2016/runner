@@ -485,8 +485,6 @@ def main(args):
         devices = phone.get_devices()
     print(devices)
 
-    # 创建图像界面
-
     # 为每部设备创建单独的线程运行
     threads = []
     # 设备号对应的线程号

@@ -245,7 +245,6 @@ def get_size(pid):
     p = subprocess.run(['adb', '-s', pid, 'shell', 'wm', 'size'], check=True, stdout=subprocess.PIPE,
                        stderr=subprocess.STDOUT, universal_newlines=True)
     size_str = p.stdout.strip('\n')
-    # print(size_str)
     for s in size_str.split(' '):
         if s.rfind('x') > 0:
             return int(s.split('x')[0]), int(s.split('x')[1])
