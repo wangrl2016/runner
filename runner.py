@@ -39,13 +39,14 @@ def cycle(pid):
         if run_apps.__contains__('kuaishou') and (hour == 1 or hour == 2 or
                                                   hour == 13 or hour == 14 or hour == 17):
             phone.wakeup(pid)
-            phone.swipe_down_to_up(pid, w / 2, h, internal=100)
+            phone.swipe_down_to_up(pid, w / 2, h)
             checkin.kuaishou(pid, gap=20)
             # 回退可能出现的悬浮窗
             phone.go_back(pid)
             app.watch_kuaishou_video(pid, w, h, hour)
             phone.stop_app(pid, info.packages['kuaishou'])
             phone.sleep(pid)
+            time.sleep(10)
         else:
             time.sleep(1200)
 
