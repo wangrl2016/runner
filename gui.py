@@ -29,7 +29,10 @@ def _async_raise(tid, exc_type):
 
 
 def stop_thread(thread):
-    _async_raise(thread.ident, SystemExit)
+    try:
+        _async_raise(thread.ident, SystemExit)
+    except Exception as e:
+        print(e)
 
 
 def close_top_app():
