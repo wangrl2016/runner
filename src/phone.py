@@ -188,7 +188,7 @@ def wakeup(pid, gap=3):
     和KEYCODE_POWER表现一致
     但是如果屏幕是唤醒状态该操作没有效果
     """
-    print("唤醒屏幕 " + datetime.now().__str__())
+    print('唤醒屏幕 ' + pid + ' ' + datetime.now().__str__())
     subprocess.run(['adb', '-s', pid, 'shell', 'input', 'keyevent', 'KEYCODE_WAKEUP'])
     time.sleep(gap)
 
